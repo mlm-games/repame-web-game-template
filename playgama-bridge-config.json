@@ -1,0 +1,29 @@
+{
+	"$schema": "https://bridge.playgama.com/v2/stable/schema.json",
+	"advertisement": {
+		"minimumDelayBetweenInterstitial": 120,
+		"initialInterstitialDelay": 120,
+		"interstitial": {
+			"preloadOnStart": "game_over",
+			"placementFallback": "game_over",
+			"placements": [
+				{ "id": "game_over" }
+			]
+		},
+		"rewarded": {
+			"preloadOnStart": "revive",
+			"placementFallback": "revive",
+			"placements": [
+				{ "id": "revive" }
+			]
+		},
+		"useBuiltInErrorPopup": true
+	},
+	"device": {
+		"useBuiltInOrientationPopup": true,
+		"supportedOrientations": ["landscape"]
+	},
+	"payments": [],
+	"leaderboards": [],
+	"sendAnalyticsEvents": true
+}

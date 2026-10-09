@@ -1,0 +1,16 @@
+# The published build. Playgama and every portal it spreads to serve the
+# archive from a path of their choosing, so every asset URL has to stay
+# relative: trunk's default `<base href="/">` 404s the whole game the moment
+# it is not served from a domain root. `web-release` is the size-optimised
+# profile in Cargo.toml.
+[build]
+target = "index.html"
+public_url = "./"
+no_sri = true
+cargo_profile = "web-release"
+
+[watch]
+ignore = ["./target", "./dist"]
+
+[serve]
+headers = { "Cross-Origin-Opener-Policy" = "same-origin", "Cross-Origin-Embedder-Policy" = "require-corp" }

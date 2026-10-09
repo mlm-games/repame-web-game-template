@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
+        <title>Web Game</title>
+        <base data-trunk-public-url />
+        <link data-trunk rel="rust" data-target-name="web_game" />
+        <link data-trunk rel="copy-file" href="playgama-bridge-config.json" />
+        <style>
+            html, body {
+                margin: 0;
+                padding: 0;
+                border: 0;
+                height: 100%;
+            }
+
+            body {
+                background-color: #7fc9f2;
+                overflow: hidden;
+                touch-action: none;
+            }
+
+            canvas {
+                display: block;
+            }
+
+            canvas:focus {
+                outline: none;
+            }
+        </style>
+    </head>
+    <body>
+        <noscript>Web Game needs JavaScript and WebAssembly.</noscript>
+    </body>
+</html>
