@@ -66,6 +66,8 @@ pub struct RunState {
     /// The run that just ended beat the stored best.
     pub record: bool,
     pub revives_left: i32,
+    /// A wipe is mid-flight.
+    pub transition: bool,
     /// A rewarded ad is in flight: the button is gone until it answers.
     pub revive_pending: bool,
     /// Break watchdog left, in seconds.
@@ -83,6 +85,7 @@ impl Default for RunState {
             best: 0,
             record: false,
             revives_left: MAX_REVIVES,
+            transition: false,
             revive_pending: false,
             break_t: 0.0,
         }
@@ -92,6 +95,10 @@ impl Default for RunState {
 impl RunState {
     pub fn playing(&self) -> bool {
         self.phase == Phase::Playing && !self.paused
+    }
+
+    pub fn transitional(&self) -> bool {
+        self.modal() || self.transition
     }
 
     /// Something modal covers the run but is not the player's own pause.
@@ -116,6 +123,121 @@ pub struct Orb {
 #[derive(Resource, Clone, Copy, Debug, Default)]
 pub struct InputState {
     pub dir: Vec2,
+}
+
+/// Scene changes run through a gold-disc wipe, the way portals present a level
+/// change: a flat gold circle grows in from the left, holds, then shrinks back
+/// from the centre to uncover the incoming scene. While it runs the schedule
+/// is gated and input is dropped.
+#[derive(Resource, Clone, Debug, Default)]
+pub struct Transition {
+    pub phase: TransitionPhase,
+    pub t: f32,
+    /// What the hold applies: the action the player asked for.
+    pub pending: Option<PendingAction>,
+}
+
+#[derive(Clone, Copy, Debug, Default, PartialEq, Eq)]
+pub enum TransitionPhase {
+    #[default]
+    None,
+    Filling,
+    Holding,
+    Revealing,
+}
+
+/// The scene change a wipe carries.
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum PendingAction {
+    Start,
+    Menu,
+}
+
+/// The wipe timings, in seconds.
+pub const FILL_TIME: f32 = 0.22;
+pub const HOLD_TIME: f32 = 0.08;
+pub const REVEAL_TIME: f32 = 0.35;
+
+/// Radius that covers the design view from any phase centre, in design units.
+pub const IRIS_MAX_R: f32 = 760.0;
+/// Where the disc grows from, as a fraction of the design view.
+pub const IRIS_IN_X: f32 = 0.38;
+
+impl Transition {
+    pub fn running(&self) -> bool {
+        self.phase != TransitionPhase::None
+    }
+
+    /// The disc as the overlay draws it: centre and radius in design units,
+    /// or `None` once the wipe is done and nothing is drawn.
+    pub fn disc(&self) -> Option<([f32; 2], f32)> {
+        let max = IRIS_MAX_R;
+        match self.phase {
+            TransitionPhase::None => None,
+            TransitionPhase::Filling => {
+                let t = (self.t / FILL_TIME).clamp(0.0, 1.0);
+                Some(([WORLD[0] * IRIS_IN_X, WORLD[1] * 0.5], max * t))
+            }
+            TransitionPhase::Holding => Some(([WORLD[0] * 0.5, WORLD[1] * 0.5], max)),
+            TransitionPhase::Revealing => {
+                let t = (self.t / REVEAL_TIME).clamp(0.0, 1.0);
+                Some(([WORLD[0] * 0.5, WORLD[1] * 0.5], max * (1.0 - t)))
+            }
+        }
+    }
+}
+
+/// Start a wipe carrying `action`. The action applies at the hold, so the
+/// scene swaps while the disc covers the screen.
+pub fn begin(world: &mut World, action: PendingAction) {
+    let mut transition = world.resource_mut::<Transition>();
+    transition.phase = TransitionPhase::Filling;
+    transition.t = 0.0;
+    transition.pending = Some(action);
+}
+
+/// Advance the wipe and apply the action at the hold.
+pub fn transition_system(world: &mut World) {
+    let phase = world.resource::<Transition>().phase;
+    if phase == TransitionPhase::None {
+        return;
+    }
+    let dt = world.resource::<repame_sim::SimTime>().delta_secs;
+    // Advance and re-phase in one short borrow, then step out before touching
+    // the rest of the world.
+    let action = {
+        let mut transition = world.resource_mut::<Transition>();
+        transition.t += dt;
+        let mut finished = false;
+        match phase {
+            TransitionPhase::Filling if transition.t >= FILL_TIME => {
+                transition.phase = TransitionPhase::Holding;
+                transition.t = 0.0;
+            }
+            TransitionPhase::Holding if transition.t >= HOLD_TIME => {
+                transition.phase = TransitionPhase::Revealing;
+                transition.t = 0.0;
+            }
+            TransitionPhase::Revealing if transition.t >= REVEAL_TIME => {
+                transition.phase = TransitionPhase::None;
+                transition.t = 0.0;
+                finished = true;
+            }
+            _ => {}
+        }
+        if finished {
+            transition.pending.take()
+        } else {
+            None
+        }
+    };
+    let running = world.resource::<Transition>().running();
+    world.resource_mut::<RunState>().transition = running;
+    match action {
+        Some(PendingAction::Start) => start_run(world),
+        Some(PendingAction::Menu) => to_menu(world),
+        None => {}
+    }
 }
 
 /// One-frame actions queued by UI buttons, menus and the game shortcuts.
@@ -286,17 +408,18 @@ pub fn apply_intents(world: &mut World) {
         };
         log::info!("web-game: muted {muted}");
     }
-    if intents.play && phase == Phase::Menu && panel != Panel::None {
-        start_run(world);
+    let transitioning = world.resource::<Transition>().running();
+    if intents.play && phase == Phase::Menu && panel != Panel::None && !transitioning {
+        begin(world, PendingAction::Start);
     }
-    if intents.retry && phase == Phase::Menu {
-        start_run(world);
+    if intents.retry && phase == Phase::Menu && !transitioning {
+        begin(world, PendingAction::Start);
     }
-    if intents.revive {
+    if intents.revive && !transitioning {
         request_revive(world);
     }
-    if intents.menu && (phase != Phase::Menu || panel == Panel::Death) {
-        to_menu(world);
+    if intents.menu && (phase != Phase::Menu || panel == Panel::Death) && !transitioning {
+        begin(world, PendingAction::Menu);
     }
 }
 

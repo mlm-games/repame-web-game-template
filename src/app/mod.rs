@@ -14,16 +14,18 @@ use repame_shell::{
     SharedEdges, Staging, install_game_shortcuts, shared_edges, take_shortcut_edges,
 };
 use repame_sim::Sim;
+use repose_core::Dp;
 use repose_core::input::PhysicalKey;
 use repose_core::prelude::{FocusRequester, Modifier, View};
 use repose_core::{RenderContext, Scheduler, request_frame};
-use repose_ui::ViewExt as _;
+use repose_ui::{Box as RBox, Spacer, ViewExt as _};
 use web_time::{Duration, Instant};
 
 use crate::rigs::Rigs;
 use crate::sim::save::SaveGame;
-use crate::sim::state::{Intents, Phase, RunState, apply_intents, break_system, spawn_world};
+use crate::sim::state::{Intents, RunState, Transition, apply_intents, break_system, spawn_world};
 use crate::sim::{platform as sim_platform, state};
+use crate::ui::palette;
 use crate::ui::{
     SharedUi, Sink, TouchHandle, UiAction, UiActions, compose_root, drain_actions, sync_shared_ui,
 };
@@ -86,6 +88,7 @@ impl App {
         sim.world.insert_resource(state::Pops::default());
         sim.world.insert_resource(state::SfxQueue::default());
         sim.world.insert_resource(sim_platform::Platform::default());
+        sim.world.insert_resource(Transition::default());
         spawn_world(&mut sim.world);
         let touch = TouchHandle::default();
         Self {
@@ -195,13 +198,15 @@ impl App {
     /// stops, the shell keeps running.
     fn advance(&mut self, dt: Duration) -> u32 {
         let run = self.sim.world.resource::<RunState>();
-        let live = run.playing();
-        let breaking = matches!(run.phase, Phase::Break(_));
-        let suspended = self.platform.suspends_gameplay() && !breaking;
+        let live = run.playing() && !run.transitional();
+        let suspended = self.platform.suspends_gameplay() && !run.transitional();
         self.sim.time_scale = if suspended { 0.0 } else { 1.0 };
         let schedule = &mut self.schedule;
         self.sim.step_with(dt, |world| {
             break_system(world);
+            // The wipe runs outside the gameplay schedule: it owns the
+            // screen while nothing else is live.
+            crate::sim::state::transition_system(world);
             if live {
                 schedule.run(world);
             }
@@ -224,6 +229,7 @@ impl App {
         let world = self
             .rigs
             .world_view(&mut self.sim.world, ctx, self.viewport_dp);
+        let wipe = self.wipe_layer();
         let actions = self
             .sim
             .world
@@ -251,7 +257,32 @@ impl App {
                     false
                 }),
         )
-        .child((world, root))
+        .child((world, root, wipe))
+    }
+
+    /// The gold disc of the scene wipe, or nothing when no wipe is running.
+    fn wipe_layer(&self) -> View {
+        let Some((center, radius)) = self.sim.world.resource::<Transition>().disc() else {
+            return Spacer();
+        };
+        let s = self.ui.ui_scale();
+        let vp = [self.ui.viewport.x, self.ui.viewport.y];
+        RBox(
+            palette::rect(
+                vp,
+                s,
+                [0.0; 4],
+                [
+                    center[0] - radius,
+                    center[1] - radius,
+                    center[0] + radius,
+                    center[1] + radius,
+                ],
+            )
+            .background(palette::GOLD)
+            .clip_rounded(Dp(radius * s)),
+        )
+        .child(Spacer())
     }
 }
 
