@@ -125,15 +125,15 @@ pub struct InputState {
     pub dir: Vec2,
 }
 
-/// Scene changes run through a gold-disc wipe, the way portals present a level
-/// change: a flat gold circle grows in from the left, holds, then shrinks back
-/// from the centre to uncover the incoming scene. While it runs the schedule
-/// is gated and input is dropped.
+/// Scene changes run through a gold-disc iris wipe, the way portals present a
+/// level change: a flat gold circle grows from the centre of the screen, holds
+/// once it covers everything, then shrinks back to uncover the incoming scene.
+/// While it runs the schedule is gated and input is dropped.
 #[derive(Resource, Clone, Debug, Default)]
 pub struct Transition {
     pub phase: TransitionPhase,
     pub t: f32,
-    /// What the hold applies: the action the player asked for.
+    /// The scene change this wipe carries; applied the moment the disc closes.
     pub pending: Option<PendingAction>,
 }
 
@@ -158,61 +158,53 @@ pub const FILL_TIME: f32 = 0.22;
 pub const HOLD_TIME: f32 = 0.08;
 pub const REVEAL_TIME: f32 = 0.35;
 
-/// Radius that covers the design view from any phase centre, in design units.
-pub const IRIS_MAX_R: f32 = 760.0;
-/// Where the disc grows from, as a fraction of the design view.
-pub const IRIS_IN_X: f32 = 0.38;
-
 impl Transition {
     pub fn running(&self) -> bool {
         self.phase != TransitionPhase::None
     }
 
-    /// The disc as the overlay draws it: centre and radius in design units,
-    /// or `None` once the wipe is done and nothing is drawn.
-    pub fn disc(&self) -> Option<([f32; 2], f32)> {
-        let max = IRIS_MAX_R;
+    /// How far the wipe has run, as a fraction of the radius that covers the
+    /// viewport. `None` once the wipe is done and nothing is drawn.
+    pub fn disc(&self) -> Option<f32> {
         match self.phase {
             TransitionPhase::None => None,
-            TransitionPhase::Filling => {
-                let t = (self.t / FILL_TIME).clamp(0.0, 1.0);
-                Some(([WORLD[0] * IRIS_IN_X, WORLD[1] * 0.5], max * t))
-            }
-            TransitionPhase::Holding => Some(([WORLD[0] * 0.5, WORLD[1] * 0.5], max)),
-            TransitionPhase::Revealing => {
-                let t = (self.t / REVEAL_TIME).clamp(0.0, 1.0);
-                Some(([WORLD[0] * 0.5, WORLD[1] * 0.5], max * (1.0 - t)))
-            }
+            TransitionPhase::Filling => Some((self.t / FILL_TIME).clamp(0.0, 1.0)),
+            TransitionPhase::Holding => Some(1.0),
+            TransitionPhase::Revealing => Some(1.0 - (self.t / REVEAL_TIME).clamp(0.0, 1.0)),
         }
     }
 }
 
-/// Start a wipe carrying `action`. The action applies at the hold, so the
-/// scene swaps while the disc covers the screen.
+/// Start a wipe carrying `action`. The action applies the moment the disc
+/// covers the screen, so the scene swaps unseen.
 pub fn begin(world: &mut World, action: PendingAction) {
-    let mut transition = world.resource_mut::<Transition>();
-    transition.phase = TransitionPhase::Filling;
-    transition.t = 0.0;
-    transition.pending = Some(action);
+    {
+        let mut transition = world.resource_mut::<Transition>();
+        transition.phase = TransitionPhase::Filling;
+        transition.t = 0.0;
+        transition.pending = Some(action);
+    }
+    world.resource_mut::<RunState>().transition = true;
 }
 
-/// Advance the wipe and apply the action at the hold.
+/// Advance the wipe. The scene swap applies on the tick the disc finishes
+/// covering the screen, so the reveal uncovers the incoming scene.
 pub fn transition_system(world: &mut World) {
     let phase = world.resource::<Transition>().phase;
     if phase == TransitionPhase::None {
         return;
     }
     let dt = world.resource::<repame_sim::SimTime>().delta_secs;
-    // Advance and re-phase in one short borrow, then step out before touching
-    // the rest of the world.
+    // Re-phase in one short borrow, then step out before touching the world.
     let action = {
         let mut transition = world.resource_mut::<Transition>();
         transition.t += dt;
-        let mut finished = false;
+        let mut covered = false;
         match phase {
             TransitionPhase::Filling if transition.t >= FILL_TIME => {
                 transition.phase = TransitionPhase::Holding;
                 transition.t = 0.0;
+                covered = true;
             }
             TransitionPhase::Holding if transition.t >= HOLD_TIME => {
                 transition.phase = TransitionPhase::Revealing;
@@ -221,18 +213,16 @@ pub fn transition_system(world: &mut World) {
             TransitionPhase::Revealing if transition.t >= REVEAL_TIME => {
                 transition.phase = TransitionPhase::None;
                 transition.t = 0.0;
-                finished = true;
             }
             _ => {}
         }
-        if finished {
+        if covered {
             transition.pending.take()
         } else {
             None
         }
     };
-    let running = world.resource::<Transition>().running();
-    world.resource_mut::<RunState>().transition = running;
+    world.resource_mut::<RunState>().transition = world.resource::<Transition>().running();
     match action {
         Some(PendingAction::Start) => start_run(world),
         Some(PendingAction::Menu) => to_menu(world),
@@ -547,5 +537,98 @@ fn resolve_break(world: &mut World, then: BreakThen) {
                 deny_revive(world);
             }
         }
+    }
+}
+
+#[cfg(test)]
+mod wipe_tests {
+    use super::*;
+
+    fn test_world() -> World {
+        let mut world = World::new();
+        world.init_resource::<Transition>();
+        world.init_resource::<RunState>();
+        world.init_resource::<Pops>();
+        world.init_resource::<Platform>();
+        world.init_resource::<SaveGame>();
+        world.init_resource::<SfxQueue>();
+        world.init_resource::<repame_sim::SimTime>();
+        world.init_resource::<Intents>();
+        world
+    }
+
+    fn advance(world: &mut World, secs: f32) {
+        world.resource_mut::<repame_sim::SimTime>().delta_secs = secs;
+        transition_system(world);
+    }
+
+    #[test]
+    fn the_scene_swaps_on_the_tick_the_disc_closes() {
+        let mut world = test_world();
+        begin(&mut world, PendingAction::Start);
+        assert!(world.resource::<RunState>().transitional());
+
+        advance(&mut world, FILL_TIME * 0.5);
+        assert_eq!(world.resource::<RunState>().phase, Phase::Menu);
+        assert!(world.resource::<Transition>().running());
+
+        advance(&mut world, FILL_TIME * 0.5);
+        let transition = world.resource::<Transition>();
+        assert_eq!(transition.phase, TransitionPhase::Holding);
+        assert_eq!(transition.disc(), Some(1.0));
+
+        advance(&mut world, HOLD_TIME);
+        assert_eq!(world.resource::<RunState>().phase, Phase::Playing);
+        assert!(world.resource::<Transition>().pending.is_none());
+
+        advance(&mut world, REVEAL_TIME * 0.5);
+        let mid = world.resource::<Transition>().disc().unwrap();
+        assert!(
+            mid > 0.0 && mid < 1.0,
+            "disc should be half open, got {mid}"
+        );
+
+        advance(&mut world, REVEAL_TIME * 0.5);
+        assert_eq!(world.resource::<Transition>().disc(), None);
+        assert!(!world.resource::<RunState>().transitional());
+    }
+
+    #[test]
+    fn the_swap_is_never_visible() {
+        let mut world = test_world();
+        world.resource_mut::<RunState>().phase = Phase::Playing;
+        begin(&mut world, PendingAction::Menu);
+
+        // Still opening: the disc has not closed, so nothing may change yet.
+        advance(&mut world, FILL_TIME * 0.9);
+        assert_eq!(
+            world.resource::<Transition>().phase,
+            TransitionPhase::Filling
+        );
+        assert_eq!(world.resource::<RunState>().phase, Phase::Playing);
+
+        // The disc closes, and that very tick is the only one that swaps.
+        advance(&mut world, FILL_TIME * 0.1);
+        assert_eq!(
+            world.resource::<Transition>().phase,
+            TransitionPhase::Holding
+        );
+        assert_eq!(world.resource::<Transition>().disc(), Some(1.0));
+        assert_eq!(world.resource::<RunState>().phase, Phase::Menu);
+        assert_eq!(world.resource::<RunState>().panel, Panel::Main);
+    }
+
+    #[test]
+    fn intents_wait_for_the_wipe_instead_of_restarting_it() {
+        let mut world = test_world();
+        begin(&mut world, PendingAction::Start);
+        world.resource_mut::<Intents>().retry = true;
+        apply_intents(&mut world);
+        advance(&mut world, FILL_TIME);
+        assert_eq!(world.resource::<RunState>().phase, Phase::Playing);
+        assert_eq!(
+            world.resource::<Transition>().phase,
+            TransitionPhase::Holding
+        );
     }
 }

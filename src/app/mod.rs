@@ -260,27 +260,30 @@ impl App {
         .child((world, root, wipe))
     }
 
-    /// The gold disc of the scene wipe, or nothing when no wipe is running.
+    /// The gold disc of the scene wipe. It is a square box pinned by
+    /// `.size()` + a single corner offset and rounded to half its side, so
+    /// it stays a true circle centred on the viewport at any window shape;
+    /// a four-sided offset stretch would skew it and drag it off centre. Its
+    /// radius is a fraction of the viewport's half diagonal, so full cover
+    /// always hides the scene swap.
     fn wipe_layer(&self) -> View {
-        let Some((center, radius)) = self.sim.world.resource::<Transition>().disc() else {
+        let Some(frac) = self.sim.world.resource::<Transition>().disc() else {
             return Spacer();
         };
-        let s = self.ui.ui_scale();
-        let vp = [self.ui.viewport.x, self.ui.viewport.y];
+        let vp = self.ui.viewport;
+        // A hair past the half diagonal, so at full cover the anti-aliased
+        // edge is off-screen and no corner peeks through at the swap.
+        let cover = (vp.x * vp.x + vp.y * vp.y).sqrt() * 0.5 * 1.02 * frac;
+        let side = cover * 2.0;
+        let x = vp.x * 0.5 - cover;
+        let y = vp.y * 0.5 - cover;
         RBox(
-            palette::rect(
-                vp,
-                s,
-                [0.0; 4],
-                [
-                    center[0] - radius,
-                    center[1] - radius,
-                    center[0] + radius,
-                    center[1] + radius,
-                ],
-            )
-            .background(palette::GOLD)
-            .clip_rounded(Dp(radius * s)),
+            Modifier::new()
+                .absolute()
+                .offset(Some(Dp(x)), Some(Dp(y)), None, None)
+                .size(Dp(side), Dp(side))
+                .background(palette::GOLD)
+                .clip_rounded(Dp(cover)),
         )
         .child(Spacer())
     }
