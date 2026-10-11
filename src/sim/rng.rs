@@ -1,5 +1,3 @@
-//! Deterministic random stream. Every draw the game needs comes from here so
-//! a run can be reproduced from its seed in a test.
 
 use std::fmt;
 
@@ -20,7 +18,6 @@ impl Rng {
         Self(SmallRng::seed_from_u64(seed))
     }
 
-    /// `[0, 1)`.
     pub fn randf(&mut self) -> f32 {
         self.0.random::<f32>()
     }

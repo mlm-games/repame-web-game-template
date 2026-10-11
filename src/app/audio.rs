@@ -1,5 +1,3 @@
-//! Procedural sfx, synthesised into WAVs at startup and registered as
-//! cues, so the game ships no sound files. Held by the app, not the sim.
 
 use repame_audio::{Audio, AudioChannel, CueDef, Variation, db_to_linear};
 
@@ -11,7 +9,6 @@ const VARIATIONS: usize = 2;
 const SFX_DB: f32 = -6.0;
 
 impl SfxCue {
-    /// The cue name, the key the audio service stores it under.
     pub fn name(self) -> &'static str {
         match self {
             Self::Pickup => "pickup",
@@ -60,14 +57,11 @@ impl AudioDirector {
     }
 }
 
-/// One exponential-decaying blip: frequency glide and decay length per cue.
 fn render_blip(cue: SfxCue, rng: &mut Rng) -> Vec<f32> {
     let (frames, f0, f1, decay, noise) = match cue {
         SfxCue::Pickup => (2200, 880.0, 1320.0, 0.16, 0.0),
         SfxCue::Ui => (1600, 440.0, 660.0, 0.10, 0.0),
         SfxCue::Death => (7000, 320.0, 90.0, 0.55, 0.35),
-        // A rising arpeggio, not a single glide: the revive should read as a
-        // second wind, not a blip.
         SfxCue::Revive => (6000, 330.0, 990.0, 0.45, 0.0),
     };
     let jitter = 0.98 + 0.04 * rng.randf();

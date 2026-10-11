@@ -1,5 +1,3 @@
-//! repame + repose web game template: 2D sprites, the Playgama bridge for
-//! portals, desktop and web from one tree.
 
 pub mod app;
 pub mod rigs;
@@ -18,9 +16,6 @@ pub fn run() {
 #[cfg(target_arch = "wasm32")]
 use wasm_bindgen::prelude::wasm_bindgen;
 
-/// Pulls `playgama-bridge.js` onto the page, initializes it, and only then
-/// starts the game. Without a bridge the game runs on the editor stand-ins
-/// instead of failing to boot.
 #[cfg(target_arch = "wasm32")]
 #[wasm_bindgen(start)]
 pub fn run() {

@@ -1,8 +1,3 @@
-//! HUD: score, clock and best on the left, the corner icon cluster on the
-//! right. Both rows hug the top edge: the Row itself carries the absolute
-//! rect with the bottom anchor at 0, so the box grows downward from the top
-//! instead of centring in a full-height parent (which parks the row in the
-//! middle of the screen).
 
 use repose_core::prelude::{Color, Modifier, View};
 use repose_core::{AlignItems, Dp};
@@ -15,8 +10,6 @@ pub fn compose(ui: &SharedUi, s: f32, vp: [f32; 2], sink: &Sink) -> View {
     if !matches!(ui.phase, crate::sim::state::Phase::Playing) {
         return Spacer();
     }
-    // The icon cluster reserves its width on the right, so the chips row
-    // stops before it on narrow screens.
     let cluster_w = 3.0 * ICON_BUTTON + 2.0 * 12.0 + 24.0;
     let chips = Row(
         rect(vp, s, [0.0, 0.0, 1.0, 0.0], [20.0, 10.0, -cluster_w, 0.0])
@@ -55,7 +48,6 @@ pub fn compose(ui: &SharedUi, s: f32, vp: [f32; 2], sink: &Sink) -> View {
     ZStack(Modifier::new().fill_max_size()).child(vec![chips, cluster])
 }
 
-/// A readout: label over value on a cream pill with the ink hairline.
 fn chip_view(label_text: &str, value: &str, bg: Color, s: f32) -> View {
     RBox(chip(bg, s)).child(
         Row(Modifier::new()

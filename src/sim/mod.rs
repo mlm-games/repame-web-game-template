@@ -1,5 +1,3 @@
-//! Gameplay schedule, fixed 60 Hz ticks. The shell skips it while paused,
-//! during an ad, or while the host has the game suspended.
 
 pub mod platform;
 pub mod rng;
@@ -11,8 +9,8 @@ use glam::Vec2;
 
 use crate::sim::rng::Rng;
 use crate::sim::state::{
-    BURST_LIFE, InputState, Orb, PLAYER_R, PLAYER_SPEED, POP_LIFE, PlayerBody, Pops, RunState,
-    SfxCue, WORLD, end_run, queue_sfx,
+    BURST_LIFE, InputState, LOOK_LERP, Orb, PLAYER_R, PLAYER_SPEED, POP_LIFE, PlayerBody, Pops,
+    RunState, SfxCue, end_run, queue_sfx,
 };
 
 pub fn build_schedule() -> Schedule {
@@ -30,6 +28,8 @@ fn player_system(world: &mut World) {
     let Some(entity) = crate::sim::state::player_entity(world) else {
         return;
     };
+    let field = world.resource::<crate::sim::state::Field>();
+    let (fw, fh) = (field.width, field.height);
     let mut body = world.entity_mut(entity);
     let mut pos = body.get_mut::<PlayerBody>().expect("player").pos;
     if dir.length_squared() > 1.0 {
@@ -39,9 +39,14 @@ fn player_system(world: &mut World) {
     }
     pos = pos.clamp(
         Vec2::splat(PLAYER_R),
-        Vec2::new(WORLD[0] - PLAYER_R, WORLD[1] - PLAYER_R),
+        Vec2::new(fw - PLAYER_R, fh - PLAYER_R),
     );
     body.get_mut::<PlayerBody>().expect("player").pos = pos;
+    let target = dir.normalize_or_zero();
+    let k = 1.0 - (-LOOK_LERP * dt).exp();
+    let look = body.get_mut::<PlayerBody>().expect("player").look;
+    body.get_mut::<PlayerBody>().expect("player").look =
+        look.lerp(target, k.clamp(0.0, 1.0));
 }
 
 fn pickup_system(world: &mut World) {
@@ -74,7 +79,10 @@ fn pickup_system(world: &mut World) {
     for (entity, at) in collected {
         let spot = free_orb_spot(&mut rng, world);
         let mut orb = world.entity_mut(entity);
-        orb.get_mut::<Orb>().expect("orb").pos = spot;
+        let mut slot = orb.get_mut::<Orb>().expect("orb");
+        slot.pos = spot;
+        slot.age = 0.0;
+        drop(slot);
         let mut run = world.resource_mut::<RunState>();
         run.score += 1;
         world.resource_mut::<Pops>().list.push((at, POP_LIFE));
@@ -94,6 +102,10 @@ fn pops_system(world: &mut World) {
         burst.1 -= dt;
     }
     pops.bursts.retain(|burst| burst.1 > 0.0);
+    drop(pops);
+    for mut orb in world.query::<&mut Orb>().iter_mut(world) {
+        orb.age += dt;
+    }
 }
 
 fn run_clock(world: &mut World) {
@@ -112,6 +124,8 @@ fn run_clock(world: &mut World) {
 }
 
 fn free_orb_spot(rng: &mut Rng, world: &mut World) -> Vec2 {
+    let field = world.resource::<crate::sim::state::Field>();
+    let (fw, fh) = (field.width, field.height);
     let taken = world
         .query::<&Orb>()
         .iter(world)
@@ -122,16 +136,16 @@ fn free_orb_spot(rng: &mut Rng, world: &mut World) -> Vec2 {
         .iter(world)
         .next()
         .map(|b| b.pos)
-        .unwrap_or(Vec2::new(WORLD[0] * 0.5, WORLD[1] * 0.5));
+        .unwrap_or(Vec2::new(fw * 0.5, fh * 0.5));
     for _ in 0..32 {
         let candidate = Vec2::new(
             rng.range(
                 crate::sim::state::SPAWN_MARGIN,
-                WORLD[0] - crate::sim::state::SPAWN_MARGIN,
+                fw - crate::sim::state::SPAWN_MARGIN,
             ),
             rng.range(
                 crate::sim::state::SPAWN_MARGIN,
-                WORLD[1] - crate::sim::state::SPAWN_MARGIN,
+                fh - crate::sim::state::SPAWN_MARGIN,
             ),
         );
         if taken
@@ -142,5 +156,5 @@ fn free_orb_spot(rng: &mut Rng, world: &mut World) -> Vec2 {
             return candidate;
         }
     }
-    Vec2::new(WORLD[0] * 0.5, WORLD[1] * 0.5)
+    Vec2::new(fw * 0.5, fh * 0.5)
 }

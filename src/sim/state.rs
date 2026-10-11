@@ -1,5 +1,3 @@
-//! Run state machine and the demo game. Replace the demo, keep the phase
-//! machine and the ad calls: that is the template's contract.
 
 use bevy_ecs::prelude::*;
 use glam::Vec2;
@@ -7,39 +5,42 @@ use glam::Vec2;
 use super::platform::Platform;
 use super::save::SaveGame;
 
-/// The fixed design view, in design units. The contain-fit letterboxes it
-/// into any window and the UI grid scales off the same numbers.
 pub const WORLD: [f32; 2] = [960.0, 540.0];
 pub const RUN_SECONDS: f32 = 60.0;
-/// What a rewarded revive pays back.
 pub const REVIVE_SECONDS: f32 = 15.0;
 pub const PLAYER_R: f32 = 17.0;
 pub const PLAYER_SPEED: f32 = 360.0;
 pub const ORB_R: f32 = 9.0;
 pub const ORB_COUNT: usize = 10;
-/// Spawn margin so an orb never straddles the wall the player is clamped to.
 pub const SPAWN_MARGIN: f32 = 48.0;
-/// Score popup lifetime, seconds.
 pub const POP_LIFE: f32 = 0.7;
-/// Pickup burst ring lifetime, seconds.
 pub const BURST_LIFE: f32 = 0.32;
-/// The revival is offered once per run.
+pub const ORB_SPAWN_LIFE: f32 = 0.26;
+pub const LOOK_LERP: f32 = 14.0;
 pub const MAX_REVIVES: i32 = 1;
 
-/// Interstitial placement ids, the keys `playgama-bridge-config.json` maps.
 pub const PLACEMENT_GAME_OVER: &str = "game_over";
 pub const PLACEMENT_REVIVE: &str = "revive";
 
+#[derive(Resource, Clone, Copy, Debug)]
+pub struct Field {
+    pub width: f32,
+    pub height: f32,
+}
+
+impl Field {
+    pub fn new(width: f32, height: f32) -> Self {
+        Self { width, height }
+    }
+}
+
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum Phase {
-    /// The menu owns the screen; `panel` says which one.
     Menu,
     Playing,
-    /// An ad is up. `then` is where to go once it ends, `t` the watchdog.
     Break(BreakThen),
 }
 
-/// Where a finished break lands.
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum BreakThen {
     GameOver,
@@ -50,7 +51,6 @@ pub enum BreakThen {
 pub enum Panel {
     Main,
     Death,
-    /// Run in progress: no panel.
     None,
 }
 
@@ -59,18 +59,13 @@ pub struct RunState {
     pub phase: Phase,
     pub panel: Panel,
     pub paused: bool,
-    /// Counts down while `Phase::Playing`.
     pub run_time_left: f32,
     pub score: i32,
     pub best: i32,
-    /// The run that just ended beat the stored best.
     pub record: bool,
     pub revives_left: i32,
-    /// A wipe is mid-flight.
     pub transition: bool,
-    /// A rewarded ad is in flight: the button is gone until it answers.
     pub revive_pending: bool,
-    /// Break watchdog left, in seconds.
     pub break_t: f32,
 }
 
@@ -101,7 +96,6 @@ impl RunState {
         self.modal() || self.transition
     }
 
-    /// Something modal covers the run but is not the player's own pause.
     pub fn modal(&self) -> bool {
         matches!(self.phase, Phase::Break(_)) || self.revive_pending
     }
@@ -110,30 +104,25 @@ impl RunState {
 #[derive(Component, Clone, Copy, Debug)]
 pub struct PlayerBody {
     pub pos: Vec2,
+    pub look: Vec2,
 }
 
 #[derive(Component, Clone, Copy, Debug)]
 pub struct Orb {
     pub pos: Vec2,
-    /// Bob phase, radians; keeps a still field from looking dead.
     pub bob: f32,
+    pub age: f32,
 }
 
-/// Live input, fed by the shell from the keyboard and the touch stick.
 #[derive(Resource, Clone, Copy, Debug, Default)]
 pub struct InputState {
     pub dir: Vec2,
 }
 
-/// Scene changes run through a gold-disc iris wipe, the way portals present a
-/// level change: a flat gold circle grows from the centre of the screen, holds
-/// once it covers everything, then shrinks back to uncover the incoming scene.
-/// While it runs the schedule is gated and input is dropped.
 #[derive(Resource, Clone, Debug, Default)]
 pub struct Transition {
     pub phase: TransitionPhase,
     pub t: f32,
-    /// The scene change this wipe carries; applied the moment the disc closes.
     pub pending: Option<PendingAction>,
 }
 
@@ -146,14 +135,12 @@ pub enum TransitionPhase {
     Revealing,
 }
 
-/// The scene change a wipe carries.
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum PendingAction {
     Start,
     Menu,
 }
 
-/// The wipe timings, in seconds.
 pub const FILL_TIME: f32 = 0.22;
 pub const HOLD_TIME: f32 = 0.08;
 pub const REVEAL_TIME: f32 = 0.35;
@@ -163,8 +150,6 @@ impl Transition {
         self.phase != TransitionPhase::None
     }
 
-    /// How far the wipe has run, as a fraction of the radius that covers the
-    /// viewport. `None` once the wipe is done and nothing is drawn.
     pub fn disc(&self) -> Option<f32> {
         match self.phase {
             TransitionPhase::None => None,
@@ -175,8 +160,6 @@ impl Transition {
     }
 }
 
-/// Start a wipe carrying `action`. The action applies the moment the disc
-/// covers the screen, so the scene swaps unseen.
 pub fn begin(world: &mut World, action: PendingAction) {
     {
         let mut transition = world.resource_mut::<Transition>();
@@ -187,15 +170,12 @@ pub fn begin(world: &mut World, action: PendingAction) {
     world.resource_mut::<RunState>().transition = true;
 }
 
-/// Advance the wipe. The scene swap applies on the tick the disc finishes
-/// covering the screen, so the reveal uncovers the incoming scene.
 pub fn transition_system(world: &mut World) {
     let phase = world.resource::<Transition>().phase;
     if phase == TransitionPhase::None {
         return;
     }
     let dt = world.resource::<repame_sim::SimTime>().delta_secs;
-    // Re-phase in one short borrow, then step out before touching the world.
     let action = {
         let mut transition = world.resource_mut::<Transition>();
         transition.t += dt;
@@ -230,9 +210,6 @@ pub fn transition_system(world: &mut World) {
     }
 }
 
-/// One-frame actions queued by UI buttons, menus and the game shortcuts.
-/// Applied once per frame, outside the pause gate, like the Godot original's
-/// signal callbacks.
 #[derive(Resource, Clone, Copy, Debug, Default, PartialEq)]
 pub struct Intents {
     pub play: bool,
@@ -243,15 +220,12 @@ pub struct Intents {
     pub toggle_mute: bool,
 }
 
-/// Score popups and pickup bursts. The burst is the cheap juice: an ink ring
-/// that expands over `BURST_LIFE` where the coin was.
 #[derive(Resource, Clone, Debug, Default)]
 pub struct Pops {
     pub list: Vec<(Vec2, f32)>,
     pub bursts: Vec<(Vec2, f32)>,
 }
 
-/// Sounds the sim asked for, drained by the app's audio director.
 #[derive(Resource, Clone, Debug, Default)]
 pub struct SfxQueue {
     pub events: Vec<SfxCue>,
@@ -265,7 +239,6 @@ pub enum SfxCue {
     Revive,
 }
 
-/// Menu → run: reset everything the run touches.
 pub fn start_run(world: &mut World) {
     {
         let mut run = world.resource_mut::<RunState>();
@@ -284,7 +257,6 @@ pub fn start_run(world: &mut World) {
     queue_sfx(world, SfxCue::Ui);
 }
 
-/// Run ends (the clock ran out): bank the score, then show the interstitial.
 pub fn end_run(world: &mut World) {
     let score = world.resource::<RunState>().score;
     let best = {
@@ -300,8 +272,6 @@ pub fn end_run(world: &mut World) {
         run.paused = false;
         run.revive_pending = false;
     }
-    // A break is already up only if one was requested this frame; the run
-    // clock cannot fire during a break, so this is the first request.
     world
         .resource_mut::<Platform>()
         .commercial_break(PLACEMENT_GAME_OVER);
@@ -310,7 +280,6 @@ pub fn end_run(world: &mut World) {
     run.break_t = super::platform::BREAK_TIMEOUT;
 }
 
-/// The revive button: a rewarded break buys back the clock.
 pub fn request_revive(world: &mut World) {
     let run = world.resource::<RunState>();
     if run.phase != Phase::Menu
@@ -332,7 +301,6 @@ pub fn request_revive(world: &mut World) {
     run.break_t = super::platform::REWARD_TIMEOUT;
 }
 
-/// The rewarded ad paid out: keep the run going.
 fn apply_revive(world: &mut World) {
     world.resource_mut::<Platform>().gameplay_start();
     {
@@ -347,7 +315,6 @@ fn apply_revive(world: &mut World) {
     queue_sfx(world, SfxCue::Revive);
 }
 
-/// The ad is over and paid nothing: stay dead, one revive gone.
 fn deny_revive(world: &mut World) {
     let mut run = world.resource_mut::<RunState>();
     run.phase = Phase::Menu;
@@ -375,8 +342,6 @@ fn to_death_panel(world: &mut World) {
     run.revive_pending = false;
 }
 
-/// Every one-shot action the UI and the shortcuts queued. Runs once per
-/// frame from the shell, never while an ad is up.
 pub fn apply_intents(world: &mut World) {
     let intents = *world.resource::<Intents>();
     if intents == Intents::default() {
@@ -413,13 +378,13 @@ pub fn apply_intents(world: &mut World) {
     }
 }
 
-/// The player entity, for tests and systems that need it directly.
 pub fn player_entity(world: &mut World) -> Option<Entity> {
     let mut q = world.query_filtered::<Entity, With<PlayerBody>>();
     q.iter(world).next()
 }
 
 pub fn spawn_world(world: &mut World) {
+    let field = *world.resource::<Field>();
     let mut rng = crate::sim::rng::Rng::new(0x5EED_1234);
     if let Some(entity) = player_entity(world) {
         world.entity_mut(entity).despawn();
@@ -428,19 +393,22 @@ pub fn spawn_world(world: &mut World) {
         world.entity_mut(entity).despawn();
     }
     world.spawn(PlayerBody {
-        pos: Vec2::new(WORLD[0] * 0.5, WORLD[1] * 0.5),
+        pos: Vec2::new(field.width * 0.5, field.height * 0.5),
+        look: Vec2::ZERO,
     });
     for i in 0..ORB_COUNT {
         let pos = free_spot(&mut rng, world);
         world.spawn(Orb {
             pos,
             bob: i as f32 * 0.7,
+            age: 0.0,
         });
     }
 }
 
-/// A spawn point no orb occupies yet.
 fn free_spot(rng: &mut crate::sim::rng::Rng, world: &mut World) -> Vec2 {
+    let field = world.resource::<Field>();
+    let (fw, fh) = (field.width, field.height);
     let mut existing = world
         .query::<&Orb>()
         .iter(world)
@@ -448,8 +416,8 @@ fn free_spot(rng: &mut crate::sim::rng::Rng, world: &mut World) -> Vec2 {
         .collect::<Vec<_>>();
     for _ in 0..32 {
         let candidate = Vec2::new(
-            rng.range(SPAWN_MARGIN, WORLD[0] - SPAWN_MARGIN),
-            rng.range(SPAWN_MARGIN, WORLD[1] - SPAWN_MARGIN),
+            rng.range(SPAWN_MARGIN, fw - SPAWN_MARGIN),
+            rng.range(SPAWN_MARGIN, fh - SPAWN_MARGIN),
         );
         if existing
             .iter()
@@ -459,7 +427,7 @@ fn free_spot(rng: &mut crate::sim::rng::Rng, world: &mut World) -> Vec2 {
         }
         existing.push(candidate);
     }
-    Vec2::new(WORLD[0] * 0.5, WORLD[1] * 0.5)
+    Vec2::new(fw * 0.5, fh * 0.5)
 }
 
 pub fn respawn_orbs(world: &mut World) {
@@ -473,6 +441,7 @@ pub fn respawn_orbs(world: &mut World) {
         world.spawn(Orb {
             pos,
             bob: i as f32 * 0.7,
+            age: 0.0,
         });
     }
 }
@@ -486,8 +455,6 @@ pub fn queue_sfx(world: &mut World, cue: SfxCue) {
     world.resource_mut::<SfxQueue>().events.push(cue);
 }
 
-/// The break watchdog and the ad verdict. Wall time, so an ad that never
-/// reports back still ends the wait.
 pub fn break_system(world: &mut World) {
     let wall = world.resource::<repame_sim::SimTime>().delta_secs;
     let (phase, break_t) = {
@@ -497,8 +464,6 @@ pub fn break_system(world: &mut World) {
     let Phase::Break(then) = phase else {
         return;
     };
-    // `pending` clears when the ad closed, failed or its watchdog fired; the
-    // reward verdict rides on `reward_granted`.
     let still_pending = world
         .get_resource::<Platform>()
         .and_then(Platform::pending)
@@ -508,8 +473,6 @@ pub fn break_system(world: &mut World) {
         return;
     }
     if break_t - wall <= 0.0 {
-        // The watchdog fired: the platform swallowed its own callbacks, so
-        // end the break here. A hosted game must not freeze on a silent SDK.
         world.resource_mut::<Platform>().break_finished();
         resolve_break(world, then);
         return;
@@ -517,7 +480,6 @@ pub fn break_system(world: &mut World) {
     world.resource_mut::<RunState>().break_t = break_t - wall;
 }
 
-/// Land the break where `then` says, with the reward the platform reported.
 fn resolve_break(world: &mut World, then: BreakThen) {
     let granted = world.resource::<Platform>().reward_granted();
     {
@@ -599,7 +561,6 @@ mod wipe_tests {
         world.resource_mut::<RunState>().phase = Phase::Playing;
         begin(&mut world, PendingAction::Menu);
 
-        // Still opening: the disc has not closed, so nothing may change yet.
         advance(&mut world, FILL_TIME * 0.9);
         assert_eq!(
             world.resource::<Transition>().phase,
@@ -607,7 +568,6 @@ mod wipe_tests {
         );
         assert_eq!(world.resource::<RunState>().phase, Phase::Playing);
 
-        // The disc closes, and that very tick is the only one that swaps.
         advance(&mut world, FILL_TIME * 0.1);
         assert_eq!(
             world.resource::<Transition>().phase,

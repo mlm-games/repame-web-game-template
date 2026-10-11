@@ -9,7 +9,7 @@ use std::sync::{Arc, Mutex};
 
 use bevy_ecs::prelude::*;
 use glam::Vec2;
-use repose_core::prelude::{Modifier, View};
+use repose_core::prelude::{AlignItems, JustifyContent, Modifier, View};
 use repose_ui::ViewExt as _;
 use repose_ui::{Box as RBox, Spacer, ZStack};
 
@@ -17,10 +17,8 @@ use crate::sim::save::SaveGame;
 use crate::sim::state::{BreakThen, Panel, Phase, Pops, RunState};
 use palette::{CREAM, label, rect};
 
-/// The design grid the UI scales against; the world is the same size.
 pub const DESIGN: [f32; 2] = crate::sim::state::WORLD;
 
-/// Where UI clicks queue up for the sim to drain at the top of a frame.
 pub type Sink = Arc<Mutex<Vec<UiAction>>>;
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
@@ -49,7 +47,6 @@ pub fn drain_actions(world: &mut World) -> Vec<UiAction> {
     }
 }
 
-/// Live touch input, shared between the shell and the views.
 pub type TouchHandle = Rc<RefCell<touch::TouchState>>;
 
 #[derive(Clone)]
@@ -60,24 +57,26 @@ pub struct SharedUi {
     pub record: bool,
     pub muted: bool,
     pub paused: bool,
-    /// A modal covers the run but is not the player's own pause.
     pub modal: bool,
     pub phase: Phase,
     pub panel: Panel,
     pub revive_pending: bool,
     pub revives_left: i32,
-    /// Live surface in dp.
     pub viewport: Vec2,
     pub touch: TouchHandle,
-    /// Score popups, lifted and faded by the view.
     pub pops: Vec<PopView>,
 }
 
 impl SharedUi {
-    /// The grid scale: design units times this equal dp.
     pub fn ui_scale(&self) -> f32 {
         (self.viewport.x / DESIGN[0])
             .min(self.viewport.y / DESIGN[1])
+            .max(1e-6)
+    }
+
+    pub fn world_scale(&self) -> f32 {
+        (self.viewport.x / DESIGN[0])
+            .max(self.viewport.y / DESIGN[1])
             .max(1e-6)
     }
 }
@@ -103,7 +102,6 @@ impl Default for SharedUi {
     }
 }
 
-/// Copy the state the views need out of the world.
 pub fn sync_shared_ui(world: &World, ui: &mut SharedUi) {
     let Some(run) = world.get_resource::<RunState>() else {
         return;
@@ -133,14 +131,12 @@ pub fn sync_shared_ui(world: &World, ui: &mut SharedUi) {
     }
 }
 
-/// One score popup: world position and remaining life, both in sim terms.
 #[derive(Clone, Copy)]
 pub struct PopView {
     pub pos: [f32; 2],
     pub t: f32,
 }
 
-/// Score popups, the same cream-on-ink voice as the HUD, lifted as they fade.
 fn pops(ui: &SharedUi, s: f32, vp: [f32; 2]) -> View {
     if ui.pops.is_empty() {
         return Spacer();
@@ -152,6 +148,13 @@ fn pops(ui: &SharedUi, s: f32, vp: [f32; 2]) -> View {
             let frac = (pop.t / crate::sim::state::POP_LIFE).clamp(0.0, 1.0);
             let lift = 18.0 + 28.0 * (1.0 - frac);
             let half = 44.0;
+            let alpha = if frac > 0.8 {
+                (1.0 - (frac - 0.8) / 0.2).clamp(0.0, 1.0)
+            } else if frac < 0.2 {
+                frac / 0.2
+            } else {
+                1.0
+            };
             RBox(
                 rect(
                     vp,
@@ -164,10 +167,12 @@ fn pops(ui: &SharedUi, s: f32, vp: [f32; 2]) -> View {
                         pop.pos[1] - lift + half,
                     ],
                 )
-                .hit_passthrough(),
+                .hit_passthrough()
+                .align_items(AlignItems::CENTER)
+                .justify_content(JustifyContent::CENTER),
             )
             .child(label(
-                Modifier::new(),
+                Modifier::new().alpha(alpha),
                 "+1",
                 20.0 + 9.0 * (1.0 - frac),
                 CREAM,
@@ -178,7 +183,6 @@ fn pops(ui: &SharedUi, s: f32, vp: [f32; 2]) -> View {
     ZStack(Modifier::new().fill_max_size()).child(children)
 }
 
-/// Root view: world viewport, HUD and touch layer, menu panels on top.
 pub fn compose_root(ui: &SharedUi, sink: Sink) -> View {
     let s = ui.ui_scale();
     let vp = [ui.viewport.x, ui.viewport.y];
@@ -190,14 +194,12 @@ pub fn compose_root(ui: &SharedUi, sink: Sink) -> View {
             Panel::Death => menus::compose_death(ui, s, vp, &sink),
             Panel::None => touch.clone(),
         },
-        // The ad is up but the SDK has not answered: the death panel stays
-        // with the revive button gone, so the wait reads as loading.
         Phase::Break(BreakThen::Revive) if ui.revive_pending => {
             menus::compose_death(ui, s, vp, &sink)
         }
         Phase::Playing if ui.paused => menus::compose_pause(ui, s, vp, &sink),
         _ => touch.clone(),
     };
-    let pops = pops(ui, s, vp);
+    let pops = pops(ui, ui.world_scale(), vp);
     repose_ui::ZStack(Modifier::new().fill_max_size()).child((base, pops, touch, overlay))
 }

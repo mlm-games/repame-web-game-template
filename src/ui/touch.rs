@@ -1,5 +1,3 @@
-//! Virtual stick: the left of the screen, floating where the pointer lands.
-//! Mouse drags drive it too, so desktop is playable without a keyboard.
 
 use glam::Vec2;
 use repose_core::input::{PointerEvent, PointerKind};
@@ -10,25 +8,15 @@ use repose_ui::{Box as RBox, Spacer, ViewExt as _, ZStack};
 use super::{SharedUi, palette};
 use palette::{TOUCH_BG, TOUCH_CENTER, TOUCH_KNOB, TOUCH_KNOB_DARK, TOUCH_RING, TOUCH_SHADOW};
 
-/// How far the knob travels from the origin, in design units.
 const MAX_R: f32 = 46.0;
-/// The stick only claims the left of the screen.
 const ZONE_X: f32 = 0.45;
 
 #[derive(Default)]
 pub struct TouchState {
-    /// Stick deflection in `-1..=1`, the same analog value the keyboard reads
-    /// as a unit vector.
     pub value: Vec2,
-    /// Where the ring sits, in design units.
     pub origin: Vec2,
     pub active: bool,
-    /// The pointer currently holding the stick, so a second finger cannot
-    /// steal the origin out from under the first. Touch ids start at zero and
-    /// the mouse is always zero, so the kind is part of the identity.
     owner: Option<Owner>,
-    /// dp per design unit, republished every frame: the gesture outlives the
-    /// closure that started it, and a resized window moves the grid.
     scale: f32,
 }
 
@@ -39,7 +27,6 @@ struct Owner {
 }
 
 impl TouchState {
-    /// Let go of the stick: `value` clears when the touch ends.
     pub fn release(&mut self) {
         self.value = Vec2::ZERO;
         self.active = false;
@@ -54,7 +41,6 @@ fn owner_of(event: &PointerEvent) -> Owner {
     }
 }
 
-/// Pointer position in design units: the widget tree lays out in dp.
 fn design_pos(px: CoreVec2, scale: f32) -> Vec2 {
     let density = locals::effective_density_scale().max(1e-6);
     let scale = density * scale.max(1e-6);
@@ -93,8 +79,6 @@ pub fn compose(ui: &SharedUi, s: f32, vp: [f32; 2]) -> View {
                 let here = design_pos(e.window_position, touch.scale);
                 let mut delta = here - touch.origin;
                 if delta.length() > MAX_R {
-                    // The ring slides along with the finger rather than
-                    // pinning to where the drag began.
                     touch.origin = here - delta.normalize_or_zero() * MAX_R;
                     delta = delta.normalize_or_zero() * MAX_R;
                 }

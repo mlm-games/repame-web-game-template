@@ -1,5 +1,3 @@
-//! Menu panels: title, game over, pause. A cream card with the ink outline
-//! over a scrimmed sky, centred on the design grid.
 
 use repose_core::prelude::{AlignItems, Color, Dp, Modifier, View};
 use repose_core::{JustifyContent, PaddingValues};
@@ -82,7 +80,6 @@ pub fn compose_pause(ui: &SharedUi, s: f32, vp: [f32; 2], sink: &Sink) -> View {
     panel(vp, s, content)
 }
 
-/// The scrim over the whole surface, the cream card centred in it.
 fn panel(vp: [f32; 2], s: f32, content: View) -> View {
     let card = RBox(
         Modifier::new()

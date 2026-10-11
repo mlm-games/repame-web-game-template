@@ -1,5 +1,3 @@
-//! Save data. The local file is the authority (`localStorage` on wasm);
-//! the cloud copy is merged at boot and pushed back on dirty.
 
 use bevy_ecs::prelude::Resource;
 use game_utils::save::SaveManager;
@@ -9,7 +7,6 @@ use serde::{Deserialize, Serialize};
 
 const APP: &str = "web_game.json";
 
-/// The cloud key `Bridge.storage` holds this save under.
 pub const CLOUD_KEY: &str = "web_game_save";
 
 #[derive(Clone, Debug, Default, Serialize, Deserialize)]
@@ -23,7 +20,6 @@ pub struct SaveData {
 #[derive(Resource, Clone, Debug)]
 pub struct SaveGame {
     pub data: SaveData,
-    /// The local file has moved on; the shell owes the cloud a copy.
     pub cloud_dirty: bool,
     store: SaveStore<FsStorage>,
 }
@@ -60,10 +56,6 @@ impl SaveGame {
         self.cloud_dirty = true;
     }
 
-    /// Fold the cloud copy into the local one, keeping the better of the two
-    /// per field. Takes raw JSON because a field it cannot make sense of is
-    /// left alone rather than reset to its default. Returns whether anything
-    /// moved.
     pub fn apply_cloud(&mut self, cloud: &serde_json::Value) -> bool {
         if !cloud.is_object() {
             return false;
