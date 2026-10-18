@@ -547,10 +547,6 @@ pub fn frame_for(
     // track a level camera loses the road out of the bottom of the frame.
     let mut road_ahead = player.pos;
     let mut groups: Vec<MeshGroup> = Vec::new();
-    // Isolation aid: the car's groups ahead of the world's, to tell an upload
-    // order problem from a world one.
-    let car_first = std::env::var("DD_DEBUG_CAR_FIRST").is_ok();
-    let mut car_first_groups: Vec<MeshGroup> = Vec::new();
     let mut geometry_ready = false;
     // `resource_scope` gives the cache a mutable borrow while the track stays in
     // the world: nothing can observe a world without a track mid-frame.
@@ -616,13 +612,6 @@ pub fn frame_for(
     if geometry_ready {
         // cars: original meshes when the reference export is present, stand-ins
         // otherwise (the stand-ins always cover whatever art is missing).
-        // Isolation aid: the car's groups ahead of the world's, to tell an upload
-        // order problem from a world problem.
-        let car_first = std::env::var("DD_DEBUG_CAR_FIRST").is_ok();
-        // Isolation aid: the car's groups ahead of the world's, to tell an
-        // upload order problem from a world one.
-        let car_first = std::env::var("DD_DEBUG_CAR_FIRST").is_ok();
-        let mut car_first_groups: Vec<MeshGroup> = Vec::new();
         let mut cars: Vec<(CarSim, [f32; 3])> = Vec::new();
         if !matches!(phase, Phase::Garage | Phase::MapSelect) {
             cars.push((player.clone(), car_colour(car_index)));
@@ -787,23 +776,12 @@ pub fn frame_for(
                                 );
                             }
                         }
-                        if car_first {
-                            car_first_groups.extend(placed);
-                        } else {
-                            groups.extend(placed);
-                        }
+                        groups.extend(placed);
                         art_used += 1;
                     }
                     groups.extend(crate::art::missing_wheel_groups(&sim, &art, colour));
                 }
-                _ => {
-                    let stand_in = car_groups(&sim, colour);
-                    if car_first {
-                        car_first_groups.extend(stand_in);
-                    } else {
-                        groups.extend(stand_in);
-                    }
-                }
+                _ => groups.extend(car_groups(&sim, colour)),
             }
         }
         let _ = art_used;
@@ -1046,15 +1024,6 @@ pub fn frame_for(
         );
         groups.clear();
         groups.push(m);
-    }
-    if car_first {
-        let cars = std::mem::take(&mut car_first_groups);
-        for g in cars {
-            let g = with_normals(g);
-            if !g.is_empty() {
-                frame.push(g);
-            }
-        }
     }
     for g in groups {
         let g = with_normals(g);
