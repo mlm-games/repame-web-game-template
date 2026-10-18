@@ -41,7 +41,26 @@ DD_ASSETS=~/Documents/refs/DeadlyDescent/extracted cargo run
 ```
 
 Controls: **W/A/S/D** or arrows to drive, **Shift/N** nitro, **Space** handbrake,
-**Esc** pause, **R** restart. Garage → map select → race → results.
+**C** camera view (chase / cockpit), **Esc** pause, **R** restart, **T** (pause menu)
+toggles the on-screen touch pad. Garage → map select → race → results.
+
+### Playtests and captures
+
+```sh
+# Drive a level with the bot controller and print a once-a-second trace.
+DD_AUTOPLAY=6 cargo run            # DD_AUTOPLAY_TRACE=0 silences the trace
+
+# Headless UI frames (menus, HUD) straight to PNGs, no window.
+DD_CAPTURE=/tmp/dd-frames DD_AUTOPLAY=6 DD_CAPTURE_FRAMES=300 cargo run
+
+# World captures: the 3D layer paints through a wgpu callback that the engine's
+# offscreen renderer does not run, so a *world* playtest grabs the live window.
+scripts/playtest-capture.sh 6 20 2 /tmp/dd-playtest
+```
+
+`DD_TRACE_DRAW=1` names every car part drawn, `DD_TRACE_CAMERA=1` prints the camera
+and car transforms, `DD_HIDE_CAR_PARTS=1` / `DD_HIDE_RIDGES=1` / `DD_HIDE_DECK=1`
+isolate layers while diagnosing.
 
 `cargo run` is desktop-only by default; web (`trunk build --release`) and Android
 (`cargo rapk`) are not built or verified in this pass.
@@ -95,7 +114,7 @@ here and flagged; **VERIFIED** = covered by a test in `tests/`.
 | Obstacle art and roadside dressing | shipped meshes: `Container`, `Wooden_Crate_02`, `HoleSpikes_2`, `Ramp`, `Industrial_Train_Dr14`, `SchoolBus_2`, `Barrier-02`, `Tree-A-01`, grandstands, footbridges, terrain ridges | `assets/dd1/props.json` → `props::PropCache` | MEASURED art, placement DESIGNED |
 | Car and prop textures | `materials.json` + exported PNGs (`mesh_materials.json` records mesh → material → base texture) | `art::Textures` page array | MEASURED binding |
 | UI text and localisation | `LeanLocalization`, 169 phrases | English strings inline | PARTIAL (English only, strings from the build where decoded) |
-| Mobile touch controls | on-screen buttons + wheel | keyboard only | MISSING |
+| Touch controls: a draggable steering wheel that returns to centre plus accel/brake/handbrake/nitro buttons | `PG.UI.SteerWheelControls` / `SteerWheelUI` (`MaxSteerWheelAngle`, `SteerWheelToDefaultSpeed`, `WheelIsPressed`, `PrevTouchPos`) and its button set; `MobileButtons_*` / `teerWheel` art | `ui::touch` (pointer events, so a mouse drives it too), merged with the keyboard each frame in `app::feed_input` | MEASURED structure and art; thresholds DESIGNED |
 | Art | exported meshes + textures | GLB load, texture pages, boxed fallback when the export is absent | MEASURED art (car liveries, props, UI) |
 
 ## Layout

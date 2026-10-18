@@ -35,6 +35,7 @@ bevy_ecs = "0.20"
 # Same glam as repame: shared math types must unify to one version.
 glam = "0.33"
 repose-core = "0.31"
+repose-render-wgpu = "0.31"
 repose-ui = "0.31"
 repose-text = "0.31"
 # The lifecycle listener (foreground/background) the shell needs to mute on

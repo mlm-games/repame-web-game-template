@@ -5,6 +5,7 @@ use std::cell::RefCell;
 use std::collections::HashSet;
 use std::rc::Rc;
 
+use bevy_ecs::change_detection::Mut;
 use bevy_ecs::schedule::Schedule;
 use glam::Vec2;
 use repame_shell::{
@@ -31,6 +32,48 @@ use self::platform::PlatformHost;
 
 const FREDOKA_BOLD: &[u8] = include_bytes!("../../assets/fonts/Fredoka-Bold.ttf");
 
+/// Playtest hook: `DD_AUTOPLAY=<level index>` starts that level immediately and
+/// drives the player with the same controller the bots use, printing a trace.
+/// `DD_AUTOPLAY_TRACE=0` silences the trace. Development only, never shipped on.
+pub struct Autoplay {
+    level: usize,
+    driver: crate::sim::ai::AiDriver,
+    started: bool,
+    ticks: u32,
+    trace: bool,
+}
+
+impl Autoplay {
+    fn from_env(sim: &mut Sim) -> Option<Self> {
+        let raw = std::env::var("DD_AUTOPLAY").ok()?;
+        let level = raw.parse::<usize>().ok()?;
+        // Autoplay unlocks the table so any level can be inspected.
+        if let Some(mut progress) = sim.world.get_resource_mut::<Progress>() {
+            progress.data.coins = 50_000_000;
+        }
+        let car = data::car_at(0);
+        let driver = crate::sim::ai::AiDriver::new(
+            crate::sim::car::CarSim::new(
+                car,
+                glam::Vec3::ZERO,
+                0.0,
+                crate::sim::car::Upgrades::stock(),
+            ),
+            1.0,
+            data::ai_config(false),
+        );
+        Some(Self {
+            level,
+            driver,
+            started: false,
+            ticks: 0,
+            trace: std::env::var("DD_AUTOPLAY_TRACE")
+                .map(|v| v != "0")
+                .unwrap_or(true),
+        })
+    }
+}
+
 /// Placement id for the between-runs interstitial, as the bridge config names it.
 const PLACEMENT_GAME_OVER: &str = "game_over";
 
@@ -53,17 +96,21 @@ fn ensure_fonts() {
 }
 
 pub struct App {
-    sim: Sim,
+    pub(crate) sim: Sim,
     platform: PlatformHost,
     schedule: Schedule,
     staging: Rc<RefCell<Staging>>,
     shortcut_edges: SharedEdges,
-    ui: SharedUi,
+    pub(crate) ui: SharedUi,
     geom: GeomHandle,
     audio: AudioDirector,
     held: HashSet<PhysicalKey>,
     /// Shop item waiting on the platform's purchase result.
     pending_purchase: Option<String>,
+    /// Edge state for the camera key.
+    camera_held: bool,
+    /// Development autoplay driver, when `DD_AUTOPLAY` is set.
+    autoplay: Option<Autoplay>,
     /// Run whose end-of-race ads and score post have already been handled.
     reported_run: bool,
     interstitial_shown_for: Option<usize>,
@@ -84,8 +131,10 @@ impl App {
         let _ = &host;
         let mut sim = Sim::with_default_step();
         crate::sim::subscribe(&mut sim.world);
+        sim.world.init_resource::<crate::scene::CameraChoice>();
         let muted = sim.world.resource::<Progress>().data.muted;
         sim.world.init_resource::<UiActions>();
+        let autoplay = Autoplay::from_env(&mut sim);
         let ui = SharedUi {
             muted,
             viewport: Vec2::new(ui::DESIGN[0], ui::DESIGN[1]),
@@ -104,6 +153,8 @@ impl App {
             audio: AudioDirector::new(muted),
             held: HashSet::new(),
             pending_purchase: None,
+            camera_held: false,
+            autoplay,
             reported_run: false,
             interstitial_shown_for: None,
         }
@@ -136,6 +187,8 @@ impl App {
             self.ui.paused = !self.ui.paused;
         }
         self.feed_input();
+        // Autoplay drives last: it owns `Controls` when it is on.
+        self.autoplay_drive();
         self.platform
             .update(&mut self.sim.world, dt.as_secs_f32(), true);
         if !self.platform.suspends_gameplay() {
@@ -301,13 +354,24 @@ impl App {
             .push(Intent::StartLevel(level));
     }
 
-    fn feed_input(&mut self) {
+    pub(crate) fn feed_input(&mut self) {
         let steering = i32::from(self.key(PhysicalKey::KeyD) || self.key(PhysicalKey::ArrowRight))
             - i32::from(self.key(PhysicalKey::KeyA) || self.key(PhysicalKey::ArrowLeft));
         let throttle = i32::from(self.key(PhysicalKey::KeyW) || self.key(PhysicalKey::ArrowUp));
         let brake = i32::from(self.key(PhysicalKey::KeyS) || self.key(PhysicalKey::ArrowDown));
         let handbrake = self.key(PhysicalKey::Space);
         let nitro = self.key(PhysicalKey::ShiftLeft) || self.key(PhysicalKey::KeyN);
+        // The shipped control set: C changes the camera view.
+        if self.key(PhysicalKey::KeyC) && !self.camera_held {
+            self.camera_held = true;
+            let mut choice = self.sim.world.resource_mut::<crate::scene::CameraChoice>();
+            choice.mode = match choice.mode {
+                crate::scene::CameraMode::Chase => crate::scene::CameraMode::Cockpit,
+                crate::scene::CameraMode::Cockpit => crate::scene::CameraMode::Chase,
+            };
+        } else if !self.key(PhysicalKey::KeyC) {
+            self.camera_held = false;
+        }
         let live = self
             .sim
             .world
@@ -315,17 +379,95 @@ impl App {
             .map(|s| matches!(s.phase, Phase::Countdown | Phase::Racing))
             .unwrap_or(false);
         let paused = self.ui.paused;
+        // Touch (or a mouse driving the same HUD) merges with the keyboard: each
+        // axis takes whichever source is asking for more.
+        let touch = {
+            let mut state = self.ui.touch.borrow_mut();
+            state.step(1.0 / 60.0);
+            (
+                state.steer_input(),
+                state.throttle,
+                state.brake,
+                state.handbrake,
+                state.nitro,
+                state.visible,
+            )
+        };
+        let (touch_steer, touch_throttle, touch_brake, touch_hand, touch_nitro, touch_visible) =
+            touch;
+        let keyboard_steer = steering as f32;
         self.sim.world.resource_mut::<crate::sim::Controls>().0 = if live && !paused {
             Input {
-                throttle: throttle as f32,
-                brake: brake as f32,
-                steer: steering as f32,
-                handbrake,
-                nitro,
+                throttle: (throttle as f32).max(touch_throttle),
+                brake: (brake as f32).max(touch_brake),
+                steer: if keyboard_steer != 0.0 {
+                    keyboard_steer
+                } else if touch_visible {
+                    touch_steer
+                } else {
+                    0.0
+                },
+                handbrake: handbrake || (touch_visible && touch_hand),
+                nitro: nitro || (touch_visible && touch_nitro),
             }
         } else {
             Input::default()
         };
+    }
+
+    /// Start the configured level, then steer with the bot controller and report
+    /// a once-a-second trace of the run.
+    pub(crate) fn autoplay_drive(&mut self) {
+        let Some(autoplay) = self.autoplay.as_mut() else {
+            return;
+        };
+        if !autoplay.started {
+            autoplay.started = true;
+            let level = autoplay.level;
+            self.sim
+                .world
+                .resource_mut::<Intents>()
+                .0
+                .push(Intent::StartLevel(level));
+            self.ui.paused = false;
+            return;
+        }
+        let Some(session) = self.sim.world.get_resource::<crate::sim::race::Session>() else {
+            return;
+        };
+        if !matches!(session.phase, Phase::Racing) {
+            return;
+        }
+        let level_max = session.max_bot_speed();
+        // The driver must see the car it is driving: mirror the player's state
+        // into the controller before asking for inputs.
+        autoplay.driver.sim = session.player.clone();
+        let controls =
+            self.sim
+                .world
+                .resource_scope(|_world, tw: Mut<crate::sim::race::TrackWorld>| {
+                    autoplay.driver.control(&tw, level_max, 1.0 / 60.0)
+                });
+        self.sim.world.resource_mut::<crate::sim::Controls>().0 = controls;
+        autoplay.ticks += 1;
+        if autoplay.trace && autoplay.ticks % 60 == 0 {
+            let session = self.sim.world.resource::<crate::sim::race::Session>();
+            let p = &session.player;
+            let target = autoplay.driver.target_speed_for_trace();
+            eprintln!(
+                "autoplay t={:.0}s s={:.0}m v={:.0}km/h target={:.0}km/h offroad={:.1} dmg={:.0}/{:.0} gear={} rpm={:.0} phase={:?}",
+                session.time,
+                p.pos.z,
+                p.speed() * 3.6,
+                target * 3.6,
+                p.off_road,
+                p.damage,
+                p.max_damage(),
+                p.gear + 1,
+                p.rpm,
+                session.phase
+            );
+        }
     }
 
     fn key(&self, key: PhysicalKey) -> bool {
@@ -416,12 +558,19 @@ impl App {
                     .rewarded_break(PLACEMENT_FREE_COINS);
                 self.ui.reward_pending = started;
             }
+            UiAction::ToggleTouchPad => {
+                let mut touch = self.ui.touch.borrow_mut();
+                touch.visible = !touch.visible;
+                if !touch.visible {
+                    touch.release_all();
+                }
+            }
             UiAction::TogglePause => self.ui.paused = !self.ui.paused,
             UiAction::Resume => self.ui.paused = false,
         }
     }
 
-    fn advance(&mut self, dt: Duration) -> u32 {
+    pub(crate) fn advance(&mut self, dt: Duration) -> u32 {
         let live = self
             .sim
             .world
@@ -439,7 +588,7 @@ impl App {
         })
     }
 
-    fn sync_audio(&mut self, dt: Duration) {
+    pub(crate) fn sync_audio(&mut self, dt: Duration) {
         let muted = self.sim.world.resource::<Progress>().data.muted || self.platform.silenced();
         if self.audio.muted() != muted {
             self.audio.set_muted(muted);
@@ -471,7 +620,7 @@ impl App {
         self.audio.update(dt.as_secs_f32());
     }
 
-    fn compose(&mut self, ctx: &RenderContext, viewport: [f32; 2]) -> View {
+    pub(crate) fn compose(&mut self, ctx: &RenderContext, viewport: [f32; 2]) -> View {
         let scene = scene::frame_for(&mut self.sim.world, ctx, viewport, &self.geom);
         let actions = self
             .sim
@@ -537,8 +686,13 @@ impl AppRuntime {
 #[cfg(not(target_arch = "wasm32"))]
 pub fn run_desktop() -> anyhow::Result<()> {
     let _ = env_logger::try_init();
+    // Offscreen capture: no window, no compositor, PNGs on disk.
+    let mut app = App::new();
+    if let Some(request) = crate::shot::CaptureRequest::from_env() {
+        return app.run_capture(&request);
+    }
     let mut runtime = AppRuntime {
-        app: App::new(),
+        app,
         previous: Instant::now(),
     };
     repame_shell::run_desktop("Deadly Descent", (1280, 720), move |sched, ctx| {

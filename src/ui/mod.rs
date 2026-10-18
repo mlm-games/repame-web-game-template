@@ -7,6 +7,7 @@
 
 pub mod images;
 pub mod palette;
+pub mod touch;
 
 use std::sync::{Arc, Mutex};
 
@@ -47,6 +48,7 @@ pub enum UiAction {
     BuyNoAds,
     BuyPack(usize),
     ShowLeaderboard,
+    ToggleTouchPad,
 }
 
 #[derive(Resource, Clone, Default)]
@@ -142,6 +144,8 @@ pub struct SharedUi {
     pub tutorial_stage: u8,
     /// Seconds since the app started, for the hint pulse.
     pub elapsed: f32,
+    pub touch: touch::TouchHandle,
+    pub touch_hint_seen: bool,
 }
 
 impl Default for SharedUi {
@@ -179,6 +183,8 @@ impl Default for SharedUi {
             leaderboard_posted: false,
             tutorial_stage: 3,
             elapsed: 0.0,
+            touch: std::rc::Rc::new(std::cell::RefCell::new(touch::TouchState::default())),
+            touch_hint_seen: false,
         }
     }
 }
@@ -479,7 +485,14 @@ fn small_button(
 pub fn compose_root(ui: &SharedUi, sink: Sink) -> View {
     let s = ui.ui_scale();
     let vp = [ui.viewport.x, ui.viewport.y];
-    let background = sprite(ui, "RaceBackground", vp[0], vp[1], 1.0, ImageFit::Cover);
+    // Menus sit on the blurred race backdrop; a race shows the 3D scene alone.
+    // (`RaceBackground.png` is a cockpit screenshot, not a web background.)
+    let menu_phase = matches!(ui.phase, Phase::Garage | Phase::MapSelect);
+    let background = if menu_phase {
+        sprite(ui, "RaceBackgroundBlur", vp[0], vp[1], 1.0, ImageFit::Cover)
+    } else {
+        Spacer()
+    };
     let base = match ui.phase {
         Phase::Garage => garage(ui, s, vp, &sink),
         Phase::MapSelect => map_select(ui, s, vp, &sink),
@@ -1249,6 +1262,18 @@ fn pause(ui: &SharedUi, s: f32, vp: [f32; 2], sink: &Sink) -> View {
             ui,
             if ui.muted { "SOUND OFF" } else { "SOUND ON" },
             UiAction::ToggleMute,
+            sink,
+            s,
+            false,
+        ),
+        small_button(
+            ui,
+            if ui.touch.borrow().visible {
+                "TOUCH PAD ON"
+            } else {
+                "TOUCH PAD OFF"
+            },
+            UiAction::ToggleTouchPad,
             sink,
             s,
             false,

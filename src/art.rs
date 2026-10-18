@@ -24,15 +24,27 @@ pub const PAGE: u32 = 512;
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum PartKind {
     Body,
+    /// Cabin furniture and instruments: drawn only in cockpit view.
     Interior,
     Wing,
     Caliper,
     Wheel,
+    /// Collision proxies and helpers: never drawn.
+    Hidden,
     Other,
+}
+
+impl PartKind {
+    /// Visible from the chase camera?
+    pub fn visible_in_chase(self) -> bool {
+        !matches!(self, PartKind::Interior | PartKind::Hidden)
+    }
 }
 
 #[derive(Clone, Debug)]
 pub struct ArtPart {
+    /// Exported file the part came from, for tracing.
+    pub source: String,
     pub groups: Vec<MeshGroup>,
     pub kind: PartKind,
     /// Wheel corner this part belongs to (front/rear, left/right), if any.
@@ -359,7 +371,19 @@ fn classify(name: &str, wheels: &[crate::sim::data::WheelSpec]) -> (PartKind, Op
             && ((l && (low.contains("_l") || low.contains("fl") || low.contains("rl")))
                 || (rt && (low.contains("_r") || low.contains("fr") || low.contains("rr"))))
     });
-    let kind = if lower.contains("interior") {
+    if lower.contains("collider") {
+        return (PartKind::Hidden, corner);
+    }
+    let kind = if lower.contains("interior")
+        || lower.contains("steering_wheel")
+        || lower.contains("steer_wheel")
+        || lower.contains("dial")
+        || lower.contains("gauge")
+        || lower.contains("panel")
+        || lower.contains("pedal")
+        || lower.contains("seat")
+        || lower.contains("mirror")
+    {
         PartKind::Interior
     } else if lower.contains("wheel") || lower.contains("whl") || lower.contains("tire") {
         PartKind::Wheel
@@ -450,6 +474,7 @@ pub fn load_car_art(
                 })
                 .collect();
             art.parts.push(ArtPart {
+                source: stem.clone(),
                 groups,
                 kind,
                 corner,

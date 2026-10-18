@@ -2,6 +2,7 @@ pub mod app;
 pub mod art;
 pub mod props;
 pub mod scene;
+pub mod shot;
 pub mod sim;
 pub mod ui;
 

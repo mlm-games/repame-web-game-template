@@ -29,6 +29,11 @@ pub struct AiDriver {
     /// PID steering state, as `RaceAIControl.P/I/D` describe.
     pub steer_integral: f32,
     pub steer_prev: f32,
+    /// Last throttle this driver asked for, so "stuck" means "pushing and not
+    /// moving" rather than "standing still".
+    pub last_throttle: f32,
+    /// Target speed the last `control` call aimed for (debug tracing).
+    pub last_target: f32,
 }
 
 impl AiDriver {
@@ -45,6 +50,8 @@ impl AiDriver {
             stuck_timer: 0.0,
             steer_integral: 0.0,
             steer_prev: 0.0,
+            last_throttle: 0.0,
+            last_target: 0.0,
         }
     }
 
@@ -61,13 +68,19 @@ impl AiDriver {
 
     /// Speed the driver is willing to carry: the profile cap, the level's bot
     /// cap, and the corner limit from the car's own sideways friction.
+    ///
+    /// The corner limit is `v = sqrt(a_lat / k)` with `k` the road's curvature: a
+    /// second difference over `d` metres, divided by `d` twice. A first difference
+    /// would read every gentle bend as a hairpin.
     pub fn target_speed(&self, track_world: &TrackWorld, level_max: f32) -> f32 {
         let track = &track_world.track;
         let s = self.sim.pos.z;
-        let c1 = track.centre((s + self.target_offset()).min(track.length));
-        let c2 = track.centre((s + self.target_offset() * 2.0).min(track.length));
-        let curvature = ((c2.x - self.sim.pos.x) - (c1.x - self.sim.pos.x)).abs()
-            / self.target_offset().max(1.0);
+        let d = self.target_offset().max(4.0);
+        let c0 = track.centre(s.min(track.length));
+        let c1 = track.centre((s + d).min(track.length));
+        let c2 = track.centre((s + d * 2.0).min(track.length));
+        let second = ((c2.x - c1.x) - (c1.x - c0.x)).abs();
+        let curvature = (second / (d * d)).max(1e-5);
         let grip =
             data::friction_at(&self.sim.spec.wheels[0].side_f, self.sim.speed() * 0.02).max(0.2);
         let corner = (grip * 9.81 / curvature.max(1e-3)).sqrt();
@@ -75,6 +88,11 @@ impl AiDriver {
         let hard_cap = profile_cap.min(level_max / 3.6);
         let boldness = 1.0 + (self.config.aggressiveness - 0.4) * 0.6;
         (corner * boldness).min(hard_cap) * self.skill
+    }
+
+    /// Debug hook: the target speed the last `control` aimed for.
+    pub fn target_speed_for_trace(&self) -> f32 {
+        self.last_target
     }
 
     /// Steer, throttle, brake and nitro for this tick. Mutates the driver's own
@@ -148,8 +166,12 @@ impl AiDriver {
 
         // --- speed control with the reverse recovery the build describes
         let target = self.target_speed(track_world, level_max);
+        self.last_target = target;
         let mut reverse = false;
-        if speed < cfg.min_speed / 3.6 {
+        // Only count as stuck once the driver has been on the throttle: a car
+        // standing on the grid is not wedged.
+        let trying = self.last_throttle > 0.5 || self.reverse_cooldown > 0.0;
+        if speed < cfg.min_speed / 3.6 && trying && self.sim.distance > 2.0 {
             self.stuck_timer += dt;
         } else {
             self.stuck_timer = 0.0;
@@ -178,6 +200,7 @@ impl AiDriver {
         } else {
             0.0
         };
+        self.last_throttle = throttle;
         Input {
             throttle,
             brake,

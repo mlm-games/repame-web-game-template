@@ -157,10 +157,20 @@
     0.0
    ]
   ],
-  "gears": null,
-  "final_drive": null,
+  "gears": [
+   4.71,
+   3.14,
+   2.1,
+   1.67,
+   1.28,
+   1.0,
+   0.82,
+   0.62
+  ],
+  "final_drive": 4.71,
   "max_steer_angle": null,
-  "engines": null
+  "engines": null,
+  "gears_source": "inherited from DodgeChallenger: same US V8 family; the F-150 prefab carries no gear-ratio array of its own"
  },
  {
   "id": "DodgeChallenger",
@@ -332,7 +342,8 @@
   ],
   "final_drive": 4.71,
   "max_steer_angle": null,
-  "engines": null
+  "engines": null,
+  "gears_source": "Game.UpgradableCarController inline gearbox"
  },
  {
   "id": "BMW_M3",
@@ -501,7 +512,8 @@
   ],
   "final_drive": 3.25,
   "max_steer_angle": null,
-  "engines": null
+  "engines": null,
+  "gears_source": "Game.UpgradableCarController inline gearbox"
  },
  {
   "id": "Porsche_911",
@@ -672,7 +684,8 @@
   ],
   "final_drive": 3.56,
   "max_steer_angle": null,
-  "engines": null
+  "engines": null,
+  "gears_source": "Game.UpgradableCarController inline gearbox"
  },
  {
   "id": "AMG4.0",
@@ -843,7 +856,8 @@
   ],
   "final_drive": 4.38,
   "max_steer_angle": null,
-  "engines": null
+  "engines": null,
+  "gears_source": "Game.UpgradableCarController inline gearbox"
  },
  {
   "id": "Audi_R8",
@@ -1014,7 +1028,8 @@
   ],
   "final_drive": 3.133,
   "max_steer_angle": null,
-  "engines": null
+  "engines": null,
+  "gears_source": "Game.UpgradableCarController inline gearbox"
  },
  {
   "id": "McLaren_MP4",
@@ -1185,7 +1200,8 @@
   ],
   "final_drive": 4.1,
   "max_steer_angle": null,
-  "engines": null
+  "engines": null,
+  "gears_source": "Game.UpgradableCarController inline gearbox"
  },
  {
   "id": "LamborghiniReventon",
@@ -1355,7 +1371,8 @@
   ],
   "final_drive": 3.2,
   "max_steer_angle": null,
-  "engines": null
+  "engines": null,
+  "gears_source": "Game.UpgradableCarController inline gearbox"
  },
  {
   "id": "BugattiVeyron",
@@ -1522,7 +1539,8 @@
   ],
   "final_drive": 3.64,
   "max_steer_angle": null,
-  "engines": null
+  "engines": null,
+  "gears_source": "Game.UpgradableCarController inline gearbox"
  },
  {
   "id": "KoenigseggAgera",
@@ -1693,6 +1711,7 @@
   ],
   "final_drive": 3.364,
   "max_steer_angle": null,
-  "engines": null
+  "engines": null,
+  "gears_source": "Game.UpgradableCarController inline gearbox"
  }
 ]

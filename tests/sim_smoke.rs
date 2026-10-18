@@ -243,11 +243,17 @@ fn props_and_textures_load_from_the_reference_export() {
     cache.preload(&mut textures);
     assert!(textures.layer_count() > 1, "prop textures bind pages");
     // A container mesh must load and carry its material texture.
-    let groups = cache
+    let mesh = cache
         .get("Container", &mut textures)
         .expect("container mesh");
-    let textured = groups.iter().any(|g| !g.uvs.is_empty());
-    assert!(textured, "container binds its texture page");
+    assert!(
+        mesh.groups.iter().any(|g| !g.uvs.is_empty()),
+        "container binds its texture page"
+    );
+    assert!(
+        mesh.ground_offset.is_finite(),
+        "props carry a ground offset so their lowest vertex meets the road"
+    );
 }
 
 #[test]
@@ -421,4 +427,58 @@ fn a_finished_run_pays_out_exactly_once() {
         after_first, after_more,
         "a finished run must not keep paying out while its screen is open"
     );
+}
+
+#[test]
+fn touch_wheel_steers_deadzones_and_recentres() {
+    use deadly_descent::ui::touch::{TouchState, WHEEL_RETURN_SPEED};
+
+    let mut touch = TouchState::default();
+    assert_eq!(touch.steer_input(), 0.0, "centred at rest");
+
+    touch.steer = 1.0;
+    assert!(
+        (touch.steer_input() - 1.0).abs() < 1e-6,
+        "full lock reads as 1"
+    );
+    touch.steer = 0.02;
+    assert_eq!(touch.steer_input(), 0.0, "deadzone: no twitch at centre");
+
+    touch.steer = 0.6;
+    let step = 1.0 / 60.0;
+    let mut elapsed = 0.0;
+    while touch.steer != 0.0 && elapsed < 2.0 {
+        touch.step(step);
+        elapsed += step;
+    }
+    assert_eq!(touch.steer, 0.0, "recentres on its own");
+    assert!(
+        (elapsed - 0.6 / WHEEL_RETURN_SPEED).abs() < 0.06,
+        "recentre takes steer/speed seconds, took {elapsed}"
+    );
+}
+
+#[test]
+fn touch_buttons_reach_the_sim_input() {
+    use deadly_descent::sim::car::Input;
+    use deadly_descent::ui::touch::TouchState;
+
+    let mut touch = TouchState::default();
+    assert!(!touch.any_input());
+    touch.press_for_test("accel");
+    touch.press_for_test("nitro");
+    // The merge the app performs each frame: whichever source asks for more wins.
+    let keyboard = Input::default();
+    let merged = Input {
+        throttle: keyboard.throttle.max(touch.throttle),
+        brake: keyboard.brake.max(touch.brake),
+        steer: touch.steer_input(),
+        handbrake: touch.handbrake,
+        nitro: touch.nitro,
+    };
+    assert_eq!(merged.throttle, 1.0, "touch throttle reaches the sim");
+    assert!(merged.nitro, "touch nitro reaches the sim");
+    touch.release_all();
+    assert_eq!(touch.throttle, 0.0);
+    assert!(!touch.any_input(), "everything released");
 }

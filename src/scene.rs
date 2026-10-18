@@ -146,6 +146,21 @@ fn push_cylinder(
     }
 }
 
+/// Which camera preset the app is showing (`C` switches, as the shipped game's
+/// "change camera view" control does).
+#[derive(Resource, Clone, Copy, Debug)]
+pub struct CameraChoice {
+    pub mode: CameraMode,
+}
+
+impl Default for CameraChoice {
+    fn default() -> Self {
+        Self {
+            mode: CameraMode::Chase,
+        }
+    }
+}
+
 #[derive(Resource, Default)]
 pub struct SceneCache {
     pub key: u64,
@@ -480,6 +495,11 @@ pub fn frame_for(
             )
         })
         .collect();
+    let mode = world
+        .get_resource::<CameraChoice>()
+        .map(|c| c.mode)
+        .unwrap_or(CameraMode::Chase);
+    let cockpit = mode == CameraMode::Cockpit;
     let mut groups: Vec<MeshGroup> = Vec::new();
     let mut geometry_ready = false;
     // `resource_scope` gives the cache a mutable borrow while the track stays in
@@ -495,7 +515,7 @@ pub fn frame_for(
                 let dressing =
                     props.dressing(&track_world.track, level.segment(), &mut art.textures);
                 built.extend(dressing);
-                if level.is_racing_track() {
+                if level.is_racing_track() && std::env::var("DD_HIDE_DECK").is_err() {
                     // The shipped modular deck marks the start grid and finish.
                     built.extend(crate::props::start_deck(
                         props,
@@ -552,8 +572,47 @@ pub fn frame_for(
             let mut cache = world.resource_mut::<SceneCache>();
             let art = cache.art.get(car_id.as_str(), &wheels).cloned();
             match art {
-                Some(art) if !art.is_empty() => {
+                Some(art) if !art.is_empty() && std::env::var("DD_HIDE_CAR_PARTS").is_err() => {
                     for part in &art.parts {
+                        if !cockpit && !part.kind.visible_in_chase() {
+                            continue;
+                        }
+                        if part.kind == crate::art::PartKind::Hidden {
+                            continue;
+                        }
+                        if std::env::var("DD_TRACE_DRAW").is_ok() {
+                            let bounds = part.groups.iter().filter_map(|g| g.bounds()).fold(
+                                None::<([f32; 3], [f32; 3])>,
+                                |acc, (min, max)| {
+                                    Some(match acc {
+                                        None => (min, max),
+                                        Some((amin, amax)) => (
+                                            [
+                                                amin[0].min(min[0]),
+                                                amin[1].min(min[1]),
+                                                amin[2].min(min[2]),
+                                            ],
+                                            [
+                                                amax[0].max(max[0]),
+                                                amax[1].max(max[1]),
+                                                amax[2].max(max[2]),
+                                            ],
+                                        ),
+                                    })
+                                },
+                            );
+                            eprintln!(
+                                "draw car={} part={} kind={:?} local_bounds={:?} car_pos=({:.1},{:.1},{:.1}) yaw={:.2}",
+                                sim.spec.id,
+                                part.source,
+                                part.kind,
+                                bounds,
+                                sim.pos.x,
+                                sim.pos.y,
+                                sim.pos.z,
+                                sim.yaw
+                            );
+                        }
                         groups.extend(crate::art::part_groups(part, &sim, colour));
                         art_used += 1;
                     }
@@ -564,7 +623,7 @@ pub fn frame_for(
         }
         let _ = art_used;
     }
-    let (target, yaw, dist) = camera_for(&player, phase, viewport_px);
+    let (target, yaw, dist, pitch) = camera_for(&player, phase, viewport_px, mode);
     let background = [0.384, 0.705, 1.0, 1.0];
     let (desc, uploads) = {
         let mut cache = world.resource_mut::<SceneCache>();
@@ -583,11 +642,7 @@ pub fn frame_for(
         cam: OrbitCamera {
             target,
             yaw,
-            pitch: if matches!(phase, Phase::Garage | Phase::MapSelect) {
-                0.35
-            } else {
-                0.28
-            },
+            pitch,
             dist,
             fov_y_deg: if matches!(phase, Phase::Garage | Phase::MapSelect) {
                 38.0
@@ -609,6 +664,28 @@ pub fn frame_for(
         },
         ..Default::default()
     };
+    if std::env::var("DD_TRACE_CAMERA").is_ok() {
+        let eye = frame.cam.eye();
+        let fwd = frame.cam.forward();
+        eprintln!(
+            "camera eye=({:.1},{:.1},{:.1}) target=({:.1},{:.1},{:.1}) dist={:.1} yaw={:.2} forward=({:.2},{:.2},{:.2}) car=({:.1},{:.1},{:.1}) car_yaw={:.2}",
+            eye.x,
+            eye.y,
+            eye.z,
+            frame.cam.target.x,
+            frame.cam.target.y,
+            frame.cam.target.z,
+            frame.cam.dist,
+            frame.cam.yaw,
+            fwd.x,
+            fwd.y,
+            fwd.z,
+            player.pos.x,
+            player.pos.y,
+            player.pos.z,
+            player.yaw
+        );
+    }
     for g in groups {
         if !g.is_empty() {
             frame.push(g);
@@ -617,16 +694,44 @@ pub fn frame_for(
     Viewport3d(frame, geom.clone(), "deadly-descent", desc, |_ev| {})
 }
 
-fn camera_for(car: &CarSim, phase: Phase, viewport_px: [f32; 2]) -> (Vec3, f32, f32) {
+/// `OrbitCamera::eye` places the eye along `(cos yaw, sin yaw)` in XZ, while the
+/// car's forward is `(sin yaw, cos yaw)`: the camera yaw that puts the eye behind
+/// the car is therefore `-car.yaw - pi/2`.
+fn behind_yaw(car_yaw: f32) -> f32 {
+    -car_yaw - std::f32::consts::FRAC_PI_2
+}
+
+/// Camera presets, as the build's `CameraPreset` names them: a chase view and a
+/// first-person cockpit view (`C` switches, the shipped "change camera view" key).
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum CameraMode {
+    Chase,
+    Cockpit,
+}
+
+fn camera_for(
+    car: &CarSim,
+    phase: Phase,
+    viewport_px: [f32; 2],
+    mode: CameraMode,
+) -> (Vec3, f32, f32, f32) {
     if matches!(phase, Phase::Garage | Phase::MapSelect) {
-        return (Vec3::new(0.0, 1.0, 0.0), 0.5, 9.5);
+        return (Vec3::new(0.0, 1.0, 0.0), 0.5, 9.5, 0.35);
     }
     let speed = car.speed();
-    let lead = 6.0 + speed * 0.22;
-    let target = car.pos + car.forward() * lead + vec3(0.0, 1.6, 0.0);
-    let portrait = viewport_px[1] > viewport_px[0];
-    let dist = if portrait { 11.5 } else { 9.0 } + speed * 0.035;
-    (target, car.yaw, dist)
+    match mode {
+        CameraMode::Chase => {
+            let lead = 6.0 + speed * 0.22;
+            let target = car.pos + car.forward() * lead + vec3(0.0, 1.9, 0.0);
+            let portrait = viewport_px[1] > viewport_px[0];
+            let dist = if portrait { 13.0 } else { 11.0 } + speed * 0.04;
+            (target, behind_yaw(car.yaw), dist, 0.26)
+        }
+        CameraMode::Cockpit => {
+            let target = car.pos + car.forward() * 3.0 + vec3(0.0, 1.35, 0.0);
+            (target, behind_yaw(car.yaw), 2.2, 0.05)
+        }
+    }
 }
 
 pub fn viewport2d(ui: &crate::ui::SharedUi) -> Vec2 {

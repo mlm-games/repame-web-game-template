@@ -82,15 +82,7 @@
    "scale": 1.0
   },
   {
-   "file": "DownHillMid",
-   "scale": 1.0
-  },
-  {
    "file": "TerrainPiece",
-   "scale": 1.0
-  },
-  {
-   "file": "Dunes",
    "scale": 1.0
   }
  ],

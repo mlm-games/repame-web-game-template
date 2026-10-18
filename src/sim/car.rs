@@ -16,6 +16,14 @@ pub const MAX_CATCHUP: f32 = 8.0;
 /// `SteerConfig.ABS` is 1.0 on the shipped car prefabs (read out of each car's
 /// inline steer config, after the five steering curves); `TCS` is 0.0. ABS
 /// modulates brake force once a wheel passes its forward-friction peak.
+/// Driven wheels per car: the shipped `PG.Wheel.DriveWheel` flags are true on
+/// three or four of the four wheels depending on the car.
+pub const DRIVEN_WHEELS: usize = 4;
+
+/// Damage per second while a wheel set is off the road, scaled by speed in
+/// `step`. DESIGNED: the shipped off-road rule is in code.
+pub const OFF_ROAD_DAMAGE_PER_SEC: f32 = 260.0;
+
 pub const ABS_ENABLED: bool = true;
 pub const TCS_ENABLED: bool = false;
 
@@ -241,7 +249,15 @@ impl CarSim {
         let torque_mult = spec.torque_at(self.rpm);
         let cut = if self.cut_off > 0.0 { 0.15 } else { 1.0 };
         let throttle = input.throttle.clamp(0.0, 1.0) * cut;
-        let drive = spec.max_motor_torque * self.upgrades.engine * torque_mult * ratio * throttle;
+        // `EngineConfig.MaxMotorTorque` is the figure Unity hands each driven
+        // `WheelCollider`, and the shipped cars drive three or four of their four
+        // wheels, so the axle total is that figure times the driven count.
+        let drive = spec.max_motor_torque
+            * DRIVEN_WHEELS as f32
+            * self.upgrades.engine
+            * torque_mult
+            * ratio
+            * throttle;
         let drive_force = drive / wheel_radius.max(0.05);
 
         // ---- nitro
@@ -364,12 +380,13 @@ impl CarSim {
             ws.lateral_slip = slide.abs();
         }
 
-        // ---- off-road
+        // ---- off-road: the mountain side tears the car up rather than
+        // ---- destroying it outright, so a near miss stays survivable.
         if track.surface(self.pos.x, self.pos.z).is_none() && !self.destroyed {
             self.off_road += dt;
-            if self.off_road > 0.8 {
+            self.damage += OFF_ROAD_DAMAGE_PER_SEC * dt * speed.max(6.0) / 30.0;
+            if self.damage >= self.max_damage() {
                 self.destroyed = true;
-                self.damage = self.max_damage();
             }
         } else {
             self.off_road = 0.0;

@@ -110,19 +110,30 @@ impl PropTable {
     }
 }
 
+/// A cached prop mesh plus the lift that puts its lowest vertex on the ground
+/// (the exported meshes have arbitrary pivots).
+#[derive(Clone)]
+pub struct PropMesh {
+    pub groups: Vec<MeshGroup>,
+    pub ground_offset: f32,
+}
+
 /// Loaded reference meshes, cached by file stem.
 #[derive(Default)]
 pub struct PropCache {
-    meshes: HashMap<String, Option<Vec<MeshGroup>>>,
+    meshes: HashMap<String, Option<PropMesh>>,
+}
+
+fn traced() -> bool {
+    std::env::var("DD_TRACE_PROPS").is_ok()
 }
 
 impl PropCache {
-    pub fn get(&mut self, file: &str, textures: &mut crate::art::Textures) -> Option<&[MeshGroup]> {
-        let entry = self
-            .meshes
+    pub fn get(&mut self, file: &str, textures: &mut crate::art::Textures) -> Option<&PropMesh> {
+        self.meshes
             .entry(file.to_string())
-            .or_insert_with(|| load_prop(file, textures));
-        entry.as_deref()
+            .or_insert_with(|| load_prop(file, textures))
+            .as_ref()
     }
 
     /// Bind every texture the table references, so the batch's page count is
@@ -151,8 +162,9 @@ impl PropCache {
         let seed = track.seed;
         // edge barriers both sides
         if let Some(edge) = &table.edge
-            && let Some(groups) = self.get(&edge.file, textures).map(|g| g.to_vec())
+            && let Some(mesh) = self.get(&edge.file, textures).cloned()
         {
+            let groups = mesh.groups;
             let mut s = 8.0;
             let mut salt = 7u32;
             while s < track.length - 8.0 {
@@ -172,8 +184,9 @@ impl PropCache {
                 s += edge.every * (0.9 + unit(seed, salt) * 0.2);
             }
         }
-        // background ridges along one side, offset well clear of the road
-        if !table.ridges.is_empty() {
+        // background ridges along one side, offset well clear of the road.
+        // `DD_HIDE_RIDGES` isolates them when a chunk mesh misbehaves.
+        if !table.ridges.is_empty() && std::env::var("DD_HIDE_RIDGES").is_err() {
             let ridges: Vec<(String, f32)> = table
                 .ridges
                 .iter()
@@ -184,10 +197,15 @@ impl PropCache {
             while s < track.length + 200.0 {
                 let (file, scale) = &ridges[index % ridges.len()];
                 index += 1;
-                if let Some(groups) = self.get(file, textures).map(|g| g.to_vec()) {
+                if let Some(mesh) = self.get(file, textures).cloned() {
+                    let groups = mesh.groups;
+                    let lift = 0.0;
                     let side = if index.is_multiple_of(2) { 1.0 } else { -1.0 };
-                    let distance = 60.0 + unit(seed, index as u32 + 40) * 60.0;
-                    let pos = track.road_pos(s.min(track.length) - 12.0, side * distance);
+                    // Whole-scene chunks: far enough out that they never meet the
+                    // road, which runs its own profile in this port.
+                    let distance = 170.0 + unit(seed, index as u32 + 40) * 90.0;
+                    let pos = track.road_pos(s.min(track.length) - 12.0, side * distance)
+                        + Vec3::Y * lift;
                     let yaw = tangent_yaw(track, s.min(track.length));
                     for g in &groups {
                         out.push(place(g, pos, yaw, [*scale, *scale, *scale]));
@@ -198,9 +216,10 @@ impl PropCache {
         }
         // the level's own props, taken from the shipped segment scene
         for file in level_palette(segment) {
-            let Some(groups) = self.get(file, textures).map(|g| g.to_vec()) else {
+            let Some(mesh) = self.get(file, textures).cloned() else {
                 continue;
             };
+            let groups = mesh.groups;
             let mut s = 40.0;
             let mut salt = 31u32;
             while s < track.length - 20.0 {
@@ -218,8 +237,14 @@ impl PropCache {
                 let pos = track.road_pos(s, side * distance);
                 let yaw = tangent_yaw(track, s) + (unit(seed, salt ^ 0xAB) - 0.5) * 1.2;
                 for g in &groups {
-                    out.push(place(g, pos, yaw, [1.0, 1.0, 1.0]));
+                    out.push(place(
+                        g,
+                        pos + Vec3::Y * mesh.ground_offset,
+                        yaw,
+                        [1.0, 1.0, 1.0],
+                    ));
                 }
+
                 s += 22.0;
             }
         }
@@ -233,9 +258,10 @@ impl PropCache {
                 if unit(seed, salt) > def.prob {
                     continue;
                 }
-                let Some(groups) = self.get(&def.file, textures).map(|g| g.to_vec()) else {
+                let Some(mesh) = self.get(&def.file, textures).cloned() else {
                     continue;
                 };
+                let groups = mesh.groups;
                 let side = if unit(seed, salt ^ 0x5A5A) < 0.5 {
                     -1.0
                 } else {
@@ -249,7 +275,12 @@ impl PropCache {
                 let pos = track.road_pos(s, lateral);
                 let yaw = tangent_yaw(track, s);
                 for g in &groups {
-                    out.push(place(g, pos, yaw, [1.0, 1.0, 1.0]));
+                    out.push(place(
+                        g,
+                        pos + Vec3::Y * mesh.ground_offset,
+                        yaw,
+                        [1.0, 1.0, 1.0],
+                    ));
                 }
             }
             salt = salt.wrapping_add(1);
@@ -273,20 +304,28 @@ pub fn start_deck(
     }
     for s in [4.0f32, 9.0] {
         for piece in &table.track_pieces.start {
-            let Some(groups) = cache.get(&piece.file, textures).map(|g| g.to_vec()) else {
+            let Some(mesh) = cache.get(&piece.file, textures).cloned() else {
                 continue;
             };
+            let groups = mesh.groups;
             let pos = track.road_pos(s, piece.lateral);
             let yaw = tangent_yaw(track, s);
             let scale = [piece.scale, piece.scale, piece.scale];
             for g in &groups {
                 out.push(place(g, pos, yaw, scale));
             }
+            if traced() {
+                eprintln!(
+                    "dress deck {} s={:.0} lat={:.1}",
+                    piece.file, s, piece.lateral
+                );
+            }
         }
     }
     if let Some(gantry) = &table.track_pieces.gantry
-        && let Some(groups) = cache.get(&gantry.file, textures).map(|g| g.to_vec())
+        && let Some(mesh) = cache.get(&gantry.file, textures).cloned()
     {
+        let groups = mesh.groups;
         let s = (track.length - 8.0).max(0.0);
         let pos = track.road_pos(s, 0.0);
         let yaw = tangent_yaw(track, s);
@@ -331,12 +370,13 @@ pub fn obstacle_groups(
     at: Vec3,
     yaw: f32,
 ) -> Option<Vec<MeshGroup>> {
-    let groups = cache.get(&def.file, textures)?.to_vec();
+    let mesh = cache.get(&def.file, textures)?.clone();
     let yaw = yaw + def.yaw_deg.to_radians();
+    let lift = def.lift + mesh.ground_offset * def.scale[1];
     Some(
-        groups
+        mesh.groups
             .iter()
-            .map(|g| place(g, at + vec3(0.0, def.lift, 0.0), yaw, def.scale))
+            .map(|g| place(g, at + vec3(0.0, lift, 0.0), yaw, def.scale))
             .collect(),
     )
 }
@@ -354,7 +394,7 @@ pub fn prop_table() -> &'static PropTable {
     })
 }
 
-fn load_prop(file: &str, textures: &mut crate::art::Textures) -> Option<Vec<MeshGroup>> {
+fn load_prop(file: &str, textures: &mut crate::art::Textures) -> Option<PropMesh> {
     let root = art_root()?;
     // Bundle meshes first, then the modular track pieces that ship as GLBs in
     // StreamingAssets (imported at 0.01 by the build's own importer).
@@ -401,7 +441,19 @@ fn load_prop(file: &str, textures: &mut crate::art::Textures) -> Option<Vec<Mesh
             groups.push(group);
         }
     }
-    (!groups.is_empty()).then_some(groups)
+    if groups.is_empty() {
+        return None;
+    }
+    // Lift so the mesh's lowest vertex meets the road: the exported pivots vary.
+    let lowest = groups
+        .iter()
+        .filter_map(|g| g.bounds().map(|(min, _)| min[1]))
+        .fold(f32::MAX, f32::min);
+    let ground_offset = if lowest.is_finite() { -lowest } else { 0.0 };
+    Some(PropMesh {
+        groups,
+        ground_offset,
+    })
 }
 
 /// Per-level prop palettes: the meshes each shipped segment scene actually

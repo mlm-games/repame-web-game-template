@@ -1197,6 +1197,7 @@ dependencies = [
  "repame-view3d",
  "repose-core",
  "repose-platform",
+ "repose-render-wgpu",
  "repose-text",
  "repose-ui",
  "serde",
