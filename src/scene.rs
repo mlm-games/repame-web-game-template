@@ -180,6 +180,19 @@ fn track_key(level: &data::Level) -> u64 {
         | (segment & 0xFFFFF)
 }
 
+/// Emit a quad as two triangles wound so the surface faces *up*: the renderer
+/// culls back faces, and a ground surface wound the other way is invisible from
+/// every camera above it.
+fn push_quad(g: &mut MeshGroup, verts: [Vec3; 4], colour: [f32; 3]) {
+    let base = g.positions.len() as u32;
+    for v in verts {
+        g.positions.push(v.to_array());
+        g.colors.push(colour);
+    }
+    g.indices
+        .extend_from_slice(&[base + 2, base + 1, base, base + 3, base + 2, base]);
+}
+
 /// Run-off ribbon past both ends of the track, in metres. The chase camera starts
 /// behind the line, so without it the bottom of the frame looks into empty space.
 const RUN_OFF: f32 = 60.0;
@@ -210,48 +223,15 @@ fn build_static(track_world: &TrackWorld, level: &data::Level) -> Vec<MeshGroup>
             vec3(c1.x + half, c1.y, s1),
             vec3(c1.x - half, c1.y, s1),
         ];
-        let base = road.positions.len() as u32;
-        for (k, v) in quad.iter().enumerate() {
-            road.positions.push(v.to_array());
-            road.colors.push(if (i + k) % 24 < 12 {
-                road_tone
-            } else {
-                ROAD_EDGE
-            });
-        }
-        road.indices
-            .extend_from_slice(&[base, base + 1, base + 2, base, base + 2, base + 3]);
+        let tone = if i % 12 < 6 { road_tone } else { ROAD_EDGE };
+        push_quad(&mut road, quad, tone);
         // downhill skirt either side, so the road reads as cut into a slope
         for side in [-1.0f32, 1.0] {
             let a = vec3(c0.x + side * half, c0.y, s0);
             let b = vec3(c1.x + side * half, c1.y, s1);
             let c = vec3(c1.x + side * half, c1.y - 9.0, s1);
             let d = vec3(c0.x + side * half, c0.y - 9.0, s0);
-            let base = shoulder.positions.len() as u32;
-            for v in [a, b, c, d] {
-                shoulder.positions.push(v.to_array());
-                shoulder.colors.push(MOUNTAIN);
-            }
-            let flip = side > 0.0;
-            if flip {
-                shoulder.indices.extend_from_slice(&[
-                    base,
-                    base + 1,
-                    base + 2,
-                    base,
-                    base + 2,
-                    base + 3,
-                ]);
-            } else {
-                shoulder.indices.extend_from_slice(&[
-                    base + 1,
-                    base,
-                    base + 3,
-                    base + 1,
-                    base + 3,
-                    base + 2,
-                ]);
-            }
+            push_quad(&mut shoulder, [a, b, c, d], MOUNTAIN);
         }
     }
     // grass verges
@@ -272,30 +252,7 @@ fn build_static(track_world: &TrackWorld, level: &data::Level) -> Vec<MeshGroup>
                 c0.y - 5.0 - i as f32 * 0.05,
                 s0,
             );
-            let base = verge.positions.len() as u32;
-            for v in [a, b, c, d] {
-                verge.positions.push(v.to_array());
-                verge.colors.push(verge_tone);
-            }
-            if side > 0.0 {
-                verge.indices.extend_from_slice(&[
-                    base,
-                    base + 1,
-                    base + 2,
-                    base,
-                    base + 2,
-                    base + 3,
-                ]);
-            } else {
-                verge.indices.extend_from_slice(&[
-                    base + 1,
-                    base,
-                    base + 3,
-                    base + 1,
-                    base + 3,
-                    base + 2,
-                ]);
-            }
+            push_quad(&mut verge, [a, b, c, d], verge_tone);
         }
     }
     // The apron carries the ground out to the horizon on both sides. Without it
@@ -313,30 +270,7 @@ fn build_static(track_world: &TrackWorld, level: &data::Level) -> Vec<MeshGroup>
             let b = vec3(c1.x + side * inner, c1.y - drop0, s1);
             let c = vec3(c1.x + side * outer, c1.y - drop0 - 34.0, s1);
             let d = vec3(c0.x + side * outer, c0.y - drop0 - 34.0, s0);
-            let base = apron.positions.len() as u32;
-            for v in [a, b, c, d] {
-                apron.positions.push(v.to_array());
-                apron.colors.push(SAND);
-            }
-            if side > 0.0 {
-                apron.indices.extend_from_slice(&[
-                    base,
-                    base + 1,
-                    base + 2,
-                    base,
-                    base + 2,
-                    base + 3,
-                ]);
-            } else {
-                apron.indices.extend_from_slice(&[
-                    base + 1,
-                    base,
-                    base + 3,
-                    base + 1,
-                    base + 3,
-                    base + 2,
-                ]);
-            }
+            push_quad(&mut apron, [a, b, c, d], SAND);
         }
     }
     vec![road, shoulder, verge, apron]
@@ -386,12 +320,59 @@ fn append_group(dst: &mut MeshGroup, src: &MeshGroup) {
     let base = dst.positions.len() as u32;
     dst.positions.extend_from_slice(&src.positions);
     dst.colors.extend_from_slice(&src.colors);
+    // Normals have to stay all-or-nothing: the renderer drops a group whose
+    // normals do not match its vertices. `with_normals` rebuilds them for the
+    // whole group afterwards when either side cannot supply them.
     if dst.normals.len() == dst.positions.len() - src.positions.len()
         && src.normals.len() == src.positions.len()
     {
         dst.normals.extend_from_slice(&src.normals);
+    } else {
+        dst.normals.clear();
     }
     dst.indices.extend(src.indices.iter().map(|i| i + base));
+}
+
+/// Give a group normals that match its vertices exactly.
+///
+/// The shipped meshes arrive with normals of their own; the procedural road,
+/// verges and hazard stand-ins do not, and appending one kind to the other used
+/// to leave a group whose normal count was short of its vertex count, which the
+/// renderer drops without drawing anything. Normals are accumulated per vertex
+/// from the triangles, so a rebuilt group is shaded rather than flat.
+fn with_normals(mut group: MeshGroup) -> MeshGroup {
+    if std::env::var("DD_DEBUG_FLIP_WINDING").is_ok() {
+        // Isolation aid: the same geometry with every triangle's winding reversed.
+        for tri in group.indices.as_chunks_mut::<3>().0 {
+            tri.swap(0, 2);
+        }
+    }
+    if group.normals.len() == group.positions.len() {
+        return group;
+    }
+    let mut acc = vec![vec3(0.0, 0.0, 0.0); group.positions.len()];
+    for tri in group.indices.as_chunks::<3>().0 {
+        let (a, b, c) = (tri[0] as usize, tri[1] as usize, tri[2] as usize);
+        if a >= acc.len() || b >= acc.len() || c >= acc.len() {
+            continue;
+        }
+        let face = (Vec3::from(group.positions[b]) - Vec3::from(group.positions[a]))
+            .cross(Vec3::from(group.positions[c]) - Vec3::from(group.positions[a]));
+        acc[a] += face;
+        acc[b] += face;
+        acc[c] += face;
+    }
+    group.normals = acc
+        .into_iter()
+        .map(|n| {
+            if n.length_squared() > 1e-12 {
+                n.normalize().to_array()
+            } else {
+                [0.0, 1.0, 0.0]
+            }
+        })
+        .collect();
+    group
 }
 
 fn obstacle_groups_with_props(
@@ -697,7 +678,12 @@ pub fn frame_for(
             _ => {}
         }
     }
-    let background = [0.384, 0.705, 1.0, 1.0];
+    let background = if std::env::var("DD_DEBUG_BG").is_ok() {
+        // Isolation aid: an unmistakable colour for the empty regions.
+        [1.0, 0.0, 1.0, 1.0]
+    } else {
+        [0.384, 0.705, 1.0, 1.0]
+    };
     let (desc, uploads) = {
         let mut cache = world.resource_mut::<SceneCache>();
         cache.art.textures.preload_cars(data::cars());
@@ -767,6 +753,20 @@ pub fn frame_for(
             },
         );
         let tris: usize = groups.iter().map(|g| g.tri_count()).sum();
+        let transparent: Vec<_> = groups
+            .iter()
+            .filter(|g| g.transparent || g.alpha < 1.0)
+            .map(|g| (g.alpha, g.bounds()))
+            .take(8)
+            .collect();
+        eprintln!("  transparent groups: {transparent:?}");
+        for (i, g) in groups.iter().enumerate().take(4) {
+            eprintln!(
+                "  group[{i}] bounds={:?} tris={}",
+                g.bounds(),
+                g.tri_count()
+            );
+        }
         eprintln!(
             "scene-bounds groups={} tris={} bad={} bounds={:?}",
             groups.len(),
@@ -824,6 +824,7 @@ pub fn frame_for(
         groups.push(m);
     }
     for g in groups {
+        let g = with_normals(g);
         if !g.is_empty() {
             frame.push(g);
         }

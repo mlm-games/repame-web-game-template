@@ -75,13 +75,25 @@ cargo run --example image_probe   -- /tmp/img.png [sprite]
 cargo run --example page_probe    -- /tmp/pages [prop ...]
 ```
 
+`scripts/gltf_to_glb.py` packs a `.gltf` and its side files into one `.glb`, for
+pulling a CC0 asset out of a library like Poly Haven, ambientCG or Kenney.
+
+The *engine's* render invariants — a pose sweep that catches missing faces, a
+camera whose verticals read wrong, and ground at the wrong height — live in the
+repame repo, `crates/repame-view3d/tests/pose_golden.rs`, so one harness guards
+every game built on the viewport. The world bugs this port hit (a road wound
+backwards, an eye that overtook the car, a ground that stopped 26 m out) are the
+cases it was written from.
+
 Isolation aids, all environment flags: `DD_TRACE_DRAW=1` names every car part
 drawn, `DD_TRACE_CAMERA=1` prints the camera and car transforms,
 `DD_TRACE_SCENE=1` prints group counts, triangle counts and world bounds,
 `DD_TRACE_PROPS=1` prints each prop mesh as it loads, `DD_DEBUG_CUBE=1` renders a
 single box at the camera target, `DD_DEBUG_KEEP=textured|untextured` and
 `DD_DEBUG_FIRST=<n>` render one slice of the scene, `DD_DEBUG_CAM=bird|side`
-picks a diagnostic camera, and `DD_HIDE_CAR_PARTS=1` / `DD_HIDE_RIDGES=1` /
+picks a diagnostic camera, `DD_DEBUG_BG=1` paints the empty background magenta so a
+hole in the world is unmistakable, `DD_DEBUG_FLIP_WINDING=1` reverses every
+triangle's winding (front faces are culled, so this shows a backwards surface), and `DD_HIDE_CAR_PARTS=1` / `DD_HIDE_RIDGES=1` /
 `DD_HIDE_DECK=1` hide a layer.
 
 `cargo run` is desktop-only by default; web (`trunk build --release`) and Android
