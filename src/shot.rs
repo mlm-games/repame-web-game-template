@@ -192,7 +192,7 @@ impl App {
                 // pixels that carry paint (warm, red-dominant) anywhere in view.
                 let mut paint = 0usize;
                 let mut dark = 0usize;
-                for px in rgba.chunks_exact(4) {
+                for px in rgba.as_chunks::<4>().0 {
                     let (r, g, b) = (px[0] as i32, px[1] as i32, px[2] as i32);
                     if r > g + 25 && g >= b {
                         paint += 1;
@@ -228,7 +228,7 @@ impl App {
 fn pixel_share(rgba: &[u8], width: u32, height: u32, predicate: impl Fn([u8; 4]) -> bool) -> f64 {
     let mut hits = 0usize;
     let mut total = 0usize;
-    for (index, px) in rgba.chunks_exact(4).enumerate() {
+    for (index, px) in rgba.as_chunks::<4>().0.iter().enumerate() {
         let y = index as u32 / width.max(1);
         if y >= height {
             continue;
