@@ -180,6 +180,10 @@ fn track_key(level: &data::Level) -> u64 {
         | (segment & 0xFFFFF)
 }
 
+/// Run-off ribbon past both ends of the track, in metres. The chase camera starts
+/// behind the line, so without it the bottom of the frame looks into empty space.
+const RUN_OFF: f32 = 60.0;
+
 fn build_static(track_world: &TrackWorld, level: &data::Level) -> Vec<MeshGroup> {
     let racing = level.is_racing_track();
     let road_tone = if racing { ASPHALT } else { DIRT };
@@ -187,20 +191,24 @@ fn build_static(track_world: &TrackWorld, level: &data::Level) -> Vec<MeshGroup>
     let track = &track_world.track;
     let mut road = MeshGroup::default();
     let mut shoulder = MeshGroup::default();
-    let steps = 140usize;
-    let step = track.length / steps as f32;
+    let steps = 150usize;
+    let span = track.length + RUN_OFF * 2.0;
+    let step = span / steps as f32;
     let half = track.half_width;
+    // The ribbon runs `RUN_OFF` metres past both ends. The camera starts behind
+    // the line, and the width and height there come from the clamped ends, so the
+    // run-off is the same surface continued rather than a new one.
+    let along = |i: usize| i as f32 * step - RUN_OFF;
+    let point = |s: f32| track.centre(s.clamp(0.0, track.length));
     for i in 0..steps {
-        let s0 = i as f32 * step;
-        let s1 = s0 + step;
-        let c0 = track.centre(s0);
-        let c1 = track.centre(s1);
+        let (s0, s1) = (along(i), along(i + 1));
+        let (c0, c1) = (point(s0), point(s1));
         // road surface
         let quad = [
-            vec3(c0.x - half, c0.y, c0.z),
-            vec3(c0.x + half, c0.y, c0.z),
-            vec3(c1.x + half, c1.y, c1.z),
-            vec3(c1.x - half, c1.y, c1.z),
+            vec3(c0.x - half, c0.y, s0),
+            vec3(c0.x + half, c0.y, s0),
+            vec3(c1.x + half, c1.y, s1),
+            vec3(c1.x - half, c1.y, s1),
         ];
         let base = road.positions.len() as u32;
         for (k, v) in quad.iter().enumerate() {
@@ -215,10 +223,10 @@ fn build_static(track_world: &TrackWorld, level: &data::Level) -> Vec<MeshGroup>
             .extend_from_slice(&[base, base + 1, base + 2, base, base + 2, base + 3]);
         // downhill skirt either side, so the road reads as cut into a slope
         for side in [-1.0f32, 1.0] {
-            let a = vec3(c0.x + side * half, c0.y, c0.z);
-            let b = vec3(c1.x + side * half, c1.y, c1.z);
-            let c = vec3(c1.x + side * half, c1.y - 9.0, c1.z);
-            let d = vec3(c0.x + side * half, c0.y - 9.0, c0.z);
+            let a = vec3(c0.x + side * half, c0.y, s0);
+            let b = vec3(c1.x + side * half, c1.y, s1);
+            let c = vec3(c1.x + side * half, c1.y - 9.0, s1);
+            let d = vec3(c0.x + side * half, c0.y - 9.0, s0);
             let base = shoulder.positions.len() as u32;
             for v in [a, b, c, d] {
                 shoulder.positions.push(v.to_array());
@@ -249,22 +257,20 @@ fn build_static(track_world: &TrackWorld, level: &data::Level) -> Vec<MeshGroup>
     // grass verges
     let mut verge = MeshGroup::default();
     for i in 0..steps {
-        let s0 = i as f32 * step;
-        let s1 = (i + 1) as f32 * step;
-        let c0 = track.centre(s0);
-        let c1 = track.centre(s1);
+        let (s0, s1) = (along(i), along(i + 1));
+        let (c0, c1) = (point(s0), point(s1));
         for side in [-1.0f32, 1.0] {
-            let a = vec3(c0.x + side * half, c0.y - 0.05, c0.z);
-            let b = vec3(c1.x + side * half, c1.y - 0.05, c1.z);
+            let a = vec3(c0.x + side * half, c0.y - 0.05, s0);
+            let b = vec3(c1.x + side * half, c1.y - 0.05, s1);
             let c = vec3(
                 c1.x + side * (half + 26.0),
                 c1.y - 5.0 - i as f32 * 0.05,
-                c1.z,
+                s1,
             );
             let d = vec3(
                 c0.x + side * (half + 26.0),
                 c0.y - 5.0 - i as f32 * 0.05,
-                c0.z,
+                s0,
             );
             let base = verge.positions.len() as u32;
             for v in [a, b, c, d] {
@@ -292,7 +298,48 @@ fn build_static(track_world: &TrackWorld, level: &data::Level) -> Vec<MeshGroup>
             }
         }
     }
-    vec![road, shoulder, verge]
+    // The apron carries the ground out to the horizon on both sides. Without it
+    // the road reads as a ribbon floating in the sky, because the shoulder skirt
+    // only reaches 26 m out.
+    let mut apron = MeshGroup::default();
+    for i in 0..steps {
+        let (s0, s1) = (along(i), along(i + 1));
+        let (c0, c1) = (point(s0), point(s1));
+        let drop0 = 5.0 + i as f32 * 0.05;
+        for side in [-1.0f32, 1.0] {
+            let inner = half + 26.0;
+            let outer = half + 320.0;
+            let a = vec3(c0.x + side * inner, c0.y - drop0, s0);
+            let b = vec3(c1.x + side * inner, c1.y - drop0, s1);
+            let c = vec3(c1.x + side * outer, c1.y - drop0 - 34.0, s1);
+            let d = vec3(c0.x + side * outer, c0.y - drop0 - 34.0, s0);
+            let base = apron.positions.len() as u32;
+            for v in [a, b, c, d] {
+                apron.positions.push(v.to_array());
+                apron.colors.push(SAND);
+            }
+            if side > 0.0 {
+                apron.indices.extend_from_slice(&[
+                    base,
+                    base + 1,
+                    base + 2,
+                    base,
+                    base + 2,
+                    base + 3,
+                ]);
+            } else {
+                apron.indices.extend_from_slice(&[
+                    base + 1,
+                    base,
+                    base + 3,
+                    base + 1,
+                    base + 3,
+                    base + 2,
+                ]);
+            }
+        }
+    }
+    vec![road, shoulder, verge, apron]
 }
 
 /// Procedural stand-in for hazards the export has no mesh for.
@@ -500,11 +547,18 @@ pub fn frame_for(
         .map(|c| c.mode)
         .unwrap_or(CameraMode::Chase);
     let cockpit = mode == CameraMode::Cockpit;
+    // The camera aims at the road itself, not just at the car: on a descending
+    // track a level camera loses the road out of the bottom of the frame.
+    let mut road_ahead = player.pos;
     let mut groups: Vec<MeshGroup> = Vec::new();
     let mut geometry_ready = false;
     // `resource_scope` gives the cache a mutable borrow while the track stays in
     // the world: nothing can observe a world without a track mid-frame.
     world.resource_scope(|world, track_world: Mut<TrackWorld>| {
+        road_ahead = track_world.track.road_pos(
+            (player.pos.z + CAMERA_LOOK_AHEAD).min(track_world.track.length),
+            0.0,
+        );
         let key = track_key(&level);
         {
             let mut cache = world.resource_mut::<SceneCache>();
@@ -623,7 +677,8 @@ pub fn frame_for(
         }
         let _ = art_used;
     }
-    let (mut target, mut yaw, mut dist, mut pitch) = camera_for(&player, phase, viewport_px, mode);
+    let (mut target, mut yaw, mut dist, mut pitch) =
+        camera_for(&player, phase, viewport_px, mode, road_ahead);
     if let Ok(shape) = std::env::var("DD_DEBUG_CAM") {
         // Isolation aid: a fixed camera that shows the whole layout.
         match shape.as_str() {
@@ -779,10 +834,6 @@ pub fn frame_for(
 /// `OrbitCamera::eye` places the eye along `(cos yaw, sin yaw)` in XZ, while the
 /// car's forward is `(sin yaw, cos yaw)`: the camera yaw that puts the eye behind
 /// the car is therefore `-car.yaw - pi/2`.
-fn behind_yaw(car_yaw: f32) -> f32 {
-    -car_yaw - std::f32::consts::FRAC_PI_2
-}
-
 /// Camera presets, as the build's `CameraPreset` names them: a chase view and a
 /// first-person cockpit view (`C` switches, the shipped "change camera view" key).
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
@@ -791,32 +842,41 @@ pub enum CameraMode {
     Cockpit,
 }
 
+/// How far down the track the camera aims, in metres.
+const CAMERA_LOOK_AHEAD: f32 = 24.0;
+
 fn camera_for(
     car: &CarSim,
     phase: Phase,
     viewport_px: [f32; 2],
     mode: CameraMode,
+    road_ahead: Vec3,
 ) -> (Vec3, f32, f32, f32) {
     if matches!(phase, Phase::Garage | Phase::MapSelect) {
         return (Vec3::new(0.0, 1.0, 0.0), 0.5, 9.5, 0.35);
     }
     let speed = car.speed();
-    match mode {
+    let portrait = viewport_px[1] > viewport_px[0];
+    let (back, up, aim_height) = match mode {
         CameraMode::Chase => {
-            // The eye sits `dist` behind the point the camera looks at, so the
-            // look-ahead must stay well under `dist` or the eye overtakes the car
-            // and the car drops behind the camera.
-            let lead = 1.5 + speed * 0.02;
-            let target = car.pos + car.forward() * lead + vec3(0.0, 1.5, 0.0);
-            let portrait = viewport_px[1] > viewport_px[0];
-            let dist = if portrait { 12.5 } else { 10.5 } + speed * 0.06;
-            (target, behind_yaw(car.yaw), dist, 0.23)
+            let back = if portrait { 11.0 } else { 9.0 } + speed * 0.06;
+            (back, 3.6 + speed * 0.012, 1.3)
         }
-        CameraMode::Cockpit => {
-            let target = car.pos + car.forward() * 3.0 + vec3(0.0, 1.35, 0.0);
-            (target, behind_yaw(car.yaw), 2.2, 0.05)
-        }
-    }
+        CameraMode::Cockpit => (0.0, 1.35, 0.6),
+    };
+    let flat = vec3(car.forward().x, 0.0, car.forward().z).normalize_or_zero();
+    let eye = car.pos + vec3(0.0, up, 0.0) - flat * back;
+    let target = road_ahead + vec3(0.0, aim_height, 0.0);
+    // `OrbitCamera` places the eye at `target + dist * (yaw, pitch)`, so both are
+    // read straight off the eye-to-target vector.
+    let to_eye = eye - target;
+    let dist = to_eye.length().max(0.1);
+    (
+        target,
+        to_eye.z.atan2(to_eye.x),
+        dist,
+        (to_eye.y / dist).clamp(-1.0, 1.0).asin(),
+    )
 }
 
 pub fn viewport2d(ui: &crate::ui::SharedUi) -> Vec2 {

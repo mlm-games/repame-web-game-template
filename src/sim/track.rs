@@ -130,7 +130,8 @@ impl Track {
     }
 
     /// Road centre in world space at a distance along the track: the track runs
-    /// along +z, so `s` is the z coordinate.
+    /// along +z, so `s` is the z coordinate. Distances outside the track clamp to
+    /// its ends, which is what the run-off ribbon and the camera use.
     pub fn centre(&self, s: f32) -> Vec3 {
         Vec3::new(
             Self::curve_lookup(&self.curve, self.curve_step, s),

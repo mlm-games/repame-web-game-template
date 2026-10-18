@@ -7,8 +7,6 @@
 #   Title  human-readable title: "Orb Dash"
 #   dest   default: ../../<name>  (a sibling of the template in Games/repame)
 #
-# The copy keeps the template's relative path back to Documents/Repos, so the
-# [patch.crates-io] escape hatch at the bottom of Cargo.toml keeps working.
 set -euo pipefail
 
 name="${1:-}"

@@ -19,22 +19,21 @@ path = "src/main.rs"
 
 [dependencies]
 # Engine, from crates.io: the published line is the source of truth, so every
-# renderer-state crate unifies to one copy in one binary. To pick up a fix that
-# is in ~/Documents/Repos but not released yet, redirect these through
-# [patch.crates-io] at the bottom of this file.
-repame-sim = "0.3.26"
-repame-shell = "0.3.26"
-repame-audio = { version = "0.3.26", features = ["symphonia-ogg-vorbis"] }
-repame-view2d = "0.3.26"
-repame-view3d = "0.3.26"
+# renderer-state crate unifies to one copy in one binary.
+repame-sim = "0.3.29"
+repame-shell = "0.3.29"
+repame-audio = { version = "0.3.29", features = ["symphonia-ogg-vorbis"] }
+repame-view2d = "0.3.29"
+repame-view3d = "0.3.29"
 image = { version = "0.25", default-features = false, features = ["png"] }
-repame-save = "0.3.26"
+repame-save = "0.3.29"
 # Direct dep: bevy derive macros expand to `bevy_ecs::` paths, so every game
 # crate names it explicitly. Must unify with repame-sim's 0.20.
 bevy_ecs = "0.20"
 # Same glam as repame: shared math types must unify to one version.
 glam = "0.33"
 repose-core = "0.31"
+repose-app = "0.31"
 repose-render-wgpu = "0.31"
 repose-ui = "0.31"
 repose-text = "0.31"
@@ -85,16 +84,3 @@ lto = "thin"
 inherits = "release"
 opt-level = "s"
 strip = "debuginfo"
-
-# Point these at the sibling checkouts to build against unreleased engine code.
-# Keep every repame-* / repose-* entry in the same state (all version, or all
-# path): a half-patched tree lets two copies of the renderer into one binary.
-# [patch.crates-io]
-# repame-sim = { path = "../../../Repos/repame/crates/repame-sim" }
-# repame-shell = { path = "../../../Repos/repame/crates/repame-shell" }
-# repame-view2d = { path = "../../../Repos/repame/crates/repame-view2d" }
-# repame-save = { path = "../../../Repos/repame/crates/repame-save" }
-# repame-audio = { path = "../../../Repos/repame/crates/repame-audio" }
-# repose-core = { path = "../../../Repos/repose/crates/repose-core" }
-# repose-ui = { path = "../../../Repos/repose/crates/repose-ui" }
-# repose-text = { path = "../../../Repos/repose/crates/repose-text" }

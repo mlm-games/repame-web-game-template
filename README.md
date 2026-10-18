@@ -61,6 +61,20 @@ ffmpeg -framerate 30 -i /tmp/dd-frames/frame_%04d.png -pix_fmt yuv420p run.mp4
 scripts/playtest-capture.sh 6 20 2 /tmp/dd-playtest
 ```
 
+The capture drives `ReposeRuntime::compose_frame_output`, the platform's own host
+tick, so a captured frame is the frame the window shows. Laying the view out by
+hand (a bare `layout_and_paint` call) skips the runtime's scheduler scope and
+frame cache and paints every text run once per retained node.
+
+Focused probes, each rendering one thing offscreen:
+
+```sh
+cargo run --example ui_probe      -- /tmp/ui.png [garage|map|race]
+cargo run --example viewport_probe -- /tmp/vp.png [groups]
+cargo run --example image_probe   -- /tmp/img.png [sprite]
+cargo run --example page_probe    -- /tmp/pages [prop ...]
+```
+
 Isolation aids, all environment flags: `DD_TRACE_DRAW=1` names every car part
 drawn, `DD_TRACE_CAMERA=1` prints the camera and car transforms,
 `DD_TRACE_SCENE=1` prints group counts, triangle counts and world bounds,

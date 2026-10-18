@@ -1,19 +1,22 @@
 //! Offscreen frame capture: renders the game's own frame (3D scene plus UI)
-//! through the same compose path the window uses and writes PNGs, one per frame.
+//! through the same host composition the window uses and writes PNGs, one per
+//! frame.
 //!
 //! This is the port's video-export/playtest tool: `DD_CAPTURE=<dir>` renders a
 //! fixed number of frames headless and exits, so a level can be inspected without
 //! a display, a compositor or a screen recorder.
+//!
+//! The frames come from `ReposeRuntime::compose_frame_output`, the platform's
+//! own one-shot host tick. Laying the view out by hand instead produces a scene
+//! where every text run is painted once per retained node, which is what the
+//! runtime's scheduler scope and frame cache exist to prevent.
 
-use std::cell::RefCell;
-use std::collections::HashMap;
 use std::path::Path;
-use std::rc::Rc;
 
-use repose_core::RenderContext;
+use repose_app::ReposeRuntime;
+use repose_core::{RenderContext, Scheduler, View};
 use repose_render_wgpu::apply_render_commands;
 use repose_render_wgpu::offscreen::OffscreenRenderer;
-use repose_ui::{Interactions, TextFieldState, layout_and_paint};
 use web_time::Duration;
 
 use crate::app::App;
@@ -69,39 +72,16 @@ impl App {
         let dir = Path::new(&request.dir);
         std::fs::create_dir_all(dir)?;
         let ctx = RenderContext::new();
-        let viewport = [request.width as f32, request.height as f32];
-        self.ui.viewport = glam::Vec2::new(viewport[0], viewport[1]);
         let mut gpu = OffscreenRenderer::new_blocking(request.width, request.height, 1)?;
-        let states: HashMap<u64, Rc<RefCell<TextFieldState>>> = HashMap::new();
+        let mut runtime = ReposeRuntime::new();
+        runtime.set_viewport_and_scale(request.width, request.height, 1.0);
         let dt = Duration::from_secs_f64(1.0 / request.fps.max(1) as f64);
         for frame in 0..request.frames {
-            // Same order as the window loop: input, sim, UI sync, compose.
-            crate::sim::apply_intents(&mut self.sim.world);
-            self.feed_input();
-            self.autoplay_drive();
-            let _ = self.advance(dt);
-            self.sync_audio(dt);
-            crate::ui::sync_shared_ui(&mut self.sim.world, &mut self.ui, &ctx);
-            let view = self.compose(&ctx, viewport);
-            let (scene, _, _) = layout_and_paint(
-                &view,
-                (request.width, request.height),
-                &states,
-                &Interactions::default(),
-                None,
-            );
+            let mut root =
+                |sched: &mut Scheduler, ctx: &RenderContext| -> View { self.view(sched, ctx, dt) };
+            let out = runtime.compose_frame_output(&mut root, &ctx);
             apply_render_commands(gpu.renderer_mut(), ctx.drain()).log_failures();
-            let rgba = gpu.render_rgba(&scene, Some([0.05, 0.06, 0.08, 1.0]))?;
-            if frame == 0 {
-                eprintln!(
-                    "capture buffer len={} expected={} ({w}x{h})",
-                    rgba.len(),
-                    request.width as usize * request.height as usize * 4,
-                    w = request.width,
-                    h = request.height
-                );
-            }
-            // The renderer's readback is already top-down; save as-is.
+            let rgba = gpu.render_rgba(&out.scene, Some([0.05, 0.06, 0.08, 1.0]))?;
             let path = dir.join(format!("frame_{frame:04}.png"));
             image::save_buffer(
                 &path,

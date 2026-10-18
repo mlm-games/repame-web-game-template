@@ -409,6 +409,11 @@ fn best_speed_survives_a_run() {
         first_completion: true,
         score: 1000,
     };
+    // The save is shared state: a playthrough can leave a faster run behind, so
+    // start this level's entry empty before recording.
+    if let Some(slot) = progress.data.best_speed.get_mut(3) {
+        *slot = 0.0;
+    }
     progress.record_results(3, &results);
     assert_eq!(progress.data.best_speed.get(3).copied(), Some(213.0));
     assert!(
