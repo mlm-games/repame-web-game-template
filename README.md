@@ -50,17 +50,25 @@ toggles the on-screen touch pad. Garage → map select → race → results.
 # Drive a level with the bot controller and print a once-a-second trace.
 DD_AUTOPLAY=6 cargo run            # DD_AUTOPLAY_TRACE=0 silences the trace
 
-# Headless UI frames (menus, HUD) straight to PNGs, no window.
+# Headless frames (the whole game frame: 3D scene plus UI) straight to PNGs.
+# Same compose path as the window, fixed frame time, no window and no display.
 DD_CAPTURE=/tmp/dd-frames DD_AUTOPLAY=6 DD_CAPTURE_FRAMES=300 cargo run
+DD_CAPTURE_FPS=30 DD_CAPTURE_W=960 DD_CAPTURE_H=540     # 30 fps, 960x540
+DD_DEBUG_CAM=bird                                        # whole-layout camera
+ffmpeg -framerate 30 -i /tmp/dd-frames/frame_%04d.png -pix_fmt yuv420p run.mp4
 
-# World captures: the 3D layer paints through a wgpu callback that the engine's
-# offscreen renderer does not run, so a *world* playtest grabs the live window.
+# The same thing against the live window, when a display is in use.
 scripts/playtest-capture.sh 6 20 2 /tmp/dd-playtest
 ```
 
-`DD_TRACE_DRAW=1` names every car part drawn, `DD_TRACE_CAMERA=1` prints the camera
-and car transforms, `DD_HIDE_CAR_PARTS=1` / `DD_HIDE_RIDGES=1` / `DD_HIDE_DECK=1`
-isolate layers while diagnosing.
+Isolation aids, all environment flags: `DD_TRACE_DRAW=1` names every car part
+drawn, `DD_TRACE_CAMERA=1` prints the camera and car transforms,
+`DD_TRACE_SCENE=1` prints group counts, triangle counts and world bounds,
+`DD_TRACE_PROPS=1` prints each prop mesh as it loads, `DD_DEBUG_CUBE=1` renders a
+single box at the camera target, `DD_DEBUG_KEEP=textured|untextured` and
+`DD_DEBUG_FIRST=<n>` render one slice of the scene, `DD_DEBUG_CAM=bird|side`
+picks a diagnostic camera, and `DD_HIDE_CAR_PARTS=1` / `DD_HIDE_RIDGES=1` /
+`DD_HIDE_DECK=1` hide a layer.
 
 `cargo run` is desktop-only by default; web (`trunk build --release`) and Android
 (`cargo rapk`) are not built or verified in this pass.

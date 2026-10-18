@@ -137,6 +137,38 @@ fn track_geometry_is_consistent() {
 }
 
 #[test]
+fn the_track_is_laid_along_z() {
+    // `centre` and `road_pos` are world points: `z` is the distance along the
+    // track. Every scene builder (road ribbon, props, obstacles, tangent yaw)
+    // places from them, so a `z` that stays at zero collapses the whole world
+    // onto one plane.
+    let level = &data::levels()[6];
+    let track = &TrackWorld::load(level).track;
+    for s in [0.0, 12.5, 250.0, track.length - 1.0] {
+        let c = track.centre(s);
+        assert!((c.z - s).abs() < 1e-3, "centre({s}).z = {}", c.z);
+        let edge = track.half_width * 0.98;
+        for lateral in [-edge, 0.0, edge] {
+            let p = track.road_pos(s, lateral);
+            assert!(
+                (p.z - s).abs() < 1e-3,
+                "road_pos({s}, {lateral}).z = {}",
+                p.z
+            );
+            assert!(
+                track.surface(p.x, p.z).is_some(),
+                "road_pos({s}, {lateral}) must land on the road"
+            );
+        }
+    }
+    let yaw = deadly_descent::props::tangent_yaw(track, track.length * 0.5);
+    assert!(
+        yaw.abs() < std::f32::consts::FRAC_PI_4,
+        "tangent yaw {yaw} points across the track, not along it"
+    );
+}
+
+#[test]
 fn reference_art_loads_when_present() {
     // Optional: the extracted reference meshes live outside the repo. When they
     // are there the loader must return real geometry, not fall back.
@@ -146,7 +178,7 @@ fn reference_art_loads_when_present() {
     let cars = data::cars();
     let porsche = cars.iter().find(|c| c.id == "Porsche_911").unwrap();
     let mut textures = deadly_descent::art::Textures::default();
-    textures.preload_cars(&data::cars().to_vec());
+    textures.preload_cars(data::cars());
     let art = deadly_descent::art::load_car_art("Porsche_911", &porsche.wheels, &mut textures);
     let Some(art) = art else {
         return;

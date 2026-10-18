@@ -444,6 +444,19 @@ fn load_prop(file: &str, textures: &mut crate::art::Textures) -> Option<PropMesh
     if groups.is_empty() {
         return None;
     }
+    if std::env::var("DD_TRACE_PROPS").is_ok() {
+        let g = &groups[0];
+        eprintln!(
+            "prop {file}: groups={} tris={} uv={} normals={} first_colour={:?} page={:?} tint={:?}",
+            groups.len(),
+            groups.iter().map(|g| g.tri_count()).sum::<usize>(),
+            !g.uvs.is_empty(),
+            g.normals.len(),
+            g.colors.first(),
+            page,
+            tint
+        );
+    }
     // Lift so the mesh's lowest vertex meets the road: the exported pivots vary.
     let lowest = groups
         .iter()

@@ -92,6 +92,16 @@ impl App {
             );
             apply_render_commands(gpu.renderer_mut(), ctx.drain()).log_failures();
             let rgba = gpu.render_rgba(&scene, Some([0.05, 0.06, 0.08, 1.0]))?;
+            if frame == 0 {
+                eprintln!(
+                    "capture buffer len={} expected={} ({w}x{h})",
+                    rgba.len(),
+                    request.width as usize * request.height as usize * 4,
+                    w = request.width,
+                    h = request.height
+                );
+            }
+            // The renderer's readback is already top-down; save as-is.
             let path = dir.join(format!("frame_{frame:04}.png"));
             image::save_buffer(
                 &path,

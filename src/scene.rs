@@ -623,7 +623,25 @@ pub fn frame_for(
         }
         let _ = art_used;
     }
-    let (target, yaw, dist, pitch) = camera_for(&player, phase, viewport_px, mode);
+    let (mut target, mut yaw, mut dist, mut pitch) = camera_for(&player, phase, viewport_px, mode);
+    if let Ok(shape) = std::env::var("DD_DEBUG_CAM") {
+        // Isolation aid: a fixed camera that shows the whole layout.
+        match shape.as_str() {
+            "bird" => {
+                target = player.pos;
+                yaw = 0.0;
+                dist = 70.0;
+                pitch = 0.85;
+            }
+            "side" => {
+                target = player.pos + vec3(0.0, 3.0, 20.0);
+                yaw = std::f32::consts::FRAC_PI_2;
+                dist = 45.0;
+                pitch = 0.25;
+            }
+            _ => {}
+        }
+    }
     let background = [0.384, 0.705, 1.0, 1.0];
     let (desc, uploads) = {
         let mut cache = world.resource_mut::<SceneCache>();
@@ -664,6 +682,44 @@ pub fn frame_for(
         },
         ..Default::default()
     };
+    if std::env::var("DD_TRACE_SCENE").is_ok() {
+        let bad = groups
+            .iter()
+            .filter(|g| {
+                g.positions
+                    .iter()
+                    .any(|p| !p[0].is_finite() || !p[1].is_finite() || !p[2].is_finite())
+            })
+            .count();
+        let bounds = groups.iter().filter_map(|g| g.bounds()).fold(
+            None::<([f32; 3], [f32; 3])>,
+            |acc, (min, max)| {
+                Some(match acc {
+                    None => (min, max),
+                    Some((amin, amax)) => (
+                        [
+                            amin[0].min(min[0]),
+                            amin[1].min(min[1]),
+                            amin[2].min(min[2]),
+                        ],
+                        [
+                            amax[0].max(max[0]),
+                            amax[1].max(max[1]),
+                            amax[2].max(max[2]),
+                        ],
+                    ),
+                })
+            },
+        );
+        let tris: usize = groups.iter().map(|g| g.tri_count()).sum();
+        eprintln!(
+            "scene-bounds groups={} tris={} bad={} bounds={:?}",
+            groups.len(),
+            tris,
+            bad,
+            bounds
+        );
+    }
     if std::env::var("DD_TRACE_CAMERA").is_ok() {
         let eye = frame.cam.eye();
         let fwd = frame.cam.forward();
@@ -685,6 +741,32 @@ pub fn frame_for(
             player.pos.z,
             player.yaw
         );
+    }
+    if let Ok(keep) = std::env::var("DD_DEBUG_KEEP") {
+        // Isolation aid: render one slice of the scene.
+        groups.retain(|g| match keep.as_str() {
+            "untextured" => g.uvs.is_empty(),
+            "textured" => !g.uvs.is_empty(),
+            _ => true,
+        });
+    }
+    if let Ok(n) = std::env::var("DD_DEBUG_FIRST")
+        && let Ok(n) = n.parse::<usize>()
+    {
+        groups.truncate(n);
+    }
+    if std::env::var("DD_DEBUG_CUBE").is_ok() {
+        // Isolation aid: one hand-built box at the camera target. If this shows,
+        // the pipeline works and the scene art is at fault, and vice versa.
+        let mut m = MeshGroup::default();
+        push_box(
+            &mut m,
+            frame.cam.target,
+            vec3(1.5, 1.5, 1.5),
+            [0.9, 0.15, 0.15],
+        );
+        groups.clear();
+        groups.push(m);
     }
     for g in groups {
         if !g.is_empty() {
@@ -721,11 +803,14 @@ fn camera_for(
     let speed = car.speed();
     match mode {
         CameraMode::Chase => {
-            let lead = 6.0 + speed * 0.22;
-            let target = car.pos + car.forward() * lead + vec3(0.0, 1.9, 0.0);
+            // The eye sits `dist` behind the point the camera looks at, so the
+            // look-ahead must stay well under `dist` or the eye overtakes the car
+            // and the car drops behind the camera.
+            let lead = 1.5 + speed * 0.02;
+            let target = car.pos + car.forward() * lead + vec3(0.0, 1.5, 0.0);
             let portrait = viewport_px[1] > viewport_px[0];
-            let dist = if portrait { 13.0 } else { 11.0 } + speed * 0.04;
-            (target, behind_yaw(car.yaw), dist, 0.26)
+            let dist = if portrait { 12.5 } else { 10.5 } + speed * 0.06;
+            (target, behind_yaw(car.yaw), dist, 0.23)
         }
         CameraMode::Cockpit => {
             let target = car.pos + car.forward() * 3.0 + vec3(0.0, 1.35, 0.0);

@@ -226,9 +226,10 @@ pub fn compose(ui: &SharedUi, s: f32, vp: [f32; 2]) -> View {
         return Spacer();
     }
     let steer = handle.borrow().steer;
-    let mut layers: Vec<View> = Vec::new();
-    layers.push(wheel_zone(&handle, ui, s, vp, steer));
-    layers.push(pedal_row(&handle, ui, s, vp));
+    let layers: Vec<View> = vec![
+        wheel_zone(&handle, ui, s, vp, steer),
+        pedal_row(&handle, ui, s, vp),
+    ];
     let mut stack = repose_ui::ZStack(Modifier::new().fill_max_size());
     stack = stack.child(layers);
     stack

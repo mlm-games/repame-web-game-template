@@ -504,21 +504,10 @@ pub fn compose_root(ui: &SharedUi, sink: Sink) -> View {
     } else {
         Spacer()
     };
-    ZStack(
-        Modifier::new()
-            .fill_max_size()
-            .background(Color(0x0A, 0x11, 0x1B, 0xFF)),
-    )
-    .child((background, scrim(), base, overlay))
-}
-
-fn scrim() -> View {
-    RBox(
-        Modifier::new()
-            .fill_max_size()
-            .background(Color(0x00, 0x00, 0x00, 0x66)),
-    )
-    .child(Spacer())
+    // No opaque sheet and no global scrim here: the 3D viewport is drawn under
+    // this layer and has to stay visible. Readability comes from the panels'
+    // own translucent backgrounds.
+    ZStack(Modifier::new().fill_max_size()).child((background, base, overlay))
 }
 
 fn garage(ui: &SharedUi, s: f32, vp: [f32; 2], sink: &Sink) -> View {

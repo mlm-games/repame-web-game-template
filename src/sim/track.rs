@@ -129,12 +129,13 @@ impl Track {
         Self::height_at_track(s, self.length, self.drop)
     }
 
-    /// Road centre in world space at a distance along the track.
+    /// Road centre in world space at a distance along the track: the track runs
+    /// along +z, so `s` is the z coordinate.
     pub fn centre(&self, s: f32) -> Vec3 {
         Vec3::new(
             Self::curve_lookup(&self.curve, self.curve_step, s),
             self.height(s),
-            0.0,
+            s,
         )
     }
 
