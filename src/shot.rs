@@ -99,6 +99,94 @@ impl App {
             let out = runtime.compose_frame_output(&mut root, &ctx);
             apply_render_commands(gpu.renderer_mut(), ctx.drain()).log_failures();
             let rgba = gpu.render_rgba(&out.scene, Some([0.05, 0.06, 0.08, 1.0]))?;
+            if std::env::var("DD_AUDIT").is_ok() {
+                // A run of the game that names its own anomalies, so a video hunt
+                // does not depend on anyone squinting at thumbnails. Every check is
+                // one this port has actually broken at some point.
+                if let Some(session) = self.sim.world.get_resource::<crate::sim::race::Session>() {
+                    let mut notes: Vec<String> = Vec::new();
+                    let racing = matches!(
+                        session.phase,
+                        crate::sim::race::Phase::Countdown | crate::sim::race::Phase::Racing
+                    );
+                    // 1. Sky where the ground should be: a surface wound the wrong
+                    //    way is culled and leaves the clear colour showing.
+                    let sky = pixel_share(&rgba, request.width, request.height, |px| {
+                        px[2] as i32 > px[0] as i32 + 14 && px[2] as i32 > px[1] as i32 + 8
+                    });
+                    let lower_sky =
+                        region_sky_share(&rgba, request.width, request.height, 0.55, 1.0);
+                    // 2. The car must be in frame while racing.
+                    let car_visible = car_on_screen(self, request);
+                    // 3. The car must be on the road, not under or over it.
+                    let car = session.player.clone();
+                    let height_ok = self
+                        .sim
+                        .world
+                        .get_resource::<crate::sim::race::TrackWorld>()
+                        .map(|world| {
+                            let ground =
+                                world.track.height(car.pos.z.clamp(0.0, world.track.length));
+                            (car.pos.y - ground).abs() < 3.0
+                        })
+                        .unwrap_or(true);
+                    // 4. An obstacle's corridor: its lateral offset must be on the
+                    //    road, or the road has a hazard nobody can reach.
+                    let stray_obstacles = self
+                        .sim
+                        .world
+                        .get_resource::<crate::sim::race::TrackWorld>()
+                        .map(|world| {
+                            world
+                                .obstacles
+                                .iter()
+                                .filter(|ob| {
+                                    // `lateral` is the offset from the centre line.
+                                    ob.lateral.abs() > world.track.half_width + 1.0
+                                })
+                                .count()
+                        })
+                        .unwrap_or(0);
+                    if racing && !car_visible {
+                        notes.push("car not on screen".into());
+                    }
+                    if racing && !height_ok {
+                        let ground = self
+                            .sim
+                            .world
+                            .get_resource::<crate::sim::race::TrackWorld>()
+                            .map(|world| {
+                                world.track.height(car.pos.z.clamp(0.0, world.track.length))
+                            })
+                            .unwrap_or(0.0);
+                        notes.push(format!(
+                            "car {:.1}m above the road (y {:.1}, road {:.1})",
+                            car.pos.y - ground,
+                            car.pos.y,
+                            ground
+                        ));
+                    }
+                    if lower_sky > 0.35 {
+                        notes.push(format!("{:.0}% sky below the horizon", lower_sky * 100.0));
+                    }
+                    if sky > 0.97 {
+                        notes.push("frame is almost entirely sky".into());
+                    }
+                    if stray_obstacles > 0 {
+                        notes.push(format!("{stray_obstacles} obstacles off the road"));
+                    }
+                    if !notes.is_empty() && frame % 15 == 0 {
+                        eprintln!(
+                            "audit f{frame} level={} phase={:?} s={:.0}m v={:.0}km/h: {}",
+                            session.level,
+                            session.phase,
+                            car.pos.z,
+                            car.speed() * 3.6,
+                            notes.join("; ")
+                        );
+                    }
+                }
+            }
             if std::env::var("DD_TRACE_CAR").is_ok() && frame % 30 == 0 {
                 // Is the player's car actually painted into the frame? Count the
                 // pixels that carry paint (warm, red-dominant) anywhere in view.
@@ -134,4 +222,56 @@ impl App {
         }
         Ok(())
     }
+}
+
+/// Share of pixels matching a predicate.
+fn pixel_share(rgba: &[u8], width: u32, height: u32, predicate: impl Fn([u8; 4]) -> bool) -> f64 {
+    let mut hits = 0usize;
+    let mut total = 0usize;
+    for (index, px) in rgba.chunks_exact(4).enumerate() {
+        let y = index as u32 / width.max(1);
+        if y >= height {
+            continue;
+        }
+        total += 1;
+        if predicate([px[0], px[1], px[2], px[3]]) {
+            hits += 1;
+        }
+    }
+    hits as f64 / total.max(1) as f64
+}
+
+/// Sky share of a vertical band of the frame, as fractions of the height.
+fn region_sky_share(rgba: &[u8], width: u32, height: u32, from: f32, to: f32) -> f64 {
+    let y0 = (from * height as f32) as usize;
+    let y1 = (to * height as f32) as usize;
+    let stride = width as usize * 4;
+    let mut hits = 0usize;
+    let mut total = 0usize;
+    for y in y0..y1.min(height as usize) {
+        for x in 0..width as usize {
+            let i = y * stride + x * 4;
+            let (r, g, b) = (rgba[i] as i32, rgba[i + 1] as i32, rgba[i + 2] as i32);
+            total += 1;
+            if b > r + 14 && b > g + 8 {
+                hits += 1;
+            }
+        }
+    }
+    hits as f64 / total.max(1) as f64
+}
+
+/// Is the player's car anywhere in the frame?
+fn car_on_screen(app: &App, request: &CaptureRequest) -> bool {
+    let session = match app.sim.world.get_resource::<crate::sim::race::Session>() {
+        Some(session) => session,
+        None => return true,
+    };
+    let aspect = request.width as f32 / request.height.max(1) as f32;
+    let _ = aspect;
+    let Some(camera) = app.sim.world.get_resource::<crate::scene::FrameCamera>() else {
+        return true;
+    };
+    let clip = camera.view_proj * (session.player.pos + glam::Vec3::new(0.0, 1.0, 0.0)).extend(1.0);
+    clip.w > 1e-4
 }

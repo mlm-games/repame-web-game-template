@@ -768,6 +768,11 @@ pub fn frame_for(
         },
         ..Default::default()
     };
+    world.insert_resource(FrameCamera {
+        view_proj: frame
+            .cam
+            .view_proj(viewport_px[0].max(1.0) / viewport_px[1].max(1.0)),
+    });
     if std::env::var("DD_TRACE_FLOATERS").is_ok() {
         // Anything whose lowest vertex is well above the road at its own z is
         // floating, which reads in motion as debris in the sky.
@@ -955,6 +960,13 @@ pub fn frame_for(
 pub enum CameraMode {
     Chase,
     Cockpit,
+}
+
+/// The camera the last frame was rendered with, so a diagnostic can project
+/// world points exactly as the frame did.
+#[derive(bevy_ecs::prelude::Resource, Clone, Copy, Debug)]
+pub struct FrameCamera {
+    pub view_proj: glam::Mat4,
 }
 
 /// How far down the track the camera aims, in metres. Short enough that the car

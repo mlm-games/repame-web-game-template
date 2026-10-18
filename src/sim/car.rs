@@ -11,6 +11,10 @@ use crate::sim::data::{Car, friction_at};
 use crate::sim::track::Track;
 
 pub const GRAVITY: f32 = -9.81;
+
+/// How far above the road a car is pulled back onto it, in metres. Larger than a
+/// kerb, smaller than a jump: hops clear it, a descent does not.
+pub const GROUND_STICK: f32 = 2.5;
 pub const MAX_CATCHUP: f32 = 8.0;
 
 /// `SteerConfig.ABS` is 1.0 on the shipped car prefabs (read out of each car's
@@ -364,6 +368,18 @@ impl CarSim {
             }
         }
         self.pos += self.vel * dt;
+        // Arcade ground stick. On a steep descent the road falls away faster than
+        // gravity can pull the car down — at 180 km/h on a 20% grade the surface
+        // drops 10 m/s while the car's fall starts from zero — so a car left to
+        // ballistics floats metres above the road. Anything close to the surface
+        // and not already climbing is planted on it.
+        if self.vel.y <= 0.0
+            && let Some(h) = track.surface(self.pos.x, self.pos.z)
+            && self.pos.y - h <= GROUND_STICK
+        {
+            self.pos.y = h;
+            self.vel.y = 0.0;
+        }
         self.distance = self.pos.z.max(self.distance);
 
         // ---- wheel spin + ground effects
