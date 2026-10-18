@@ -294,11 +294,14 @@ pub fn sync_shared_ui(world: &mut World, ui: &mut SharedUi, ctx: &RenderContext)
                 2000.0 * crate::sim::car::Upgrades::durability_level(state.durability);
         }
     }
+    // The screen is read outside the session block: the garage and the map screen
+    // are shown before any level is loaded, so there is no session to read from.
+    ui.phase = world
+        .get_resource::<crate::sim::race::Screen>()
+        .map(|screen| screen.0)
+        .or_else(|| world.get_resource::<Session>().map(|session| session.phase))
+        .unwrap_or(Phase::Garage);
     if let Some(session) = world.get_resource::<Session>() {
-        ui.phase = world
-            .get_resource::<crate::sim::race::Screen>()
-            .map(|screen| screen.0)
-            .unwrap_or(session.phase);
         ui.level = session.level;
         ui.car = session.car;
         ui.time = session.time;

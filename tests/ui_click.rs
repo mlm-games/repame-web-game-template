@@ -162,3 +162,85 @@ fn starting_a_level_puts_the_screen_into_its_countdown() {
     assert_eq!(session_phase, Phase::Countdown);
     assert_eq!(screen, session_phase, "the screen follows the new session");
 }
+
+#[test]
+fn clicking_race_lands_on_the_map_screen_at_the_next_frame() {
+    // The whole journey the player takes: a click on RACE, the action drained into
+    // an intent, the sim applying it, and the next frame showing map select.
+    let (mut sim, ctx, geom, mut ui) = boot();
+    let sink: Sink = Arc::new(Mutex::new(Vec::new()));
+
+    let view = app_frame(&mut sim, &ctx, &geom, &ui, sink.clone());
+    let (hits, sems) = layout(&view);
+    let race = sems
+        .iter()
+        .find(|node| node.label.as_deref() == Some("RACE"))
+        .expect("the garage labels its RACE button");
+    topmost(&hits, centre_of(race.rect))
+        .expect("something is under RACE")
+        .on_click
+        .as_ref()
+        .expect("RACE carries a click")();
+
+    for action in sink.lock().unwrap().drain(..) {
+        match action {
+            UiAction::ToMapSelect => sim
+                .world
+                .resource_mut::<Intents>()
+                .0
+                .push(Intent::ToMapSelect),
+            other => panic!("RACE only asks for the map screen, got {other:?}"),
+        }
+    }
+    apply_intents(&mut sim.world);
+    let mut schedule = deadly_descent::sim::build_schedule();
+    sim.step_with(std::time::Duration::from_millis(16), |world| {
+        schedule.run(world);
+    });
+    ui::sync_shared_ui(&mut sim.world, &mut ui, &ctx);
+    assert_eq!(ui.phase, Phase::MapSelect, "the click leaves the garage");
+
+    let view = app_frame(&mut sim, &ctx, &geom, &ui, sink.clone());
+    let (_hits, sems) = layout(&view);
+    assert!(
+        sems.iter()
+            .any(|node| node.label.as_deref() == Some("SELECT LOCATION")),
+        "the map screen is the one on screen now"
+    );
+}
+
+#[test]
+fn the_touch_pad_is_reachable_during_a_race() {
+    // The wheel and the four buttons only exist while racing; if the pad is never
+    // composed, nothing on screen can be dragged or pressed.
+    let (mut sim, ctx, geom, mut ui) = boot();
+    sim.world
+        .resource_mut::<Intents>()
+        .0
+        .push(Intent::StartLevel(0));
+    apply_intents(&mut sim.world);
+    let mut schedule = deadly_descent::sim::build_schedule();
+    for _ in 0..4 {
+        sim.step_with(std::time::Duration::from_millis(16), |world| {
+            schedule.run(world);
+        });
+    }
+    ui::sync_shared_ui(&mut sim.world, &mut ui, &ctx);
+    assert!(
+        matches!(ui.phase, Phase::Countdown | Phase::Racing),
+        "the level is running, not the garage: {:?}",
+        ui.phase
+    );
+
+    let sink: Sink = Arc::new(Mutex::new(Vec::new()));
+    let view = app_frame(&mut sim, &ctx, &geom, &ui, sink);
+    let (hits, _sems) = layout(&view);
+    let pads = hits
+        .iter()
+        .filter(|hit| hit.on_pointer_down.is_some() && !hit.disabled)
+        .count();
+    assert!(
+        pads >= 5,
+        "the wheel and four buttons take pointers during a race, found {pads}"
+    );
+}

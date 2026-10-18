@@ -280,7 +280,6 @@ fn wheel_zone(handle: &TouchHandle, ui: &SharedUi, s: f32, vp: [f32; 2], steer: 
         .size(Dp(WHEEL_BOX * s), Dp(WHEEL_BOX * s))
         .align_items(AlignItems::CENTER)
         .justify_content(JustifyContent::CENTER)
-        .hit_passthrough()
         .on_pointer_down(move |e: PointerEvent| {
             let mut touch = down.borrow_mut();
             if touch.wheel_owner.is_some() {
@@ -323,7 +322,6 @@ fn pedal_row(handle: &TouchHandle, ui: &SharedUi, s: f32, vp: [f32; 2]) -> View 
                 .size(Dp(BUTTON_BOX * s), Dp(BUTTON_BOX * s))
                 .align_items(AlignItems::CENTER)
                 .justify_content(JustifyContent::CENTER)
-                .hit_passthrough()
                 .on_pointer_down({
                     let handle = handle.clone();
                     move |e: PointerEvent| {
