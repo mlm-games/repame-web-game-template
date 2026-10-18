@@ -295,7 +295,10 @@ pub fn sync_shared_ui(world: &mut World, ui: &mut SharedUi, ctx: &RenderContext)
         }
     }
     if let Some(session) = world.get_resource::<Session>() {
-        ui.phase = session.phase;
+        ui.phase = world
+            .get_resource::<crate::sim::race::Screen>()
+            .map(|screen| screen.0)
+            .unwrap_or(session.phase);
         ui.level = session.level;
         ui.car = session.car;
         ui.time = session.time;
@@ -504,10 +507,12 @@ pub fn compose_root(ui: &SharedUi, sink: Sink) -> View {
     } else {
         Spacer()
     };
+    // The on-screen pad only draws in a race; outside one it is a `Spacer`.
+    let pads = touch::compose(ui, s, vp);
     // No opaque sheet and no global scrim here: the 3D viewport is drawn under
     // this layer and has to stay visible. Readability comes from the panels'
     // own translucent backgrounds.
-    ZStack(Modifier::new().fill_max_size()).child((background, base, overlay))
+    ZStack(Modifier::new().fill_max_size()).child((background, base, pads, overlay))
 }
 
 fn garage(ui: &SharedUi, s: f32, vp: [f32; 2], sink: &Sink) -> View {

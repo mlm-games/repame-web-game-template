@@ -193,6 +193,9 @@ impl App {
             .update(&mut self.sim.world, dt.as_secs_f32(), true);
         if !self.platform.suspends_gameplay() {
             for action in drain_actions(&mut self.sim.world) {
+                if std::env::var("DD_TRACE_UI").is_ok() {
+                    eprintln!("ui action {action:?}");
+                }
                 self.apply_action(action);
             }
             crate::sim::apply_intents(&mut self.sim.world);

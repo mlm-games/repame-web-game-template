@@ -64,17 +64,22 @@ pub fn apply_intents(world: &mut World) {
                     Some(session)
                 });
                 if let Some(session) = started {
+                    let phase = session.phase;
                     world.insert_resource(session);
+                    set_phase(world, phase);
                 }
             }
             Intent::SelectLevel(index) => {
-                world.resource_scope(|world, progress: Mut<Progress>| {
+                let phase = world.resource_scope(|world, progress: Mut<Progress>| {
                     let car = progress.selected_car();
                     let session = Session::new(index, car, &progress);
+                    let phase = session.phase;
                     let level = data::level_at(index);
                     world.insert_resource(TrackWorld::load(&level));
                     world.insert_resource(session);
+                    phase
                 });
+                set_phase(world, phase);
             }
             Intent::SelectCar(index) => {
                 if let Some(mut progress) = world.get_resource_mut::<Progress>() {
@@ -120,7 +125,10 @@ pub fn apply_intents(world: &mut World) {
     }
 }
 
-fn set_phase(world: &mut World, phase: Phase) {
+pub(crate) fn set_phase(world: &mut World, phase: Phase) {
+    if let Some(mut screen) = world.get_resource_mut::<race::Screen>() {
+        screen.0 = phase;
+    }
     if let Some(mut session) = world.get_resource_mut::<Session>() {
         session.phase = phase;
     }
@@ -134,12 +142,15 @@ fn restart(world: &mut World) {
         return;
     };
     let (level, car) = (session.level, session.car);
-    world.resource_scope(|world, progress: Mut<Progress>| {
+    let phase = world.resource_scope(|world, progress: Mut<Progress>| {
         let new_session = Session::new(level, car, &progress);
+        let phase = new_session.phase;
         let level_data = data::level_at(level);
         world.insert_resource(TrackWorld::load(&level_data));
         world.insert_resource(new_session);
+        phase
     });
+    set_phase(world, phase);
 }
 
 /// Record finished/failed runs into the save exactly once.
@@ -195,6 +206,7 @@ pub fn build_schedule() -> Schedule {
 
 pub fn subscribe(world: &mut World) {
     world.init_resource::<Intents>();
+    world.init_resource::<race::Screen>();
     world.init_resource::<Controls>();
     world.init_resource::<race::CueQueue>();
     // The platform host drives ads, audio policy and cloud saves through this

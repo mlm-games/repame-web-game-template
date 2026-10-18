@@ -27,6 +27,17 @@ pub enum Phase {
     Failed,
 }
 
+/// Which screen the game is on. Its own resource because the garage and the map
+/// screen exist before any level has been chosen, so there is no `Session` yet.
+#[derive(bevy_ecs::prelude::Resource, Clone, Copy, Debug, PartialEq, Eq)]
+pub struct Screen(pub Phase);
+
+impl Default for Screen {
+    fn default() -> Self {
+        Screen(Phase::Garage)
+    }
+}
+
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub struct Results {
     pub finish_time: f32,
@@ -226,16 +237,19 @@ pub fn step_world(world: &mut World) {
     // Finish and failure
     if session.player.destroyed && session.phase == Phase::Racing {
         session.phase = Phase::Failed;
+        crate::sim::set_phase(world, Phase::Failed);
         cues.0 = Some(Cue::Fail);
         let results = build_results(&session, &track_world, false);
         session.results = Some(results);
     } else if session.player.pos.z >= track_world.track.finish && session.phase == Phase::Racing {
         let passes = cp_count == 0 || session.checkpoints.iter().all(|c| *c);
-        session.phase = if passes {
+        let phase = if passes {
             Phase::Finished
         } else {
             Phase::Failed
         };
+        session.phase = phase;
+        crate::sim::set_phase(world, phase);
         cues.0 = Some(if passes { Cue::Finish } else { Cue::Fail });
         let results = build_results(&session, &track_world, passes);
         session.results = Some(results);
@@ -263,6 +277,7 @@ pub fn countdown_system(world: &mut World) {
     let after = session.countdown.ceil();
     if session.countdown <= 0.0 {
         session.phase = Phase::Racing;
+        crate::sim::set_phase(world, Phase::Racing);
         cues.0 = Some(Cue::Go);
     } else if before != after {
         cues.0 = Some(Cue::Countdown);
