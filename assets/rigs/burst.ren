@@ -180,31 +180,31 @@ RenFile(
                         base: VectorPath(
                             anchors: [
                                 Anchor(
-                                    pos: DVec2(3.5, 47.5),
-                                    tan_in: DVec2(0.0, 24.301002502441406),
-                                    tan_out: DVec2(0.0, -24.301000595092773),
+                                    pos: DVec2(78.61269837220809, 16.38730162779191),
+                                    tan_in: DVec2(-17.183255, -17.183255),
+                                    tan_out: DVec2(17.183255, 17.183255),
                                     mode: Smooth,
                                 ),
                                 Anchor(
-                                    pos: DVec2(47.5, 3.5),
-                                    tan_in: DVec2(-24.301000595092773, 0.0),
-                                    tan_out: DVec2(24.301002502441406, 0.0),
+                                    pos: DVec2(78.61269837220809, 78.61269837220809),
+                                    tan_in: DVec2(17.183255, -17.183255),
+                                    tan_out: DVec2(-17.183255, 17.183255),
                                     mode: Smooth,
                                 ),
                                 Anchor(
-                                    pos: DVec2(91.5, 47.5),
-                                    tan_in: DVec2(0.0, -24.301000595092773),
-                                    tan_out: DVec2(0.0, 24.301002502441406),
+                                    pos: DVec2(16.38730162779191, 78.61269837220809),
+                                    tan_in: DVec2(17.183255, 17.183255),
+                                    tan_out: DVec2(-17.183255, -17.183255),
                                     mode: Smooth,
                                 ),
                                 Anchor(
-                                    pos: DVec2(47.5, 91.5),
-                                    tan_in: DVec2(24.301002502441406, 0.0),
-                                    tan_out: DVec2(-24.301000595092773, 0.0),
+                                    pos: DVec2(16.38730162779191, 16.38730162779191),
+                                    tan_in: DVec2(-17.183255, 17.183255),
+                                    tan_out: DVec2(17.183255, -17.183255),
                                     mode: Smooth,
                                 ),
-                            ],
-                            closed: true,
+                                ],
+                                closed: false,
                         ),
                         keyframes: [],
                     ))),
@@ -274,7 +274,38 @@ RenFile(
                             base: 10.0,
                             keyframes: [],
                         ),
-                        profile: None,
+                        profile: Some(StrokeProfile(points: [
+                        WidthPoint(
+                            at: Animated(
+                                base: 0.0,
+                                keyframes: [],
+                            ),
+                            scale: Animated(
+                                base: 0.45,
+                                keyframes: [],
+                            ),
+                        ),
+                        WidthPoint(
+                            at: Animated(
+                                base: 0.5,
+                                keyframes: [],
+                            ),
+                            scale: Animated(
+                                base: 1.0,
+                                keyframes: [],
+                            ),
+                        ),
+                        WidthPoint(
+                            at: Animated(
+                                base: 1.0,
+                                keyframes: [],
+                            ),
+                            scale: Animated(
+                                base: 0.45,
+                                keyframes: [],
+                            ),
+                        ),
+                        ])),
                     )),
                 )),
                 version: 1,

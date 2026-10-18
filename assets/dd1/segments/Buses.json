@@ -1,0 +1,12604 @@
+{
+ "scene": "level15",
+ "props": [
+  {
+   "name": "Circle.001 (2)",
+   "pos": [
+    0.0,
+    2.5,
+    -106.2
+   ],
+   "rot": [
+    -0.18301,
+    -0.68301,
+    0.18301,
+    0.68301
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": [
+    {
+     "kind": "MeshCollider",
+     "center": null,
+     "size": null,
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "MainPath",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [
+    "PG.AIPath"
+   ],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "Circle (1)",
+   "pos": [
+    -26.1908,
+    -6.8953,
+    -112.74
+   ],
+   "rot": [
+    0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": [
+    {
+     "kind": "MeshCollider",
+     "center": null,
+     "size": null,
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "canards",
+   "pos": [
+    -0.0,
+    0.4087,
+    1.6901
+   ],
+   "rot": [
+    0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "BoostSource",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "Caliper RR ",
+   "pos": [
+    0.828,
+    0.325,
+    -1.418
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "Right Leg",
+   "pos": [
+    0.0,
+    0.0184,
+    0.0
+   ],
+   "rot": [
+    0.00181,
+    0.04091,
+    0.29952,
+    0.95321
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": [
+    {
+     "kind": "CapsuleCollider",
+     "center": [
+      0.0,
+      0.0152,
+      0.0
+     ],
+     "size": null,
+     "radius": 0.0035,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "skidplate",
+   "pos": [
+    0.0,
+    0.4837,
+    2.5907
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "_Collider",
+   "pos": [
+    0.0,
+    0.774,
+    2.6395
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": [
+    {
+     "kind": "MeshCollider",
+     "center": null,
+     "size": null,
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "Spine 2",
+   "pos": [
+    0.0,
+    0.0075,
+    -0.0
+   ],
+   "rot": [
+    0.15597,
+    7e-05,
+    0.00037,
+    0.98776
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": [
+    {
+     "kind": "BoxCollider",
+     "center": [
+      -0.0,
+      0.0071,
+      -0.001
+     ],
+     "size": [
+      0.0199,
+      0.0142,
+      0.012
+     ],
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "Left Thigh",
+   "pos": [
+    -0.0043,
+    -0.0018,
+    0.0002
+   ],
+   "rot": [
+    0.53384,
+    0.39492,
+    0.57458,
+    0.47845
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": [
+    {
+     "kind": "CapsuleCollider",
+     "center": [
+      0.0,
+      0.0092,
+      0.0
+     ],
+     "size": null,
+     "radius": 0.0045,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "Right Forearm",
+   "pos": [
+    0.0,
+    0.0126,
+    0.0
+   ],
+   "rot": [
+    0.4494,
+    -0.60126,
+    0.13955,
+    0.64579
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": [
+    {
+     "kind": "CapsuleCollider",
+     "center": [
+      0.0,
+      0.0122,
+      0.0
+     ],
+     "size": null,
+     "radius": 0.003,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "WindSource",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "Right Arm",
+   "pos": [
+    0.0,
+    0.0101,
+    0.0
+   ],
+   "rot": [
+    0.56564,
+    0.28873,
+    -0.27592,
+    0.7215
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": [
+    {
+     "kind": "CapsuleCollider",
+     "center": [
+      0.0,
+      0.0063,
+      0.0
+     ],
+     "size": null,
+     "radius": 0.0032,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "Light-reverse",
+   "pos": [
+    -0.0,
+    0.7129,
+    -1.8782
+   ],
+   "rot": [
+    0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "body",
+   "pos": [
+    0.0,
+    0.115,
+    0.0048
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "interior",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "TurboSource",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "RR",
+   "pos": [
+    0.81,
+    0.348,
+    -1.195
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "Hips",
+   "pos": [
+    0.0,
+    -0.0002,
+    0.0575
+   ],
+   "rot": [
+    0.98195,
+    -0.0035,
+    0.00074,
+    0.1891
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": [
+    {
+     "kind": "BoxCollider",
+     "center": [
+      0.0002,
+      0.0063,
+      -0.0026
+     ],
+     "size": [
+      0.0199,
+      0.0163,
+      0.01
+     ],
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "1_Collider",
+   "pos": [
+    0.0,
+    0.1689,
+    0.0137
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": [
+    {
+     "kind": "MeshCollider",
+     "center": null,
+     "size": null,
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "Left Leg",
+   "pos": [
+    -0.0,
+    0.0184,
+    0.0
+   ],
+   "rot": [
+    0.00871,
+    -0.03426,
+    0.2994,
+    0.95347
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": [
+    {
+     "kind": "CapsuleCollider",
+     "center": [
+      0.0,
+      0.0152,
+      0.0
+     ],
+     "size": null,
+     "radius": 0.0035,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "Caliper FL",
+   "pos": [
+    -0.8351,
+    0.3369,
+    1.3568
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "WheelsGroundSource",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "EngineSource",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "dial rpm",
+   "pos": [
+    -0.3241,
+    0.862,
+    0.4854
+   ],
+   "rot": [
+    0.0,
+    -0.0,
+    -0.14781,
+    0.98902
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "Signal_right",
+   "pos": [
+    -0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "OtherSource",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "FrictionSource",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "_Collider",
+   "pos": [
+    0.0,
+    1.0096,
+    -1.9512
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": [
+    {
+     "kind": "MeshCollider",
+     "center": null,
+     "size": null,
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "RR",
+   "pos": [
+    0.714,
+    0.32,
+    -1.16
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "interior",
+   "pos": [
+    0.0,
+    0.2068,
+    -0.569
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "Caliper FR",
+   "pos": [
+    0.714,
+    0.32,
+    1.42
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "spoiler",
+   "pos": [
+    0.0,
+    0.9783,
+    -2.4769
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "Headlights",
+   "pos": [
+    -0.0,
+    0.5615,
+    2.0059
+   ],
+   "rot": [
+    0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "tire fr",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": [
+    {
+     "kind": "MeshCollider",
+     "center": null,
+     "size": null,
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "Caliper LF",
+   "pos": [
+    -0.81,
+    0.36,
+    1.402
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "_Collider",
+   "pos": [
+    -0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": [
+    {
+     "kind": "MeshCollider",
+     "center": null,
+     "size": null,
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "RR",
+   "pos": [
+    0.93,
+    0.4702,
+    -1.648
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "Tire RR",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": [
+    {
+     "kind": "MeshCollider",
+     "center": null,
+     "size": null,
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "WindSource",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "Left Leg",
+   "pos": [
+    -0.0,
+    0.0184,
+    0.0
+   ],
+   "rot": [
+    0.00871,
+    -0.03426,
+    0.2994,
+    0.95347
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": [
+    {
+     "kind": "CapsuleCollider",
+     "center": [
+      0.0,
+      0.0152,
+      0.0
+     ],
+     "size": null,
+     "radius": 0.0035,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "3_Collider",
+   "pos": [
+    0.0,
+    0.9047,
+    -1.9156
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": [
+    {
+     "kind": "MeshCollider",
+     "center": null,
+     "size": null,
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "Tire_RR",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": [
+    {
+     "kind": "MeshCollider",
+     "center": null,
+     "size": null,
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "Left Arm",
+   "pos": [
+    0.0,
+    0.0101,
+    -0.0
+   ],
+   "rot": [
+    -0.63879,
+    0.72143,
+    -0.26418,
+    0.04127
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": [
+    {
+     "kind": "CapsuleCollider",
+     "center": [
+      0.0,
+      0.0063,
+      0.0
+     ],
+     "size": null,
+     "radius": 0.0032,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "FrictionSource",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "Left Forearm",
+   "pos": [
+    -0.0,
+    0.0126,
+    -0.0
+   ],
+   "rot": [
+    0.23198,
+    0.83287,
+    -0.47164,
+    0.17341
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": [
+    {
+     "kind": "CapsuleCollider",
+     "center": [
+      0.0,
+      0.0122,
+      0.0
+     ],
+     "size": null,
+     "radius": 0.003,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "Head",
+   "pos": [
+    -0.0,
+    0.0042,
+    -0.0
+   ],
+   "rot": [
+    -0.228,
+    0.0,
+    0.0001,
+    0.97366
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": [
+    {
+     "kind": "SphereCollider",
+     "center": [
+      0.0,
+      0.005,
+      0.0
+     ],
+     "size": null,
+     "radius": 0.009,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "Caliper RR",
+   "pos": [
+    0.7934,
+    0.3466,
+    -1.5002
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "Caliper RR ",
+   "pos": [
+    0.803,
+    0.36,
+    -1.563
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "BoostSource",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "reverse light",
+   "pos": [
+    -0.0,
+    1.1658,
+    -2.6663
+   ],
+   "rot": [
+    0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "WheelsGroundSource",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "EngineSource",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "Tire LF",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": [
+    {
+     "kind": "MeshCollider",
+     "center": null,
+     "size": null,
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "Right Leg",
+   "pos": [
+    0.0,
+    0.0184,
+    0.0
+   ],
+   "rot": [
+    0.00181,
+    0.04091,
+    0.29952,
+    0.95321
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": [
+    {
+     "kind": "CapsuleCollider",
+     "center": [
+      0.0,
+      0.0152,
+      0.0
+     ],
+     "size": null,
+     "radius": 0.0035,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "Hips",
+   "pos": [
+    0.0,
+    -0.0002,
+    0.0575
+   ],
+   "rot": [
+    0.98195,
+    -0.0035,
+    0.00074,
+    0.1891
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": [
+    {
+     "kind": "BoxCollider",
+     "center": [
+      0.0002,
+      0.0063,
+      -0.0026
+     ],
+     "size": [
+      0.0199,
+      0.0163,
+      0.01
+     ],
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "Left Leg",
+   "pos": [
+    -0.0,
+    0.0184,
+    0.0
+   ],
+   "rot": [
+    0.00871,
+    -0.03426,
+    0.2994,
+    0.95347
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": [
+    {
+     "kind": "CapsuleCollider",
+     "center": [
+      0.0,
+      0.0152,
+      0.0
+     ],
+     "size": null,
+     "radius": 0.0035,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "Right Arm",
+   "pos": [
+    0.0,
+    0.0101,
+    0.0
+   ],
+   "rot": [
+    0.56564,
+    0.28873,
+    -0.27592,
+    0.7215
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": [
+    {
+     "kind": "CapsuleCollider",
+     "center": [
+      0.0,
+      0.0063,
+      0.0
+     ],
+     "size": null,
+     "radius": 0.0032,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "winch",
+   "pos": [
+    0.0,
+    0.8076,
+    2.9257
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "FR",
+   "pos": [
+    0.8351,
+    0.3369,
+    1.3568
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "Right Thigh",
+   "pos": [
+    0.0042,
+    -0.0019,
+    0.0002
+   ],
+   "rot": [
+    0.58896,
+    0.46578,
+    0.51879,
+    0.4087
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": [
+    {
+     "kind": "CapsuleCollider",
+     "center": [
+      0.0,
+      0.0092,
+      0.0
+     ],
+     "size": null,
+     "radius": 0.0045,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "Tire FR",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": [
+    {
+     "kind": "MeshCollider",
+     "center": null,
+     "size": null,
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "Caliper LF",
+   "pos": [
+    -0.814,
+    0.325,
+    1.232
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "FR",
+   "pos": [
+    0.714,
+    0.32,
+    1.42
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "WindSource",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "_Collider",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": [
+    {
+     "kind": "MeshCollider",
+     "center": null,
+     "size": null,
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "Cube.002",
+   "pos": [
+    0.0,
+    -1.5148,
+    42.4383
+   ],
+   "rot": [
+    0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    3.5355
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": [
+    {
+     "kind": "BoxCollider",
+     "center": [
+      0.0,
+      0.0,
+      0.0
+     ],
+     "size": [
+      65.275,
+      6.7087,
+      82.9451
+     ],
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "Light-daylight",
+   "pos": [
+    -0.0,
+    0.525,
+    1.8838
+   ],
+   "rot": [
+    0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "Caliper RR ",
+   "pos": [
+    0.93,
+    0.4702,
+    -1.648
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "TerrainPiece",
+   "pos": [
+    0.0,
+    0.165,
+    -0.8743
+   ],
+   "rot": [
+    0.01057,
+    -0.0,
+    -0.0,
+    0.99994
+   ],
+   "scale": [
+    9.5304,
+    9.5304,
+    9.5304
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": [
+    {
+     "kind": "MeshCollider",
+     "center": null,
+     "size": null,
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "TerrainPiece",
+   "pos": [
+    0.0,
+    0.165,
+    -0.8743
+   ],
+   "rot": [
+    0.01057,
+    -0.0,
+    -0.0,
+    0.99994
+   ],
+   "scale": [
+    9.5304,
+    9.5304,
+    9.5304
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": [
+    {
+     "kind": "MeshCollider",
+     "center": null,
+     "size": null,
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "TerrainPiece",
+   "pos": [
+    0.0,
+    0.165,
+    -0.8743
+   ],
+   "rot": [
+    0.01057,
+    -0.0,
+    -0.0,
+    0.99994
+   ],
+   "scale": [
+    9.5304,
+    9.5304,
+    9.5304
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": [
+    {
+     "kind": "MeshCollider",
+     "center": null,
+     "size": null,
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "TerrainPiece",
+   "pos": [
+    0.0,
+    0.165,
+    -0.8743
+   ],
+   "rot": [
+    0.01057,
+    -0.0,
+    -0.0,
+    0.99994
+   ],
+   "scale": [
+    9.5304,
+    9.5304,
+    9.5304
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": [
+    {
+     "kind": "MeshCollider",
+     "center": null,
+     "size": null,
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "TerrainPiece",
+   "pos": [
+    0.0,
+    0.165,
+    -0.8743
+   ],
+   "rot": [
+    0.01057,
+    -0.0,
+    -0.0,
+    0.99994
+   ],
+   "scale": [
+    9.5304,
+    9.5304,
+    9.5304
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": [
+    {
+     "kind": "MeshCollider",
+     "center": null,
+     "size": null,
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "TerrainPiece",
+   "pos": [
+    0.0,
+    0.165,
+    -0.8743
+   ],
+   "rot": [
+    0.01057,
+    -0.0,
+    -0.0,
+    0.99994
+   ],
+   "scale": [
+    9.5304,
+    9.5304,
+    9.5304
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": [
+    {
+     "kind": "MeshCollider",
+     "center": null,
+     "size": null,
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "TerrainPiece",
+   "pos": [
+    0.0,
+    0.165,
+    -0.8743
+   ],
+   "rot": [
+    0.01057,
+    -0.0,
+    -0.0,
+    0.99994
+   ],
+   "scale": [
+    9.5304,
+    9.5304,
+    9.5304
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": [
+    {
+     "kind": "MeshCollider",
+     "center": null,
+     "size": null,
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "TerrainPiece",
+   "pos": [
+    0.0,
+    0.165,
+    -0.8743
+   ],
+   "rot": [
+    0.01057,
+    -0.0,
+    -0.0,
+    0.99994
+   ],
+   "scale": [
+    9.5304,
+    9.5304,
+    9.5304
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": [
+    {
+     "kind": "MeshCollider",
+     "center": null,
+     "size": null,
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "TerrainPiece",
+   "pos": [
+    0.0,
+    0.165,
+    -0.8743
+   ],
+   "rot": [
+    0.01057,
+    -0.0,
+    -0.0,
+    0.99994
+   ],
+   "scale": [
+    9.5304,
+    9.5304,
+    9.5304
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": [
+    {
+     "kind": "MeshCollider",
+     "center": null,
+     "size": null,
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "TerrainPiece",
+   "pos": [
+    0.0,
+    0.165,
+    -0.8743
+   ],
+   "rot": [
+    0.01057,
+    -0.0,
+    -0.0,
+    0.99994
+   ],
+   "scale": [
+    9.5304,
+    9.5304,
+    9.5304
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": [
+    {
+     "kind": "MeshCollider",
+     "center": null,
+     "size": null,
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "TerrainPiece",
+   "pos": [
+    0.0,
+    0.165,
+    -0.8743
+   ],
+   "rot": [
+    0.01057,
+    -0.0,
+    -0.0,
+    0.99994
+   ],
+   "scale": [
+    9.5304,
+    9.5304,
+    9.5304
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": [
+    {
+     "kind": "MeshCollider",
+     "center": null,
+     "size": null,
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "TerrainPiece",
+   "pos": [
+    0.0,
+    0.165,
+    -0.8743
+   ],
+   "rot": [
+    0.01057,
+    -0.0,
+    -0.0,
+    0.99994
+   ],
+   "scale": [
+    9.5304,
+    9.5304,
+    9.5304
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": [
+    {
+     "kind": "MeshCollider",
+     "center": null,
+     "size": null,
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "TerrainPiece",
+   "pos": [
+    0.0,
+    0.165,
+    -0.8743
+   ],
+   "rot": [
+    0.01057,
+    -0.0,
+    -0.0,
+    0.99994
+   ],
+   "scale": [
+    9.5304,
+    9.5304,
+    9.5304
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": [
+    {
+     "kind": "MeshCollider",
+     "center": null,
+     "size": null,
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "TerrainPiece",
+   "pos": [
+    0.0,
+    0.165,
+    -0.8743
+   ],
+   "rot": [
+    0.01057,
+    -0.0,
+    -0.0,
+    0.99994
+   ],
+   "scale": [
+    9.5304,
+    9.5304,
+    9.5304
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": [
+    {
+     "kind": "MeshCollider",
+     "center": null,
+     "size": null,
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "TerrainPiece",
+   "pos": [
+    0.0,
+    0.165,
+    -0.8743
+   ],
+   "rot": [
+    0.01057,
+    -0.0,
+    -0.0,
+    0.99994
+   ],
+   "scale": [
+    9.5304,
+    9.5304,
+    9.5304
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": [
+    {
+     "kind": "MeshCollider",
+     "center": null,
+     "size": null,
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "TerrainPiece",
+   "pos": [
+    0.0,
+    0.165,
+    -0.8743
+   ],
+   "rot": [
+    0.01057,
+    -0.0,
+    -0.0,
+    0.99994
+   ],
+   "scale": [
+    9.5304,
+    9.5304,
+    9.5304
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": [
+    {
+     "kind": "MeshCollider",
+     "center": null,
+     "size": null,
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "Left Arm",
+   "pos": [
+    0.0,
+    0.0101,
+    -0.0
+   ],
+   "rot": [
+    -0.63879,
+    0.72143,
+    -0.26418,
+    0.04127
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": [
+    {
+     "kind": "CapsuleCollider",
+     "center": [
+      0.0,
+      0.0063,
+      0.0
+     ],
+     "size": null,
+     "radius": 0.0032,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "RaceController",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "Spine 2",
+   "pos": [
+    0.0,
+    0.0075,
+    -0.0
+   ],
+   "rot": [
+    0.15597,
+    7e-05,
+    0.00037,
+    0.98776
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": [
+    {
+     "kind": "BoxCollider",
+     "center": [
+      -0.0,
+      0.0071,
+      -0.001
+     ],
+     "size": [
+      0.0199,
+      0.0142,
+      0.012
+     ],
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "Left Thigh",
+   "pos": [
+    -0.0043,
+    -0.0018,
+    0.0002
+   ],
+   "rot": [
+    0.53384,
+    0.39492,
+    0.57458,
+    0.47845
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": [
+    {
+     "kind": "CapsuleCollider",
+     "center": [
+      0.0,
+      0.0092,
+      0.0
+     ],
+     "size": null,
+     "radius": 0.0045,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "Right Forearm",
+   "pos": [
+    0.0,
+    0.0126,
+    0.0
+   ],
+   "rot": [
+    0.4494,
+    -0.60126,
+    0.13955,
+    0.64579
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": [
+    {
+     "kind": "CapsuleCollider",
+     "center": [
+      0.0,
+      0.0122,
+      0.0
+     ],
+     "size": null,
+     "radius": 0.003,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "offroad lights top",
+   "pos": [
+    -0.0,
+    2.1702,
+    -0.9744
+   ],
+   "rot": [
+    0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "Bumper_Rear",
+   "pos": [
+    0.0,
+    0.7107,
+    -2.6954
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [
+    "PG.DetachableObject"
+   ],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "FL",
+   "pos": [
+    -0.81,
+    0.36,
+    1.402
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "Whl HD FL",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": [
+    {
+     "kind": "MeshCollider",
+     "center": null,
+     "size": null,
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "RR",
+   "pos": [
+    0.803,
+    0.36,
+    -1.563
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "side skirt",
+   "pos": [
+    -0.0,
+    0.2085,
+    -0.098
+   ],
+   "rot": [
+    0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "Right Arm",
+   "pos": [
+    0.0,
+    0.0101,
+    0.0
+   ],
+   "rot": [
+    0.56564,
+    0.28873,
+    -0.27592,
+    0.7215
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": [
+    {
+     "kind": "CapsuleCollider",
+     "center": [
+      0.0,
+      0.0063,
+      0.0
+     ],
+     "size": null,
+     "radius": 0.0032,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "aux lights",
+   "pos": [
+    -0.0,
+    0.9617,
+    2.6038
+   ],
+   "rot": [
+    0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "Tire LF",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": [
+    {
+     "kind": "MeshCollider",
+     "center": null,
+     "size": null,
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "Left Forearm",
+   "pos": [
+    -0.0,
+    0.0126,
+    -0.0
+   ],
+   "rot": [
+    0.23198,
+    0.83287,
+    -0.47164,
+    0.17341
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": [
+    {
+     "kind": "CapsuleCollider",
+     "center": [
+      0.0,
+      0.0122,
+      0.0
+     ],
+     "size": null,
+     "radius": 0.003,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "Head",
+   "pos": [
+    -0.0,
+    0.0042,
+    -0.0
+   ],
+   "rot": [
+    -0.228,
+    0.0,
+    0.0001,
+    0.97366
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": [
+    {
+     "kind": "SphereCollider",
+     "center": [
+      0.0,
+      0.005,
+      0.0
+     ],
+     "size": null,
+     "radius": 0.009,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "Quality",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "interior",
+   "pos": [
+    0.0,
+    0.2754,
+    -0.4387
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "Right Leg",
+   "pos": [
+    0.0,
+    0.0184,
+    0.0
+   ],
+   "rot": [
+    0.00181,
+    0.04091,
+    0.29952,
+    0.95321
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": [
+    {
+     "kind": "CapsuleCollider",
+     "center": [
+      0.0,
+      0.0152,
+      0.0
+     ],
+     "size": null,
+     "radius": 0.0035,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "BoostSource",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "RL",
+   "pos": [
+    -0.714,
+    0.32,
+    -1.16
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "Left Leg",
+   "pos": [
+    -0.0,
+    0.0184,
+    0.0
+   ],
+   "rot": [
+    0.00871,
+    -0.03426,
+    0.2994,
+    0.95347
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": [
+    {
+     "kind": "CapsuleCollider",
+     "center": [
+      0.0,
+      0.0152,
+      0.0
+     ],
+     "size": null,
+     "radius": 0.0035,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "_Collider",
+   "pos": [
+    0.0,
+    0.7365,
+    0.1274
+   ],
+   "rot": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": [
+    {
+     "kind": "MeshCollider",
+     "center": null,
+     "size": null,
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "body",
+   "pos": [
+    0.0,
+    0.0944,
+    0.161
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "Left Arm",
+   "pos": [
+    0.0,
+    0.0101,
+    -0.0
+   ],
+   "rot": [
+    -0.63879,
+    0.72143,
+    -0.26418,
+    0.04127
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": [
+    {
+     "kind": "CapsuleCollider",
+     "center": [
+      0.0,
+      0.0063,
+      0.0
+     ],
+     "size": null,
+     "radius": 0.0032,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "steering wheel",
+   "pos": [
+    -0.3509,
+    0.6629,
+    0.4857
+   ],
+   "rot": [
+    0.13917,
+    -0.0,
+    0.0,
+    0.99027
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": [
+    {
+     "kind": "BoxCollider",
+     "center": [
+      0.0,
+      -0.0,
+      -0.0278
+     ],
+     "size": [
+      0.3441,
+      0.3389,
+      0.0401
+     ],
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "RL",
+   "pos": [
+    -0.7934,
+    0.3466,
+    -1.5002
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "RR",
+   "pos": [
+    0.824,
+    0.3568,
+    -1.3454
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "wing",
+   "pos": [
+    0.0,
+    0.9726,
+    -1.9155
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "EngineSource",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "WheelsGroundSource",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "FrictionSource",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "Caliper RL ",
+   "pos": [
+    -0.828,
+    0.325,
+    -1.418
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "Caliper FR ",
+   "pos": [
+    0.932,
+    0.4702,
+    1.92
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "Reverse",
+   "pos": [
+    -0.0,
+    0.7935,
+    -2.0689
+   ],
+   "rot": [
+    0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "interior",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "spoiler",
+   "pos": [
+    -0.0,
+    0.8131,
+    -1.949
+   ],
+   "rot": [
+    0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "FrictionSource",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "Right Forearm",
+   "pos": [
+    0.0,
+    0.0126,
+    0.0
+   ],
+   "rot": [
+    0.4494,
+    -0.60126,
+    0.13955,
+    0.64579
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": [
+    {
+     "kind": "CapsuleCollider",
+     "center": [
+      0.0,
+      0.0122,
+      0.0
+     ],
+     "size": null,
+     "radius": 0.003,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "Right Leg",
+   "pos": [
+    0.0,
+    0.0184,
+    0.0
+   ],
+   "rot": [
+    0.00181,
+    0.04091,
+    0.29952,
+    0.95321
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": [
+    {
+     "kind": "CapsuleCollider",
+     "center": [
+      0.0,
+      0.0152,
+      0.0
+     ],
+     "size": null,
+     "radius": 0.0035,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "TurboSource",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "interior",
+   "pos": [
+    0.0,
+    0.2759,
+    -0.3841
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "OtherSource",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "Right Arm",
+   "pos": [
+    0.0,
+    0.0101,
+    0.0
+   ],
+   "rot": [
+    0.56564,
+    0.28873,
+    -0.27592,
+    0.7215
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": [
+    {
+     "kind": "CapsuleCollider",
+     "center": [
+      0.0,
+      0.0063,
+      0.0
+     ],
+     "size": null,
+     "radius": 0.0032,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "Tire FL",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": [
+    {
+     "kind": "MeshCollider",
+     "center": null,
+     "size": null,
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "Light-turn-right",
+   "pos": [
+    0.7304,
+    0.6759,
+    0.0404
+   ],
+   "rot": [
+    0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "dial_speed",
+   "pos": [
+    -0.3237,
+    0.7034,
+    0.8551
+   ],
+   "rot": [
+    0.11544,
+    -0.21261,
+    0.85271,
+    0.46299
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "Whl HD RR",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "roll cage",
+   "pos": [
+    0.0,
+    0.2762,
+    -0.6937
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "Whl HD FR",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": [
+    {
+     "kind": "MeshCollider",
+     "center": null,
+     "size": null,
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "Right Thigh",
+   "pos": [
+    0.0042,
+    -0.0019,
+    0.0002
+   ],
+   "rot": [
+    0.58896,
+    0.46578,
+    0.51879,
+    0.4087
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": [
+    {
+     "kind": "CapsuleCollider",
+     "center": [
+      0.0,
+      0.0092,
+      0.0
+     ],
+     "size": null,
+     "radius": 0.0045,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "Whl HD FL",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": [
+    {
+     "kind": "MeshCollider",
+     "center": null,
+     "size": null,
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "Left Arm",
+   "pos": [
+    0.0,
+    0.0101,
+    -0.0
+   ],
+   "rot": [
+    -0.63879,
+    0.72143,
+    -0.26418,
+    0.04127
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": [
+    {
+     "kind": "CapsuleCollider",
+     "center": [
+      0.0,
+      0.0063,
+      0.0
+     ],
+     "size": null,
+     "radius": 0.0032,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "WindSource",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "BoostSource",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "1_Collider",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": [
+    {
+     "kind": "MeshCollider",
+     "center": null,
+     "size": null,
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "TurboSource",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "GroundDetection",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "Caliper RL",
+   "pos": [
+    -0.714,
+    0.32,
+    -1.16
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "Caliper FL",
+   "pos": [
+    -0.8748,
+    0.3429,
+    1.4743
+   ],
+   "rot": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "steering wheel",
+   "pos": [
+    -0.3472,
+    0.7218,
+    0.4614
+   ],
+   "rot": [
+    0.13917,
+    -0.0,
+    -0.0,
+    0.99027
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": [
+    {
+     "kind": "BoxCollider",
+     "center": [
+      0.0,
+      -0.0,
+      -0.0278
+     ],
+     "size": [
+      0.3441,
+      0.3389,
+      0.0401
+     ],
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "suspension",
+   "pos": [
+    0.0,
+    0.4847,
+    0.1276
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "FL",
+   "pos": [
+    -0.813,
+    0.324,
+    1.38
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "Right Arm",
+   "pos": [
+    0.0,
+    0.0101,
+    0.0
+   ],
+   "rot": [
+    0.56564,
+    0.28873,
+    -0.27592,
+    0.7215
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": [
+    {
+     "kind": "CapsuleCollider",
+     "center": [
+      0.0,
+      0.0063,
+      0.0
+     ],
+     "size": null,
+     "radius": 0.0032,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "Right Leg",
+   "pos": [
+    0.0,
+    0.0184,
+    0.0
+   ],
+   "rot": [
+    0.00181,
+    0.04091,
+    0.29952,
+    0.95321
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": [
+    {
+     "kind": "CapsuleCollider",
+     "center": [
+      0.0,
+      0.0152,
+      0.0
+     ],
+     "size": null,
+     "radius": 0.0035,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "EngineSource",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "WheelsGroundSource",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "Tire RL",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": [
+    {
+     "kind": "MeshCollider",
+     "center": null,
+     "size": null,
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "rpm dial",
+   "pos": [
+    -0.5286,
+    1.3573,
+    1.0965
+   ],
+   "rot": [
+    0.15553,
+    -0.01676,
+    0.10581,
+    0.982
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "tow hitch",
+   "pos": [
+    0.0,
+    0.5118,
+    -2.8583
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "OtherSource",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "steering wheel",
+   "pos": [
+    -0.3216,
+    0.7957,
+    0.3572
+   ],
+   "rot": [
+    0.16505,
+    -0.0,
+    -0.0,
+    0.98629
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": [
+    {
+     "kind": "BoxCollider",
+     "center": [
+      0.0,
+      -0.0,
+      0.0
+     ],
+     "size": [
+      0.3441,
+      0.3389,
+      0.0401
+     ],
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "brakelights",
+   "pos": [
+    -0.0,
+    1.2475,
+    -2.6514
+   ],
+   "rot": [
+    0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "rpm dial",
+   "pos": [
+    -0.4492,
+    0.7793,
+    0.6545
+   ],
+   "rot": [
+    0.18789,
+    -0.01149,
+    0.05996,
+    0.98029
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "Caliper FR",
+   "pos": [
+    0.8496,
+    0.3326,
+    1.3173
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "body",
+   "pos": [
+    0.0,
+    0.1351,
+    -0.0447
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "dial rpm",
+   "pos": [
+    -0.2904,
+    0.8762,
+    0.611
+   ],
+   "rot": [
+    0.26297,
+    0.00574,
+    -0.02105,
+    0.96456
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "Caliper FR ",
+   "pos": [
+    0.81,
+    0.36,
+    1.402
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "Left Leg",
+   "pos": [
+    -0.0,
+    0.0184,
+    0.0
+   ],
+   "rot": [
+    0.00871,
+    -0.03426,
+    0.2994,
+    0.95347
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": [
+    {
+     "kind": "CapsuleCollider",
+     "center": [
+      0.0,
+      0.0152,
+      0.0
+     ],
+     "size": null,
+     "radius": 0.0035,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "caliper_RL",
+   "pos": [
+    -0.86,
+    0.355,
+    -1.29
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "Left Arm",
+   "pos": [
+    0.0,
+    0.0101,
+    -0.0
+   ],
+   "rot": [
+    -0.63879,
+    0.72143,
+    -0.26418,
+    0.04127
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": [
+    {
+     "kind": "CapsuleCollider",
+     "center": [
+      0.0,
+      0.0063,
+      0.0
+     ],
+     "size": null,
+     "radius": 0.0032,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "BoostSource",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "interior",
+   "pos": [
+    0.0,
+    0.1465,
+    0.2728
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "Caliper FR ",
+   "pos": [
+    0.814,
+    0.325,
+    1.232
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "FR",
+   "pos": [
+    0.8748,
+    0.3429,
+    1.4743
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "FrictionSource",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "Head",
+   "pos": [
+    -0.0,
+    0.0042,
+    -0.0
+   ],
+   "rot": [
+    -0.228,
+    0.0,
+    0.0001,
+    0.97366
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": [
+    {
+     "kind": "SphereCollider",
+     "center": [
+      0.0,
+      0.005,
+      0.0
+     ],
+     "size": null,
+     "radius": 0.009,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "TurboSource",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "Caliper RL",
+   "pos": [
+    -0.824,
+    0.3568,
+    -1.3454
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "Right Thigh",
+   "pos": [
+    0.0042,
+    -0.0019,
+    0.0002
+   ],
+   "rot": [
+    0.58896,
+    0.46578,
+    0.51879,
+    0.4087
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": [
+    {
+     "kind": "CapsuleCollider",
+     "center": [
+      0.0,
+      0.0092,
+      0.0
+     ],
+     "size": null,
+     "radius": 0.0045,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "Left Arm",
+   "pos": [
+    0.0,
+    0.0101,
+    -0.0
+   ],
+   "rot": [
+    -0.63879,
+    0.72143,
+    -0.26418,
+    0.04127
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": [
+    {
+     "kind": "CapsuleCollider",
+     "center": [
+      0.0,
+      0.0063,
+      0.0
+     ],
+     "size": null,
+     "radius": 0.0032,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "Right Leg",
+   "pos": [
+    0.0,
+    0.0184,
+    0.0
+   ],
+   "rot": [
+    0.00181,
+    0.04091,
+    0.29952,
+    0.95321
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": [
+    {
+     "kind": "CapsuleCollider",
+     "center": [
+      0.0,
+      0.0152,
+      0.0
+     ],
+     "size": null,
+     "radius": 0.0035,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "center",
+   "pos": [
+    -0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    0.0,
+    0.0,
+    0.90334,
+    0.42894
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "wing",
+   "pos": [
+    0.0,
+    0.8528,
+    -1.8227
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "Right Arm",
+   "pos": [
+    0.0,
+    0.0101,
+    0.0
+   ],
+   "rot": [
+    0.56564,
+    0.28873,
+    -0.27592,
+    0.7215
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": [
+    {
+     "kind": "CapsuleCollider",
+     "center": [
+      0.0,
+      0.0063,
+      0.0
+     ],
+     "size": null,
+     "radius": 0.0032,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "FL",
+   "pos": [
+    -0.8496,
+    0.3326,
+    1.3173
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "tow hooks",
+   "pos": [
+    0.0,
+    0.6995,
+    0.0675
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "OtherSource",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "Hips",
+   "pos": [
+    0.0,
+    -0.0002,
+    0.0575
+   ],
+   "rot": [
+    0.98195,
+    -0.0035,
+    0.00074,
+    0.1891
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": [
+    {
+     "kind": "BoxCollider",
+     "center": [
+      0.0002,
+      0.0063,
+      -0.0026
+     ],
+     "size": [
+      0.0199,
+      0.0163,
+      0.01
+     ],
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "offroad lights 4 narrow",
+   "pos": [
+    0.0,
+    1.2903,
+    2.8881
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "steering wheel",
+   "pos": [
+    -0.4405,
+    0.7668,
+    -0.0704
+   ],
+   "rot": [
+    0.13053,
+    -0.0,
+    0.0,
+    0.99144
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": [
+    {
+     "kind": "BoxCollider",
+     "center": [
+      0.0,
+      -0.0,
+      0.0038
+     ],
+     "size": [
+      0.3441,
+      0.3389,
+      0.0485
+     ],
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "Caliper FR",
+   "pos": [
+    0.8338,
+    0.3246,
+    1.1633
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "Spine 2",
+   "pos": [
+    0.0,
+    0.0075,
+    -0.0
+   ],
+   "rot": [
+    0.15597,
+    7e-05,
+    0.00037,
+    0.98776
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": [
+    {
+     "kind": "BoxCollider",
+     "center": [
+      -0.0,
+      0.0071,
+      -0.001
+     ],
+     "size": [
+      0.0199,
+      0.0142,
+      0.012
+     ],
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "Left Thigh",
+   "pos": [
+    -0.0043,
+    -0.0018,
+    0.0002
+   ],
+   "rot": [
+    0.53384,
+    0.39492,
+    0.57458,
+    0.47845
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": [
+    {
+     "kind": "CapsuleCollider",
+     "center": [
+      0.0,
+      0.0092,
+      0.0
+     ],
+     "size": null,
+     "radius": 0.0045,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "signal left",
+   "pos": [
+    -1.0205,
+    1.2236,
+    -0.1275
+   ],
+   "rot": [
+    0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "Whl HD RL",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "Caliper RR",
+   "pos": [
+    0.824,
+    0.3568,
+    -1.3454
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "Caliper FR",
+   "pos": [
+    0.8351,
+    0.3369,
+    1.3568
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "Left Leg",
+   "pos": [
+    -0.0,
+    0.0184,
+    0.0
+   ],
+   "rot": [
+    0.00871,
+    -0.03426,
+    0.2994,
+    0.95347
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": [
+    {
+     "kind": "CapsuleCollider",
+     "center": [
+      0.0,
+      0.0152,
+      0.0
+     ],
+     "size": null,
+     "radius": 0.0035,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "dial_rpm",
+   "pos": [
+    -0.5518,
+    0.697,
+    0.8659
+   ],
+   "rot": [
+    0.11544,
+    -0.21261,
+    0.85271,
+    0.46299
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "headlights",
+   "pos": [
+    -0.0,
+    1.0923,
+    2.502
+   ],
+   "rot": [
+    0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "steering wheel",
+   "pos": [
+    -0.319,
+    0.6186,
+    0.4142
+   ],
+   "rot": [
+    0.12187,
+    -0.0,
+    0.0,
+    0.99255
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": [
+    {
+     "kind": "BoxCollider",
+     "center": [
+      0.0,
+      -0.0,
+      -0.0278
+     ],
+     "size": [
+      0.3441,
+      0.3389,
+      0.0401
+     ],
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "FR",
+   "pos": [
+    0.8496,
+    0.3326,
+    1.3173
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "FL",
+   "pos": [
+    -0.714,
+    0.32,
+    1.42
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "bumper front",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "body",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "FrictionSource",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "tail gate",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "Left Forearm",
+   "pos": [
+    -0.0,
+    0.0126,
+    -0.0
+   ],
+   "rot": [
+    0.23198,
+    0.83287,
+    -0.47164,
+    0.17341
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": [
+    {
+     "kind": "CapsuleCollider",
+     "center": [
+      0.0,
+      0.0122,
+      0.0
+     ],
+     "size": null,
+     "radius": 0.003,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "FR",
+   "pos": [
+    0.814,
+    0.325,
+    1.232
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "Right Leg",
+   "pos": [
+    0.0,
+    0.0184,
+    0.0
+   ],
+   "rot": [
+    0.00181,
+    0.04091,
+    0.29952,
+    0.95321
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": [
+    {
+     "kind": "CapsuleCollider",
+     "center": [
+      0.0,
+      0.0152,
+      0.0
+     ],
+     "size": null,
+     "radius": 0.0035,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "Left Arm",
+   "pos": [
+    0.0,
+    0.0101,
+    -0.0
+   ],
+   "rot": [
+    -0.63879,
+    0.72143,
+    -0.26418,
+    0.04127
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": [
+    {
+     "kind": "CapsuleCollider",
+     "center": [
+      0.0,
+      0.0063,
+      0.0
+     ],
+     "size": null,
+     "radius": 0.0032,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "SchoolBus (15)",
+   "pos": [
+    0.0,
+    4.9133,
+    261.7
+   ],
+   "rot": [
+    -0.0,
+    -0.70711,
+    -0.0,
+    0.70711
+   ],
+   "scale": [
+    0.5136,
+    0.5136,
+    0.5136
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": [
+    {
+     "kind": "BoxCollider",
+     "center": [
+      0.3863,
+      3.4868,
+      -2.4188
+     ],
+     "size": [
+      5.3763,
+      6.9965,
+      16.4885
+     ],
+     "radius": null,
+     "mass": null
+    },
+    {
+     "kind": "BoxCollider",
+     "center": [
+      0.3863,
+      2.0151,
+      7.8995
+     ],
+     "size": [
+      7.5511,
+      4.0529,
+      4.0391
+     ],
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "SchoolBus (6)",
+   "pos": [
+    -0.0104,
+    4.9133,
+    227.1
+   ],
+   "rot": [
+    -0.0,
+    -0.70711,
+    -0.0,
+    0.70711
+   ],
+   "scale": [
+    0.5136,
+    0.5136,
+    0.5136
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": [
+    {
+     "kind": "BoxCollider",
+     "center": [
+      0.3863,
+      3.4868,
+      -2.4188
+     ],
+     "size": [
+      5.3763,
+      6.9965,
+      16.4885
+     ],
+     "radius": null,
+     "mass": null
+    },
+    {
+     "kind": "BoxCollider",
+     "center": [
+      0.3863,
+      2.0151,
+      7.8995
+     ],
+     "size": [
+      7.5511,
+      4.0529,
+      4.0391
+     ],
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "SchoolBus (12)",
+   "pos": [
+    -0.0,
+    4.9133,
+    252.28
+   ],
+   "rot": [
+    -0.0,
+    -0.70711,
+    -0.0,
+    0.70711
+   ],
+   "scale": [
+    0.5136,
+    0.5136,
+    0.5136
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": [
+    {
+     "kind": "BoxCollider",
+     "center": [
+      0.3863,
+      3.4868,
+      -2.4188
+     ],
+     "size": [
+      5.3763,
+      6.9965,
+      16.4885
+     ],
+     "radius": null,
+     "mass": null
+    },
+    {
+     "kind": "BoxCollider",
+     "center": [
+      0.3863,
+      2.0151,
+      7.8995
+     ],
+     "size": [
+      7.5511,
+      4.0529,
+      4.0391
+     ],
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "SchoolBus (5)",
+   "pos": [
+    -0.0104,
+    4.9133,
+    238.2
+   ],
+   "rot": [
+    -0.0,
+    -0.70711,
+    -0.0,
+    0.70711
+   ],
+   "scale": [
+    0.5136,
+    0.5136,
+    0.5136
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": [
+    {
+     "kind": "BoxCollider",
+     "center": [
+      0.3863,
+      3.4868,
+      -2.4188
+     ],
+     "size": [
+      5.3763,
+      6.9965,
+      16.4885
+     ],
+     "radius": null,
+     "mass": null
+    },
+    {
+     "kind": "BoxCollider",
+     "center": [
+      0.3863,
+      2.0151,
+      7.8995
+     ],
+     "size": [
+      7.5511,
+      4.0529,
+      4.0391
+     ],
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "SchoolBus (11)",
+   "pos": [
+    -0.0,
+    4.9133,
+    248.61
+   ],
+   "rot": [
+    -0.0,
+    -0.70711,
+    -0.0,
+    0.70711
+   ],
+   "scale": [
+    0.5136,
+    0.5136,
+    0.5136
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": [
+    {
+     "kind": "BoxCollider",
+     "center": [
+      0.3863,
+      3.4868,
+      -2.4188
+     ],
+     "size": [
+      5.3763,
+      6.9965,
+      16.4885
+     ],
+     "radius": null,
+     "mass": null
+    },
+    {
+     "kind": "BoxCollider",
+     "center": [
+      0.3863,
+      2.0151,
+      7.8995
+     ],
+     "size": [
+      7.5511,
+      4.0529,
+      4.0391
+     ],
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "SchoolBus (14)",
+   "pos": [
+    0.0,
+    4.9133,
+    258.86
+   ],
+   "rot": [
+    -0.0,
+    -0.70711,
+    -0.0,
+    0.70711
+   ],
+   "scale": [
+    0.5136,
+    0.5136,
+    0.5136
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": [
+    {
+     "kind": "BoxCollider",
+     "center": [
+      0.3863,
+      3.4868,
+      -2.4188
+     ],
+     "size": [
+      5.3763,
+      6.9965,
+      16.4885
+     ],
+     "radius": null,
+     "mass": null
+    },
+    {
+     "kind": "BoxCollider",
+     "center": [
+      0.3863,
+      2.0151,
+      7.8995
+     ],
+     "size": [
+      7.5511,
+      4.0529,
+      4.0391
+     ],
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "SchoolBus (2)",
+   "pos": [
+    -0.0104,
+    4.9133,
+    200.1
+   ],
+   "rot": [
+    -0.0,
+    -0.70711,
+    -0.0,
+    0.70711
+   ],
+   "scale": [
+    0.5136,
+    0.5136,
+    0.5136
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": [
+    {
+     "kind": "BoxCollider",
+     "center": [
+      0.3863,
+      3.4868,
+      -2.4188
+     ],
+     "size": [
+      5.3763,
+      6.9965,
+      16.4885
+     ],
+     "radius": null,
+     "mass": null
+    },
+    {
+     "kind": "BoxCollider",
+     "center": [
+      0.3863,
+      2.0151,
+      7.8995
+     ],
+     "size": [
+      7.5511,
+      4.0529,
+      4.0391
+     ],
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "SchoolBus (3)",
+   "pos": [
+    -0.0104,
+    4.9133,
+    213.4
+   ],
+   "rot": [
+    -0.0,
+    -0.70711,
+    -0.0,
+    0.70711
+   ],
+   "scale": [
+    0.5136,
+    0.5136,
+    0.5136
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": [
+    {
+     "kind": "BoxCollider",
+     "center": [
+      0.3863,
+      3.4868,
+      -2.4188
+     ],
+     "size": [
+      5.3763,
+      6.9965,
+      16.4885
+     ],
+     "radius": null,
+     "mass": null
+    },
+    {
+     "kind": "BoxCollider",
+     "center": [
+      0.3863,
+      2.0151,
+      7.8995
+     ],
+     "size": [
+      7.5511,
+      4.0529,
+      4.0391
+     ],
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "SchoolBus (16)",
+   "pos": [
+    0.0,
+    4.9133,
+    264.89
+   ],
+   "rot": [
+    -0.0,
+    -0.70711,
+    -0.0,
+    0.70711
+   ],
+   "scale": [
+    0.5136,
+    0.5136,
+    0.5136
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": [
+    {
+     "kind": "BoxCollider",
+     "center": [
+      0.3863,
+      3.4868,
+      -2.4188
+     ],
+     "size": [
+      5.3763,
+      6.9965,
+      16.4885
+     ],
+     "radius": null,
+     "mass": null
+    },
+    {
+     "kind": "BoxCollider",
+     "center": [
+      0.3863,
+      2.0151,
+      7.8995
+     ],
+     "size": [
+      7.5511,
+      4.0529,
+      4.0391
+     ],
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "SchoolBus (13)",
+   "pos": [
+    0.0,
+    4.9133,
+    255.67
+   ],
+   "rot": [
+    -0.0,
+    -0.70711,
+    -0.0,
+    0.70711
+   ],
+   "scale": [
+    0.5136,
+    0.5136,
+    0.5136
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": [
+    {
+     "kind": "BoxCollider",
+     "center": [
+      0.3863,
+      3.4868,
+      -2.4188
+     ],
+     "size": [
+      5.3763,
+      6.9965,
+      16.4885
+     ],
+     "radius": null,
+     "mass": null
+    },
+    {
+     "kind": "BoxCollider",
+     "center": [
+      0.3863,
+      2.0151,
+      7.8995
+     ],
+     "size": [
+      7.5511,
+      4.0529,
+      4.0391
+     ],
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "Left Leg",
+   "pos": [
+    -0.0,
+    0.0184,
+    0.0
+   ],
+   "rot": [
+    0.00871,
+    -0.03426,
+    0.2994,
+    0.95347
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": [
+    {
+     "kind": "CapsuleCollider",
+     "center": [
+      0.0,
+      0.0152,
+      0.0
+     ],
+     "size": null,
+     "radius": 0.0035,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "Right Arm",
+   "pos": [
+    0.0,
+    0.0101,
+    0.0
+   ],
+   "rot": [
+    0.56564,
+    0.28873,
+    -0.27592,
+    0.7215
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": [
+    {
+     "kind": "CapsuleCollider",
+     "center": [
+      0.0,
+      0.0063,
+      0.0
+     ],
+     "size": null,
+     "radius": 0.0032,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "_Collider",
+   "pos": [
+    0.0,
+    0.6191,
+    -2.7445
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": [
+    {
+     "kind": "MeshCollider",
+     "center": null,
+     "size": null,
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "_Collider",
+   "pos": [
+    0.0,
+    0.1031,
+    0.0378
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": [
+    {
+     "kind": "MeshCollider",
+     "center": null,
+     "size": null,
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "Caliper RL ",
+   "pos": [
+    -0.93,
+    0.4702,
+    -1.648
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "BoostSource",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "FrictionSource",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "Whl HD RL",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": [
+    {
+     "kind": "MeshCollider",
+     "center": null,
+     "size": null,
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "bumper lights",
+   "pos": [
+    -0.0,
+    0.7577,
+    2.747
+   ],
+   "rot": [
+    0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "Hips",
+   "pos": [
+    0.0,
+    -0.0002,
+    0.0575
+   ],
+   "rot": [
+    0.98195,
+    -0.0035,
+    0.00074,
+    0.1891
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": [
+    {
+     "kind": "BoxCollider",
+     "center": [
+      0.0002,
+      0.0063,
+      -0.0026
+     ],
+     "size": [
+      0.0199,
+      0.0163,
+      0.01
+     ],
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "body",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "Right Thigh",
+   "pos": [
+    0.0042,
+    -0.0019,
+    0.0002
+   ],
+   "rot": [
+    0.58896,
+    0.46578,
+    0.51879,
+    0.4087
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": [
+    {
+     "kind": "CapsuleCollider",
+     "center": [
+      0.0,
+      0.0092,
+      0.0
+     ],
+     "size": null,
+     "radius": 0.0045,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "Right Forearm",
+   "pos": [
+    0.0,
+    0.0126,
+    0.0
+   ],
+   "rot": [
+    0.4494,
+    -0.60126,
+    0.13955,
+    0.64579
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": [
+    {
+     "kind": "CapsuleCollider",
+     "center": [
+      0.0,
+      0.0122,
+      0.0
+     ],
+     "size": null,
+     "radius": 0.003,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "W RR",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": [
+    {
+     "kind": "MeshCollider",
+     "center": null,
+     "size": null,
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "WindSource",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "body",
+   "pos": [
+    0.0,
+    0.4803,
+    0.057
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "body",
+   "pos": [
+    0.0,
+    0.1031,
+    0.0378
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "tire rl",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": [
+    {
+     "kind": "MeshCollider",
+     "center": null,
+     "size": null,
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "W RL",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": [
+    {
+     "kind": "MeshCollider",
+     "center": null,
+     "size": null,
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "OtherSource",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "step bars",
+   "pos": [
+    0.0,
+    0.5396,
+    0.2199
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "Tire FR",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": [
+    {
+     "kind": "MeshCollider",
+     "center": null,
+     "size": null,
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "Right Leg",
+   "pos": [
+    0.0,
+    0.0184,
+    0.0
+   ],
+   "rot": [
+    0.00181,
+    0.04091,
+    0.29952,
+    0.95321
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": [
+    {
+     "kind": "CapsuleCollider",
+     "center": [
+      0.0,
+      0.0152,
+      0.0
+     ],
+     "size": null,
+     "radius": 0.0035,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "_Collider",
+   "pos": [
+    0.0,
+    0.8572,
+    -0.3603
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": [
+    {
+     "kind": "MeshCollider",
+     "center": null,
+     "size": null,
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "WindSource",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "Right Arm",
+   "pos": [
+    0.0,
+    0.0101,
+    0.0
+   ],
+   "rot": [
+    0.56564,
+    0.28873,
+    -0.27592,
+    0.7215
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": [
+    {
+     "kind": "CapsuleCollider",
+     "center": [
+      0.0,
+      0.0063,
+      0.0
+     ],
+     "size": null,
+     "radius": 0.0032,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "Spine 2",
+   "pos": [
+    0.0,
+    0.0075,
+    -0.0
+   ],
+   "rot": [
+    0.15597,
+    7e-05,
+    0.00037,
+    0.98776
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": [
+    {
+     "kind": "BoxCollider",
+     "center": [
+      -0.0,
+      0.0071,
+      -0.001
+     ],
+     "size": [
+      0.0199,
+      0.0142,
+      0.012
+     ],
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "Left Thigh",
+   "pos": [
+    -0.0043,
+    -0.0018,
+    0.0002
+   ],
+   "rot": [
+    0.53384,
+    0.39492,
+    0.57458,
+    0.47845
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": [
+    {
+     "kind": "CapsuleCollider",
+     "center": [
+      0.0,
+      0.0092,
+      0.0
+     ],
+     "size": null,
+     "radius": 0.0045,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "FR",
+   "pos": [
+    0.813,
+    0.324,
+    1.38
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "Head",
+   "pos": [
+    -0.0,
+    0.0042,
+    -0.0
+   ],
+   "rot": [
+    -0.228,
+    0.0,
+    0.0001,
+    0.97366
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": [
+    {
+     "kind": "SphereCollider",
+     "center": [
+      0.0,
+      0.005,
+      0.0
+     ],
+     "size": null,
+     "radius": 0.009,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "dial speed",
+   "pos": [
+    -0.3979,
+    0.8768,
+    0.608
+   ],
+   "rot": [
+    0.25904,
+    -0.04567,
+    0.16753,
+    0.95013
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "Whl HD FR",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "TurboSource",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "Caliper RL",
+   "pos": [
+    -0.8214,
+    0.3556,
+    -1.3364
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "RR",
+   "pos": [
+    0.7934,
+    0.3466,
+    -1.5002
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "TurboSource",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "FL",
+   "pos": [
+    -0.8748,
+    0.3429,
+    1.4743
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "Left Forearm",
+   "pos": [
+    -0.0,
+    0.0126,
+    -0.0
+   ],
+   "rot": [
+    0.23198,
+    0.83287,
+    -0.47164,
+    0.17341
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": [
+    {
+     "kind": "CapsuleCollider",
+     "center": [
+      0.0,
+      0.0122,
+      0.0
+     ],
+     "size": null,
+     "radius": 0.003,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "FrictionSource",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "Left Arm",
+   "pos": [
+    0.0,
+    0.0101,
+    -0.0
+   ],
+   "rot": [
+    -0.63879,
+    0.72143,
+    -0.26418,
+    0.04127
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": [
+    {
+     "kind": "CapsuleCollider",
+     "center": [
+      0.0,
+      0.0063,
+      0.0
+     ],
+     "size": null,
+     "radius": 0.0032,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "Tire RL",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": [
+    {
+     "kind": "MeshCollider",
+     "center": null,
+     "size": null,
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "FR",
+   "pos": [
+    0.8338,
+    0.3246,
+    1.1633
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "Right Forearm",
+   "pos": [
+    0.0,
+    0.0126,
+    0.0
+   ],
+   "rot": [
+    0.4494,
+    -0.60126,
+    0.13955,
+    0.64579
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": [
+    {
+     "kind": "CapsuleCollider",
+     "center": [
+      0.0,
+      0.0122,
+      0.0
+     ],
+     "size": null,
+     "radius": 0.003,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "FL",
+   "pos": [
+    -0.932,
+    0.4702,
+    1.92
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "caliper fl",
+   "pos": [
+    -0.765,
+    0.329,
+    1.23
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "Right Thigh",
+   "pos": [
+    0.0042,
+    -0.0019,
+    0.0002
+   ],
+   "rot": [
+    0.58896,
+    0.46578,
+    0.51879,
+    0.4087
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": [
+    {
+     "kind": "CapsuleCollider",
+     "center": [
+      0.0,
+      0.0092,
+      0.0
+     ],
+     "size": null,
+     "radius": 0.0045,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "bumper rear",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "WheelsGroundSource",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "EngineSource",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "OtherSource",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "Caliper FR",
+   "pos": [
+    0.8748,
+    0.3429,
+    1.4743
+   ],
+   "rot": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "steering_wheel",
+   "pos": [
+    -0.443,
+    0.6957,
+    0.6047
+   ],
+   "rot": [
+    0.20375,
+    0.0,
+    -0.0,
+    0.97902
+   ],
+   "scale": [
+    1.0,
+    1.025,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": [
+    {
+     "kind": "BoxCollider",
+     "center": [
+      0.0,
+      -0.0,
+      -0.0278
+     ],
+     "size": [
+      0.3441,
+      0.3389,
+      0.0401
+     ],
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "dial speed",
+   "pos": [
+    -0.4116,
+    0.8535,
+    0.4874
+   ],
+   "rot": [
+    0.0,
+    -0.0,
+    -0.0349,
+    0.99939
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "RR",
+   "pos": [
+    0.8214,
+    0.3556,
+    -1.3364
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "Circle.002",
+   "pos": [
+    -7.66,
+    1.412,
+    37.4198
+   ],
+   "rot": [
+    0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    0.5,
+    1.0,
+    3.4882
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": [
+    {
+     "kind": "MeshCollider",
+     "center": null,
+     "size": null,
+     "radius": null,
+     "mass": null
+    },
+    {
+     "kind": "BoxCollider",
+     "center": [
+      0.0,
+      -14.9963,
+      -0.0
+     ],
+     "size": [
+      9.3875,
+      799.2,
+      79.8527
+     ],
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "FR",
+   "pos": [
+    0.765,
+    0.329,
+    1.23
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "steering wheel",
+   "pos": [
+    -0.3983,
+    0.7003,
+    0.716
+   ],
+   "rot": [
+    0.14781,
+    -0.0,
+    0.0,
+    0.98902
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": [
+    {
+     "kind": "BoxCollider",
+     "center": [
+      0.0,
+      -0.0,
+      -0.0171
+     ],
+     "size": [
+      0.3441,
+      0.3389,
+      0.0509
+     ],
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "BoostSource",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "Whl HD RR",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": [
+    {
+     "kind": "MeshCollider",
+     "center": null,
+     "size": null,
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "diffuser",
+   "pos": [
+    -0.0,
+    0.181,
+    -1.9857
+   ],
+   "rot": [
+    0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "steering wheel",
+   "pos": [
+    -0.44,
+    1.3672,
+    0.8375
+   ],
+   "rot": [
+    0.16505,
+    -0.0,
+    -0.0,
+    0.98629
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": [
+    {
+     "kind": "BoxCollider",
+     "center": [
+      0.0,
+      -0.0,
+      0.0168
+     ],
+     "size": [
+      0.3441,
+      0.3389,
+      0.0455
+     ],
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "Light-rear",
+   "pos": [
+    -0.0,
+    0.7271,
+    -1.9443
+   ],
+   "rot": [
+    0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "Head",
+   "pos": [
+    -0.0,
+    0.0042,
+    -0.0
+   ],
+   "rot": [
+    -0.228,
+    0.0,
+    0.0001,
+    0.97366
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": [
+    {
+     "kind": "SphereCollider",
+     "center": [
+      0.0,
+      0.005,
+      0.0
+     ],
+     "size": null,
+     "radius": 0.009,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "W FR",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": [
+    {
+     "kind": "MeshCollider",
+     "center": null,
+     "size": null,
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "Caliper RR",
+   "pos": [
+    0.714,
+    0.32,
+    -1.16
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "caliper_FL",
+   "pos": [
+    -0.813,
+    0.324,
+    1.38
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "WheelsGroundSource",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "EngineSource",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "_Collider",
+   "pos": [
+    0.0,
+    0.1392,
+    -0.0226
+   ],
+   "rot": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": [
+    {
+     "kind": "MeshCollider",
+     "center": null,
+     "size": null,
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "Tire_FL",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": [
+    {
+     "kind": "MeshCollider",
+     "center": null,
+     "size": null,
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "OtherSource",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "FL",
+   "pos": [
+    -0.8351,
+    0.3369,
+    1.3568
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "body",
+   "pos": [
+    0.0,
+    0.0931,
+    0.0633
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "RL",
+   "pos": [
+    -0.86,
+    0.355,
+    -1.29
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "Hips",
+   "pos": [
+    0.0,
+    -0.0002,
+    0.0575
+   ],
+   "rot": [
+    0.98195,
+    -0.0035,
+    0.00074,
+    0.1891
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": [
+    {
+     "kind": "BoxCollider",
+     "center": [
+      0.0002,
+      0.0063,
+      -0.0026
+     ],
+     "size": [
+      0.0199,
+      0.0163,
+      0.01
+     ],
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "steering wheel",
+   "pos": [
+    -0.3752,
+    0.8403,
+    0.2725
+   ],
+   "rot": [
+    0.19081,
+    -0.0,
+    -0.0,
+    0.98163
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": [
+    {
+     "kind": "BoxCollider",
+     "center": [
+      0.0,
+      -0.0,
+      -0.0278
+     ],
+     "size": [
+      0.3441,
+      0.3389,
+      0.0401
+     ],
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "Right Leg",
+   "pos": [
+    0.0,
+    0.0184,
+    0.0
+   ],
+   "rot": [
+    0.00181,
+    0.04091,
+    0.29952,
+    0.95321
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": [
+    {
+     "kind": "CapsuleCollider",
+     "center": [
+      0.0,
+      0.0152,
+      0.0
+     ],
+     "size": null,
+     "radius": 0.0035,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "steering wheel",
+   "pos": [
+    -0.3868,
+    0.8043,
+    0.458
+   ],
+   "rot": [
+    0.08716,
+    -0.0,
+    -0.0,
+    0.99619
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": [
+    {
+     "kind": "BoxCollider",
+     "center": [
+      0.0,
+      -0.0,
+      -0.0278
+     ],
+     "size": [
+      0.3441,
+      0.3389,
+      0.0401
+     ],
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "Right Thigh",
+   "pos": [
+    0.0042,
+    -0.0019,
+    0.0002
+   ],
+   "rot": [
+    0.58896,
+    0.46578,
+    0.51879,
+    0.4087
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": [
+    {
+     "kind": "CapsuleCollider",
+     "center": [
+      0.0,
+      0.0092,
+      0.0
+     ],
+     "size": null,
+     "radius": 0.0045,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "Right Forearm",
+   "pos": [
+    0.0,
+    0.0126,
+    0.0
+   ],
+   "rot": [
+    0.4494,
+    -0.60126,
+    0.13955,
+    0.64579
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": [
+    {
+     "kind": "CapsuleCollider",
+     "center": [
+      0.0,
+      0.0122,
+      0.0
+     ],
+     "size": null,
+     "radius": 0.003,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "Right Arm",
+   "pos": [
+    0.0,
+    0.0101,
+    0.0
+   ],
+   "rot": [
+    0.56564,
+    0.28873,
+    -0.27592,
+    0.7215
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": [
+    {
+     "kind": "CapsuleCollider",
+     "center": [
+      0.0,
+      0.0063,
+      0.0
+     ],
+     "size": null,
+     "radius": 0.0032,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "_Collider",
+   "pos": [
+    0.0,
+    0.962,
+    -0.4357
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": [
+    {
+     "kind": "MeshCollider",
+     "center": null,
+     "size": null,
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "Left Forearm",
+   "pos": [
+    -0.0,
+    0.0126,
+    -0.0
+   ],
+   "rot": [
+    0.23198,
+    0.83287,
+    -0.47164,
+    0.17341
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": [
+    {
+     "kind": "CapsuleCollider",
+     "center": [
+      0.0,
+      0.0122,
+      0.0
+     ],
+     "size": null,
+     "radius": 0.003,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "Circle.001",
+   "pos": [
+    7.53,
+    1.412,
+    37.4198
+   ],
+   "rot": [
+    0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    0.5,
+    1.0,
+    3.4882
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": [
+    {
+     "kind": "MeshCollider",
+     "center": null,
+     "size": null,
+     "radius": null,
+     "mass": null
+    },
+    {
+     "kind": "BoxCollider",
+     "center": [
+      0.0,
+      -14.9963,
+      -0.0
+     ],
+     "size": [
+      9.3875,
+      799.2,
+      79.8527
+     ],
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "TurboSource",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "caliper fr",
+   "pos": [
+    0.765,
+    0.329,
+    1.23
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "Caliper RL ",
+   "pos": [
+    -0.803,
+    0.36,
+    -1.563
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "WindSource",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "Tire FR",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": [
+    {
+     "kind": "MeshCollider",
+     "center": null,
+     "size": null,
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "RL",
+   "pos": [
+    -0.803,
+    0.36,
+    -1.563
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "2_Collider",
+   "pos": [
+    0.0,
+    0.8579,
+    -0.3172
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": [
+    {
+     "kind": "MeshCollider",
+     "center": null,
+     "size": null,
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "Whl HD FR",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": [
+    {
+     "kind": "MeshCollider",
+     "center": null,
+     "size": null,
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "interior",
+   "pos": [
+    0.0,
+    0.1544,
+    0.2043
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "offroad lights 4 wide",
+   "pos": [
+    0.0,
+    2.1679,
+    -1.0204
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "Left Thigh",
+   "pos": [
+    -0.0043,
+    -0.0018,
+    0.0002
+   ],
+   "rot": [
+    0.53384,
+    0.39492,
+    0.57458,
+    0.47845
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": [
+    {
+     "kind": "CapsuleCollider",
+     "center": [
+      0.0,
+      0.0092,
+      0.0
+     ],
+     "size": null,
+     "radius": 0.0045,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "Spine 2",
+   "pos": [
+    0.0,
+    0.0075,
+    -0.0
+   ],
+   "rot": [
+    0.15597,
+    7e-05,
+    0.00037,
+    0.98776
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": [
+    {
+     "kind": "BoxCollider",
+     "center": [
+      -0.0,
+      0.0071,
+      -0.001
+     ],
+     "size": [
+      0.0199,
+      0.0142,
+      0.012
+     ],
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "splitter",
+   "pos": [
+    -0.0,
+    0.1791,
+    1.935
+   ],
+   "rot": [
+    0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "Whl HD RR",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": [
+    {
+     "kind": "MeshCollider",
+     "center": null,
+     "size": null,
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "Trunk",
+   "pos": [
+    0.0,
+    0.8847,
+    -2.6794
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [
+    "PG.DetachableObject"
+   ],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "FrictionSource",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "Whl HD RR",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": [
+    {
+     "kind": "MeshCollider",
+     "center": null,
+     "size": null,
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "bull bars",
+   "pos": [
+    0.0,
+    1.0119,
+    2.7648
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "Tire RR",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": [
+    {
+     "kind": "MeshCollider",
+     "center": null,
+     "size": null,
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "_Collider",
+   "pos": [
+    0.0,
+    0.584,
+    0.0203
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": [
+    {
+     "kind": "MeshCollider",
+     "center": null,
+     "size": null,
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "Light-headlights",
+   "pos": [
+    -0.0,
+    0.5458,
+    1.8402
+   ],
+   "rot": [
+    0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "RL",
+   "pos": [
+    -0.93,
+    0.4702,
+    -1.648
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "Bumper_Front",
+   "pos": [
+    0.0,
+    0.7128,
+    2.6421
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [
+    "PG.DetachableObject"
+   ],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "WheelsGroundSource",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "EngineSource",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "RR",
+   "pos": [
+    0.828,
+    0.325,
+    -1.418
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "Left Forearm",
+   "pos": [
+    -0.0,
+    0.0126,
+    -0.0
+   ],
+   "rot": [
+    0.23198,
+    0.83287,
+    -0.47164,
+    0.17341
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": [
+    {
+     "kind": "CapsuleCollider",
+     "center": [
+      0.0,
+      0.0122,
+      0.0
+     ],
+     "size": null,
+     "radius": 0.003,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "RR",
+   "pos": [
+    0.8214,
+    0.3556,
+    -1.2342
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "Hips",
+   "pos": [
+    0.0,
+    -0.0002,
+    0.0575
+   ],
+   "rot": [
+    0.98195,
+    -0.0035,
+    0.00074,
+    0.1891
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": [
+    {
+     "kind": "BoxCollider",
+     "center": [
+      0.0002,
+      0.0063,
+      -0.0026
+     ],
+     "size": [
+      0.0199,
+      0.0163,
+      0.01
+     ],
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "SimpleRamp",
+   "pos": [
+    -0.8,
+    -1.31,
+    158.832
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    7.1903,
+    2.3938,
+    4.5981
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": [
+    {
+     "kind": "MeshCollider",
+     "center": null,
+     "size": null,
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "RR",
+   "pos": [
+    0.86,
+    0.355,
+    -1.29
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "_Collider",
+   "pos": [
+    0.0,
+    0.1219,
+    0.0095
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": [
+    {
+     "kind": "MeshCollider",
+     "center": null,
+     "size": null,
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "Tire_RL",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": [
+    {
+     "kind": "MeshCollider",
+     "center": null,
+     "size": null,
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "offroad lights bumper",
+   "pos": [
+    -0.0,
+    1.2927,
+    2.9352
+   ],
+   "rot": [
+    0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "Right Thigh",
+   "pos": [
+    0.0042,
+    -0.0019,
+    0.0002
+   ],
+   "rot": [
+    0.58896,
+    0.46578,
+    0.51879,
+    0.4087
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": [
+    {
+     "kind": "CapsuleCollider",
+     "center": [
+      0.0,
+      0.0092,
+      0.0
+     ],
+     "size": null,
+     "radius": 0.0045,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "Head",
+   "pos": [
+    -0.0,
+    0.0042,
+    -0.0
+   ],
+   "rot": [
+    -0.228,
+    0.0,
+    0.0001,
+    0.97366
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": [
+    {
+     "kind": "SphereCollider",
+     "center": [
+      0.0,
+      0.005,
+      0.0
+     ],
+     "size": null,
+     "radius": 0.009,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "_Collider",
+   "pos": [
+    0.0,
+    0.784,
+    -1.8227
+   ],
+   "rot": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": [
+    {
+     "kind": "MeshCollider",
+     "center": null,
+     "size": null,
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "Left Arm",
+   "pos": [
+    0.0,
+    0.0101,
+    -0.0
+   ],
+   "rot": [
+    -0.63879,
+    0.72143,
+    -0.26418,
+    0.04127
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": [
+    {
+     "kind": "CapsuleCollider",
+     "center": [
+      0.0,
+      0.0063,
+      0.0
+     ],
+     "size": null,
+     "radius": 0.0032,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "Whl HD FR",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": [
+    {
+     "kind": "MeshCollider",
+     "center": null,
+     "size": null,
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "Caliper FL",
+   "pos": [
+    -0.8496,
+    0.3326,
+    1.3173
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "Spine 2",
+   "pos": [
+    0.0,
+    0.0075,
+    -0.0
+   ],
+   "rot": [
+    0.15597,
+    7e-05,
+    0.00037,
+    0.98776
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": [
+    {
+     "kind": "BoxCollider",
+     "center": [
+      -0.0,
+      0.0071,
+      -0.001
+     ],
+     "size": [
+      0.0199,
+      0.0142,
+      0.012
+     ],
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "Left Thigh",
+   "pos": [
+    -0.0043,
+    -0.0018,
+    0.0002
+   ],
+   "rot": [
+    0.53384,
+    0.39492,
+    0.57458,
+    0.47845
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": [
+    {
+     "kind": "CapsuleCollider",
+     "center": [
+      0.0,
+      0.0092,
+      0.0
+     ],
+     "size": null,
+     "radius": 0.0045,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "Caliper RR",
+   "pos": [
+    0.8214,
+    0.3556,
+    -1.2342
+   ],
+   "rot": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "_Collider",
+   "pos": [
+    0.0,
+    0.0956,
+    0.0875
+   ],
+   "rot": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": [
+    {
+     "kind": "MeshCollider",
+     "center": null,
+     "size": null,
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "interior",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "_Collider",
+   "pos": [
+    0.0,
+    0.8787,
+    -0.5426
+   ],
+   "rot": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": [
+    {
+     "kind": "MeshCollider",
+     "center": null,
+     "size": null,
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "diffuser",
+   "pos": [
+    0.0,
+    0.186,
+    -1.6692
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "Left Leg",
+   "pos": [
+    -0.0,
+    0.0184,
+    0.0
+   ],
+   "rot": [
+    0.00871,
+    -0.03426,
+    0.2994,
+    0.95347
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": [
+    {
+     "kind": "CapsuleCollider",
+     "center": [
+      0.0,
+      0.0152,
+      0.0
+     ],
+     "size": null,
+     "radius": 0.0035,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "TurboSource",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "BoostSource",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "Hips",
+   "pos": [
+    0.0,
+    -0.0002,
+    0.0575
+   ],
+   "rot": [
+    0.98195,
+    -0.0035,
+    0.00074,
+    0.1891
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": [
+    {
+     "kind": "BoxCollider",
+     "center": [
+      0.0002,
+      0.0063,
+      -0.0026
+     ],
+     "size": [
+      0.0199,
+      0.0163,
+      0.01
+     ],
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "body",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "Head",
+   "pos": [
+    -0.0,
+    0.0042,
+    -0.0
+   ],
+   "rot": [
+    -0.228,
+    0.0,
+    0.0001,
+    0.97366
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": [
+    {
+     "kind": "SphereCollider",
+     "center": [
+      0.0,
+      0.005,
+      0.0
+     ],
+     "size": null,
+     "radius": 0.009,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "RL",
+   "pos": [
+    -0.824,
+    0.3568,
+    -1.3454
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "Right Thigh",
+   "pos": [
+    0.0042,
+    -0.0019,
+    0.0002
+   ],
+   "rot": [
+    0.58896,
+    0.46578,
+    0.51879,
+    0.4087
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": [
+    {
+     "kind": "CapsuleCollider",
+     "center": [
+      0.0,
+      0.0092,
+      0.0
+     ],
+     "size": null,
+     "radius": 0.0045,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "Left Forearm",
+   "pos": [
+    -0.0,
+    0.0126,
+    -0.0
+   ],
+   "rot": [
+    0.23198,
+    0.83287,
+    -0.47164,
+    0.17341
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": [
+    {
+     "kind": "CapsuleCollider",
+     "center": [
+      0.0,
+      0.0122,
+      0.0
+     ],
+     "size": null,
+     "radius": 0.003,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "Right Forearm",
+   "pos": [
+    0.0,
+    0.0126,
+    0.0
+   ],
+   "rot": [
+    0.4494,
+    -0.60126,
+    0.13955,
+    0.64579
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": [
+    {
+     "kind": "CapsuleCollider",
+     "center": [
+      0.0,
+      0.0122,
+      0.0
+     ],
+     "size": null,
+     "radius": 0.003,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "RL",
+   "pos": [
+    -0.828,
+    0.325,
+    -1.418
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "OtherSource",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "RL",
+   "pos": [
+    -0.81,
+    0.348,
+    -1.195
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "WindSource",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "FL",
+   "pos": [
+    -0.765,
+    0.329,
+    1.23
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "Whl HD FL",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "center ",
+   "pos": [
+    -0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    0.0,
+    0.0,
+    0.90334,
+    0.42894
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "roof rack",
+   "pos": [
+    0.0,
+    2.0551,
+    0.0017
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "wing",
+   "pos": [
+    -0.0,
+    1.0015,
+    -1.9101
+   ],
+   "rot": [
+    0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "spare tire",
+   "pos": [
+    0.0,
+    1.1451,
+    -2.1904
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "TurboSource",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "WheelsGroundSource",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "EngineSource",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "Spine 2",
+   "pos": [
+    0.0,
+    0.0075,
+    -0.0
+   ],
+   "rot": [
+    0.15597,
+    7e-05,
+    0.00037,
+    0.98776
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": [
+    {
+     "kind": "BoxCollider",
+     "center": [
+      -0.0,
+      0.0071,
+      -0.001
+     ],
+     "size": [
+      0.0199,
+      0.0142,
+      0.012
+     ],
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "body",
+   "pos": [
+    0.0,
+    0.1268,
+    -0.1584
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "Left Thigh",
+   "pos": [
+    -0.0043,
+    -0.0018,
+    0.0002
+   ],
+   "rot": [
+    0.53384,
+    0.39492,
+    0.57458,
+    0.47845
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": [
+    {
+     "kind": "CapsuleCollider",
+     "center": [
+      0.0,
+      0.0092,
+      0.0
+     ],
+     "size": null,
+     "radius": 0.0045,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "OtherSource",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "Whl HD FL",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": [
+    {
+     "kind": "MeshCollider",
+     "center": null,
+     "size": null,
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "caliper_RR",
+   "pos": [
+    0.86,
+    0.355,
+    -1.29
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "FL",
+   "pos": [
+    -0.814,
+    0.325,
+    1.232
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "Tire RL",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": [
+    {
+     "kind": "MeshCollider",
+     "center": null,
+     "size": null,
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "caliper rl",
+   "pos": [
+    -0.81,
+    0.348,
+    -1.195
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "Whl HD RL",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": [
+    {
+     "kind": "MeshCollider",
+     "center": null,
+     "size": null,
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "Left Forearm",
+   "pos": [
+    -0.0,
+    0.0126,
+    -0.0
+   ],
+   "rot": [
+    0.23198,
+    0.83287,
+    -0.47164,
+    0.17341
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": [
+    {
+     "kind": "CapsuleCollider",
+     "center": [
+      0.0,
+      0.0122,
+      0.0
+     ],
+     "size": null,
+     "radius": 0.003,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "WheelsGroundSource",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "EngineSource",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "Signal_left",
+   "pos": [
+    -0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "BoostSource",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "tire fl",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": [
+    {
+     "kind": "MeshCollider",
+     "center": null,
+     "size": null,
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "Light-brakes",
+   "pos": [
+    -0.0,
+    0.9394,
+    -1.3252
+   ],
+   "rot": [
+    0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "Caliper FL",
+   "pos": [
+    -0.714,
+    0.32,
+    1.42
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "Left Leg",
+   "pos": [
+    -0.0,
+    0.0184,
+    0.0
+   ],
+   "rot": [
+    0.00871,
+    -0.03426,
+    0.2994,
+    0.95347
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": [
+    {
+     "kind": "CapsuleCollider",
+     "center": [
+      0.0,
+      0.0152,
+      0.0
+     ],
+     "size": null,
+     "radius": 0.0035,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "Hips",
+   "pos": [
+    0.0,
+    -0.0002,
+    0.0575
+   ],
+   "rot": [
+    0.98195,
+    -0.0035,
+    0.00074,
+    0.1891
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": [
+    {
+     "kind": "BoxCollider",
+     "center": [
+      0.0002,
+      0.0063,
+      -0.0026
+     ],
+     "size": [
+      0.0199,
+      0.0163,
+      0.01
+     ],
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "_Collider",
+   "pos": [
+    0.0,
+    0.1313,
+    -0.1571
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": [
+    {
+     "kind": "MeshCollider",
+     "center": null,
+     "size": null,
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "interior",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "light bar",
+   "pos": [
+    -0.0,
+    1.9729,
+    0.8172
+   ],
+   "rot": [
+    0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "Whl HD RL",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": [
+    {
+     "kind": "MeshCollider",
+     "center": null,
+     "size": null,
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "WindSource",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "tire rr",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": [
+    {
+     "kind": "MeshCollider",
+     "center": null,
+     "size": null,
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "FR",
+   "pos": [
+    0.932,
+    0.4702,
+    1.92
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "speed dial",
+   "pos": [
+    -0.2686,
+    0.7832,
+    0.6482
+   ],
+   "rot": [
+    0.15248,
+    -0.04271,
+    0.01502,
+    0.98727
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "caliper_FR",
+   "pos": [
+    0.813,
+    0.324,
+    1.38
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "FrictionSource",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "Caliper FL",
+   "pos": [
+    -0.8338,
+    0.3246,
+    1.1633
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "Head",
+   "pos": [
+    -0.0,
+    0.0042,
+    -0.0
+   ],
+   "rot": [
+    -0.228,
+    0.0,
+    0.0001,
+    0.97366
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": [
+    {
+     "kind": "SphereCollider",
+     "center": [
+      0.0,
+      0.005,
+      0.0
+     ],
+     "size": null,
+     "radius": 0.009,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "Caliper RL",
+   "pos": [
+    -0.8214,
+    0.3556,
+    -1.2342
+   ],
+   "rot": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "Spine 2",
+   "pos": [
+    0.0,
+    0.0075,
+    -0.0
+   ],
+   "rot": [
+    0.15597,
+    7e-05,
+    0.00037,
+    0.98776
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": [
+    {
+     "kind": "BoxCollider",
+     "center": [
+      -0.0,
+      0.0071,
+      -0.001
+     ],
+     "size": [
+      0.0199,
+      0.0142,
+      0.012
+     ],
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "Caliper FL ",
+   "pos": [
+    -0.932,
+    0.4702,
+    1.92
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "Left Thigh",
+   "pos": [
+    -0.0043,
+    -0.0018,
+    0.0002
+   ],
+   "rot": [
+    0.53384,
+    0.39492,
+    0.57458,
+    0.47845
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": [
+    {
+     "kind": "CapsuleCollider",
+     "center": [
+      0.0,
+      0.0092,
+      0.0
+     ],
+     "size": null,
+     "radius": 0.0045,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "Brake",
+   "pos": [
+    -0.0,
+    0.9332,
+    -1.2974
+   ],
+   "rot": [
+    0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "Right Forearm",
+   "pos": [
+    0.0,
+    0.0126,
+    0.0
+   ],
+   "rot": [
+    0.4494,
+    -0.60126,
+    0.13955,
+    0.64579
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": [
+    {
+     "kind": "CapsuleCollider",
+     "center": [
+      0.0,
+      0.0122,
+      0.0
+     ],
+     "size": null,
+     "radius": 0.003,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "Right Arm",
+   "pos": [
+    0.0,
+    0.0101,
+    0.0
+   ],
+   "rot": [
+    0.56564,
+    0.28873,
+    -0.27592,
+    0.7215
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": [
+    {
+     "kind": "CapsuleCollider",
+     "center": [
+      0.0,
+      0.0063,
+      0.0
+     ],
+     "size": null,
+     "radius": 0.0032,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "CoinsPool",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [
+    "Game.Scripts.CoinsPool"
+   ],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "RL",
+   "pos": [
+    -0.8214,
+    0.3556,
+    -1.2342
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "WindSource",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "RL",
+   "pos": [
+    -0.8214,
+    0.3556,
+    -1.3364
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "Right Thigh",
+   "pos": [
+    0.0042,
+    -0.0019,
+    0.0002
+   ],
+   "rot": [
+    0.58896,
+    0.46578,
+    0.51879,
+    0.4087
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": [
+    {
+     "kind": "CapsuleCollider",
+     "center": [
+      0.0,
+      0.0092,
+      0.0
+     ],
+     "size": null,
+     "radius": 0.0045,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "Caliper RR",
+   "pos": [
+    0.8214,
+    0.3556,
+    -1.3364
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "Hips",
+   "pos": [
+    0.0,
+    -0.0002,
+    0.0575
+   ],
+   "rot": [
+    0.98195,
+    -0.0035,
+    0.00074,
+    0.1891
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": [
+    {
+     "kind": "BoxCollider",
+     "center": [
+      0.0002,
+      0.0063,
+      -0.0026
+     ],
+     "size": [
+      0.0199,
+      0.0163,
+      0.01
+     ],
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "W FL",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": [
+    {
+     "kind": "MeshCollider",
+     "center": null,
+     "size": null,
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "signal right",
+   "pos": [
+    1.0205,
+    1.2236,
+    -0.1275
+   ],
+   "rot": [
+    0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "Right Forearm",
+   "pos": [
+    0.0,
+    0.0126,
+    0.0
+   ],
+   "rot": [
+    0.4494,
+    -0.60126,
+    0.13955,
+    0.64579
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": [
+    {
+     "kind": "CapsuleCollider",
+     "center": [
+      0.0,
+      0.0122,
+      0.0
+     ],
+     "size": null,
+     "radius": 0.003,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "tire carrier",
+   "pos": [
+    0.0,
+    1.1101,
+    -2.1724
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "Right Leg",
+   "pos": [
+    0.0,
+    0.0184,
+    0.0
+   ],
+   "rot": [
+    0.00181,
+    0.04091,
+    0.29952,
+    0.95321
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": [
+    {
+     "kind": "CapsuleCollider",
+     "center": [
+      0.0,
+      0.0152,
+      0.0
+     ],
+     "size": null,
+     "radius": 0.0035,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "OtherSource",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "roll bars",
+   "pos": [
+    0.0,
+    1.4646,
+    -1.4562
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "caliper rr",
+   "pos": [
+    0.81,
+    0.348,
+    -1.195
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "speed dial",
+   "pos": [
+    -0.3128,
+    1.3606,
+    1.0945
+   ],
+   "rot": [
+    0.1723,
+    -0.02161,
+    0.12258,
+    0.97715
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "Left Forearm",
+   "pos": [
+    -0.0,
+    0.0126,
+    -0.0
+   ],
+   "rot": [
+    0.23198,
+    0.83287,
+    -0.47164,
+    0.17341
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": [
+    {
+     "kind": "CapsuleCollider",
+     "center": [
+      0.0,
+      0.0122,
+      0.0
+     ],
+     "size": null,
+     "radius": 0.003,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "Head",
+   "pos": [
+    -0.0,
+    0.0042,
+    -0.0
+   ],
+   "rot": [
+    -0.228,
+    0.0,
+    0.0001,
+    0.97366
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": [
+    {
+     "kind": "SphereCollider",
+     "center": [
+      0.0,
+      0.005,
+      0.0
+     ],
+     "size": null,
+     "radius": 0.009,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "Left Thigh",
+   "pos": [
+    -0.0043,
+    -0.0018,
+    0.0002
+   ],
+   "rot": [
+    0.53384,
+    0.39492,
+    0.57458,
+    0.47845
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": [
+    {
+     "kind": "CapsuleCollider",
+     "center": [
+      0.0,
+      0.0092,
+      0.0
+     ],
+     "size": null,
+     "radius": 0.0045,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "Spine 2",
+   "pos": [
+    0.0,
+    0.0075,
+    -0.0
+   ],
+   "rot": [
+    0.15597,
+    7e-05,
+    0.00037,
+    0.98776
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": [
+    {
+     "kind": "BoxCollider",
+     "center": [
+      -0.0,
+      0.0071,
+      -0.001
+     ],
+     "size": [
+      0.0199,
+      0.0142,
+      0.012
+     ],
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "TurboSource",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "Light-turn-left",
+   "pos": [
+    -0.7304,
+    0.6759,
+    0.0404
+   ],
+   "rot": [
+    0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "BoostSource",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "FR",
+   "pos": [
+    0.81,
+    0.36,
+    1.402
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "Right Forearm",
+   "pos": [
+    0.0,
+    0.0126,
+    0.0
+   ],
+   "rot": [
+    0.4494,
+    -0.60126,
+    0.13955,
+    0.64579
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": [
+    {
+     "kind": "CapsuleCollider",
+     "center": [
+      0.0,
+      0.0122,
+      0.0
+     ],
+     "size": null,
+     "radius": 0.003,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "Left Forearm",
+   "pos": [
+    -0.0,
+    0.0126,
+    -0.0
+   ],
+   "rot": [
+    0.23198,
+    0.83287,
+    -0.47164,
+    0.17341
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": [
+    {
+     "kind": "CapsuleCollider",
+     "center": [
+      0.0,
+      0.0122,
+      0.0
+     ],
+     "size": null,
+     "radius": 0.003,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "Right Thigh",
+   "pos": [
+    0.0042,
+    -0.0019,
+    0.0002
+   ],
+   "rot": [
+    0.58896,
+    0.46578,
+    0.51879,
+    0.4087
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": [
+    {
+     "kind": "CapsuleCollider",
+     "center": [
+      0.0,
+      0.0092,
+      0.0
+     ],
+     "size": null,
+     "radius": 0.0045,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "Left Thigh",
+   "pos": [
+    -0.0043,
+    -0.0018,
+    0.0002
+   ],
+   "rot": [
+    0.53384,
+    0.39492,
+    0.57458,
+    0.47845
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": [
+    {
+     "kind": "CapsuleCollider",
+     "center": [
+      0.0,
+      0.0092,
+      0.0
+     ],
+     "size": null,
+     "radius": 0.0045,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "Spine 2",
+   "pos": [
+    0.0,
+    0.0075,
+    -0.0
+   ],
+   "rot": [
+    0.15597,
+    7e-05,
+    0.00037,
+    0.98776
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": [
+    {
+     "kind": "BoxCollider",
+     "center": [
+      -0.0,
+      0.0071,
+      -0.001
+     ],
+     "size": [
+      0.0199,
+      0.0142,
+      0.012
+     ],
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "FL",
+   "pos": [
+    -0.8338,
+    0.3246,
+    1.1633
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "_Collider",
+   "pos": [
+    0.0,
+    0.8068,
+    -0.2316
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": [
+    {
+     "kind": "MeshCollider",
+     "center": null,
+     "size": null,
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "Caliper RL",
+   "pos": [
+    -0.7934,
+    0.3466,
+    -1.5002
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "SchoolBus (1)",
+   "pos": [
+    -0.0104,
+    4.9133,
+    187.09
+   ],
+   "rot": [
+    -0.0,
+    -0.70711,
+    -0.0,
+    0.70711
+   ],
+   "scale": [
+    0.5136,
+    0.5136,
+    0.5136
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": [
+    {
+     "kind": "BoxCollider",
+     "center": [
+      0.3863,
+      3.4868,
+      -2.4188
+     ],
+     "size": [
+      5.3763,
+      6.9965,
+      16.4885
+     ],
+     "radius": null,
+     "mass": null
+    },
+    {
+     "kind": "BoxCollider",
+     "center": [
+      0.3863,
+      2.0151,
+      7.8995
+     ],
+     "size": [
+      7.5511,
+      4.0529,
+      4.0391
+     ],
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "Tire_FR",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": [
+    {
+     "kind": "MeshCollider",
+     "center": null,
+     "size": null,
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "interior",
+   "pos": [
+    0.0,
+    0.6344,
+    0.337
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "Head",
+   "pos": [
+    -0.0,
+    0.0042,
+    -0.0
+   ],
+   "rot": [
+    -0.228,
+    0.0,
+    0.0001,
+    0.97366
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": [
+    {
+     "kind": "SphereCollider",
+     "center": [
+      0.0,
+      0.005,
+      0.0
+     ],
+     "size": null,
+     "radius": 0.009,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "Hips",
+   "pos": [
+    0.0,
+    -0.0002,
+    0.0575
+   ],
+   "rot": [
+    0.98195,
+    -0.0035,
+    0.00074,
+    0.1891
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": [
+    {
+     "kind": "BoxCollider",
+     "center": [
+      0.0002,
+      0.0063,
+      -0.0026
+     ],
+     "size": [
+      0.0199,
+      0.0163,
+      0.01
+     ],
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "Left Leg",
+   "pos": [
+    -0.0,
+    0.0184,
+    0.0
+   ],
+   "rot": [
+    0.00871,
+    -0.03426,
+    0.2994,
+    0.95347
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": [
+    {
+     "kind": "CapsuleCollider",
+     "center": [
+      0.0,
+      0.0152,
+      0.0
+     ],
+     "size": null,
+     "radius": 0.0035,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "EngineSource",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "WheelsGroundSource",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "Tire RR",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": [
+    {
+     "kind": "MeshCollider",
+     "center": null,
+     "size": null,
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "_Collider",
+   "pos": [
+    0.0,
+    1.442,
+    0.3122
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": [
+    {
+     "kind": "MeshCollider",
+     "center": null,
+     "size": null,
+     "radius": null,
+     "mass": null
+    }
+   ]
+  },
+  {
+   "name": "light bar ",
+   "pos": [
+    0.0,
+    1.9375,
+    0.7269
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 1,
+   "colliders": []
+  },
+  {
+   "name": "Left Arm",
+   "pos": [
+    0.0,
+    0.0101,
+    -0.0
+   ],
+   "rot": [
+    -0.63879,
+    0.72143,
+    -0.26418,
+    0.04127
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": [
+    {
+     "kind": "CapsuleCollider",
+     "center": [
+      0.0,
+      0.0063,
+      0.0
+     ],
+     "size": null,
+     "radius": 0.0032,
+     "mass": null
+    }
+   ]
+  }
+ ]
+}

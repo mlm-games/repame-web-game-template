@@ -1,30 +1,25 @@
-
 use super::UiAction;
-use repose_core::prelude::{Color, Modifier, StateColors, View};
+use repose_core::prelude::{Color, Dp, Modifier, StateColors, View};
 use repose_core::text::TextAlign;
-use repose_core::{AlignItems, Dp, JustifyContent, PaddingValues, Sp};
+use repose_core::{AlignItems, JustifyContent, PaddingValues, Sp};
 use repose_ui::{Box as RBox, Spacer, TextStyle as _, ViewExt as _};
 
-pub const INK: Color = Color(0x1E, 0x2A, 0x4A, 0xFF);
-pub const SKY: Color = Color(0x7F, 0xC9, 0xF2, 0xFF);
-pub const SKY_DARK: Color = Color(0x5F, 0xAC, 0xDE, 0xFF);
-pub const CORAL: Color = Color(0xF4, 0x71, 0x6A, 0xFF);
-pub const GOLD: Color = Color(0xFF, 0xC9, 0x3C, 0xFF);
-pub const GOLD_DARK: Color = Color(0xE0, 0x9B, 0x1F, 0xFF);
+pub const INK: Color = Color(0x14, 0x18, 0x22, 0xFF);
+pub const SUN: Color = Color(0xFF, 0xC9, 0x3C, 0xFF);
+pub const DANGER: Color = Color(0xE8, 0x4C, 0x3C, 0xFF);
+pub const OK: Color = Color(0x62, 0xC3, 0x70, 0xFF);
 pub const CYAN: Color = Color(0x46, 0xC8, 0xF5, 0xFF);
-pub const PINK: Color = Color(0xFF, 0x9E, 0xB1, 0xFF);
-pub const GREEN: Color = Color(0x7B, 0xD8, 0x8F, 0xFF);
-pub const CREAM: Color = Color(0xFF, 0xF8, 0xEA, 0xFF);
-pub const SCRIM: Color = Color(0x1E, 0x2A, 0x4A, 0x66);
-pub const BUTTON_SHADOW: Color = Color(0x1E, 0x2A, 0x4A, 0x33);
-pub const TOUCH_BG: Color = Color(0xFF, 0xF8, 0xEA, 0x99);
-pub const TOUCH_RING: Color = Color(0x1E, 0x2A, 0x4A, 0xFF);
-pub const TOUCH_SHADOW: Color = Color(0x1E, 0x2A, 0x4A, 0x22);
-pub const TOUCH_KNOB: Color = Color(0xFF, 0xFF, 0xFF, 0xFF);
-pub const TOUCH_KNOB_DARK: Color = Color(0xC9, 0xD8, 0xEE, 0xFF);
-pub const TOUCH_CENTER: Color = Color(0x1E, 0x2A, 0x4A, 0xFF);
+pub const CREAM: Color = Color(0xFF, 0xF6, 0xE8, 0xFF);
+pub const STEEL: Color = Color(0x2C, 0x35, 0x48, 0xFF);
+pub const STEEL_DARK: Color = Color(0x1C, 0x22, 0x30, 0xFF);
+pub const PANEL: Color = Color(0x14, 0x18, 0x22, 0xD8);
+pub const LOCKED: Color = Color(0x33, 0x3A, 0x48, 0xFF);
+pub const SHADOW: Color = Color(0x00, 0x00, 0x00, 0x55);
 
 pub const FONT: &str = "Fredoka";
+
+pub const BUTTON_W: f32 = 210.0;
+pub const BUTTON_H: f32 = 46.0;
 
 pub fn mix(a: Color, b: Color, t: f32) -> Color {
     let t = t.clamp(0.0, 1.0);
@@ -53,49 +48,13 @@ pub fn rect(vp: [f32; 2], s: f32, anchor: [f32; 4], offset: [f32; 4]) -> Modifie
         .offset_bottom(Dp((vp[1] - bottom).max(0.0)))
 }
 
-pub fn chip(bg: Color, s: f32) -> Modifier {
-    Modifier::new()
-        .background(bg)
-        .border(Dp(2.5 * s), INK, Dp(14.0 * s))
-        .padding_values(PaddingValues {
-            left: Dp(14.0 * s),
-            right: Dp(14.0 * s),
-            top: Dp(6.0 * s),
-            bottom: Dp(6.0 * s),
-        })
-}
-
-pub fn chunky(bg: Color, pad_x: f32, pad_y: f32, s: f32) -> Modifier {
-    Modifier::new()
-        .state_colors(StateColors {
-            default: bg,
-            hovered: lighten(bg, 0.08),
-            focused: lighten(bg, 0.04),
-            pressed: mix(bg, INK, 0.16),
-            disabled: mix(bg, INK, 0.30),
-            dragged: mix(bg, INK, 0.16),
-        })
-        .border(Dp(3.0 * s), INK, Dp(16.0 * s))
-        .padding_values(PaddingValues {
-            left: Dp(pad_x * s),
-            right: Dp(pad_x * s),
-            top: Dp(pad_y * s),
-            bottom: Dp(pad_y * s),
-        })
-        .shadow_with_color(Dp(0.0), Dp(5.0 * s), BUTTON_SHADOW)
-        .align_items(AlignItems::CENTER)
-        .justify_content(JustifyContent::CENTER)
-        .focusable(true)
-}
-
 pub fn label(m: Modifier, text: &str, size: f32, fill: Color, s: f32) -> View {
-    let outline = (size / 3.0).max(2.5);
     repose_ui::Text(text.to_string())
         .size(Sp(size * s))
         .text_align(TextAlign::Center)
         .font_family(FONT)
         .color(fill)
-        .outlined(0.42 * outline / size, INK)
+        .outlined(0.12, INK)
         .single_line()
         .overflow_visible()
         .modifier(m)
@@ -112,56 +71,29 @@ pub fn label_plain(m: Modifier, text: &str, size: f32, fill: Color, s: f32) -> V
         .modifier(m)
 }
 
-pub fn disc(vp: [f32; 2], s: f32, at: [f32; 2], r: f32, color: Color) -> View {
-    RBox(
-        rect(
-            vp,
-            s,
-            [0.0; 4],
-            [at[0] - r, at[1] - r, at[0] + r, at[1] + r],
-        )
-        .background(color)
-        .clip_rounded(Dp(r * s))
-        .hit_passthrough(),
-    )
-    .child(Spacer())
-}
-
-pub const ICON_BUTTON: f32 = 46.0;
-const ICON_GLYPH: f32 = 26.0;
-pub const MATERIAL_SYMBOLS: &str = "Material Symbols Outlined";
-
-pub fn icon(name: &str, size: f32, s: f32) -> View {
-    repose_ui::Text(name.to_string())
-        .size(Sp(size * s))
-        .text_align(TextAlign::Center)
-        .font_family(MATERIAL_SYMBOLS)
-        .color(INK)
-        .single_line()
-        .overflow_visible()
-        .modifier(Modifier::new())
-}
-
-pub fn icon_button(
-    name: &str,
+pub fn button(
+    text: &str,
+    bg: Color,
+    size: f32,
     s: f32,
     action: UiAction,
     sink: &super::Sink,
     disabled: bool,
 ) -> View {
     let mut m = Modifier::new()
-        .size(Dp(ICON_BUTTON * s), Dp(ICON_BUTTON * s))
-        .background(CREAM)
-        .border(Dp(3.0 * s), INK, Dp(12.0 * s))
+        .width(Dp(BUTTON_W * s))
+        .height(Dp(BUTTON_H * s))
+        .background(bg)
         .state_colors(StateColors {
-            default: CREAM,
-            hovered: lighten(CREAM, 0.06),
-            focused: lighten(CREAM, 0.03),
-            pressed: mix(CREAM, INK, 0.14),
-            disabled: mix(CREAM, INK, 0.30),
-            dragged: mix(CREAM, INK, 0.14),
+            default: bg,
+            hovered: lighten(bg, 0.08),
+            focused: lighten(bg, 0.04),
+            pressed: mix(bg, INK, 0.18),
+            disabled: mix(bg, INK, 0.35),
+            dragged: mix(bg, INK, 0.18),
         })
-        .shadow_with_color(Dp(0.0), Dp(4.0 * s), BUTTON_SHADOW)
+        .border(Dp(2.5 * s), INK, Dp(13.0 * s))
+        .shadow_with_color(Dp(0.0), Dp(4.0 * s), SHADOW)
         .align_items(AlignItems::CENTER)
         .justify_content(JustifyContent::CENTER)
         .focusable(true);
@@ -173,5 +105,51 @@ pub fn icon_button(
             move || sink.lock().unwrap().push(action)
         });
     }
-    RBox(m).child(icon(name, ICON_GLYPH, s))
+    RBox(m).child(label(Modifier::new(), text, size, INK, s))
+}
+
+pub fn bar(frac: f32, fg: Color, s: f32, width: f32, height: f32) -> View {
+    let frac = frac.clamp(0.0, 1.0);
+    repose_ui::ZStack(
+        Modifier::new()
+            .width(Dp(width * s))
+            .height(Dp(height * s))
+            .background(STEEL_DARK)
+            .clip_rounded(Dp(height * s * 0.5)),
+    )
+    .child((
+        RBox(
+            Modifier::new()
+                .width(Dp(width * s * frac))
+                .height(Dp(height * s))
+                .background(fg)
+                .clip_rounded(Dp(height * s * 0.5)),
+        )
+        .child(Spacer()),
+        Spacer(),
+    ))
+}
+
+pub fn panel(vp: [f32; 2], s: f32, content: View) -> View {
+    RBox(
+        Modifier::new()
+            .fill_max_size()
+            .justify_content(JustifyContent::CENTER)
+            .align_items(AlignItems::CENTER),
+    )
+    .child(
+        RBox(
+            Modifier::new()
+                .background(PANEL)
+                .clip_rounded(Dp(20.0 * s))
+                .padding_values(PaddingValues {
+                    left: Dp(20.0 * s),
+                    right: Dp(20.0 * s),
+                    top: Dp(20.0 * s),
+                    bottom: Dp(20.0 * s),
+                })
+                .max_width(Dp(vp[0] * 0.94)),
+        )
+        .child(content),
+    )
 }

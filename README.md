@@ -1,79 +1,134 @@
-# repame web game template
+# Deadly Descent
 
-One tree, three targets: desktop for development, wasm for Poki and every
-portal the Playgama bridge reaches. The template ships a complete demo game
-(move, collect orbs, run out of clock, watch an ad, revive) so every platform
-hook is wired and testable before real gameplay exists.
+A downhill survival racer ported to Repame. Drive a car down a mountain track,
+survive the obstacles, reach the finish in one piece.
+
+## Provenance
+
+The reference is the shipped **Unity 2022.3.62f2 WebGL (IL2CPP)** build of Deadly
+Descent (`github.com/ubg42/DeadlyDescent`, checkout `3954a35`, data file retrieved
+from the Playgama CDN on 2026-10-18). What was read, and how, is recorded in
+`refs/deadly-descent.toml` and the ledger
+`~/Documents/Repos/assets/deadly-descent/REA-findings.md`; the analysis scripts and
+tables live in `refs/DeadlyDescent/analysis/`.
+
+In short: the IL2CPP metadata parses fully (v31; 8,274 types, 53,624 methods, 36,331
+fields, all tables tiling exactly), and the serialized assets decode with a
+reconstructed MonoBehaviour layout. That yielded the game's own tables — the 61-level
+progression, the ten cars' physics and gearboxes, the damage and breakable constants,
+the AI config and the segment inventory.
+
+**Not recovered**: method bodies (no wasm decompiler is available here), so Unity's
+WheelCollider integration and the track generator's placement algorithm are rewritten
+rather than copied, and the coin prices for cars and upgrades do not appear in any
+decoded asset. Those are the DESIGNED rows below.
+
+### Art
+
+Art is the original game's, exported to
+`~/Documents/refs/DeadlyDescent/extracted/` (571 GLBs, 331 PNGs, audio, sprites) and
+loaded at runtime. It is reference material and is **never committed or
+redistributed**: set `DD_ASSETS` to that directory (or leave it in place) and the cars
+and props appear; without it every actor falls back to a boxed stand-in, and the game
+still runs. Textures are exported but not yet bound to the GLB materials.
+
+## Run
+
+```sh
+cargo run                 # desktop (1280x720)
+cargo test                # headless sim checks: tables, car model, a 90 s run
+DD_ASSETS=~/Documents/refs/DeadlyDescent/extracted cargo run
+```
+
+Controls: **W/A/S/D** or arrows to drive, **Shift/N** nitro, **Space** handbrake,
+**Esc** pause, **R** restart. Garage → map select → race → results.
+
+`cargo run` is desktop-only by default; web (`trunk build --release`) and Android
+(`cargo rapk`) are not built or verified in this pass.
+
+## Parity matrix
+
+Basis: **MEASURED** = read from the shipped build (value or table); **STRUCTURE** =
+shape read off the build's metadata/names; **DESIGNED** = not recoverable, chosen
+here and flagged; **VERIFIED** = covered by a test in `tests/`.
+
+| Behaviour | Reference | Port | Basis |
+| --- | --- | --- | --- |
+| 61 levels, names, scenes, icons, unlock costs | `Game.MapConfig` entry list | `assets/dd1/levels.json` → `sim::data::Level` | MEASURED + VERIFIED |
+| Rewards per level (completion / speed / time / damage) and thresholds | `rewardForCompletion`, `speedToGetReward` (km/h), `timeToGetReward` (s), `rewardForMaxDamage` | `race::build_results` | MEASURED |
+| Score ceiling and completion score | `maxPossibleScore`, `scoreForCompletion` | `race::build_results` | MEASURED for the ceiling; speed/time score split DESIGNED |
+| Second completion pays a reduced reward | `secondCompletionRewardMultiplier` (1.0 in the shipped table) | `meta::record_results` (half base + score delta) | DESIGNED (field is 1.0 in every level) |
+| Ten cars with their names, order and shop kind | 10 car prefabs; `CarShopItemConfig` purchase kinds | `assets/dd1/cars.json` | MEASURED + VERIFIED |
+| Car mass and drag | `Rigidbody` per prefab (1200–2788 kg) | `sim::data::Car` | MEASURED + VERIFIED |
+| Wheel radius, suspension travel, spring, damper, target | four `WheelCollider`s per prefab | `sim::car` suspension | MEASURED |
+| Tyre friction (forward/sideways slip, value, asymptote, stiffness) | `WheelCollider` curves | `data::friction_at` | MEASURED |
+| Engine: torque curve, rpm limits, cut-off pair and time, nitro fields, shift rpms | inline `EngineConfig` in each car | `sim::car::CarSim::step` | MEASURED (curve and scalars) |
+| Gearbox ratios and final drive per car | inline gearbox config | `Car.ratio`, `final_drive` | MEASURED + VERIFIED |
+| Steering limit falls with speed (full lock low, ~20% at 40 m/s) | `SteerConfig.SteerLimitCurve` shape | `steer_authority` | MEASURED shape |
+| ABS present, TCS absent | `SteerConfig.ABS` = 1.0, `TCS` = 0.0 in the car's inline steer config | `car::ABS_ENABLED`, brake modulation past the friction peak | MEASURED flags (Porsche payload); modulation DESIGNED |
+| Damage accumulates to MaxDamage 2000, then the car is destroyed | `PG.VehicleDamageController` | `CarSim::max_damage`, `resolve_collisions` | MEASURED constants, DESIGNED accumulation |
+| Impulse thresholds: breakables break at 10 (later levels 12), radius 5.0, multiplier 1.2 | `Game.Breakable` | `sim::obstacles` | MEASURED + VERIFIED (structure) |
+| Obstacle kinds and their levels | 22 segment scenes + `Game.Breakable` pieces | `obstacles::mix_for` | STRUCTURE (kinds) |
+| Per-level dressing from the level's own scene | segment scene contents (`SingleSpike`, `HoleSpikes`, `SchoolBus`, `molot`, `Bump`, `HoleRoad`, `Tube`, `Pillar`, buildings…) | `assets/dd1/level_props.json` → `props::dressing` | MEASURED (scene contents), placement DESIGNED |
+| Best-speed readout beside the target speed | the HUD's own `cur/max km/h` and `BestSpeed` labels | `meta::best_speed`, HUD row | MEASURED shape, storage DESIGNED |
+| Steering limit: 40° with limiting enabled on every car | each car's inline `SteerConfig` (`MaxSteerAngle`, `EnableSteerLimit`) | `car::steer_authority` + spec | MEASURED (all ten cars) |
+| Obstacle placement within a level | `Track_Generator` + seeds | `obstacles::place` | DESIGNED |
+| Track length, drop and road shape per level | `racingTrackSize`, `racingTrackSeed` | `track::Track::build` | DESIGNED (fields MEASURED, geometry designed) |
+| Checkpoints required on flagged levels | `requireCheckpoints` | `race::step_world` | MEASURED |
+| AI opponents per level, their cars and skill tiers, bot speed cap | `botConfigs`, `maxBotSpeed` | `race::ai_controls` | MEASURED inputs, DESIGNED controller |
+| AI driver tuning: profile caps, target/turn-prediction offsets, look angle, obstacle hit distance and offsets, hit delays, reverse recovery | two `RaceAIConfigAsset`s (BaseAIConfig + RaceAIConfig, 20 fields) | `assets/dd1/ai.json` → `sim::ai` | MEASURED values, controller DESIGNED (PID shape from `RaceAIControl.P/I/D`) |
+| Map previews (40 `MapTrajectories` + 24 `MapIcons`) and car icons | shipped PNG/JPGs | `ui::images`, cards show the real preview per level | MEASURED art, grid grouping DESIGNED |
+| World grouping of the racing levels | `Map.<mode>.<n>.RacingTrack.png` preview names | `ui::images::racing_mode` → "WORLD n" on the selector | MEASURED from the shipped preview names |
+| Coins, wallet, unlock fees paid from coins | `costToUnlock` | `meta::Progress` | MEASURED costs |
+| Car coin prices | not in any decoded asset | `meta::car_price` | DESIGNED |
+| Upgrade levels and prices | not in any decoded asset | `meta::upgrade_price`, `Upgrades` | DESIGNED |
+| Save: coins, unlocks, upgrades, best time/score | — | `meta::SaveData` (RON, cloud key) | DESIGNED |
+| Ads / IAP hooks | `MultiplatformKit` + Playgama bridge config; the shop's coin packs and the "Get Coins" row | `app::platform` + rewarded-ad coin grant (`free_coins`) | PARTIAL (rewarded wired, interstitial/IAP not) |
+| Daily login reward with a streak | `LogInRewardTracker`, `Game.RewardsController` | `meta::login_reward_available` / `claim_login_reward` (7-day table) | STRUCTURE (streak); amounts DESIGNED |
+| Coin packs and the ad-free entitlement | `coinPack0_2`…`coinPack3_2`, `no_ads` in the bridge config; `Game.NoAdsBtn` | `meta::COIN_PACKS`, `app::purchase`, `ui` garage rows | STRUCTURE (ids MEASURED, coin amounts DESIGNED) |
+| Between-runs interstitial | CrazyGames copy: "each round offers new obstacles" flow; bridge config `advertisement.interstitial` | `app::handle_run_end` (`game_over` placement, skipped once ads are removed) | STRUCTURE |
+| Leaderboard submit and popup | `Game.LeaderboardUI`, `Playgama.Modules.Leaderboards`, literal "Max score is {0} at the leaderboard" | `Platform::submit_score` / `show_leaderboard`, results button | STRUCTURE (per-level board `level_N`, DESIGNED id scheme) |
+| Tutorial steps | `Game.Scripts.Tutorial.*` (`ClickOnLevelTutorialStep`, `ClickOnlyOneButtonStep`, `NitroTutorial`, `PulsationAnimation`) | `meta::advance_tutorial` + pulsing hints in the garage, selector and HUD | STRUCTURE (three shipped steps, pulse animation) |
+| Engine audio: per-car engine directory, rpm-banded beds with on/off throttle variants and a wind bed | 42 `StreamingAssets/CarEngines/*` sets; per-car loader mapping read off the car prefabs | `data::engine_dir`, `app::audio` (Vorbis decode, crossfaded by rpm/throttle) | MEASURED mapping; crossfade DESIGNED |
+| UI skin: coin icon, speed dial with needle, nitro dial, car cards, lock/star, buttons, lose panel | 171 UI sprites in the build (`iconCoin`, `speed-dial`, `S_TachometerArrow`, `nitro-dial`, `Car_Button_*`, `PictoIcon_Lock_2`, `YouLoseBack`, …) | `ui::images` + `ui::mod` | MEASURED skin |
+| UI text and readouts | the build's own strings ("Select Location", "Earned <coin> N", "Total reward", "Try again!", "NITRO", "BestSpeed", "Continue", "Back") and the `cur/max km/h` shape | `ui::mod` | MEASURED (strings read out of the scenes) |
+| Obstacle art and roadside dressing | shipped meshes: `Container`, `Wooden_Crate_02`, `HoleSpikes_2`, `Ramp`, `Industrial_Train_Dr14`, `SchoolBus_2`, `Barrier-02`, `Tree-A-01`, grandstands, footbridges, terrain ridges | `assets/dd1/props.json` → `props::PropCache` | MEASURED art, placement DESIGNED |
+| Car and prop textures | `materials.json` + exported PNGs (`mesh_materials.json` records mesh → material → base texture) | `art::Textures` page array | MEASURED binding |
+| UI text and localisation | `LeanLocalization`, 169 phrases | English strings inline | PARTIAL (English only, strings from the build where decoded) |
+| Mobile touch controls | on-screen buttons + wheel | keyboard only | MISSING |
+| Art | exported meshes + textures | GLB load, texture pages, boxed fallback when the export is absent | MEASURED art (car liveries, props, UI) |
+
+## Layout
 
 ```
-Cargo.toml / Cargo.lock      repame 0.3.11 + repose 0.31 from crates.io; commented
-                             [patch.crates-io] block redirects to ../Repos
-Trunk.toml / index.html      public_url = "./", so portals can serve from a subpath
-playgama-bridge-config.json  ad placements: game_over (interstitial), revive (rewarded)
 src/
-  lib.rs / main.rs           desktop + wasm entries; wasm pulls the bridge before boot
-  app/mod.rs                 the shell: frame loop, input merge, schedule gate, entries
-  app/platform.rs            the only file that talks to Playgama (ads, pause, mute, cloud)
-  app/audio.rs               procedural sfx, no audio files
-  sim/state.rs               run state machine: menu, playing, break, death panel, revive
-  sim/platform.rs            headless platform intents, no SDK types
-  sim/save.rs                local file (localStorage on wasm) + cloud merge
-  rigs.rs                    renamite rig hosts: art layer, playback, placement
-  ui/                        HUD, panels, virtual stick on a 960x540 design grid
-assets/rigs/                 .svg authoring exports, .ren rig sources, Fredoka
-scripts/new-game.sh          copies and renames the template into a new game
+  sim/
+    data.rs        level and car tables (embedded JSON, from the build)
+    car.rs         four-wheel vehicle model, engine, damage accumulation
+    track.rs       descending road geometry shared by sim and view
+    obstacles.rs   hazard kinds, per-level mix, moving hazards, break rules
+    race.rs        session lifecycle, AI opponents, checkpoints, rewards
+    meta.rs        wallet, unlocks, upgrades, save file
+    mod.rs         intents, resources, schedule
+  art.rs           original meshes -> MeshGroups, stand-in fallback
+  scene.rs         Frame3d composition (road, obstacles, cars, camera)
+  ui/              garage, map select, HUD, results (Repose views)
+  app/             input, platform host, audio, the frame loop
+assets/dd1/        tables extracted from the build (+ segment layouts)
+tests/sim_smoke.rs headless checks
 ```
 
-## Start a new game
+## Next
 
-```sh
-scripts/new-game.sh orb-dash "Orb Dash"     # copies to ../orb-dash
-cd ../orb-dash
-cargo run                                    # desktop
-trunk build --release                        # dist/ for the portal
-```
-
-## The rules this template encodes
-
-- Engine versions come from crates.io, not local paths. To pick up an
-  unreleased fix from `~/Documents/Repos`, uncomment every
-  `[patch.crates-io]` line or none: a half-patched tree puts two copies of
-  the renderer in one binary and sprites vanish.
-- The sim never sees the SDK. Headless tests drive ads by hand; desktop
-  behaves like web minus ads.
-- Breaks have watchdogs (10 s interstitial, 30 s rewarded) so a silent SDK
-  cannot freeze a hosted game. A rewarded ad that pays nothing lands on the
-  death panel without the revive button.
-- `game_ready` fires only after the first playable frame, and gameplay
-  start/stop bracket every run.
-- Editor buttons are Material Symbols ligatures (`pause`, `volume_up`,
-  `menu`); repose bundles and registers the face. Score chips are text.
-
-## Art
-
-Art is renamite rigs, not sprites. `assets/rigs/*.svg` are the authoring
-exports (VectorCraft), `*.ren` is the rig source of truth and what ships via
-`include_str!`, and `src/rigs.rs` hosts each rig through `repame-actors` and
-paints it as a Repose view. Authoring loop:
-
-```sh
-renamite import-svg art.svg --output art.ren   # SVG -> rig
-renamite validate art.ren                      # check it
-renamite pack art.ren                          # only once the published runtime reads it
-```
-
-Pack to `.renb` when the published renamite runtime can read the local
-CLI's binary format; today the text form is what parses, so the template
-ships `.ren`.
-
-House style: flat saturated fields, no gradients; everything wears the same
-ink outline (`INK`, ~3 px at the design grid); the backdrop is a sunburst
-over one sky tone with two hills in the darker sibling tone; characters are
-stickers with a belly patch and two cream eyes. Text is Fredoka Bold, cream
-with an ink glyph stroke on the sky, plain ink on cream cards, always
-`single_line`. To restyle a game, change the colors in `ui/palette.rs` and
-the tints in `src/rigs.rs`.
-
-## Tests
-
-`cargo test` covers the ad verdict state machine.
+1. Racing-track levels from the generator's piece catalogue: the shipped racing
+   tracks are grids of `GRID-R-*` / `R-*` / `C-*` / `DC-*` pieces (1.8 × 5 m tiles and
+   4.45 m connectors, imported at `scale = 0.01` from `StreamingAssets/glb`). The port
+   still drives a designed descending profile with the shipped art dressing it.
+2. Shop and upgrade coin prices (`Game.PricesConfig` carries only `CarPrices`; the
+   price curve is in code, so it is not recoverable here — measure it from the live
+   build or keep the designed curve).
+3. Touch controls: the shipped `MobileButtons_*` / `MobileInput_*` / `teerWheel`
+   sprites and the mobile UI scenes are exported; the port is keyboard only (no
+   mobile target has been built, so this is deliberately last).
+4. Per-car steer scalars beyond ABS/TCS (`MaxSteerAngle`, drift limits) as the
+   inline configs are only partly mapped.

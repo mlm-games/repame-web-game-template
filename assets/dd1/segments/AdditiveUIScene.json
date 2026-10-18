@@ -1,0 +1,159 @@
+{
+ "scene": "level5",
+ "props": [
+  {
+   "name": "MapUI",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "LowNitroPanel",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "CheckpointAquiredPanel",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "RemainingNitro",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "NoAds",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "NoAds",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    -0.0,
+    -0.0,
+    -0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  },
+  {
+   "name": "CameraController",
+   "pos": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "rot": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "classes": [],
+   "meshes": 0,
+   "colliders": []
+  }
+ ]
+}

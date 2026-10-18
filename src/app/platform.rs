@@ -1,4 +1,3 @@
-
 use std::cell::{Cell, RefCell};
 use std::rc::Rc;
 use std::sync::Once;
@@ -7,10 +6,14 @@ use std::sync::atomic::{AtomicBool, Ordering};
 use bevy_ecs::prelude::World;
 use playgama_bridge::{Backend, Bridge, ErrorCode, InterstitialState, RewardedState};
 
+use crate::sim::meta::{CLOUD_KEY, Progress};
 use crate::sim::platform::{BreakKind, Platform, PlatformMessage, PlatformRequest};
-use crate::sim::save::{CLOUD_KEY, SaveGame};
 
 pub const UNSUPPORTED_BREAK_DELAY: f32 = 0.1;
+
+/// The single in-flight purchase the host reports back; the app checks the id it
+/// asked for when it drains the slot.
+const PENDING_PURCHASE_ID: &str = "purchase";
 
 enum PlatformEvent {
     AudioEnabled(bool),
@@ -39,6 +42,10 @@ pub struct PlatformHost {
     ad_open: bool,
     host_paused: bool,
     announce_ready: bool,
+    /// Set on the bridge worker when a score post finishes.
+    score_posted: Rc<Cell<bool>>,
+    /// Set on the bridge worker when a purchase finishes.
+    purchase_result: Option<Rc<Cell<bool>>>,
     cloud_retry: Rc<Cell<bool>>,
 }
 
@@ -57,6 +64,8 @@ impl PlatformHost {
             ad_open: false,
             host_paused: false,
             announce_ready: false,
+            score_posted: Rc::new(Cell::new(false)),
+            purchase_result: None,
             cloud_retry: Rc::new(Cell::new(false)),
         }
     }
@@ -71,7 +80,7 @@ impl PlatformHost {
         let bridge = Rc::new(bridge);
         let inbox = Rc::new(RefCell::new(Inbox::default()));
         Self::listen(&bridge, &inbox);
-        log::info!("web-game: platform {}", bridge_label(&bridge));
+        log::info!("deadly-descent: platform {}", bridge_label(&bridge));
         Self {
             host: Host::Web(bridge, inbox),
             unsupported_break: 0.0,
@@ -79,6 +88,8 @@ impl PlatformHost {
             ad_open,
             host_paused: false,
             announce_ready: false,
+            score_posted: Rc::new(Cell::new(false)),
+            purchase_result: Some(Rc::new(Cell::new(false))),
             cloud_retry: Rc::new(Cell::new(false)),
         }
     }
@@ -96,6 +107,20 @@ impl PlatformHost {
 
     pub fn update(&mut self, world: &mut World, dt: f32, frame_ready: bool) {
         self.apply_events(world);
+        if self.score_posted.get() {
+            self.score_posted.set(false);
+            if let Some(mut platform) = world.get_resource_mut::<Platform>() {
+                platform.note_score_posted();
+            }
+        }
+        if self.purchase_result.as_ref().is_some_and(|r| r.get()) {
+            if let Some(result) = &self.purchase_result {
+                result.set(false);
+            }
+            if let Some(mut platform) = world.get_resource_mut::<Platform>() {
+                platform.note_purchase(PENDING_PURCHASE_ID);
+            }
+        }
         if self.ad_open
             && world
                 .get_resource::<Platform>()
@@ -185,8 +210,10 @@ impl PlatformHost {
             return;
         };
         let events = std::mem::take(&mut inbox.borrow_mut().events);
-        let running = world.get_resource::<Platform>().and_then(Platform::pending);
+        // Re-read per event: one batch can close a break and open the next, so a
+        // snapshot taken before the loop would judge later events wrongly.
         for event in events {
+            let running = world.get_resource::<Platform>().and_then(Platform::pending);
             self.apply_event(world, running, event);
         }
     }
@@ -201,7 +228,19 @@ impl PlatformHost {
             {
                 self.ad_open = false;
             }
-            PlatformEvent::AdClosed(kind) if running == Some(kind) => self.finish_break(world),
+            PlatformEvent::AdClosed(kind) if running == Some(kind) => {
+                // A rewarded ad can close without granting: clear the request so
+                // the next one is accepted.
+                if kind == BreakKind::Rewarded {
+                    let granted = world
+                        .get_resource::<Platform>()
+                        .is_some_and(Platform::reward_granted);
+                    if !granted {
+                        world.resource_mut::<Platform>().note_reward_granted();
+                    }
+                }
+                self.finish_break(world)
+            }
             PlatformEvent::AdFailed(kind) if running == Some(kind) => self.finish_break(world),
             PlatformEvent::RewardGranted if running == Some(BreakKind::Rewarded) => {
                 world.resource_mut::<Platform>().note_reward_granted();
@@ -247,6 +286,39 @@ impl PlatformHost {
                             self.unsupported_break = UNSUPPORTED_BREAK_DELAY;
                         }
                     }
+                    PlatformRequest::SubmitScore { id, score } => {
+                        let posted = self.score_posted.clone();
+                        bridge.leaderboards.set_score(
+                            id.as_str(),
+                            score,
+                            Box::new(move |outcome| {
+                                if outcome.is_ok() {
+                                    posted.set(true);
+                                }
+                            }),
+                        );
+                    }
+                    PlatformRequest::ShowLeaderboard { id } => {
+                        bridge
+                            .leaderboards
+                            .show_native_popup(id.as_str(), Box::new(|_| {}));
+                    }
+                    PlatformRequest::Purchase { id } => match &self.purchase_result {
+                        Some(result) => {
+                            let result = result.clone();
+                            let id = id.clone();
+                            bridge.payments.purchase(
+                                id.as_str(),
+                                None,
+                                Box::new(move |outcome| {
+                                    result.set(outcome.is_ok());
+                                }),
+                            );
+                        }
+                        None => {
+                            world.resource_mut::<Platform>().note_purchase(id.as_str());
+                        }
+                    },
                 },
                 Host::Offline => match request {
                     PlatformRequest::SendMessage(_) => {}
@@ -256,6 +328,14 @@ impl PlatformHost {
                     PlatformRequest::ShowRewarded { .. } => {
                         world.resource_mut::<Platform>().note_reward_granted();
                         self.unsupported_break = UNSUPPORTED_BREAK_DELAY;
+                    }
+                    PlatformRequest::SubmitScore { .. } => {
+                        // Offline: the local save already keeps the best score.
+                    }
+                    PlatformRequest::ShowLeaderboard { .. } => {}
+                    PlatformRequest::Purchase { id } => {
+                        // No store offline: grant the item so the flow is testable.
+                        world.resource_mut::<Platform>().note_purchase(id.as_str());
                     }
                 },
             }
@@ -276,25 +356,25 @@ impl PlatformHost {
         };
         let cloud = inbox.borrow_mut().cloud.take();
         if let Some(cloud) = cloud
-            && let Some(mut save) = world.get_resource_mut::<SaveGame>()
+            && let Some(mut save) = world.get_resource_mut::<Progress>()
         {
-            save.apply_cloud(&cloud);
+            save.adopt_cloud(&cloud);
         }
         if self.cloud_retry.get() {
-            if let Some(mut save) = world.get_resource_mut::<SaveGame>() {
+            if let Some(mut save) = world.get_resource_mut::<Progress>() {
                 save.cloud_dirty = true;
             }
             self.cloud_retry.set(false);
         }
         let data = {
-            let Some(mut save) = world.get_resource_mut::<SaveGame>() else {
+            let Some(mut save) = world.get_resource_mut::<Progress>() else {
                 return;
             };
             if !save.cloud_dirty {
                 return;
             }
             save.cloud_dirty = false;
-            save.data.clone()
+            serde_json::to_value(&save.data).unwrap_or(serde_json::Value::Null)
         };
         let retry = Rc::clone(&self.cloud_retry);
         playgama_bridge::set_json(
@@ -307,10 +387,10 @@ impl PlatformHost {
                 }
                 let code = outcome.err().and_then(|e| e.code());
                 if matches!(code, Some(ErrorCode::StorageQuotaExceeded)) {
-                    log::warn!("web-game: the cloud is full; local save stands");
+                    log::warn!("deadly-descent: the cloud is full; local save stands");
                     return;
                 }
-                log::warn!("web-game: the cloud refused the save");
+                log::warn!("deadly-descent: the cloud refused the save");
                 retry.set(true);
             },
         );
@@ -346,64 +426,5 @@ fn wire(message: PlatformMessage) -> playgama_bridge::PlatformMessage {
         PlatformMessage::GameReady => playgama_bridge::PlatformMessage::GameReady,
         PlatformMessage::GameplayStarted => playgama_bridge::PlatformMessage::GameplayStarted,
         PlatformMessage::GameplayStopped => playgama_bridge::PlatformMessage::GameplayStopped,
-    }
-}
-
-#[cfg(test)]
-mod tests {
-    use super::*;
-    use crate::sim::state::RunState;
-
-    fn world() -> World {
-        let mut w = World::new();
-        w.insert_resource(Platform::default());
-        w.insert_resource(RunState::default());
-        w
-    }
-
-    #[test]
-    fn an_offline_break_finishes_after_the_delay() {
-        let mut w = world();
-        let mut host = PlatformHost::offline();
-        w.resource_mut::<Platform>().commercial_break("game_over");
-        host.update(&mut w, UNSUPPORTED_BREAK_DELAY * 0.5, true);
-        assert_eq!(
-            w.get_resource::<Platform>().and_then(Platform::pending),
-            Some(BreakKind::Interstitial),
-            "still open"
-        );
-        host.update(&mut w, UNSUPPORTED_BREAK_DELAY, true);
-        assert_eq!(
-            w.get_resource::<Platform>().and_then(Platform::pending),
-            None
-        );
-        assert!(!w.resource::<Platform>().ad_in_progress);
-    }
-
-    #[test]
-    fn an_offline_rewarded_break_always_pays_out() {
-        let mut w = world();
-        let mut host = PlatformHost::offline();
-        assert!(w.resource_mut::<Platform>().rewarded_break("revive"));
-        host.update(&mut w, 0.0, true);
-        assert!(w.resource::<Platform>().reward_granted());
-        host.update(&mut w, UNSUPPORTED_BREAK_DELAY, true);
-        assert_eq!(
-            w.get_resource::<Platform>().and_then(Platform::pending),
-            None
-        );
-    }
-
-    #[test]
-    fn game_ready_waits_for_the_first_playable_frame() {
-        let mut w = world();
-        let mut host = PlatformHost::offline();
-        w.resource_mut::<Platform>().loading_finished();
-        host.update(&mut w, 0.0, false);
-        assert!(host.announce_ready);
-        host.update(&mut w, 0.0, false);
-        assert!(host.announce_ready, "still waiting");
-        host.update(&mut w, 0.0, true);
-        assert!(!host.announce_ready);
     }
 }

@@ -1,160 +1,207 @@
+//! Simulation: fixed-step race simulation with data-driven progression.
 
+pub mod ai;
+pub mod car;
+pub mod data;
+pub mod meta;
+pub mod obstacles;
 pub mod platform;
-pub mod rng;
-pub mod save;
-pub mod state;
+pub mod race;
+pub mod seed;
+pub mod track;
 
 use bevy_ecs::prelude::*;
-use glam::Vec2;
 
-use crate::sim::rng::Rng;
-use crate::sim::state::{
-    BURST_LIFE, InputState, LOOK_LERP, Orb, PLAYER_R, PLAYER_SPEED, POP_LIFE, PlayerBody, Pops,
-    RunState, SfxCue, end_run, queue_sfx,
-};
+use crate::sim::car::Input;
+use crate::sim::meta::{Progress, UpgradeKind};
+use crate::sim::race::{Cue, Phase, Session, TrackWorld};
+
+#[derive(Resource, Default)]
+pub struct Controls(pub Input);
+
+#[derive(Clone, Debug)]
+pub enum Intent {
+    StartLevel(usize),
+    SelectLevel(usize),
+    SelectCar(usize),
+    BuyCar(usize),
+    Upgrade(UpgradeKind),
+    ToGarage,
+    ToMapSelect,
+    Restart,
+    ToggleMute,
+    SetMuted(bool),
+    NoAds(bool),
+}
+
+#[derive(Resource, Default)]
+pub struct Intents(pub Vec<Intent>);
+
+pub fn push_intent(world: &mut World, intent: Intent) {
+    if let Some(mut slot) = world.get_resource_mut::<Intents>() {
+        slot.0.push(intent);
+    }
+}
+
+pub fn apply_intents(world: &mut World) {
+    let intents = match world.get_resource_mut::<Intents>() {
+        Some(mut slot) => std::mem::take(&mut slot.0),
+        None => return,
+    };
+    for intent in intents {
+        match intent {
+            Intent::StartLevel(index) => {
+                // `resource_scope` keeps the save in place: a missing save is
+                // never silently replaced with defaults here.
+                let started = world.resource_scope(|world, mut progress: Mut<Progress>| {
+                    if !progress.try_open_level(index) {
+                        return None;
+                    }
+                    let car = progress.selected_car();
+                    let session = Session::new(index, car, &progress);
+                    let level = data::level_at(index);
+                    world.insert_resource(TrackWorld::load(&level));
+                    Some(session)
+                });
+                if let Some(session) = started {
+                    world.insert_resource(session);
+                }
+            }
+            Intent::SelectLevel(index) => {
+                world.resource_scope(|world, progress: Mut<Progress>| {
+                    let car = progress.selected_car();
+                    let session = Session::new(index, car, &progress);
+                    let level = data::level_at(index);
+                    world.insert_resource(TrackWorld::load(&level));
+                    world.insert_resource(session);
+                });
+            }
+            Intent::SelectCar(index) => {
+                if let Some(mut progress) = world.get_resource_mut::<Progress>() {
+                    progress.select_car(index);
+                }
+            }
+            Intent::BuyCar(index) => {
+                if let Some(mut progress) = world.get_resource_mut::<Progress>()
+                    && progress.buy_car(index)
+                {
+                    progress.select_car(index);
+                }
+            }
+            Intent::Upgrade(kind) => {
+                if let Some(mut progress) = world.get_resource_mut::<Progress>() {
+                    let car = data::car_at(progress.selected_car() as i32);
+                    progress.buy_upgrade(car.id.as_str(), kind);
+                }
+            }
+            Intent::ToGarage => set_phase(world, Phase::Garage),
+            Intent::ToMapSelect => set_phase(world, Phase::MapSelect),
+            Intent::Restart => restart(world),
+            Intent::ToggleMute => {
+                let muted = {
+                    let progress = world.resource::<Progress>();
+                    !progress.data.muted
+                };
+                if let Some(mut progress) = world.get_resource_mut::<Progress>() {
+                    progress.set_muted(muted);
+                }
+            }
+            Intent::SetMuted(muted) => {
+                if let Some(mut progress) = world.get_resource_mut::<Progress>() {
+                    progress.set_muted(muted);
+                }
+            }
+            Intent::NoAds(value) => {
+                if let Some(mut progress) = world.get_resource_mut::<Progress>() {
+                    progress.set_no_ads(value);
+                }
+            }
+        }
+    }
+}
+
+fn set_phase(world: &mut World, phase: Phase) {
+    if let Some(mut session) = world.get_resource_mut::<Session>() {
+        session.phase = phase;
+    }
+    if let Some(mut q) = world.get_resource_mut::<race::CueQueue>() {
+        q.0 = Some(Cue::Click);
+    }
+}
+
+fn restart(world: &mut World) {
+    let Some(session) = world.get_resource::<Session>() else {
+        return;
+    };
+    let (level, car) = (session.level, session.car);
+    world.resource_scope(|world, progress: Mut<Progress>| {
+        let new_session = Session::new(level, car, &progress);
+        let level_data = data::level_at(level);
+        world.insert_resource(TrackWorld::load(&level_data));
+        world.insert_resource(new_session);
+    });
+}
+
+/// Record finished/failed runs into the save exactly once.
+pub fn results_system(world: &mut World) {
+    let Some((level, results, finished)) = world
+        .get_resource::<Session>()
+        .filter(|s| matches!(s.phase, Phase::Finished | Phase::Failed) && !s.recorded)
+        .map(|s| (s.level, s.results, s.phase == Phase::Finished))
+    else {
+        return;
+    };
+
+    if let Some(mut session) = world.get_resource_mut::<Session>() {
+        session.recorded = true;
+    }
+    if let Some(results) = results {
+        if finished {
+            let mut progress = world.resource_mut::<Progress>();
+            let already = progress.data.completed(level);
+            progress.record_results(level, &results);
+            if !already
+                && let Some(mut session) = world.get_resource_mut::<Session>()
+                && let Some(mut r) = session.results
+            {
+                r.first_completion = true;
+                session.results = Some(r);
+            }
+        } else {
+            let progress = world.resource::<Progress>();
+            let best = progress.data.best_score(level).unwrap_or(0);
+            if let Some(mut session) = world.get_resource_mut::<Session>()
+                && let Some(mut r) = session.results
+            {
+                r.score = r.score.max(best);
+                session.results = Some(r);
+            }
+        }
+    }
+}
+
+/// Drain the cue queue for the audio director.
+pub fn take_cue(world: &mut World) -> Option<Cue> {
+    world
+        .get_resource_mut::<race::CueQueue>()
+        .and_then(|mut q| q.0.take())
+}
 
 pub fn build_schedule() -> Schedule {
     let mut s = Schedule::default();
-    s.add_systems((player_system, pickup_system, pops_system, run_clock).chain());
+    s.add_systems((race::countdown_system, race::step_world, results_system).chain());
     s
 }
 
-fn player_system(world: &mut World) {
-    if !world.resource::<RunState>().playing() {
-        return;
+pub fn subscribe(world: &mut World) {
+    world.init_resource::<Intents>();
+    world.init_resource::<Controls>();
+    world.init_resource::<race::CueQueue>();
+    // The platform host drives ads, audio policy and cloud saves through this
+    // resource; every frame reads it, so it must exist before the first tick.
+    world.init_resource::<platform::Platform>();
+    world.init_resource::<crate::scene::SceneCache>();
+    if world.get_resource::<Progress>().is_none() {
+        world.insert_resource(Progress::new());
     }
-    let dt = world.resource::<repame_sim::SimTime>().delta_secs;
-    let dir = world.resource::<InputState>().dir;
-    let Some(entity) = crate::sim::state::player_entity(world) else {
-        return;
-    };
-    let field = world.resource::<crate::sim::state::Field>();
-    let (fw, fh) = (field.width, field.height);
-    let mut body = world.entity_mut(entity);
-    let mut pos = body.get_mut::<PlayerBody>().expect("player").pos;
-    if dir.length_squared() > 1.0 {
-        pos += dir.normalize_or_zero() * (PLAYER_SPEED * dt);
-    } else {
-        pos += dir * (PLAYER_SPEED * dt);
-    }
-    pos = pos.clamp(
-        Vec2::splat(PLAYER_R),
-        Vec2::new(fw - PLAYER_R, fh - PLAYER_R),
-    );
-    body.get_mut::<PlayerBody>().expect("player").pos = pos;
-    let target = dir.normalize_or_zero();
-    let k = 1.0 - (-LOOK_LERP * dt).exp();
-    let look = body.get_mut::<PlayerBody>().expect("player").look;
-    body.get_mut::<PlayerBody>().expect("player").look =
-        look.lerp(target, k.clamp(0.0, 1.0));
-}
-
-fn pickup_system(world: &mut World) {
-    if !world.resource::<RunState>().playing() {
-        return;
-    }
-    let player = {
-        let Some(entity) = crate::sim::state::player_entity(world) else {
-            return;
-        };
-        world.get::<PlayerBody>(entity).map(|b| b.pos)
-    };
-    let Some(player) = player else {
-        return;
-    };
-    let reach = PLAYER_R + crate::sim::state::ORB_R;
-    let mut collected = Vec::new();
-    let mut orbs = world.query::<(Entity, &Orb)>();
-    for (entity, orb) in orbs.iter(world) {
-        if player.distance(orb.pos) <= reach {
-            collected.push((entity, orb.pos));
-        }
-    }
-    if collected.is_empty() {
-        return;
-    }
-    let mut rng = Rng::new(
-        0x5EED_ABCD ^ (world.resource::<RunState>().score as u64).wrapping_mul(2_654_435_761),
-    );
-    for (entity, at) in collected {
-        let spot = free_orb_spot(&mut rng, world);
-        let mut orb = world.entity_mut(entity);
-        let mut slot = orb.get_mut::<Orb>().expect("orb");
-        slot.pos = spot;
-        slot.age = 0.0;
-        drop(slot);
-        let mut run = world.resource_mut::<RunState>();
-        run.score += 1;
-        world.resource_mut::<Pops>().list.push((at, POP_LIFE));
-        world.resource_mut::<Pops>().bursts.push((at, BURST_LIFE));
-        queue_sfx(world, SfxCue::Pickup);
-    }
-}
-
-fn pops_system(world: &mut World) {
-    let dt = world.resource::<repame_sim::SimTime>().delta_secs;
-    let mut pops = world.resource_mut::<Pops>();
-    for pop in pops.list.iter_mut() {
-        pop.1 -= dt;
-    }
-    pops.list.retain(|pop| pop.1 > 0.0);
-    for burst in pops.bursts.iter_mut() {
-        burst.1 -= dt;
-    }
-    pops.bursts.retain(|burst| burst.1 > 0.0);
-    drop(pops);
-    for mut orb in world.query::<&mut Orb>().iter_mut(world) {
-        orb.age += dt;
-    }
-}
-
-fn run_clock(world: &mut World) {
-    if !world.resource::<RunState>().playing() {
-        return;
-    }
-    let dt = world.resource::<repame_sim::SimTime>().delta_secs;
-    let left = world.resource::<RunState>().run_time_left - dt;
-    if left > 0.0 {
-        world.resource_mut::<RunState>().run_time_left = left;
-        return;
-    }
-    world.resource_mut::<RunState>().run_time_left = 0.0;
-    queue_sfx(world, SfxCue::Death);
-    end_run(world);
-}
-
-fn free_orb_spot(rng: &mut Rng, world: &mut World) -> Vec2 {
-    let field = world.resource::<crate::sim::state::Field>();
-    let (fw, fh) = (field.width, field.height);
-    let taken = world
-        .query::<&Orb>()
-        .iter(world)
-        .map(|orb| orb.pos)
-        .collect::<Vec<_>>();
-    let player = world
-        .query::<&PlayerBody>()
-        .iter(world)
-        .next()
-        .map(|b| b.pos)
-        .unwrap_or(Vec2::new(fw * 0.5, fh * 0.5));
-    for _ in 0..32 {
-        let candidate = Vec2::new(
-            rng.range(
-                crate::sim::state::SPAWN_MARGIN,
-                fw - crate::sim::state::SPAWN_MARGIN,
-            ),
-            rng.range(
-                crate::sim::state::SPAWN_MARGIN,
-                fh - crate::sim::state::SPAWN_MARGIN,
-            ),
-        );
-        if taken
-            .iter()
-            .all(|pos| pos.distance(candidate) > crate::sim::state::ORB_R * 6.0)
-            && player.distance(candidate) > PLAYER_R * 4.0
-        {
-            return candidate;
-        }
-    }
-    Vec2::new(fw * 0.5, fh * 0.5)
 }

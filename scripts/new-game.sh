@@ -32,6 +32,13 @@ mkdir -p "$dest"
 tar -C "$template_dir" --exclude=./target --exclude=./dist -cf - . | tar -C "$dest" -xf -
 cd "$dest"
 
+# A single-word slug makes the lib and bin share an output filename, and cargo
+# then refuses to tell trunk which artifact to ship. Give the lib a suffix in
+# that case; a hyphenated slug already separates them.
+if [[ "$underscore" == "$name" ]]; then
+    underscore="${name}_lib"
+fi
+
 # Every placeholder occurrence: crate, bin, lib, log prefixes, cloud key,
 # shortcut ids, window title, page title.
 find . -type f \

@@ -1,0 +1,62 @@
+{
+ "Porsche_911": {
+  "max_steer_angle": 40.0,
+  "enable_steer_limit": 1,
+  "curve_start": 0.0,
+  "steer_curve_off": 360
+ },
+ "Ford_F150_Raptor": {
+  "max_steer_angle": 40.0,
+  "enable_steer_limit": 1,
+  "curve_start": 0.0,
+  "steer_curve_off": 364
+ },
+ "LamborghiniReventon": {
+  "max_steer_angle": 40.0,
+  "enable_steer_limit": 1,
+  "curve_start": 0.0,
+  "steer_curve_off": 368
+ },
+ "AMG4.0": {
+  "max_steer_angle": 40.0,
+  "enable_steer_limit": 1,
+  "curve_start": 0.0,
+  "steer_curve_off": 356
+ },
+ "BMW_M3": {
+  "max_steer_angle": 40.0,
+  "enable_steer_limit": 1,
+  "curve_start": 0.0,
+  "steer_curve_off": 356
+ },
+ "BugattiVeyron": {
+  "max_steer_angle": 40.0,
+  "enable_steer_limit": 1,
+  "curve_start": 0.0,
+  "steer_curve_off": 376
+ },
+ "DodgeChallenger": {
+  "max_steer_angle": 40.0,
+  "enable_steer_limit": 1,
+  "curve_start": 0.0,
+  "steer_curve_off": 364
+ },
+ "Audi_R8": {
+  "max_steer_angle": 40.0,
+  "enable_steer_limit": 1,
+  "curve_start": 0.0,
+  "steer_curve_off": 356
+ },
+ "KoenigseggAgera": {
+  "max_steer_angle": 40.0,
+  "enable_steer_limit": 1,
+  "curve_start": 0.0,
+  "steer_curve_off": 364
+ },
+ "McLaren_MP4": {
+  "max_steer_angle": 40.0,
+  "enable_steer_limit": 1,
+  "curve_start": 0.0,
+  "steer_curve_off": 360
+ }
+}

@@ -1,0 +1,2167 @@
+[
+ {
+  "scene": "Assets/Game/Scenes/TracksInGame/Start.unity",
+  "icon": "Start.jpg",
+  "name": "Start",
+  "maxPossibleScore": 826,
+  "costToUnlock": 0,
+  "requireCheckpoints": false,
+  "showContainerTutorial": false,
+  "scoreForCompletion": 1000,
+  "rewardForCompletion": 100,
+  "secondCompletionRewardMultiplier": 1.0,
+  "speedToGetReward": 227,
+  "rewardForSpeed": 10,
+  "timeToGetReward": 28,
+  "rewardForTime": 10,
+  "rewardForMaxDamage": 10,
+  "recommendedCar": 2,
+  "botConfigs": [
+   {
+    "car": 2,
+    "skill": 0
+   },
+   {
+    "car": 2,
+    "skill": 0
+   }
+  ],
+  "maxBotSpeed": 300.0,
+  "racingTrackSize": 0,
+  "racingTrackSeed": 0
+ },
+ {
+  "scene": "Assets/Game/Scenes/TracksInGame/TwoJumps.unity",
+  "icon": "TwoJumps.jpg",
+  "name": "Two Jumps",
+  "maxPossibleScore": 1392,
+  "costToUnlock": 100,
+  "requireCheckpoints": false,
+  "showContainerTutorial": false,
+  "scoreForCompletion": 1000,
+  "rewardForCompletion": 150,
+  "secondCompletionRewardMultiplier": 1.0,
+  "speedToGetReward": 260,
+  "rewardForSpeed": 15,
+  "timeToGetReward": 35,
+  "rewardForTime": 15,
+  "rewardForMaxDamage": 15,
+  "recommendedCar": 2,
+  "botConfigs": [
+   {
+    "car": 2,
+    "skill": 0
+   },
+   {
+    "car": 2,
+    "skill": 0
+   }
+  ],
+  "maxBotSpeed": 300.0,
+  "racingTrackSize": 0,
+  "racingTrackSeed": 0
+ },
+ {
+  "scene": "Assets/Game/Scenes/TracksInGame/TurnLeft.unity",
+  "icon": "TurnLeft.jpg",
+  "name": "Turn Left",
+  "maxPossibleScore": 953,
+  "costToUnlock": 1000,
+  "requireCheckpoints": false,
+  "showContainerTutorial": false,
+  "scoreForCompletion": 1000,
+  "rewardForCompletion": 200,
+  "secondCompletionRewardMultiplier": 1.0,
+  "speedToGetReward": 209,
+  "rewardForSpeed": 20,
+  "timeToGetReward": 31,
+  "rewardForTime": 20,
+  "rewardForMaxDamage": 20,
+  "recommendedCar": 2,
+  "botConfigs": [
+   {
+    "car": 2,
+    "skill": 0
+   },
+   {
+    "car": 2,
+    "skill": 0
+   }
+  ],
+  "maxBotSpeed": 300.0,
+  "racingTrackSize": 0,
+  "racingTrackSeed": 0
+ },
+ {
+  "scene": "Assets/Game/Scenes/TracksInGame/Holes.unity",
+  "icon": "Holes.jpg",
+  "name": "Holes",
+  "maxPossibleScore": 1167,
+  "costToUnlock": 1300,
+  "requireCheckpoints": true,
+  "showContainerTutorial": false,
+  "scoreForCompletion": 1200,
+  "rewardForCompletion": 250,
+  "secondCompletionRewardMultiplier": 1.0,
+  "speedToGetReward": 265,
+  "rewardForSpeed": 25,
+  "timeToGetReward": 32,
+  "rewardForTime": 25,
+  "rewardForMaxDamage": 25,
+  "recommendedCar": 2,
+  "botConfigs": [
+   {
+    "car": 2,
+    "skill": 0
+   },
+   {
+    "car": 2,
+    "skill": 0
+   }
+  ],
+  "maxBotSpeed": 300.0,
+  "racingTrackSize": 0,
+  "racingTrackSeed": 0
+ },
+ {
+  "scene": "Assets/Game/Scenes/TracksInGame/Balls.unity",
+  "icon": "Balls.jpg",
+  "name": "Balls",
+  "maxPossibleScore": 268,
+  "costToUnlock": 1400,
+  "requireCheckpoints": false,
+  "showContainerTutorial": false,
+  "scoreForCompletion": 1200,
+  "rewardForCompletion": 500,
+  "secondCompletionRewardMultiplier": 1.0,
+  "speedToGetReward": 121,
+  "rewardForSpeed": 50,
+  "timeToGetReward": 21,
+  "rewardForTime": 50,
+  "rewardForMaxDamage": 50,
+  "recommendedCar": 2,
+  "botConfigs": [
+   {
+    "car": 2,
+    "skill": 0
+   }
+  ],
+  "maxBotSpeed": 300.0,
+  "racingTrackSize": 0,
+  "racingTrackSeed": 0
+ },
+ {
+  "scene": "Assets/Game/Scenes/TracksInGame/Containers.unity",
+  "icon": "Containers.jpg",
+  "name": "Containers",
+  "maxPossibleScore": 318,
+  "costToUnlock": 100,
+  "requireCheckpoints": false,
+  "showContainerTutorial": true,
+  "scoreForCompletion": 1200,
+  "rewardForCompletion": 1000,
+  "secondCompletionRewardMultiplier": 1.0,
+  "speedToGetReward": 106,
+  "rewardForSpeed": 100,
+  "timeToGetReward": 23,
+  "rewardForTime": 100,
+  "rewardForMaxDamage": 100,
+  "recommendedCar": 2,
+  "botConfigs": [
+   {
+    "car": 2,
+    "skill": 0
+   },
+   {
+    "car": 2,
+    "skill": 0
+   }
+  ],
+  "maxBotSpeed": 300.0,
+  "racingTrackSize": 0,
+  "racingTrackSeed": 0
+ },
+ {
+  "scene": "Assets/Game/Scenes/RacingTrack.unity",
+  "icon": "RacingTrack.jpg",
+  "name": "Racing Track",
+  "maxPossibleScore": 759,
+  "costToUnlock": 100,
+  "requireCheckpoints": true,
+  "showContainerTutorial": false,
+  "scoreForCompletion": 1200,
+  "rewardForCompletion": 2500,
+  "secondCompletionRewardMultiplier": 1.0,
+  "speedToGetReward": 154,
+  "rewardForSpeed": 250,
+  "timeToGetReward": 33,
+  "rewardForTime": 250,
+  "rewardForMaxDamage": 250,
+  "recommendedCar": 2,
+  "botConfigs": [
+   {
+    "car": 2,
+    "skill": -1
+   },
+   {
+    "car": 2,
+    "skill": -1
+   }
+  ],
+  "maxBotSpeed": 145.0,
+  "racingTrackSize": 20,
+  "racingTrackSeed": 0
+ },
+ {
+  "scene": "Assets/Game/Scenes/TracksInGame/Spikes.unity",
+  "icon": "Spikes.jpg",
+  "name": "Spikes",
+  "maxPossibleScore": 1940,
+  "costToUnlock": 1300,
+  "requireCheckpoints": true,
+  "showContainerTutorial": false,
+  "scoreForCompletion": 1500,
+  "rewardForCompletion": 4000,
+  "secondCompletionRewardMultiplier": 1.0,
+  "speedToGetReward": 114,
+  "rewardForSpeed": 400,
+  "timeToGetReward": 37,
+  "rewardForTime": 400,
+  "rewardForMaxDamage": 400,
+  "recommendedCar": 0,
+  "botConfigs": [
+   {
+    "car": 2,
+    "skill": 0
+   },
+   {
+    "car": 0,
+    "skill": 0
+   }
+  ],
+  "maxBotSpeed": 300.0,
+  "racingTrackSize": 0,
+  "racingTrackSeed": 0
+ },
+ {
+  "scene": "Assets/Game/Scenes/RacingTrack.unity",
+  "icon": "RacingTrack.jpg",
+  "name": "Racing Track",
+  "maxPossibleScore": 1201,
+  "costToUnlock": 100,
+  "requireCheckpoints": true,
+  "showContainerTutorial": false,
+  "scoreForCompletion": 1200,
+  "rewardForCompletion": 4500,
+  "secondCompletionRewardMultiplier": 1.0,
+  "speedToGetReward": 112,
+  "rewardForSpeed": 450,
+  "timeToGetReward": 49,
+  "rewardForTime": 450,
+  "rewardForMaxDamage": 450,
+  "recommendedCar": 0,
+  "botConfigs": [
+   {
+    "car": 2,
+    "skill": -1
+   },
+   {
+    "car": 0,
+    "skill": -1
+   },
+   {
+    "car": 0,
+    "skill": -1
+   }
+  ],
+  "maxBotSpeed": 130.0,
+  "racingTrackSize": 1,
+  "racingTrackSeed": 1
+ },
+ {
+  "scene": "Assets/Game/Scenes/TracksInGame/Squeeze.unity",
+  "icon": "Squeeze.jpg",
+  "name": "Squeeze",
+  "maxPossibleScore": 1167,
+  "costToUnlock": 1400,
+  "requireCheckpoints": true,
+  "showContainerTutorial": false,
+  "scoreForCompletion": 1300,
+  "rewardForCompletion": 5000,
+  "secondCompletionRewardMultiplier": 1.0,
+  "speedToGetReward": 255,
+  "rewardForSpeed": 500,
+  "timeToGetReward": 47,
+  "rewardForTime": 500,
+  "rewardForMaxDamage": 500,
+  "recommendedCar": 0,
+  "botConfigs": [
+   {
+    "car": 0,
+    "skill": 1
+   },
+   {
+    "car": 0,
+    "skill": 1
+   }
+  ],
+  "maxBotSpeed": 300.0,
+  "racingTrackSize": 0,
+  "racingTrackSeed": 0
+ },
+ {
+  "scene": "Assets/Game/Scenes/RacingTrack.unity",
+  "icon": "RacingTrack.jpg",
+  "name": "Racing Track",
+  "maxPossibleScore": 843,
+  "costToUnlock": 100,
+  "requireCheckpoints": true,
+  "showContainerTutorial": false,
+  "scoreForCompletion": 1200,
+  "rewardForCompletion": 6000,
+  "secondCompletionRewardMultiplier": 1.0,
+  "speedToGetReward": 157,
+  "rewardForSpeed": 600,
+  "timeToGetReward": 35,
+  "rewardForTime": 600,
+  "rewardForMaxDamage": 600,
+  "recommendedCar": 0,
+  "botConfigs": [
+   {
+    "car": 0,
+    "skill": 0
+   },
+   {
+    "car": 0,
+    "skill": 0
+   },
+   {
+    "car": 0,
+    "skill": 0
+   },
+   {
+    "car": 0,
+    "skill": 0
+   }
+  ],
+  "maxBotSpeed": 140.0,
+  "racingTrackSize": 1,
+  "racingTrackSeed": 2
+ },
+ {
+  "scene": "Assets/Game/Scenes/TracksInGame/Press.unity",
+  "icon": "Press.jpg",
+  "name": "Press",
+  "maxPossibleScore": 268,
+  "costToUnlock": 1300,
+  "requireCheckpoints": false,
+  "showContainerTutorial": false,
+  "scoreForCompletion": 1100,
+  "rewardForCompletion": 7000,
+  "secondCompletionRewardMultiplier": 1.0,
+  "speedToGetReward": 123,
+  "rewardForSpeed": 700,
+  "timeToGetReward": 21,
+  "rewardForTime": 700,
+  "rewardForMaxDamage": 700,
+  "recommendedCar": 0,
+  "botConfigs": [
+   {
+    "car": 0,
+    "skill": 1
+   }
+  ],
+  "maxBotSpeed": 300.0,
+  "racingTrackSize": 0,
+  "racingTrackSeed": 0
+ },
+ {
+  "scene": "Assets/Game/Scenes/RacingTrack.unity",
+  "icon": "RacingTrack.jpg",
+  "name": "Racing Track",
+  "maxPossibleScore": 839,
+  "costToUnlock": 100,
+  "requireCheckpoints": true,
+  "showContainerTutorial": false,
+  "scoreForCompletion": 1200,
+  "rewardForCompletion": 9000,
+  "secondCompletionRewardMultiplier": 1.0,
+  "speedToGetReward": 151,
+  "rewardForSpeed": 900,
+  "timeToGetReward": 39,
+  "rewardForTime": 900,
+  "rewardForMaxDamage": 900,
+  "recommendedCar": 1,
+  "botConfigs": [
+   {
+    "car": 0,
+    "skill": 1
+   },
+   {
+    "car": 1,
+    "skill": 0
+   },
+   {
+    "car": 0,
+    "skill": 0
+   },
+   {
+    "car": 1,
+    "skill": 0
+   },
+   {
+    "car": 2,
+    "skill": 2
+   }
+  ],
+  "maxBotSpeed": 130.0,
+  "racingTrackSize": 1,
+  "racingTrackSeed": 3
+ },
+ {
+  "scene": "Assets/Game/Scenes/TracksInGame/Maneuvers.unity",
+  "icon": "Maneuvers.jpg",
+  "name": "Maneuvers",
+  "maxPossibleScore": 1167,
+  "costToUnlock": 1300,
+  "requireCheckpoints": true,
+  "showContainerTutorial": false,
+  "scoreForCompletion": 1000,
+  "rewardForCompletion": 11000,
+  "secondCompletionRewardMultiplier": 1.0,
+  "speedToGetReward": 257,
+  "rewardForSpeed": 1100,
+  "timeToGetReward": 41,
+  "rewardForTime": 1100,
+  "rewardForMaxDamage": 1100,
+  "recommendedCar": 1,
+  "botConfigs": [
+   {
+    "car": 1,
+    "skill": 0
+   },
+   {
+    "car": 0,
+    "skill": 1
+   }
+  ],
+  "maxBotSpeed": 300.0,
+  "racingTrackSize": 0,
+  "racingTrackSeed": 0
+ },
+ {
+  "scene": "Assets/Game/Scenes/RacingTrack.unity",
+  "icon": "RacingTrack.jpg",
+  "name": "Racing Track",
+  "maxPossibleScore": 1576,
+  "costToUnlock": 100,
+  "requireCheckpoints": true,
+  "showContainerTutorial": false,
+  "scoreForCompletion": 1200,
+  "rewardForCompletion": 12000,
+  "secondCompletionRewardMultiplier": 1.0,
+  "speedToGetReward": 154,
+  "rewardForSpeed": 1200,
+  "timeToGetReward": 115,
+  "rewardForTime": 1200,
+  "rewardForMaxDamage": 1200,
+  "recommendedCar": 1,
+  "botConfigs": [
+   {
+    "car": 1,
+    "skill": -1
+   },
+   {
+    "car": 0,
+    "skill": 0
+   },
+   {
+    "car": 2,
+    "skill": 0
+   }
+  ],
+  "maxBotSpeed": 160.0,
+  "racingTrackSize": 1,
+  "racingTrackSeed": 4
+ },
+ {
+  "scene": "Assets/Game/Scenes/RacingTrack.unity",
+  "icon": "RacingTrack.jpg",
+  "name": "Racing Track",
+  "maxPossibleScore": 488,
+  "costToUnlock": 100,
+  "requireCheckpoints": true,
+  "showContainerTutorial": false,
+  "scoreForCompletion": 1200,
+  "rewardForCompletion": 12000,
+  "secondCompletionRewardMultiplier": 1.0,
+  "speedToGetReward": 147,
+  "rewardForSpeed": 1200,
+  "timeToGetReward": 105,
+  "rewardForTime": 1200,
+  "rewardForMaxDamage": 1200,
+  "recommendedCar": 1,
+  "botConfigs": [
+   {
+    "car": 1,
+    "skill": -1
+   },
+   {
+    "car": 0,
+    "skill": 0
+   }
+  ],
+  "maxBotSpeed": 160.0,
+  "racingTrackSize": 1,
+  "racingTrackSeed": 5
+ },
+ {
+  "scene": "Assets/Game/Scenes/RacingTrack.unity",
+  "icon": "RacingTrack.jpg",
+  "name": "Racing Track",
+  "maxPossibleScore": 830,
+  "costToUnlock": 100,
+  "requireCheckpoints": true,
+  "showContainerTutorial": false,
+  "scoreForCompletion": 1200,
+  "rewardForCompletion": 12000,
+  "secondCompletionRewardMultiplier": 1.0,
+  "speedToGetReward": 182,
+  "rewardForSpeed": 1200,
+  "timeToGetReward": 111,
+  "rewardForTime": 1200,
+  "rewardForMaxDamage": 1200,
+  "recommendedCar": 1,
+  "botConfigs": [
+   {
+    "car": 1,
+    "skill": 0
+   },
+   {
+    "car": 1,
+    "skill": 0
+   }
+  ],
+  "maxBotSpeed": 200.0,
+  "racingTrackSize": 1,
+  "racingTrackSeed": 6
+ },
+ {
+  "scene": "Assets/Game/Scenes/RacingTrack.unity",
+  "icon": "RacingTrack.jpg",
+  "name": "Racing Track",
+  "maxPossibleScore": 1122,
+  "costToUnlock": 100,
+  "requireCheckpoints": true,
+  "showContainerTutorial": false,
+  "scoreForCompletion": 1200,
+  "rewardForCompletion": 13000,
+  "secondCompletionRewardMultiplier": 1.0,
+  "speedToGetReward": 155,
+  "rewardForSpeed": 1300,
+  "timeToGetReward": 130,
+  "rewardForTime": 1300,
+  "rewardForMaxDamage": 1300,
+  "recommendedCar": 1,
+  "botConfigs": [
+   {
+    "car": 1,
+    "skill": 0
+   },
+   {
+    "car": 1,
+    "skill": 0
+   }
+  ],
+  "maxBotSpeed": 300.0,
+  "racingTrackSize": 1,
+  "racingTrackSeed": 7
+ },
+ {
+  "scene": "Assets/Game/Scenes/TracksInGame/Buses.unity",
+  "icon": "Buses.jpg",
+  "name": "Buses",
+  "maxPossibleScore": 256,
+  "costToUnlock": 1000,
+  "requireCheckpoints": false,
+  "showContainerTutorial": false,
+  "scoreForCompletion": 1000,
+  "rewardForCompletion": 15000,
+  "secondCompletionRewardMultiplier": 1.0,
+  "speedToGetReward": 119,
+  "rewardForSpeed": 1500,
+  "timeToGetReward": 19,
+  "rewardForTime": 1500,
+  "rewardForMaxDamage": 1500,
+  "recommendedCar": 3,
+  "botConfigs": [],
+  "maxBotSpeed": 300.0,
+  "racingTrackSize": 0,
+  "racingTrackSeed": 0
+ },
+ {
+  "scene": "Assets/Game/Scenes/RacingTrack.unity",
+  "icon": "RacingTrack.jpg",
+  "name": "Racing Track",
+  "maxPossibleScore": 673,
+  "costToUnlock": 100,
+  "requireCheckpoints": true,
+  "showContainerTutorial": false,
+  "scoreForCompletion": 1200,
+  "rewardForCompletion": 20000,
+  "secondCompletionRewardMultiplier": 1.0,
+  "speedToGetReward": 186,
+  "rewardForSpeed": 2000,
+  "timeToGetReward": 82,
+  "rewardForTime": 2000,
+  "rewardForMaxDamage": 2000,
+  "recommendedCar": 3,
+  "botConfigs": [
+   {
+    "car": 3,
+    "skill": 0
+   },
+   {
+    "car": 3,
+    "skill": 0
+   }
+  ],
+  "maxBotSpeed": 190.0,
+  "racingTrackSize": 1,
+  "racingTrackSeed": 8
+ },
+ {
+  "scene": "Assets/Game/Scenes/TracksInGame/Height.unity",
+  "icon": "Height.jpg",
+  "name": "Height",
+  "maxPossibleScore": 267,
+  "costToUnlock": 500,
+  "requireCheckpoints": false,
+  "showContainerTutorial": false,
+  "scoreForCompletion": 1800,
+  "rewardForCompletion": 25000,
+  "secondCompletionRewardMultiplier": 1.0,
+  "speedToGetReward": 150,
+  "rewardForSpeed": 2500,
+  "timeToGetReward": 19,
+  "rewardForTime": 2500,
+  "rewardForMaxDamage": 2500,
+  "recommendedCar": 3,
+  "botConfigs": [],
+  "maxBotSpeed": 300.0,
+  "racingTrackSize": 0,
+  "racingTrackSeed": 0
+ },
+ {
+  "scene": "Assets/Game/Scenes/RacingTrack.unity",
+  "icon": "RacingTrack.jpg",
+  "name": "Racing Track",
+  "maxPossibleScore": 886,
+  "costToUnlock": 100,
+  "requireCheckpoints": true,
+  "showContainerTutorial": false,
+  "scoreForCompletion": 1200,
+  "rewardForCompletion": 30000,
+  "secondCompletionRewardMultiplier": 1.0,
+  "speedToGetReward": 223,
+  "rewardForSpeed": 3000,
+  "timeToGetReward": 118,
+  "rewardForTime": 3000,
+  "rewardForMaxDamage": 3000,
+  "recommendedCar": 3,
+  "botConfigs": [
+   {
+    "car": 2,
+    "skill": 1
+   },
+   {
+    "car": 1,
+    "skill": 1
+   },
+   {
+    "car": 3,
+    "skill": 0
+   }
+  ],
+  "maxBotSpeed": 200.0,
+  "racingTrackSize": 1,
+  "racingTrackSeed": 9
+ },
+ {
+  "scene": "Assets/Game/Scenes/RacingTrack.unity",
+  "icon": "RacingTrack.jpg",
+  "name": "Racing Track",
+  "maxPossibleScore": 822,
+  "costToUnlock": 100,
+  "requireCheckpoints": true,
+  "showContainerTutorial": false,
+  "scoreForCompletion": 1200,
+  "rewardForCompletion": 35000,
+  "secondCompletionRewardMultiplier": 1.0,
+  "speedToGetReward": 189,
+  "rewardForSpeed": 3500,
+  "timeToGetReward": 132,
+  "rewardForTime": 3500,
+  "rewardForMaxDamage": 3500,
+  "recommendedCar": 3,
+  "botConfigs": [
+   {
+    "car": 3,
+    "skill": -1
+   },
+   {
+    "car": 1,
+    "skill": 0
+   },
+   {
+    "car": 2,
+    "skill": 2
+   }
+  ],
+  "maxBotSpeed": 210.0,
+  "racingTrackSize": 1,
+  "racingTrackSeed": 14
+ },
+ {
+  "scene": "Assets/Game/Scenes/TracksInGame/Tight.unity",
+  "icon": "Tight.jpg",
+  "name": "Tight",
+  "maxPossibleScore": 1167,
+  "costToUnlock": 1300,
+  "requireCheckpoints": true,
+  "showContainerTutorial": false,
+  "scoreForCompletion": 700,
+  "rewardForCompletion": 40000,
+  "secondCompletionRewardMultiplier": 1.0,
+  "speedToGetReward": 296,
+  "rewardForSpeed": 4000,
+  "timeToGetReward": 36,
+  "rewardForTime": 4000,
+  "rewardForMaxDamage": 4000,
+  "recommendedCar": 3,
+  "botConfigs": [
+   {
+    "car": 3,
+    "skill": 3
+   },
+   {
+    "car": 3,
+    "skill": 3
+   }
+  ],
+  "maxBotSpeed": 300.0,
+  "racingTrackSize": 0,
+  "racingTrackSeed": 0
+ },
+ {
+  "scene": "Assets/Game/Scenes/TracksInGame/LongJump.unity",
+  "icon": "LongJump.jpg",
+  "name": "Long Jump",
+  "maxPossibleScore": 394,
+  "costToUnlock": 800,
+  "requireCheckpoints": false,
+  "showContainerTutorial": false,
+  "scoreForCompletion": 1100,
+  "rewardForCompletion": 50000,
+  "secondCompletionRewardMultiplier": 1.0,
+  "speedToGetReward": 150,
+  "rewardForSpeed": 5000,
+  "timeToGetReward": 23,
+  "rewardForTime": 5000,
+  "rewardForMaxDamage": 5000,
+  "recommendedCar": 4,
+  "botConfigs": [
+   {
+    "car": 4,
+    "skill": -1
+   }
+  ],
+  "maxBotSpeed": 300.0,
+  "racingTrackSize": 0,
+  "racingTrackSeed": 0
+ },
+ {
+  "scene": "Assets/Game/Scenes/RacingTrack.unity",
+  "icon": "RacingTrack.jpg",
+  "name": "Racing Track",
+  "maxPossibleScore": 858,
+  "costToUnlock": 100,
+  "requireCheckpoints": true,
+  "showContainerTutorial": false,
+  "scoreForCompletion": 1200,
+  "rewardForCompletion": 60000,
+  "secondCompletionRewardMultiplier": 1.0,
+  "speedToGetReward": 206,
+  "rewardForSpeed": 6000,
+  "timeToGetReward": 105,
+  "rewardForTime": 6000,
+  "rewardForMaxDamage": 6000,
+  "recommendedCar": 4,
+  "botConfigs": [
+   {
+    "car": 4,
+    "skill": 0
+   },
+   {
+    "car": 4,
+    "skill": 0
+   }
+  ],
+  "maxBotSpeed": 200.0,
+  "racingTrackSize": 1,
+  "racingTrackSeed": 11
+ },
+ {
+  "scene": "Assets/Game/Scenes/RacingTrack.unity",
+  "icon": "RacingTrack.jpg",
+  "name": "Racing Track",
+  "maxPossibleScore": 830,
+  "costToUnlock": 100,
+  "requireCheckpoints": true,
+  "showContainerTutorial": false,
+  "scoreForCompletion": 1200,
+  "rewardForCompletion": 80000,
+  "secondCompletionRewardMultiplier": 1.0,
+  "speedToGetReward": 206,
+  "rewardForSpeed": 8000,
+  "timeToGetReward": 110,
+  "rewardForTime": 8000,
+  "rewardForMaxDamage": 8000,
+  "recommendedCar": 4,
+  "botConfigs": [
+   {
+    "car": 4,
+    "skill": 0
+   },
+   {
+    "car": 4,
+    "skill": 0
+   }
+  ],
+  "maxBotSpeed": 300.0,
+  "racingTrackSize": 1,
+  "racingTrackSeed": 12
+ },
+ {
+  "scene": "Assets/Game/Scenes/RacingTrack.unity",
+  "icon": "RacingTrack.jpg",
+  "name": "Racing Track",
+  "maxPossibleScore": 1201,
+  "costToUnlock": 100,
+  "requireCheckpoints": true,
+  "showContainerTutorial": false,
+  "scoreForCompletion": 1200,
+  "rewardForCompletion": 100000,
+  "secondCompletionRewardMultiplier": 1.0,
+  "speedToGetReward": 184,
+  "rewardForSpeed": 10000,
+  "timeToGetReward": 108,
+  "rewardForTime": 10000,
+  "rewardForMaxDamage": 10000,
+  "recommendedCar": 4,
+  "botConfigs": [
+   {
+    "car": 4,
+    "skill": 0
+   },
+   {
+    "car": 4,
+    "skill": 0
+   }
+  ],
+  "maxBotSpeed": 300.0,
+  "racingTrackSize": 1,
+  "racingTrackSeed": 10
+ },
+ {
+  "scene": "Assets/Game/Scenes/TracksInGame/Gates.unity",
+  "icon": "Gates.jpg",
+  "name": "Gates",
+  "maxPossibleScore": 1595,
+  "costToUnlock": 1300,
+  "requireCheckpoints": true,
+  "showContainerTutorial": false,
+  "scoreForCompletion": 800,
+  "rewardForCompletion": 150000,
+  "secondCompletionRewardMultiplier": 1.0,
+  "speedToGetReward": 292,
+  "rewardForSpeed": 15000,
+  "timeToGetReward": 52,
+  "rewardForTime": 15000,
+  "rewardForMaxDamage": 15000,
+  "recommendedCar": 4,
+  "botConfigs": [
+   {
+    "car": 4,
+    "skill": 1
+   },
+   {
+    "car": 4,
+    "skill": 1
+   }
+  ],
+  "maxBotSpeed": 300.0,
+  "racingTrackSize": 0,
+  "racingTrackSeed": 0
+ },
+ {
+  "scene": "Assets/Game/Scenes/RacingTrack.unity",
+  "icon": "RacingTrack.jpg",
+  "name": "Racing Track",
+  "maxPossibleScore": 5599,
+  "costToUnlock": 100,
+  "requireCheckpoints": true,
+  "showContainerTutorial": false,
+  "scoreForCompletion": 1200,
+  "rewardForCompletion": 170000,
+  "secondCompletionRewardMultiplier": 1.0,
+  "speedToGetReward": 171,
+  "rewardForSpeed": 17000,
+  "timeToGetReward": 125,
+  "rewardForTime": 17000,
+  "rewardForMaxDamage": 17000,
+  "recommendedCar": 7,
+  "botConfigs": [
+   {
+    "car": 7,
+    "skill": -1
+   },
+   {
+    "car": 4,
+    "skill": -1
+   },
+   {
+    "car": 7,
+    "skill": -1
+   },
+   {
+    "car": 4,
+    "skill": -1
+   }
+  ],
+  "maxBotSpeed": 300.0,
+  "racingTrackSize": 2,
+  "racingTrackSeed": 15
+ },
+ {
+  "scene": "Assets/Game/Scenes/RacingTrack.unity",
+  "icon": "RacingTrack.jpg",
+  "name": "Racing Track",
+  "maxPossibleScore": 4508,
+  "costToUnlock": 100,
+  "requireCheckpoints": true,
+  "showContainerTutorial": false,
+  "scoreForCompletion": 1200,
+  "rewardForCompletion": 190000,
+  "secondCompletionRewardMultiplier": 1.0,
+  "speedToGetReward": 270,
+  "rewardForSpeed": 19000,
+  "timeToGetReward": 135,
+  "rewardForTime": 19000,
+  "rewardForMaxDamage": 19000,
+  "recommendedCar": 7,
+  "botConfigs": [
+   {
+    "car": 7,
+    "skill": -1
+   },
+   {
+    "car": 7,
+    "skill": -1
+   },
+   {
+    "car": 7,
+    "skill": -1
+   },
+   {
+    "car": 4,
+    "skill": 1
+   },
+   {
+    "car": 7,
+    "skill": 0
+   }
+  ],
+  "maxBotSpeed": 300.0,
+  "racingTrackSize": 2,
+  "racingTrackSeed": 16
+ },
+ {
+  "scene": "Assets/Game/Scenes/RacingTrack.unity",
+  "icon": "RacingTrack.jpg",
+  "name": "Racing Track",
+  "maxPossibleScore": 4602,
+  "costToUnlock": 100,
+  "requireCheckpoints": true,
+  "showContainerTutorial": false,
+  "scoreForCompletion": 1200,
+  "rewardForCompletion": 220000,
+  "secondCompletionRewardMultiplier": 1.0,
+  "speedToGetReward": 211,
+  "rewardForSpeed": 22000,
+  "timeToGetReward": 122,
+  "rewardForTime": 22000,
+  "rewardForMaxDamage": 22000,
+  "recommendedCar": 7,
+  "botConfigs": [
+   {
+    "car": 7,
+    "skill": 0
+   },
+   {
+    "car": 7,
+    "skill": 0
+   },
+   {
+    "car": 7,
+    "skill": 0
+   },
+   {
+    "car": 7,
+    "skill": 0
+   }
+  ],
+  "maxBotSpeed": 300.0,
+  "racingTrackSize": 2,
+  "racingTrackSeed": 17
+ },
+ {
+  "scene": "Assets/Game/Scenes/TracksInGame/Curve.unity",
+  "icon": "Curve.jpg",
+  "name": "Curve",
+  "maxPossibleScore": 570,
+  "costToUnlock": 800,
+  "requireCheckpoints": false,
+  "showContainerTutorial": false,
+  "scoreForCompletion": 1000,
+  "rewardForCompletion": 250000,
+  "secondCompletionRewardMultiplier": 1.0,
+  "speedToGetReward": 329,
+  "rewardForSpeed": 25000,
+  "timeToGetReward": 35,
+  "rewardForTime": 25000,
+  "rewardForMaxDamage": 25000,
+  "recommendedCar": 7,
+  "botConfigs": [
+   {
+    "car": 7,
+    "skill": 0
+   },
+   {
+    "car": 7,
+    "skill": 0
+   }
+  ],
+  "maxBotSpeed": 300.0,
+  "racingTrackSize": 0,
+  "racingTrackSeed": 0
+ },
+ {
+  "scene": "Assets/Game/Scenes/RacingTrack.unity",
+  "icon": "RacingTrack.jpg",
+  "name": "Racing Track",
+  "maxPossibleScore": 4539,
+  "costToUnlock": 100,
+  "requireCheckpoints": true,
+  "showContainerTutorial": false,
+  "scoreForCompletion": 1200,
+  "rewardForCompletion": 270000,
+  "secondCompletionRewardMultiplier": 1.0,
+  "speedToGetReward": 234,
+  "rewardForSpeed": 27000,
+  "timeToGetReward": 106,
+  "rewardForTime": 27000,
+  "rewardForMaxDamage": 27000,
+  "recommendedCar": 7,
+  "botConfigs": [
+   {
+    "car": 7,
+    "skill": 1
+   },
+   {
+    "car": 7,
+    "skill": 1
+   },
+   {
+    "car": 7,
+    "skill": 1
+   },
+   {
+    "car": 7,
+    "skill": 1
+   }
+  ],
+  "maxBotSpeed": 300.0,
+  "racingTrackSize": 2,
+  "racingTrackSeed": 18
+ },
+ {
+  "scene": "Assets/Game/Scenes/RacingTrack.unity",
+  "icon": "RacingTrack.jpg",
+  "name": "Racing Track",
+  "maxPossibleScore": 4431,
+  "costToUnlock": 100,
+  "requireCheckpoints": true,
+  "showContainerTutorial": false,
+  "scoreForCompletion": 1200,
+  "rewardForCompletion": 300000,
+  "secondCompletionRewardMultiplier": 1.0,
+  "speedToGetReward": 225,
+  "rewardForSpeed": 30000,
+  "timeToGetReward": 107,
+  "rewardForTime": 30000,
+  "rewardForMaxDamage": 30000,
+  "recommendedCar": 7,
+  "botConfigs": [
+   {
+    "car": 7,
+    "skill": 2
+   },
+   {
+    "car": 7,
+    "skill": 1
+   },
+   {
+    "car": 7,
+    "skill": 0
+   },
+   {
+    "car": 7,
+    "skill": 0
+   }
+  ],
+  "maxBotSpeed": 300.0,
+  "racingTrackSize": 2,
+  "racingTrackSeed": 19
+ },
+ {
+  "scene": "Assets/Game/Scenes/TracksInGame/Bumps.unity",
+  "icon": "Bumps.jpg",
+  "name": "Bumps",
+  "maxPossibleScore": 1411,
+  "costToUnlock": 1000,
+  "requireCheckpoints": true,
+  "showContainerTutorial": false,
+  "scoreForCompletion": 5000,
+  "rewardForCompletion": 300000,
+  "secondCompletionRewardMultiplier": 1.0,
+  "speedToGetReward": 222,
+  "rewardForSpeed": 30000,
+  "timeToGetReward": 60,
+  "rewardForTime": 30000,
+  "rewardForMaxDamage": 30000,
+  "recommendedCar": 5,
+  "botConfigs": [
+   {
+    "car": 5,
+    "skill": 0
+   },
+   {
+    "car": 5,
+    "skill": 0
+   }
+  ],
+  "maxBotSpeed": 300.0,
+  "racingTrackSize": 0,
+  "racingTrackSeed": 0
+ },
+ {
+  "scene": "Assets/Game/Scenes/RacingTrack.unity",
+  "icon": "RacingTrack.jpg",
+  "name": "Racing Track",
+  "maxPossibleScore": 4620,
+  "costToUnlock": 100,
+  "requireCheckpoints": true,
+  "showContainerTutorial": false,
+  "scoreForCompletion": 1200,
+  "rewardForCompletion": 300000,
+  "secondCompletionRewardMultiplier": 1.0,
+  "speedToGetReward": 128,
+  "rewardForSpeed": 30000,
+  "timeToGetReward": 123,
+  "rewardForTime": 30000,
+  "rewardForMaxDamage": 30000,
+  "recommendedCar": 5,
+  "botConfigs": [
+   {
+    "car": 5,
+    "skill": 0
+   },
+   {
+    "car": 5,
+    "skill": 0
+   },
+   {
+    "car": 5,
+    "skill": 0
+   },
+   {
+    "car": 5,
+    "skill": 0
+   },
+   {
+    "car": 5,
+    "skill": 0
+   }
+  ],
+  "maxBotSpeed": 300.0,
+  "racingTrackSize": 2,
+  "racingTrackSeed": 20
+ },
+ {
+  "scene": "Assets/Game/Scenes/RacingTrack.unity",
+  "icon": "RacingTrack.jpg",
+  "name": "Racing Track",
+  "maxPossibleScore": 4155,
+  "costToUnlock": 100,
+  "requireCheckpoints": true,
+  "showContainerTutorial": false,
+  "scoreForCompletion": 1200,
+  "rewardForCompletion": 300000,
+  "secondCompletionRewardMultiplier": 1.0,
+  "speedToGetReward": 119,
+  "rewardForSpeed": 30000,
+  "timeToGetReward": 128,
+  "rewardForTime": 30000,
+  "rewardForMaxDamage": 30000,
+  "recommendedCar": 5,
+  "botConfigs": [
+   {
+    "car": 5,
+    "skill": 0
+   },
+   {
+    "car": 5,
+    "skill": 0
+   },
+   {
+    "car": 5,
+    "skill": 0
+   },
+   {
+    "car": 5,
+    "skill": 0
+   },
+   {
+    "car": 5,
+    "skill": 0
+   }
+  ],
+  "maxBotSpeed": 300.0,
+  "racingTrackSize": 2,
+  "racingTrackSeed": 21
+ },
+ {
+  "scene": "Assets/Game/Scenes/RacingTrack.unity",
+  "icon": "RacingTrack.jpg",
+  "name": "Racing Track",
+  "maxPossibleScore": 4549,
+  "costToUnlock": 100,
+  "requireCheckpoints": true,
+  "showContainerTutorial": false,
+  "scoreForCompletion": 1200,
+  "rewardForCompletion": 300000,
+  "secondCompletionRewardMultiplier": 1.0,
+  "speedToGetReward": 207,
+  "rewardForSpeed": 30000,
+  "timeToGetReward": 105,
+  "rewardForTime": 30000,
+  "rewardForMaxDamage": 30000,
+  "recommendedCar": 5,
+  "botConfigs": [
+   {
+    "car": 5,
+    "skill": 0
+   },
+   {
+    "car": 7,
+    "skill": 3
+   },
+   {
+    "car": 5,
+    "skill": 2
+   },
+   {
+    "car": 5,
+    "skill": 0
+   },
+   {
+    "car": 5,
+    "skill": 0
+   }
+  ],
+  "maxBotSpeed": 300.0,
+  "racingTrackSize": 2,
+  "racingTrackSeed": 22
+ },
+ {
+  "scene": "Assets/Game/Scenes/RacingTrack.unity",
+  "icon": "RacingTrack.jpg",
+  "name": "Racing Track",
+  "maxPossibleScore": 4616,
+  "costToUnlock": 100,
+  "requireCheckpoints": true,
+  "showContainerTutorial": false,
+  "scoreForCompletion": 1200,
+  "rewardForCompletion": 300000,
+  "secondCompletionRewardMultiplier": 1.0,
+  "speedToGetReward": 223,
+  "rewardForSpeed": 30000,
+  "timeToGetReward": 117,
+  "rewardForTime": 30000,
+  "rewardForMaxDamage": 30000,
+  "recommendedCar": 5,
+  "botConfigs": [
+   {
+    "car": 5,
+    "skill": 1
+   },
+   {
+    "car": 5,
+    "skill": 2
+   },
+   {
+    "car": 5,
+    "skill": 1
+   },
+   {
+    "car": 7,
+    "skill": 3
+   },
+   {
+    "car": 5,
+    "skill": 0
+   }
+  ],
+  "maxBotSpeed": 300.0,
+  "racingTrackSize": 2,
+  "racingTrackSeed": 23
+ },
+ {
+  "scene": "Assets/Game/Scenes/TracksInGame/VeryLongJump.unity",
+  "icon": "VeryLongJump.jpg",
+  "name": "Very Long Jump",
+  "maxPossibleScore": 346,
+  "costToUnlock": 800,
+  "requireCheckpoints": false,
+  "showContainerTutorial": false,
+  "scoreForCompletion": 4000,
+  "rewardForCompletion": 300000,
+  "secondCompletionRewardMultiplier": 1.0,
+  "speedToGetReward": 91,
+  "rewardForSpeed": 30000,
+  "timeToGetReward": 29,
+  "rewardForTime": 30000,
+  "rewardForMaxDamage": 30000,
+  "recommendedCar": 5,
+  "botConfigs": [
+   {
+    "car": 5,
+    "skill": 2
+   }
+  ],
+  "maxBotSpeed": 300.0,
+  "racingTrackSize": 0,
+  "racingTrackSeed": 0
+ },
+ {
+  "scene": "Assets/Game/Scenes/RacingTrack.unity",
+  "icon": "RacingTrack.jpg",
+  "name": "Racing Track",
+  "maxPossibleScore": 5151,
+  "costToUnlock": 100,
+  "requireCheckpoints": true,
+  "showContainerTutorial": false,
+  "scoreForCompletion": 1200,
+  "rewardForCompletion": 300000,
+  "secondCompletionRewardMultiplier": 1.0,
+  "speedToGetReward": 222,
+  "rewardForSpeed": 30000,
+  "timeToGetReward": 107,
+  "rewardForTime": 30000,
+  "rewardForMaxDamage": 30000,
+  "recommendedCar": 6,
+  "botConfigs": [
+   {
+    "car": 6,
+    "skill": -1
+   },
+   {
+    "car": 5,
+    "skill": 0
+   },
+   {
+    "car": 6,
+    "skill": -1
+   },
+   {
+    "car": 5,
+    "skill": 0
+   },
+   {
+    "car": 6,
+    "skill": -1
+   }
+  ],
+  "maxBotSpeed": 300.0,
+  "racingTrackSize": 3,
+  "racingTrackSeed": 25
+ },
+ {
+  "scene": "Assets/Game/Scenes/RacingTrack.unity",
+  "icon": "RacingTrack.jpg",
+  "name": "Racing Track",
+  "maxPossibleScore": 5226,
+  "costToUnlock": 100,
+  "requireCheckpoints": true,
+  "showContainerTutorial": false,
+  "scoreForCompletion": 1200,
+  "rewardForCompletion": 300000,
+  "secondCompletionRewardMultiplier": 1.0,
+  "speedToGetReward": 239,
+  "rewardForSpeed": 30000,
+  "timeToGetReward": 94,
+  "rewardForTime": 30000,
+  "rewardForMaxDamage": 30000,
+  "recommendedCar": 6,
+  "botConfigs": [
+   {
+    "car": 6,
+    "skill": 0
+   },
+   {
+    "car": 5,
+    "skill": 1
+   },
+   {
+    "car": 6,
+    "skill": 0
+   },
+   {
+    "car": 5,
+    "skill": 2
+   },
+   {
+    "car": 6,
+    "skill": 0
+   }
+  ],
+  "maxBotSpeed": 300.0,
+  "racingTrackSize": 3,
+  "racingTrackSeed": 26
+ },
+ {
+  "scene": "Assets/Game/Scenes/TracksInGame/LongHoles.unity",
+  "icon": "LongHoles.jpg",
+  "name": "Long Holes",
+  "maxPossibleScore": 2169,
+  "costToUnlock": 800,
+  "requireCheckpoints": true,
+  "showContainerTutorial": false,
+  "scoreForCompletion": 5000,
+  "rewardForCompletion": 300000,
+  "secondCompletionRewardMultiplier": 1.0,
+  "speedToGetReward": 311,
+  "rewardForSpeed": 30000,
+  "timeToGetReward": 47,
+  "rewardForTime": 30000,
+  "rewardForMaxDamage": 30000,
+  "recommendedCar": 6,
+  "botConfigs": [
+   {
+    "car": 6,
+    "skill": 0
+   },
+   {
+    "car": 6,
+    "skill": 0
+   }
+  ],
+  "maxBotSpeed": 300.0,
+  "racingTrackSize": 0,
+  "racingTrackSeed": 0
+ },
+ {
+  "scene": "Assets/Game/Scenes/RacingTrack.unity",
+  "icon": "RacingTrack.jpg",
+  "name": "Racing Track",
+  "maxPossibleScore": 5441,
+  "costToUnlock": 100,
+  "requireCheckpoints": true,
+  "showContainerTutorial": false,
+  "scoreForCompletion": 1200,
+  "rewardForCompletion": 300000,
+  "secondCompletionRewardMultiplier": 1.0,
+  "speedToGetReward": 235,
+  "rewardForSpeed": 30000,
+  "timeToGetReward": 110,
+  "rewardForTime": 30000,
+  "rewardForMaxDamage": 30000,
+  "recommendedCar": 6,
+  "botConfigs": [
+   {
+    "car": 6,
+    "skill": 2
+   },
+   {
+    "car": 5,
+    "skill": 3
+   },
+   {
+    "car": 6,
+    "skill": 2
+   },
+   {
+    "car": 5,
+    "skill": 2
+   },
+   {
+    "car": 6,
+    "skill": 0
+   }
+  ],
+  "maxBotSpeed": 300.0,
+  "racingTrackSize": 3,
+  "racingTrackSeed": 28
+ },
+ {
+  "scene": "Assets/Game/Scenes/RacingTrack.unity",
+  "icon": "RacingTrack.jpg",
+  "name": "Racing Track",
+  "maxPossibleScore": 6322,
+  "costToUnlock": 100,
+  "requireCheckpoints": true,
+  "showContainerTutorial": false,
+  "scoreForCompletion": 1200,
+  "rewardForCompletion": 300000,
+  "secondCompletionRewardMultiplier": 1.0,
+  "speedToGetReward": 271,
+  "rewardForSpeed": 30000,
+  "timeToGetReward": 110,
+  "rewardForTime": 30000,
+  "rewardForMaxDamage": 30000,
+  "recommendedCar": 6,
+  "botConfigs": [
+   {
+    "car": 6,
+    "skill": 3
+   },
+   {
+    "car": 5,
+    "skill": 3
+   },
+   {
+    "car": 6,
+    "skill": 2
+   },
+   {
+    "car": 5,
+    "skill": 2
+   },
+   {
+    "car": 6,
+    "skill": 0
+   }
+  ],
+  "maxBotSpeed": 300.0,
+  "racingTrackSize": 3,
+  "racingTrackSeed": 29
+ },
+ {
+  "scene": "Assets/Game/Scenes/RacingTrack.unity",
+  "icon": "RacingTrack.jpg",
+  "name": "Racing Track",
+  "maxPossibleScore": 4592,
+  "costToUnlock": 100,
+  "requireCheckpoints": true,
+  "showContainerTutorial": false,
+  "scoreForCompletion": 1200,
+  "rewardForCompletion": 300000,
+  "secondCompletionRewardMultiplier": 1.0,
+  "speedToGetReward": 221,
+  "rewardForSpeed": 30000,
+  "timeToGetReward": 84,
+  "rewardForTime": 30000,
+  "rewardForMaxDamage": 30000,
+  "recommendedCar": 7,
+  "botConfigs": [
+   {
+    "car": 6,
+    "skill": 3
+   },
+   {
+    "car": 5,
+    "skill": 3
+   },
+   {
+    "car": 6,
+    "skill": 2
+   },
+   {
+    "car": 5,
+    "skill": 2
+   },
+   {
+    "car": 6,
+    "skill": 0
+   }
+  ],
+  "maxBotSpeed": 300.0,
+  "racingTrackSize": 3,
+  "racingTrackSeed": 30
+ },
+ {
+  "scene": "Assets/Game/Scenes/RacingTrack.unity",
+  "icon": "RacingTrack.jpg",
+  "name": "Racing Track",
+  "maxPossibleScore": 5091,
+  "costToUnlock": 100,
+  "requireCheckpoints": true,
+  "showContainerTutorial": false,
+  "scoreForCompletion": 1200,
+  "rewardForCompletion": 400000,
+  "secondCompletionRewardMultiplier": 1.0,
+  "speedToGetReward": 204,
+  "rewardForSpeed": 40000,
+  "timeToGetReward": 99,
+  "rewardForTime": 40000,
+  "rewardForMaxDamage": 40000,
+  "recommendedCar": 8,
+  "botConfigs": [
+   {
+    "car": 8,
+    "skill": 0
+   },
+   {
+    "car": 8,
+    "skill": 0
+   },
+   {
+    "car": 6,
+    "skill": 2
+   },
+   {
+    "car": 5,
+    "skill": 3
+   }
+  ],
+  "maxBotSpeed": 300.0,
+  "racingTrackSize": 3,
+  "racingTrackSeed": 31
+ },
+ {
+  "scene": "Assets/Game/Scenes/RacingTrack.unity",
+  "icon": "RacingTrack.jpg",
+  "name": "Racing Track",
+  "maxPossibleScore": 6194,
+  "costToUnlock": 100,
+  "requireCheckpoints": true,
+  "showContainerTutorial": false,
+  "scoreForCompletion": 1200,
+  "rewardForCompletion": 400000,
+  "secondCompletionRewardMultiplier": 1.0,
+  "speedToGetReward": 222,
+  "rewardForSpeed": 40000,
+  "timeToGetReward": 120,
+  "rewardForTime": 40000,
+  "rewardForMaxDamage": 40000,
+  "recommendedCar": 8,
+  "botConfigs": [
+   {
+    "car": 8,
+    "skill": 0
+   },
+   {
+    "car": 8,
+    "skill": 0
+   },
+   {
+    "car": 5,
+    "skill": 2
+   },
+   {
+    "car": 4,
+    "skill": 2
+   },
+   {
+    "car": 6,
+    "skill": 2
+   }
+  ],
+  "maxBotSpeed": 300.0,
+  "racingTrackSize": 3,
+  "racingTrackSeed": 32
+ },
+ {
+  "scene": "Assets/Game/Scenes/TracksInGame/Hill.unity",
+  "icon": "Hills.jpg",
+  "name": "Hills",
+  "maxPossibleScore": 1580,
+  "costToUnlock": 800,
+  "requireCheckpoints": true,
+  "showContainerTutorial": false,
+  "scoreForCompletion": 1000,
+  "rewardForCompletion": 500000,
+  "secondCompletionRewardMultiplier": 1.0,
+  "speedToGetReward": 115,
+  "rewardForSpeed": 50000,
+  "timeToGetReward": 66,
+  "rewardForTime": 50000,
+  "rewardForMaxDamage": 50000,
+  "recommendedCar": 8,
+  "botConfigs": [
+   {
+    "car": 8,
+    "skill": 3
+   },
+   {
+    "car": 8,
+    "skill": 3
+   }
+  ],
+  "maxBotSpeed": 500.0,
+  "racingTrackSize": 0,
+  "racingTrackSeed": 0
+ },
+ {
+  "scene": "Assets/Game/Scenes/RacingTrack.unity",
+  "icon": "RacingTrack.jpg",
+  "name": "Racing Track",
+  "maxPossibleScore": 5413,
+  "costToUnlock": 100,
+  "requireCheckpoints": true,
+  "showContainerTutorial": false,
+  "scoreForCompletion": 1200,
+  "rewardForCompletion": 600000,
+  "secondCompletionRewardMultiplier": 1.0,
+  "speedToGetReward": 250,
+  "rewardForSpeed": 60000,
+  "timeToGetReward": 96,
+  "rewardForTime": 60000,
+  "rewardForMaxDamage": 60000,
+  "recommendedCar": 8,
+  "botConfigs": [
+   {
+    "car": 5,
+    "skill": 3
+   },
+   {
+    "car": 6,
+    "skill": 1
+   },
+   {
+    "car": 8,
+    "skill": 0
+   },
+   {
+    "car": 4,
+    "skill": 3
+   },
+   {
+    "car": 8,
+    "skill": 0
+   }
+  ],
+  "maxBotSpeed": 500.0,
+  "racingTrackSize": 3,
+  "racingTrackSeed": 33
+ },
+ {
+  "scene": "Assets/Game/Scenes/RacingTrack.unity",
+  "icon": "RacingTrack.jpg",
+  "name": "Racing Track",
+  "maxPossibleScore": 4722,
+  "costToUnlock": 100,
+  "requireCheckpoints": true,
+  "showContainerTutorial": false,
+  "scoreForCompletion": 1200,
+  "rewardForCompletion": 700000,
+  "secondCompletionRewardMultiplier": 1.0,
+  "speedToGetReward": 200,
+  "rewardForSpeed": 70000,
+  "timeToGetReward": 89,
+  "rewardForTime": 70000,
+  "rewardForMaxDamage": 70000,
+  "recommendedCar": 8,
+  "botConfigs": [
+   {
+    "car": 8,
+    "skill": 0
+   },
+   {
+    "car": 5,
+    "skill": 1
+   },
+   {
+    "car": 6,
+    "skill": 2
+   },
+   {
+    "car": 4,
+    "skill": 2
+   },
+   {
+    "car": 8,
+    "skill": 0
+   }
+  ],
+  "maxBotSpeed": 500.0,
+  "racingTrackSize": 3,
+  "racingTrackSeed": 34
+ },
+ {
+  "scene": "Assets/Game/Scenes/RacingTrack.unity",
+  "icon": "RacingTrack.jpg",
+  "name": "Racing Track",
+  "maxPossibleScore": 4919,
+  "costToUnlock": 100,
+  "requireCheckpoints": true,
+  "showContainerTutorial": false,
+  "scoreForCompletion": 1200,
+  "rewardForCompletion": 800000,
+  "secondCompletionRewardMultiplier": 1.0,
+  "speedToGetReward": 212,
+  "rewardForSpeed": 80000,
+  "timeToGetReward": 130,
+  "rewardForTime": 80000,
+  "rewardForMaxDamage": 80000,
+  "recommendedCar": 8,
+  "botConfigs": [
+   {
+    "car": 7,
+    "skill": 2
+   },
+   {
+    "car": 8,
+    "skill": 1
+   },
+   {
+    "car": 5,
+    "skill": 2
+   }
+  ],
+  "maxBotSpeed": 500.0,
+  "racingTrackSize": 3,
+  "racingTrackSeed": 35
+ },
+ {
+  "scene": "Assets/Game/Scenes/RacingTrack.unity",
+  "icon": "RacingTrack.jpg",
+  "name": "Racing Track",
+  "maxPossibleScore": 4924,
+  "costToUnlock": 100,
+  "requireCheckpoints": true,
+  "showContainerTutorial": false,
+  "scoreForCompletion": 1200,
+  "rewardForCompletion": 900000,
+  "secondCompletionRewardMultiplier": 1.0,
+  "speedToGetReward": 215,
+  "rewardForSpeed": 90000,
+  "timeToGetReward": 98,
+  "rewardForTime": 90000,
+  "rewardForMaxDamage": 90000,
+  "recommendedCar": 8,
+  "botConfigs": [
+   {
+    "car": 6,
+    "skill": 3
+   },
+   {
+    "car": 8,
+    "skill": 1
+   },
+   {
+    "car": 7,
+    "skill": 2
+   },
+   {
+    "car": 8,
+    "skill": 1
+   }
+  ],
+  "maxBotSpeed": 500.0,
+  "racingTrackSize": 3,
+  "racingTrackSeed": 36
+ },
+ {
+  "scene": "Assets/Game/Scenes/RacingTrack.unity",
+  "icon": "RacingTrack.jpg",
+  "name": "Racing Track",
+  "maxPossibleScore": 5367,
+  "costToUnlock": 100,
+  "requireCheckpoints": true,
+  "showContainerTutorial": false,
+  "scoreForCompletion": 1200,
+  "rewardForCompletion": 1000000,
+  "secondCompletionRewardMultiplier": 1.0,
+  "speedToGetReward": 271,
+  "rewardForSpeed": 100000,
+  "timeToGetReward": 124,
+  "rewardForTime": 100000,
+  "rewardForMaxDamage": 100000,
+  "recommendedCar": 9,
+  "botConfigs": [
+   {
+    "car": 9,
+    "skill": 0
+   },
+   {
+    "car": 9,
+    "skill": 0
+   },
+   {
+    "car": 8,
+    "skill": 0
+   },
+   {
+    "car": 6,
+    "skill": 2
+   }
+  ],
+  "maxBotSpeed": 350.0,
+  "racingTrackSize": 3,
+  "racingTrackSeed": 37
+ },
+ {
+  "scene": "Assets/Game/Scenes/RacingTrack.unity",
+  "icon": "RacingTrack.jpg",
+  "name": "Racing Track",
+  "maxPossibleScore": 5835,
+  "costToUnlock": 100,
+  "requireCheckpoints": true,
+  "showContainerTutorial": false,
+  "scoreForCompletion": 1200,
+  "rewardForCompletion": 1000000,
+  "secondCompletionRewardMultiplier": 1.0,
+  "speedToGetReward": 201,
+  "rewardForSpeed": 100000,
+  "timeToGetReward": 109,
+  "rewardForTime": 100000,
+  "rewardForMaxDamage": 100000,
+  "recommendedCar": 9,
+  "botConfigs": [
+   {
+    "car": 9,
+    "skill": 0
+   },
+   {
+    "car": 8,
+    "skill": 2
+   },
+   {
+    "car": 6,
+    "skill": 2
+   },
+   {
+    "car": 5,
+    "skill": 3
+   },
+   {
+    "car": 9,
+    "skill": 0
+   }
+  ],
+  "maxBotSpeed": 350.0,
+  "racingTrackSize": 3,
+  "racingTrackSeed": 38
+ },
+ {
+  "scene": "Assets/Game/Scenes/TracksInGame/Train.unity",
+  "icon": "Trains.jpg",
+  "name": "Trains",
+  "maxPossibleScore": 764,
+  "costToUnlock": 1100,
+  "requireCheckpoints": true,
+  "showContainerTutorial": false,
+  "scoreForCompletion": 750,
+  "rewardForCompletion": 1000000,
+  "secondCompletionRewardMultiplier": 1.0,
+  "speedToGetReward": 134,
+  "rewardForSpeed": 100000,
+  "timeToGetReward": 52,
+  "rewardForTime": 100000,
+  "rewardForMaxDamage": 100000,
+  "recommendedCar": 0,
+  "botConfigs": [
+   {
+    "car": 0,
+    "skill": 3
+   },
+   {
+    "car": 2,
+    "skill": 3
+   }
+  ],
+  "maxBotSpeed": 350.0,
+  "racingTrackSize": 0,
+  "racingTrackSeed": 0
+ },
+ {
+  "scene": "Assets/Game/Scenes/RacingTrack.unity",
+  "icon": "RacingTrack.jpg",
+  "name": "Racing Track",
+  "maxPossibleScore": 5555,
+  "costToUnlock": 100,
+  "requireCheckpoints": true,
+  "showContainerTutorial": false,
+  "scoreForCompletion": 1200,
+  "rewardForCompletion": 1000000,
+  "secondCompletionRewardMultiplier": 1.0,
+  "speedToGetReward": 306,
+  "rewardForSpeed": 100000,
+  "timeToGetReward": 107,
+  "rewardForTime": 100000,
+  "rewardForMaxDamage": 100000,
+  "recommendedCar": 9,
+  "botConfigs": [
+   {
+    "car": 9,
+    "skill": 1
+   },
+   {
+    "car": 7,
+    "skill": 2
+   },
+   {
+    "car": 6,
+    "skill": 3
+   },
+   {
+    "car": 9,
+    "skill": 1
+   },
+   {
+    "car": 9,
+    "skill": 0
+   }
+  ],
+  "maxBotSpeed": 350.0,
+  "racingTrackSize": 3,
+  "racingTrackSeed": 39
+ },
+ {
+  "scene": "Assets/Game/Scenes/RacingTrack.unity",
+  "icon": "RacingTrack.jpg",
+  "name": "Racing Track",
+  "maxPossibleScore": 6511,
+  "costToUnlock": 100,
+  "requireCheckpoints": true,
+  "showContainerTutorial": false,
+  "scoreForCompletion": 1200,
+  "rewardForCompletion": 1000000,
+  "secondCompletionRewardMultiplier": 1.0,
+  "speedToGetReward": 263,
+  "rewardForSpeed": 100000,
+  "timeToGetReward": 130,
+  "rewardForTime": 100000,
+  "rewardForMaxDamage": 100000,
+  "recommendedCar": 9,
+  "botConfigs": [
+   {
+    "car": 9,
+    "skill": 0
+   },
+   {
+    "car": 9,
+    "skill": 2
+   },
+   {
+    "car": 7,
+    "skill": 3
+   },
+   {
+    "car": 9,
+    "skill": 0
+   }
+  ],
+  "maxBotSpeed": 350.0,
+  "racingTrackSize": 3,
+  "racingTrackSeed": 40
+ },
+ {
+  "scene": "Assets/Game/Scenes/RacingTrack.unity",
+  "icon": "RacingTrack.jpg",
+  "name": "Racing Track",
+  "maxPossibleScore": 5884,
+  "costToUnlock": 100,
+  "requireCheckpoints": true,
+  "showContainerTutorial": false,
+  "scoreForCompletion": 1200,
+  "rewardForCompletion": 1000000,
+  "secondCompletionRewardMultiplier": 1.0,
+  "speedToGetReward": 301,
+  "rewardForSpeed": 100000,
+  "timeToGetReward": 119,
+  "rewardForTime": 100000,
+  "rewardForMaxDamage": 100000,
+  "recommendedCar": 9,
+  "botConfigs": [
+   {
+    "car": 9,
+    "skill": 0
+   },
+   {
+    "car": 9,
+    "skill": 0
+   },
+   {
+    "car": 9,
+    "skill": 2
+   },
+   {
+    "car": 6,
+    "skill": 3
+   },
+   {
+    "car": 5,
+    "skill": 3
+   }
+  ],
+  "maxBotSpeed": 350.0,
+  "racingTrackSize": 3,
+  "racingTrackSeed": 41
+ },
+ {
+  "scene": "Assets/Game/Scenes/RacingTrack.unity",
+  "icon": "RacingTrack.jpg",
+  "name": "Racing Track",
+  "maxPossibleScore": 5808,
+  "costToUnlock": 100,
+  "requireCheckpoints": true,
+  "showContainerTutorial": false,
+  "scoreForCompletion": 1200,
+  "rewardForCompletion": 1000000,
+  "secondCompletionRewardMultiplier": 1.0,
+  "speedToGetReward": 304,
+  "rewardForSpeed": 100000,
+  "timeToGetReward": 122,
+  "rewardForTime": 100000,
+  "rewardForMaxDamage": 100000,
+  "recommendedCar": 9,
+  "botConfigs": [
+   {
+    "car": 9,
+    "skill": 0
+   },
+   {
+    "car": 3,
+    "skill": 3
+   },
+   {
+    "car": 9,
+    "skill": 0
+   },
+   {
+    "car": 9,
+    "skill": 2
+   },
+   {
+    "car": 8,
+    "skill": 3
+   }
+  ],
+  "maxBotSpeed": 350.0,
+  "racingTrackSize": 3,
+  "racingTrackSeed": 42
+ }
+]

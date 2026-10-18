@@ -1,4 +1,3 @@
-
 mod audio;
 mod platform;
 
@@ -12,32 +11,39 @@ use repame_shell::{
     SharedEdges, Staging, install_game_shortcuts, shared_edges, take_shortcut_edges,
 };
 use repame_sim::Sim;
-use repose_core::Dp;
+use repame_view3d::GeomHandle;
 use repose_core::input::PhysicalKey;
 use repose_core::prelude::{FocusRequester, Modifier, View};
 use repose_core::{RenderContext, Scheduler, request_frame};
-use repose_ui::{Box as RBox, Spacer, ViewExt as _};
+use repose_ui::{ViewExt as _, ZStack};
 use web_time::{Duration, Instant};
 
-use crate::rigs::Rigs;
-use crate::sim::save::SaveGame;
-use crate::sim::state::{
-    Field, Intents, RunState, Transition, apply_intents, break_system, spawn_world,
-};
-use crate::sim::{platform as sim_platform, state};
-use crate::ui::palette;
-use crate::ui::{
-    SharedUi, Sink, TouchHandle, UiAction, UiActions, compose_root, drain_actions, sync_shared_ui,
-};
+use crate::scene;
+use crate::sim::car::Input;
+use crate::sim::data;
+use crate::sim::meta::Progress;
+use crate::sim::race::Phase;
+use crate::sim::{Intent, Intents};
+use crate::ui::{self, SharedUi, Sink, UiAction, UiActions, drain_actions, sync_shared_ui};
 
 use self::audio::AudioDirector;
 use self::platform::PlatformHost;
 
 const FREDOKA_BOLD: &[u8] = include_bytes!("../../assets/fonts/Fredoka-Bold.ttf");
 
-const SHORTCUT_PAUSE: &str = "web-game.pause";
-const SHORTCUT_RESTART: &str = "web-game.restart";
-const SHORTCUT_CONFIRM: &str = "web-game.confirm";
+/// Placement id for the between-runs interstitial, as the bridge config names it.
+const PLACEMENT_GAME_OVER: &str = "game_over";
+
+/// Placement id for the rewarded-ad coin grant, as the bridge config names it.
+const PLACEMENT_FREE_COINS: &str = "free_coins";
+
+const SHORTCUT_PAUSE: &str = "deadly-descent.pause";
+/// Coins the rewarded placement pays; the reference pays coin packs, the exact
+/// grant is not in the build, so this matches the shop's small pack.
+const REWARDED_COIN_GRANT: i32 = 500;
+
+const SHORTCUT_RESTART: &str = "deadly-descent.restart";
+const SHORTCUT_CONFIRM: &str = "deadly-descent.confirm";
 
 fn ensure_fonts() {
     static ONCE: std::sync::OnceLock<()> = std::sync::OnceLock::new();
@@ -53,10 +59,14 @@ pub struct App {
     staging: Rc<RefCell<Staging>>,
     shortcut_edges: SharedEdges,
     ui: SharedUi,
-    rigs: Rigs,
+    geom: GeomHandle,
     audio: AudioDirector,
     held: HashSet<PhysicalKey>,
-    viewport_dp: [f32; 2],
+    /// Shop item waiting on the platform's purchase result.
+    pending_purchase: Option<String>,
+    /// Run whose end-of-race ads and score post have already been handled.
+    reported_run: bool,
+    interstitial_shown_for: Option<usize>,
 }
 
 impl App {
@@ -71,39 +81,31 @@ impl App {
 
     fn with_host(host: PlatformHost) -> Self {
         ensure_fonts();
+        let _ = &host;
         let mut sim = Sim::with_default_step();
-        let save = SaveGame::new();
-        let muted = save.data.muted;
-        let best = save.data.best_score;
-        sim.world.insert_resource(save);
+        crate::sim::subscribe(&mut sim.world);
+        let muted = sim.world.resource::<Progress>().data.muted;
         sim.world.init_resource::<UiActions>();
-        sim.world.insert_resource(RunState {
-            best,
-            ..RunState::default()
-        });
-        sim.world.insert_resource(state::InputState::default());
-        sim.world.insert_resource(Intents::default());
-        sim.world.insert_resource(state::Pops::default());
-        sim.world.insert_resource(state::SfxQueue::default());
-        sim.world.insert_resource(sim_platform::Platform::default());
-        sim.world.insert_resource(Transition::default());
-        sim.world.insert_resource(state::Field::new(state::WORLD[0], state::WORLD[1]));
-        spawn_world(&mut sim.world);
-        let touch = TouchHandle::default();
+        let ui = SharedUi {
+            muted,
+            viewport: Vec2::new(ui::DESIGN[0], ui::DESIGN[1]),
+            ..SharedUi::default()
+        };
+        // The image skin binds on the first frame, when a render context exists.
+        // (sync below, once the context is available in `view`.)
         Self {
             sim,
             platform: host,
             schedule: crate::sim::build_schedule(),
             staging: Staging::shared(),
             shortcut_edges: shared_edges(),
-            ui: SharedUi {
-                touch,
-                ..SharedUi::default()
-            },
-            rigs: Rigs::new(),
+            ui,
+            geom: GeomHandle::new(),
             audio: AudioDirector::new(muted),
             held: HashSet::new(),
-            viewport_dp: state::WORLD,
+            pending_purchase: None,
+            reported_run: false,
+            interstitial_shown_for: None,
         }
     }
 
@@ -117,13 +119,22 @@ impl App {
         );
         self.staging.borrow_mut().feed_polled(sched);
         self.held = self.staging.borrow().held.clone();
-        self.viewport_dp = prepare_viewport(sched);
-        self.ui.viewport = Vec2::new(self.viewport_dp[0], self.viewport_dp[1]);
-        let field = crate::rigs::field_size(self.viewport_dp);
-        self.sim
-            .world
-            .insert_resource(Field::new(field[0], field[1]));
-        self.feed_shortcuts();
+        let viewport = prepare_viewport(sched);
+        self.ui.viewport = Vec2::new(viewport[0], viewport[1]);
+        let (pause, restart, confirm) = take_shortcut_edges(&self.shortcut_edges);
+        if restart {
+            self.sim
+                .world
+                .resource_mut::<Intents>()
+                .0
+                .push(Intent::Restart);
+        }
+        if confirm {
+            self.start_selected_level();
+        }
+        if pause {
+            self.ui.paused = !self.ui.paused;
+        }
         self.feed_input();
         self.platform
             .update(&mut self.sim.world, dt.as_secs_f32(), true);
@@ -131,43 +142,190 @@ impl App {
             for action in drain_actions(&mut self.sim.world) {
                 self.apply_action(action);
             }
-            apply_intents(&mut self.sim.world);
+            crate::sim::apply_intents(&mut self.sim.world);
         }
         let steps = self.advance(dt);
-        self.rigs.tick(steps);
+        let _ = steps;
+        self.collect_rewards();
+        self.drain_purchases();
+        self.handle_run_end();
+        self.ui.elapsed += dt.as_secs_f32();
+        self.advance_tutorial();
         self.sync_audio(dt);
-        sync_shared_ui(&self.sim.world, &mut self.ui);
-        self.compose(ctx)
+        sync_shared_ui(&mut self.sim.world, &mut self.ui, ctx);
+        if let Some(mut platform) = self
+            .sim
+            .world
+            .get_resource_mut::<crate::sim::platform::Platform>()
+            && platform.take_score_posted()
+        {
+            self.ui.leaderboard_posted = true;
+        }
+        self.compose(ctx, viewport)
     }
 
-    fn feed_shortcuts(&mut self) {
-        let (pause, restart, confirm) = take_shortcut_edges(&self.shortcut_edges);
-        let mut intents = self.sim.world.resource_mut::<Intents>();
-        if pause {
-            intents.toggle_pause = true;
+    /// Walk the tutorial forward as its steps are performed: RACE, then a map,
+    /// then a nitro in the first race.
+    fn advance_tutorial(&mut self) {
+        let stage = self.ui.tutorial_stage;
+        let phase = self.ui.phase;
+        let nitro_used = self
+            .sim
+            .world
+            .get_resource::<crate::sim::Controls>()
+            .map(|c| c.0.nitro)
+            .unwrap_or(false);
+        let done = match stage {
+            0 => matches!(phase, Phase::MapSelect),
+            1 => matches!(phase, Phase::Countdown | Phase::Racing),
+            2 => nitro_used,
+            _ => false,
+        };
+        if done {
+            if let Some(mut progress) = self.sim.world.get_resource_mut::<Progress>() {
+                progress.advance_tutorial(stage);
+            }
+            self.ui.tutorial_stage = stage + 1;
         }
-        if restart {
-            intents.retry = true;
+    }
+
+    /// Apply a purchase the platform reported, then clear the slot.
+    fn drain_purchases(&mut self) {
+        let purchased = self
+            .sim
+            .world
+            .get_resource_mut::<crate::sim::platform::Platform>()
+            .and_then(|mut platform| platform.take_purchase());
+        let Some(id) = purchased else {
+            return;
+        };
+        let wanted = self.pending_purchase.clone();
+        self.pending_purchase = None;
+        // Offline hosts report a generic id; treat the in-flight request as what
+        // came back.
+        let id = if id == "purchase" {
+            wanted.unwrap_or(id)
+        } else {
+            id
+        };
+        if let Some(mut progress) = self.sim.world.get_resource_mut::<Progress>() {
+            if id == "no_ads" {
+                progress.set_no_ads(true);
+            } else if let Some(coins) = Progress::pack_coins(&id) {
+                progress.grant_coins(coins);
+            }
         }
-        if confirm {
-            intents.play = true;
+    }
+
+    /// At the end of a run: post the score once, and show the platform's
+    /// interstitial once when ads are not removed.
+    fn handle_run_end(&mut self) {
+        let (phase, level, score, finished) = self
+            .sim
+            .world
+            .get_resource::<crate::sim::race::Session>()
+            .map(|s| {
+                (
+                    s.phase,
+                    s.level,
+                    s.results.map(|r| r.score).unwrap_or(0),
+                    matches!(s.phase, Phase::Finished),
+                )
+            })
+            .unwrap_or((Phase::Garage, 0, 0, false));
+        if !matches!(phase, Phase::Finished | Phase::Failed) {
+            self.reported_run = false;
+            return;
         }
+        if self.reported_run {
+            return;
+        }
+        self.reported_run = true;
+        let no_ads = self
+            .sim
+            .world
+            .get_resource::<Progress>()
+            .map(|p| p.data.no_ads)
+            .unwrap_or(false);
+        let id = format!("level_{}", level);
+        self.ui.leaderboard_id = id.clone();
+        let mut platform = match self
+            .sim
+            .world
+            .get_resource_mut::<crate::sim::platform::Platform>()
+        {
+            Some(platform) => platform,
+            None => return,
+        };
+        if finished {
+            platform.submit_score(id.as_str(), score as f64);
+        }
+        if !no_ads && self.interstitial_shown_for != Some(level) {
+            self.interstitial_shown_for = Some(level);
+            platform.commercial_break(PLACEMENT_GAME_OVER);
+        }
+    }
+
+    /// A rewarded ad that finished grants coins once, as the reference's
+    /// "Get Coins" flow does.
+    fn collect_rewards(&mut self) {
+        let granted = self
+            .sim
+            .world
+            .get_resource::<crate::sim::platform::Platform>()
+            .map(|p| p.reward_granted() && p.pending().is_none())
+            .unwrap_or(false);
+        if !granted {
+            return;
+        }
+        if let Some(mut progress) = self.sim.world.get_resource_mut::<Progress>() {
+            progress.add_coins(REWARDED_COIN_GRANT);
+            progress.persist();
+        }
+        if let Some(mut platform) = self
+            .sim
+            .world
+            .get_resource_mut::<crate::sim::platform::Platform>()
+        {
+            platform.break_finished();
+        }
+        self.ui.reward_pending = false;
+    }
+
+    fn start_selected_level(&mut self) {
+        let level = self.ui.level;
+        self.sim
+            .world
+            .resource_mut::<Intents>()
+            .0
+            .push(Intent::StartLevel(level));
     }
 
     fn feed_input(&mut self) {
-        let x = i32::from(self.key(PhysicalKey::KeyD) || self.key(PhysicalKey::ArrowRight))
+        let steering = i32::from(self.key(PhysicalKey::KeyD) || self.key(PhysicalKey::ArrowRight))
             - i32::from(self.key(PhysicalKey::KeyA) || self.key(PhysicalKey::ArrowLeft));
-        let y = i32::from(self.key(PhysicalKey::KeyS) || self.key(PhysicalKey::ArrowDown))
-            - i32::from(self.key(PhysicalKey::KeyW) || self.key(PhysicalKey::ArrowUp));
-        let mut dir = Vec2::new(x as f32, y as f32) + self.ui.touch.borrow().value;
-        if dir.length() > 1.0 {
-            dir = dir.normalize();
-        }
-        let playing = self.sim.world.resource::<RunState>().playing();
-        if !playing {
-            self.ui.touch.borrow_mut().release();
-        }
-        self.sim.world.resource_mut::<state::InputState>().dir = dir;
+        let throttle = i32::from(self.key(PhysicalKey::KeyW) || self.key(PhysicalKey::ArrowUp));
+        let brake = i32::from(self.key(PhysicalKey::KeyS) || self.key(PhysicalKey::ArrowDown));
+        let handbrake = self.key(PhysicalKey::Space);
+        let nitro = self.key(PhysicalKey::ShiftLeft) || self.key(PhysicalKey::KeyN);
+        let live = self
+            .sim
+            .world
+            .get_resource::<crate::sim::race::Session>()
+            .map(|s| matches!(s.phase, Phase::Countdown | Phase::Racing))
+            .unwrap_or(false);
+        let paused = self.ui.paused;
+        self.sim.world.resource_mut::<crate::sim::Controls>().0 = if live && !paused {
+            Input {
+                throttle: throttle as f32,
+                brake: brake as f32,
+                steer: steering as f32,
+                handbrake,
+                nitro,
+            }
+        } else {
+            Input::default()
+        };
     }
 
     fn key(&self, key: PhysicalKey) -> bool {
@@ -177,24 +335,104 @@ impl App {
     fn apply_action(&mut self, action: UiAction) {
         let mut intents = self.sim.world.resource_mut::<Intents>();
         match action {
-            UiAction::Play => intents.play = true,
-            UiAction::Retry => intents.retry = true,
-            UiAction::Revive => intents.revive = true,
-            UiAction::Menu => intents.menu = true,
-            UiAction::Pause => intents.toggle_pause = true,
-            UiAction::Mute => intents.toggle_mute = true,
+            UiAction::StartLevel(index) => {
+                intents.0.push(Intent::StartLevel(index));
+            }
+            UiAction::SelectCar(index) => intents.0.push(Intent::SelectCar(index)),
+            UiAction::BuyCar(index) => intents.0.push(Intent::BuyCar(index)),
+            UiAction::UpgradeEngine => intents
+                .0
+                .push(Intent::Upgrade(crate::sim::meta::UpgradeKind::Engine)),
+            UiAction::UpgradeSteer => intents
+                .0
+                .push(Intent::Upgrade(crate::sim::meta::UpgradeKind::Steer)),
+            UiAction::UpgradeDurability => intents
+                .0
+                .push(Intent::Upgrade(crate::sim::meta::UpgradeKind::Durability)),
+            UiAction::ToGarage => {
+                intents.0.push(Intent::ToGarage);
+                self.ui.paused = false;
+            }
+            UiAction::ToMapSelect => {
+                intents.0.push(Intent::ToMapSelect);
+                self.ui.paused = false;
+            }
+            UiAction::Restart => {
+                intents.0.push(Intent::Restart);
+                self.ui.paused = false;
+            }
+            UiAction::NextLevel => {
+                let last = crate::sim::data::levels().len().saturating_sub(1);
+                let next = (self.ui.level + 1).min(last);
+                intents.0.push(Intent::StartLevel(next));
+                self.ui.paused = false;
+            }
+            UiAction::ToggleMute => intents.0.push(Intent::ToggleMute),
+            UiAction::ClaimLogin => {
+                let today = ui::today_index();
+                if let Some(mut progress) = self.sim.world.get_resource_mut::<Progress>() {
+                    progress.claim_login_reward(today);
+                }
+            }
+            UiAction::BuyPack(index) => {
+                let id = crate::sim::meta::COIN_PACKS
+                    .get(index)
+                    .map(|(id, _)| *id)
+                    .unwrap_or_default();
+                self.pending_purchase = Some(id.to_string());
+                if let Some(mut platform) = self
+                    .sim
+                    .world
+                    .get_resource_mut::<crate::sim::platform::Platform>()
+                {
+                    platform.purchase(id);
+                }
+            }
+            UiAction::BuyNoAds => {
+                self.pending_purchase = Some("no_ads".to_string());
+                if let Some(mut platform) = self
+                    .sim
+                    .world
+                    .get_resource_mut::<crate::sim::platform::Platform>()
+                {
+                    platform.purchase("no_ads");
+                }
+            }
+            UiAction::ShowLeaderboard => {
+                let id = self.ui.leaderboard_id.clone();
+                if let Some(mut platform) = self
+                    .sim
+                    .world
+                    .get_resource_mut::<crate::sim::platform::Platform>()
+                {
+                    platform.show_leaderboard(id.as_str());
+                }
+            }
+            UiAction::RewardedCoins => {
+                let started = self
+                    .sim
+                    .world
+                    .resource_mut::<crate::sim::platform::Platform>()
+                    .rewarded_break(PLACEMENT_FREE_COINS);
+                self.ui.reward_pending = started;
+            }
+            UiAction::TogglePause => self.ui.paused = !self.ui.paused,
+            UiAction::Resume => self.ui.paused = false,
         }
     }
 
     fn advance(&mut self, dt: Duration) -> u32 {
-        let run = self.sim.world.resource::<RunState>();
-        let live = run.playing() && !run.transitional();
-        let suspended = self.platform.suspends_gameplay() && !run.transitional();
-        self.sim.time_scale = if suspended { 0.0 } else { 1.0 };
+        let live = self
+            .sim
+            .world
+            .get_resource::<crate::sim::race::Session>()
+            .map(|s| !matches!(s.phase, Phase::Garage | Phase::MapSelect))
+            .unwrap_or(false);
+        let paused = self.ui.paused;
+        let suspended = self.platform.suspends_gameplay();
+        self.sim.time_scale = if paused || suspended { 0.0 } else { 1.0 };
         let schedule = &mut self.schedule;
         self.sim.step_with(dt, |world| {
-            break_system(world);
-            crate::sim::state::transition_system(world);
             if live {
                 schedule.run(world);
             }
@@ -202,22 +440,39 @@ impl App {
     }
 
     fn sync_audio(&mut self, dt: Duration) {
-        let muted = self.sim.world.resource::<SaveGame>().data.muted || self.platform.silenced();
+        let muted = self.sim.world.resource::<Progress>().data.muted || self.platform.silenced();
         if self.audio.muted() != muted {
             self.audio.set_muted(muted);
         }
-        let cues = std::mem::take(&mut self.sim.world.resource_mut::<state::SfxQueue>().events);
-        for cue in cues {
+        if let Some(cue) = crate::sim::take_cue(&mut self.sim.world) {
             self.audio.play(cue);
         }
+        let selected = self
+            .sim
+            .world
+            .get_resource::<Progress>()
+            .map(|p| p.selected_car())
+            .unwrap_or(0);
+        let engine = data::engine_dir(data::car_at(selected as i32).id.as_str());
+        self.audio.set_engine(engine);
+        let (rpm_frac, speed_kmh) = self
+            .sim
+            .world
+            .get_resource::<crate::sim::race::Session>()
+            .map(|s| {
+                (
+                    s.player.rpm / s.player.spec.max_rpm.max(1.0),
+                    s.player.top_speed.max(s.player.speed() * 3.6),
+                )
+            })
+            .unwrap_or((0.0, 0.0));
+        let throttle = self.sim.world.resource::<crate::sim::Controls>().0.throttle;
+        self.audio.engine(rpm_frac, throttle, speed_kmh);
         self.audio.update(dt.as_secs_f32());
     }
 
-    fn compose(&mut self, ctx: &RenderContext) -> View {
-        let world = self
-            .rigs
-            .world_view(&mut self.sim.world, ctx, self.viewport_dp);
-        let wipe = self.wipe_layer();
+    fn compose(&mut self, ctx: &RenderContext, viewport: [f32; 2]) -> View {
+        let scene = scene::frame_for(&mut self.sim.world, ctx, viewport, &self.geom);
         let actions = self
             .sim
             .world
@@ -225,13 +480,12 @@ impl App {
             .cloned()
             .unwrap_or_default();
         let sink: Sink = actions.0.clone();
-        let root = compose_root(&self.ui, sink);
-
+        let root = ui::compose_root(&self.ui, sink);
         let focus = repose_core::remember(FocusRequester::new);
         let focus_trigger = (*focus).clone();
         let staging = self.staging.clone();
         let key_staging = self.staging.clone();
-        repose_ui::ZStack(
+        ZStack(
             Modifier::new()
                 .fill_max_size()
                 .focusable(true)
@@ -245,42 +499,22 @@ impl App {
                     false
                 }),
         )
-        .child((world, root, wipe))
-    }
-
-    fn wipe_layer(&self) -> View {
-        let Some(frac) = self.sim.world.resource::<Transition>().disc() else {
-            return Spacer();
-        };
-        let vp = self.ui.viewport;
-        let cover = (vp.x * vp.x + vp.y * vp.y).sqrt() * 0.5 * 1.02 * frac;
-        let side = cover * 2.0;
-        let x = vp.x * 0.5 - cover;
-        let y = vp.y * 0.5 - cover;
-        RBox(
-            Modifier::new()
-                .absolute()
-                .offset(Some(Dp(x)), Some(Dp(y)), None, None)
-                .size(Dp(side), Dp(side))
-                .background(palette::GOLD)
-                .clip_rounded(Dp(cover)),
-        )
-        .child(Spacer())
-    }
-}
-
-fn prepare_viewport(sched: &Scheduler) -> [f32; 2] {
-    let density = repose_core::locals::effective_density_scale().max(1e-6);
-    if sched.size.0 == 0 || sched.size.1 == 0 {
-        state::WORLD
-    } else {
-        [sched.size.0 as f32 / density, sched.size.1 as f32 / density]
+        .child((scene, root))
     }
 }
 
 impl Default for App {
     fn default() -> Self {
         Self::new()
+    }
+}
+
+fn prepare_viewport(sched: &Scheduler) -> [f32; 2] {
+    let density = repose_core::locals::effective_density_scale().max(1e-6);
+    if sched.size.0 == 0 || sched.size.1 == 0 {
+        ui::DESIGN
+    } else {
+        [sched.size.0 as f32 / density, sched.size.1 as f32 / density]
     }
 }
 
@@ -300,13 +534,14 @@ impl AppRuntime {
     }
 }
 
+#[cfg(not(target_arch = "wasm32"))]
 pub fn run_desktop() -> anyhow::Result<()> {
     let _ = env_logger::try_init();
     let mut runtime = AppRuntime {
         app: App::new(),
         previous: Instant::now(),
     };
-    repame_shell::run_desktop("Web Game", (1280, 720), move |sched, ctx| {
+    repame_shell::run_desktop("Deadly Descent", (1280, 720), move |sched, ctx| {
         runtime.view(sched, ctx)
     })
 }

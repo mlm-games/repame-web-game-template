@@ -1,0 +1,66 @@
+{
+ "Bumps": [
+  "Bump",
+  "DownHillMid",
+  "MiniRamp"
+ ],
+ "Curve": [
+  "Bump"
+ ],
+ "Descent": [
+  "HoleRamp",
+  "ArkBlue",
+  "Retopo_Hole"
+ ],
+ "Gates": [
+  "ArkBlue"
+ ],
+ "Hill": [
+  "Pillar"
+ ],
+ "Holes": [
+  "ArkBlue",
+  "HoleRoad",
+  "HoleRamp"
+ ],
+ "LongHoles": [
+  "HoleRoad",
+  "ArkBlue"
+ ],
+ "LongJump": [
+  "Tube"
+ ],
+ "Maneuvers": [
+  "building_09_a",
+  "building_01_a",
+  "ArkBlue"
+ ],
+ "Squeeze": [
+  "MiniRamp"
+ ],
+ "Start": [
+  "HoleRamp"
+ ],
+ "Tight": [
+  "ArkBlue",
+  "HoleRamp"
+ ],
+ "Train": [
+  "ArkBlue",
+  "HoleRoad",
+  "Rails"
+ ],
+ "TurnLeft": [
+  "HoleRamp",
+  "Tube",
+  "Ramp"
+ ],
+ "TwoJumps": [
+  "Covered_boxes2",
+  "HoleRamp",
+  "Retopo_Hole"
+ ],
+ "VeryLongJump": [
+  "Tube"
+ ]
+}

@@ -1,0 +1,82 @@
+{
+ "Porsche_911": {
+  "exterior": [
+   "Boxer_German_MQ"
+  ],
+  "interior": [
+   "Boxer_German_interior_MQ"
+  ]
+ },
+ "AMG4.0": {
+  "exterior": [
+   "V8_German_Sport_2_MQ"
+  ],
+  "interior": [
+   "V8_German_Sport_2_interior_MQ"
+  ]
+ },
+ "BugattiVeyron": {
+  "exterior": [
+   "V12_Italian_MQ"
+  ],
+  "interior": [
+   "V12_Italian_interior_MQ"
+  ]
+ },
+ "Audi_R8": {
+  "exterior": [
+   "V10_Italian_MQ"
+  ],
+  "interior": [
+   "V10_Italian_interior_MQ"
+  ]
+ },
+ "BMW_M3": {
+  "exterior": [
+   "i6_German_Sport_2_MQ"
+  ],
+  "interior": [
+   "i6_German_Sport_2_interior_MQ"
+  ]
+ },
+ "DodgeChallenger": {
+  "exterior": [
+   "V8_American_Modern_2_MQ"
+  ],
+  "interior": [
+   "V8_American_Modern_2_int_MQ"
+  ]
+ },
+ "Ford_F150_Raptor": {
+  "exterior": [
+   "V8_American_Modern_1_MQ"
+  ],
+  "interior": [
+   "V8_American_Modern_1_interior_MQ"
+  ]
+ },
+ "KoenigseggAgera": {
+  "exterior": [
+   "V8_German_Sport_3_MQ"
+  ],
+  "interior": [
+   "V8_German_Sport_3_interior_MQ"
+  ]
+ },
+ "McLaren_MP4": {
+  "exterior": [
+   "V8_Italian_2_MQ"
+  ],
+  "interior": [
+   "V8_Italian_2_interior_MQ"
+  ]
+ },
+ "LamborghiniReventon": {
+  "exterior": [
+   "V12_Italian_MQ"
+  ],
+  "interior": [
+   "V12_Italian_interior_MQ"
+  ]
+ }
+}

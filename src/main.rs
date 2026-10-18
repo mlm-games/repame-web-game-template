@@ -1,3 +1,3 @@
 fn main() {
-    web_game::run();
+    deadly_descent::run();
 }

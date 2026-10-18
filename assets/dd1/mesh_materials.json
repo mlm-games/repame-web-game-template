@@ -1,0 +1,10808 @@
+{
+ "Cube": {
+  "material": "Road",
+  "texture": "RoadTexture 1",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "Whl HD FL": {
+  "material": "122313SSPC-HD-wheeltyre",
+  "texture": "wheelstyle_color1",
+  "colors": {
+   "_Color": [
+    0.8805969953536987,
+    0.8805969953536987,
+    0.8805969953536987,
+    1.0
+   ]
+  }
+ },
+ "Object063": {
+  "material": "Window",
+  "texture": "Window",
+  "colors": {
+   "_Color": [
+    0.2924528121948242,
+    0.2924528121948242,
+    0.2924528121948242,
+    0.615686297416687
+   ]
+  }
+ },
+ "Object057": {
+  "material": "garage_b",
+  "texture": "garage_b",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "Object035": {
+  "material": "garage_a",
+  "texture": "garage_a",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "Object013": {
+  "material": "garage_b",
+  "texture": "garage_b",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "Plane001": {
+  "material": "Garage Floor",
+  "texture": "Garage Floor",
+  "colors": {
+   "_Color": [
+    0.6226415038108826,
+    0.6226415038108826,
+    0.6226415038108826,
+    1.0
+   ]
+  }
+ },
+ "Box001": {
+  "material": "Garage",
+  "texture": "Garage",
+  "colors": {
+   "_Color": [
+    0.6037735939025879,
+    0.6037735939025879,
+    0.6037735939025879,
+    1.0
+   ]
+  }
+ },
+ "Object007": {
+  "material": "garage_a",
+  "texture": "garage_a",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "Object051": {
+  "material": "garage_b",
+  "texture": "garage_b",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "steering wheel": {
+  "material": "FOR_RPTR-interior",
+  "texture": "FOR_RPTR-interior_albedo",
+  "colors": {
+   "_Color": [
+    0.7735849022865295,
+    0.7735849022865295,
+    0.7735849022865295,
+    1.0
+   ]
+  }
+ },
+ "Light-headlights": {
+  "material": "AUDR8-light-emissive",
+  "texture": null,
+  "colors": {
+   "_Color": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ]
+  }
+ },
+ "Tire_FR": {
+  "material": "Lam_Rvntn_tire",
+  "texture": "GR3D-tire-disc-E_albedo",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "spoiler": {
+  "material": "AUDR8-carbonfiber",
+  "texture": null,
+  "colors": {
+   "_Color": [
+    0.34905651211738586,
+    0.34905651211738586,
+    0.34905651211738586,
+    1.0
+   ]
+  }
+ },
+ "tire fr": {
+  "material": "POR_997GT3RS-tire",
+  "texture": "GR3D-tire-disc-C_albedo",
+  "colors": {
+   "_Color": [
+    0.801886796951294,
+    0.801886796951294,
+    0.801886796951294,
+    1.0
+   ]
+  }
+ },
+ "dial rpm": {
+  "material": "BM_E30M3-interior",
+  "texture": "BM_E30M3-interior_albedo",
+  "colors": {
+   "_Color": [
+    0.801886796951294,
+    0.801886796951294,
+    0.801886796951294,
+    1.0
+   ]
+  }
+ },
+ "Caliper FL": {
+  "material": "082514SSPC-HD-wheeltyre",
+  "texture": "wheelstyle_color1F",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "light bar ": {
+  "material": "FOR_RPTR-parts-metal",
+  "texture": "FOR_RPTR-parts-metal_ao",
+  "colors": {
+   "_Color": [
+    0.0754716768860817,
+    0.0754716768860817,
+    0.0754716768860817,
+    1.0
+   ]
+  }
+ },
+ "Caliper RL ": {
+  "material": "FOR_RPTR-rimcaliper",
+  "texture": "FOR_RPTR-rimcaliper_albedo",
+  "colors": {
+   "_Color": [
+    0.7735849022865295,
+    0.7735849022865295,
+    0.7735849022865295,
+    1.0
+   ]
+  }
+ },
+ "Light-rear": {
+  "material": "AUDR8-light-emissive",
+  "texture": null,
+  "colors": {
+   "_Color": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ]
+  }
+ },
+ "Caliper RR ": {
+  "material": "AUDR8-wheeltire_hre",
+  "texture": "AUDR8-HREwheels_red",
+  "colors": {
+   "_Color": [
+    0.8588235378265381,
+    0.8588235378265381,
+    0.8588235378265381,
+    1.0
+   ]
+  }
+ },
+ "Caliper RL": {
+  "material": "121913SSPC-HD-wheeltyre",
+  "texture": "wheelstyle_color1",
+  "colors": {
+   "_Color": [
+    0.8805969953536987,
+    0.8805969953536987,
+    0.8805969953536987,
+    1.0
+   ]
+  }
+ },
+ "Caliper RR": {
+  "material": "121913SSPC-HD-wheeltyre",
+  "texture": "wheelstyle_color1",
+  "colors": {
+   "_Color": [
+    0.8805969953536987,
+    0.8805969953536987,
+    0.8805969953536987,
+    1.0
+   ]
+  }
+ },
+ "Caliper FR": {
+  "material": "082514SSPC-HD-wheeltyre",
+  "texture": "wheelstyle_color1F",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "center ": {
+  "material": "HLCAT-interior",
+  "texture": "HLCAT-interior-v2_albedo",
+  "colors": {
+   "_Color": [
+    0.8207547068595886,
+    0.8207547068595886,
+    0.8207547068595886,
+    1.0
+   ]
+  }
+ },
+ "Whl HD RR": {
+  "material": "121913SSPC-HD-wheeltyre",
+  "texture": "wheelstyle_color1",
+  "colors": {
+   "_Color": [
+    0.8805969953536987,
+    0.8805969953536987,
+    0.8805969953536987,
+    1.0
+   ]
+  }
+ },
+ "Signal_right": {
+  "material": "Lam_Rvntn_lights",
+  "texture": null,
+  "colors": {
+   "_Color": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ },
+ "speed dial": {
+  "material": "FOR_RPTR-interior",
+  "texture": "FOR_RPTR-interior_albedo",
+  "colors": {
+   "_Color": [
+    0.7735849022865295,
+    0.7735849022865295,
+    0.7735849022865295,
+    1.0
+   ]
+  }
+ },
+ "caliper rr": {
+  "material": "POR_997GT3RS-rimcaliper",
+  "texture": "POR_997GT3RS-rimcaliper-black_albedo",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "Headlights": {
+  "material": "Lam_Rvntn_lights",
+  "texture": null,
+  "colors": {
+   "_Color": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ },
+ "canards": {
+  "material": "AUDR8-carbonfiber",
+  "texture": null,
+  "colors": {
+   "_Color": [
+    0.34905651211738586,
+    0.34905651211738586,
+    0.34905651211738586,
+    1.0
+   ]
+  }
+ },
+ "diffuser": {
+  "material": "082514SSPC-carbonfiber",
+  "texture": "carbonfiber",
+  "colors": {
+   "_Color": [
+    0.8805969953536987,
+    0.8805969953536987,
+    0.8805969953536987,
+    1.0
+   ]
+  }
+ },
+ "Light-turn-left": {
+  "material": "AUDR8-light-emissive",
+  "texture": null,
+  "colors": {
+   "_Color": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ]
+  }
+ },
+ "Tire_FL": {
+  "material": "Lam_Rvntn_tire",
+  "texture": "GR3D-tire-disc-E_albedo",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "body": {
+  "material": "POR_997GT3RS-carpaint",
+  "texture": "POR_997GT3RS-carpaint_albedo",
+  "colors": {
+   "_Color": [
+    0.6886792182922363,
+    0.29216694831848145,
+    0.0,
+    1.0
+   ]
+  }
+ },
+ "Whl HD RL": {
+  "material": "121913SSPC-HD-wheeltyre",
+  "texture": "wheelstyle_color1",
+  "colors": {
+   "_Color": [
+    0.8805969953536987,
+    0.8805969953536987,
+    0.8805969953536987,
+    1.0
+   ]
+  }
+ },
+ "wing": {
+  "material": "BM_E30M3-carpaint",
+  "texture": "BM_E30M3-carpaint_Mstripe",
+  "colors": {
+   "_Color": [
+    0.8207547068595886,
+    0.8207547068595886,
+    0.8207547068595886,
+    1.0
+   ]
+  }
+ },
+ "tow hitch": {
+  "material": "FOR_RPTR-parts-metal",
+  "texture": "FOR_RPTR-parts-metal_ao",
+  "colors": {
+   "_Color": [
+    0.0754716768860817,
+    0.0754716768860817,
+    0.0754716768860817,
+    1.0
+   ]
+  }
+ },
+ "caliper fl": {
+  "material": "POR_997GT3RS-rimcaliper",
+  "texture": "POR_997GT3RS-rimcaliper-black_albedo",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "W RL": {
+  "material": "BM_E30M3-tire",
+  "texture": "GR3D-tire-disc-D_albedo",
+  "colors": {
+   "_Color": [
+    0.801886796951294,
+    0.801886796951294,
+    0.801886796951294,
+    1.0
+   ]
+  }
+ },
+ "Tire FR": {
+  "material": "AUDR8-wheeltire_hre",
+  "texture": "AUDR8-HREwheels_red",
+  "colors": {
+   "_Color": [
+    0.8588235378265381,
+    0.8588235378265381,
+    0.8588235378265381,
+    1.0
+   ]
+  }
+ },
+ "offroad lights 4 wide": {
+  "material": "FOR_RPTR-parts-metal",
+  "texture": "FOR_RPTR-parts-metal_ao",
+  "colors": {
+   "_Color": [
+    0.0754716768860817,
+    0.0754716768860817,
+    0.0754716768860817,
+    1.0
+   ]
+  }
+ },
+ "bull bars": {
+  "material": "FOR_RPTR-parts-metal",
+  "texture": "FOR_RPTR-parts-metal_ao",
+  "colors": {
+   "_Color": [
+    0.0754716768860817,
+    0.0754716768860817,
+    0.0754716768860817,
+    1.0
+   ]
+  }
+ },
+ "caliper_FL": {
+  "material": "Lam_Rvntn_rimcaliper",
+  "texture": "Lam_Rvntn-rimcaliper_albedo",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "Tire LF": {
+  "material": "HLCAT-wheeltire",
+  "texture": "HLCAT-wheels-gold_albedo",
+  "colors": {
+   "_Color": [
+    0.8588235378265381,
+    0.8588235378265381,
+    0.8588235378265381,
+    1.0
+   ]
+  }
+ },
+ "center": {
+  "material": "HLCAT-interior",
+  "texture": "HLCAT-interior-v2_albedo",
+  "colors": {
+   "_Color": [
+    0.8207547068595886,
+    0.8207547068595886,
+    0.8207547068595886,
+    1.0
+   ]
+  }
+ },
+ "Caliper FR ": {
+  "material": "AUDR8-wheeltire_hre",
+  "texture": "AUDR8-HREwheels_red",
+  "colors": {
+   "_Color": [
+    0.8588235378265381,
+    0.8588235378265381,
+    0.8588235378265381,
+    1.0
+   ]
+  }
+ },
+ "interior": {
+  "material": "122313SSPC-interior",
+  "texture": "122313SSPC_interior ",
+  "colors": {
+   "_Color": [
+    0.9701492786407471,
+    0.9701492786407471,
+    0.9701492786407471,
+    1.0
+   ]
+  }
+ },
+ "reverse light": {
+  "material": "FOR_RPTR-lightemissive",
+  "texture": null,
+  "colors": {
+   "_Color": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ },
+ "splitter": {
+  "material": "AUDR8-diffuse",
+  "texture": "AUDR8-parts_albedo",
+  "colors": {
+   "_Color": [
+    0.698113203048706,
+    0.698113203048706,
+    0.698113203048706,
+    1.0
+   ]
+  }
+ },
+ "caliper_FR": {
+  "material": "Lam_Rvntn_rimcaliper",
+  "texture": "Lam_Rvntn-rimcaliper_albedo",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "signal right": {
+  "material": "FOR_RPTR-lightemissive",
+  "texture": null,
+  "colors": {
+   "_Color": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ },
+ "Tire RL": {
+  "material": "FOR_RPTR-tire",
+  "texture": "GR3D-tire-disc-offroad-a_albedo",
+  "colors": {
+   "_Color": [
+    0.7735849022865295,
+    0.7735849022865295,
+    0.7735849022865295,
+    1.0
+   ]
+  }
+ },
+ "Caliper LF": {
+  "material": "AUDR8-wheeltire_hre",
+  "texture": "AUDR8-HREwheels_red",
+  "colors": {
+   "_Color": [
+    0.8588235378265381,
+    0.8588235378265381,
+    0.8588235378265381,
+    1.0
+   ]
+  }
+ },
+ "tire carrier": {
+  "material": "FOR_RPTR-parts-metal",
+  "texture": "FOR_RPTR-parts-metal_ao",
+  "colors": {
+   "_Color": [
+    0.0754716768860817,
+    0.0754716768860817,
+    0.0754716768860817,
+    1.0
+   ]
+  }
+ },
+ "Tire_RR": {
+  "material": "Lam_Rvntn_tire",
+  "texture": "GR3D-tire-disc-E_albedo",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "Whl HD FR": {
+  "material": "082514SSPC-HD-wheeltyre",
+  "texture": "wheelstyle_color1F",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "bumper rear": {
+  "material": "FOR_RPTR-parts-metal",
+  "texture": "FOR_RPTR-parts-metal_ao",
+  "colors": {
+   "_Color": [
+    0.0754716768860817,
+    0.0754716768860817,
+    0.0754716768860817,
+    1.0
+   ]
+  }
+ },
+ "caliper_RL": {
+  "material": "Lam_Rvntn_rimcaliper",
+  "texture": "Lam_Rvntn-rimcaliper_albedo",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "offroad lights top": {
+  "material": "FOR_RPTR-lightemissive",
+  "texture": null,
+  "colors": {
+   "_Color": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ },
+ "winch": {
+  "material": "FOR_RPTR-parts",
+  "texture": "FOR_RPTR-parts_albedo",
+  "colors": {
+   "_Color": [
+    0.7830188870429993,
+    0.7830188870429993,
+    0.7830188870429993,
+    1.0
+   ]
+  }
+ },
+ "Light-turn-right": {
+  "material": "AUDR8-light-emissive",
+  "texture": null,
+  "colors": {
+   "_Color": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ]
+  }
+ },
+ "dial_speed": {
+  "material": "Lam_Rvntn_interior",
+  "texture": "Lam_Rvntn-interior_albedo",
+  "colors": {
+   "_Color": [
+    0.7735849022865295,
+    0.7735849022865295,
+    0.7735849022865295,
+    1.0
+   ]
+  }
+ },
+ "light bar": {
+  "material": "FOR_RPTR-lightemissive",
+  "texture": null,
+  "colors": {
+   "_Color": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ },
+ "Tire RR": {
+  "material": "FOR_RPTR-tire",
+  "texture": "GR3D-tire-disc-offroad-a_albedo",
+  "colors": {
+   "_Color": [
+    0.7735849022865295,
+    0.7735849022865295,
+    0.7735849022865295,
+    1.0
+   ]
+  }
+ },
+ "suspension": {
+  "material": "FOR_RPTR-parts-metal",
+  "texture": "FOR_RPTR-parts-metal_ao",
+  "colors": {
+   "_Color": [
+    0.0754716768860817,
+    0.0754716768860817,
+    0.0754716768860817,
+    1.0
+   ]
+  }
+ },
+ "dial_rpm": {
+  "material": "Lam_Rvntn_interior",
+  "texture": "Lam_Rvntn-interior_albedo",
+  "colors": {
+   "_Color": [
+    0.7735849022865295,
+    0.7735849022865295,
+    0.7735849022865295,
+    1.0
+   ]
+  }
+ },
+ "tire rl": {
+  "material": "POR_997GT3RS-tire",
+  "texture": "GR3D-tire-disc-C_albedo",
+  "colors": {
+   "_Color": [
+    0.801886796951294,
+    0.801886796951294,
+    0.801886796951294,
+    1.0
+   ]
+  }
+ },
+ "roof rack": {
+  "material": "FOR_RPTR-parts-metal",
+  "texture": "FOR_RPTR-parts-metal_ao",
+  "colors": {
+   "_Color": [
+    0.0754716768860817,
+    0.0754716768860817,
+    0.0754716768860817,
+    1.0
+   ]
+  }
+ },
+ "roll bars": {
+  "material": "FOR_RPTR-parts-metal",
+  "texture": "FOR_RPTR-parts-metal_ao",
+  "colors": {
+   "_Color": [
+    0.0754716768860817,
+    0.0754716768860817,
+    0.0754716768860817,
+    1.0
+   ]
+  }
+ },
+ "Tire_RL": {
+  "material": "Lam_Rvntn_tire",
+  "texture": "GR3D-tire-disc-E_albedo",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "caliper_RR": {
+  "material": "Lam_Rvntn_rimcaliper",
+  "texture": "Lam_Rvntn-rimcaliper_albedo",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "offroad lights bumper": {
+  "material": "FOR_RPTR-lightemissive",
+  "texture": null,
+  "colors": {
+   "_Color": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ },
+ "caliper rl": {
+  "material": "POR_997GT3RS-rimcaliper",
+  "texture": "POR_997GT3RS-rimcaliper-black_albedo",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "W RR": {
+  "material": "BM_E30M3-tire",
+  "texture": "GR3D-tire-disc-D_albedo",
+  "colors": {
+   "_Color": [
+    0.801886796951294,
+    0.801886796951294,
+    0.801886796951294,
+    1.0
+   ]
+  }
+ },
+ "tire fl": {
+  "material": "POR_997GT3RS-tire",
+  "texture": "GR3D-tire-disc-C_albedo",
+  "colors": {
+   "_Color": [
+    0.801886796951294,
+    0.801886796951294,
+    0.801886796951294,
+    1.0
+   ]
+  }
+ },
+ "Brake": {
+  "material": "Lam_Rvntn_lights",
+  "texture": null,
+  "colors": {
+   "_Color": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ },
+ "Caliper FL ": {
+  "material": "FOR_RPTR-rimcaliper",
+  "texture": "FOR_RPTR-rimcaliper_albedo",
+  "colors": {
+   "_Color": [
+    0.7735849022865295,
+    0.7735849022865295,
+    0.7735849022865295,
+    1.0
+   ]
+  }
+ },
+ "tire rr": {
+  "material": "POR_997GT3RS-tire",
+  "texture": "GR3D-tire-disc-C_albedo",
+  "colors": {
+   "_Color": [
+    0.801886796951294,
+    0.801886796951294,
+    0.801886796951294,
+    1.0
+   ]
+  }
+ },
+ "signal left": {
+  "material": "FOR_RPTR-lightemissive",
+  "texture": null,
+  "colors": {
+   "_Color": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ },
+ "W FR": {
+  "material": "BM_E30M3-tire",
+  "texture": "GR3D-tire-disc-D_albedo",
+  "colors": {
+   "_Color": [
+    0.801886796951294,
+    0.801886796951294,
+    0.801886796951294,
+    1.0
+   ]
+  }
+ },
+ "bumper lights": {
+  "material": "FOR_RPTR-lightemissive",
+  "texture": null,
+  "colors": {
+   "_Color": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ },
+ "Tire FL": {
+  "material": "FOR_RPTR-tire",
+  "texture": "GR3D-tire-disc-offroad-a_albedo",
+  "colors": {
+   "_Color": [
+    0.7735849022865295,
+    0.7735849022865295,
+    0.7735849022865295,
+    1.0
+   ]
+  }
+ },
+ "side skirt": {
+  "material": "AUDR8-carbonfiber",
+  "texture": null,
+  "colors": {
+   "_Color": [
+    0.34905651211738586,
+    0.34905651211738586,
+    0.34905651211738586,
+    1.0
+   ]
+  }
+ },
+ "rpm dial": {
+  "material": "FOR_RPTR-interior",
+  "texture": "FOR_RPTR-interior_albedo",
+  "colors": {
+   "_Color": [
+    0.7735849022865295,
+    0.7735849022865295,
+    0.7735849022865295,
+    1.0
+   ]
+  }
+ },
+ "steering_wheel": {
+  "material": "Lam_Rvntn_interior",
+  "texture": "Lam_Rvntn-interior_albedo",
+  "colors": {
+   "_Color": [
+    0.7735849022865295,
+    0.7735849022865295,
+    0.7735849022865295,
+    1.0
+   ]
+  }
+ },
+ "tail gate": {
+  "material": "FOR_RPTR-carpaint",
+  "texture": null,
+  "colors": {
+   "_Color": [
+    0.5283018946647644,
+    0.2575368583202362,
+    0.0,
+    1.0
+   ]
+  }
+ },
+ "brakelights": {
+  "material": "FOR_RPTR-lightemissive",
+  "texture": null,
+  "colors": {
+   "_Color": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ },
+ "bumper front": {
+  "material": "FOR_RPTR-parts-metal",
+  "texture": "FOR_RPTR-parts-metal_ao",
+  "colors": {
+   "_Color": [
+    0.0754716768860817,
+    0.0754716768860817,
+    0.0754716768860817,
+    1.0
+   ]
+  }
+ },
+ "Light-reverse": {
+  "material": "AUDR8-light-emissive",
+  "texture": null,
+  "colors": {
+   "_Color": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ]
+  }
+ },
+ "spare tire": {
+  "material": "FOR_RPTR-tire",
+  "texture": "GR3D-tire-disc-offroad-a_albedo",
+  "colors": {
+   "_Color": [
+    0.7735849022865295,
+    0.7735849022865295,
+    0.7735849022865295,
+    1.0
+   ]
+  }
+ },
+ "Light-brakes": {
+  "material": "AUDR8-light-emissive",
+  "texture": null,
+  "colors": {
+   "_Color": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ]
+  }
+ },
+ "offroad lights 4 narrow": {
+  "material": "FOR_RPTR-parts-metal",
+  "texture": "FOR_RPTR-parts-metal_ao",
+  "colors": {
+   "_Color": [
+    0.0754716768860817,
+    0.0754716768860817,
+    0.0754716768860817,
+    1.0
+   ]
+  }
+ },
+ "tow hooks": {
+  "material": "FOR_RPTR-parts-metal",
+  "texture": "FOR_RPTR-parts-metal_ao",
+  "colors": {
+   "_Color": [
+    0.0754716768860817,
+    0.0754716768860817,
+    0.0754716768860817,
+    1.0
+   ]
+  }
+ },
+ "Reverse": {
+  "material": "Lam_Rvntn_lights",
+  "texture": null,
+  "colors": {
+   "_Color": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ },
+ "dial speed": {
+  "material": "POR_997GT3RS-interior",
+  "texture": "POR_997GT3RS-interior_albedo",
+  "colors": {
+   "_Color": [
+    0.801886796951294,
+    0.801886796951294,
+    0.801886796951294,
+    1.0
+   ]
+  }
+ },
+ "headlights": {
+  "material": "FOR_RPTR-lightemissive",
+  "texture": null,
+  "colors": {
+   "_Color": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ },
+ "step bars": {
+  "material": "FOR_RPTR-parts-metal",
+  "texture": "FOR_RPTR-parts-metal_ao",
+  "colors": {
+   "_Color": [
+    0.0754716768860817,
+    0.0754716768860817,
+    0.0754716768860817,
+    1.0
+   ]
+  }
+ },
+ "Signal_left": {
+  "material": "Lam_Rvntn_lights",
+  "texture": null,
+  "colors": {
+   "_Color": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ },
+ "W FL": {
+  "material": "BM_E30M3-tire",
+  "texture": "GR3D-tire-disc-D_albedo",
+  "colors": {
+   "_Color": [
+    0.801886796951294,
+    0.801886796951294,
+    0.801886796951294,
+    1.0
+   ]
+  }
+ },
+ "aux lights": {
+  "material": "FOR_RPTR-lightemissive",
+  "texture": null,
+  "colors": {
+   "_Color": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ },
+ "Light-daylight": {
+  "material": "AUDR8-light-emissive",
+  "texture": null,
+  "colors": {
+   "_Color": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ]
+  }
+ },
+ "roll cage": {
+  "material": "POR_997GT3RS-carpaint",
+  "texture": "POR_997GT3RS-carpaint_albedo",
+  "colors": {
+   "_Color": [
+    0.6886792182922363,
+    0.29216694831848145,
+    0.0,
+    1.0
+   ]
+  }
+ },
+ "caliper fr": {
+  "material": "POR_997GT3RS-rimcaliper",
+  "texture": "POR_997GT3RS-rimcaliper-black_albedo",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "skidplate": {
+  "material": "FOR_RPTR-parts-metal",
+  "texture": "FOR_RPTR-parts-metal_ao",
+  "colors": {
+   "_Color": [
+    0.0754716768860817,
+    0.0754716768860817,
+    0.0754716768860817,
+    1.0
+   ]
+  }
+ },
+ "Cube (12)": {
+  "material": "Default-Material",
+  "texture": null,
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "Ground (48)": {
+  "material": "Sand",
+  "texture": "Desert Sand",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "Obstacle-10-R (1)": {
+  "material": "Obstacle-10",
+  "texture": "Obstacle-10",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "gora_uv (3)": {
+  "material": "gora",
+  "texture": "gora_uv_lambert1_AlbedoTransparency",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "Ground (36)": {
+  "material": "Sand",
+  "texture": "Desert Sand",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "Piano": {
+  "material": "Knurling",
+  "texture": "Knurling texture",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "Obstacle-1 (3)": {
+  "material": "Obstacle-1-31",
+  "texture": "Obstacle-1-31",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "ShortRoad": {
+  "material": "Road",
+  "texture": "RoadTexture 1",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "SM_Wooden_Crate_02_cell.011": {
+  "material": "M_Wooden_Crate_02",
+  "texture": "T_Wooden_Crate_02_BC",
+  "colors": {
+   "_Color": [
+    1.0,
+    0.5486493110656738,
+    0.0,
+    1.0
+   ]
+  }
+ },
+ "Obstacle-10-M (3)": {
+  "material": "Obstacle-10",
+  "texture": "Obstacle-10",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "Ground (18)": {
+  "material": "Sand",
+  "texture": "Desert Sand",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "Cube (9)": {
+  "material": "Default-Material",
+  "texture": null,
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "Obstacle-10-M (2)": {
+  "material": "Obstacle-10",
+  "texture": "Obstacle-10",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "Obstacle-10-M (1)": {
+  "material": "Obstacle-10",
+  "texture": "Obstacle-10",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "Obstacle-10-M": {
+  "material": "Obstacle-10",
+  "texture": "Obstacle-10",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "Cube (1)": {
+  "material": "Concrete",
+  "texture": "CementNM",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "SM_Wooden_Crate_02_cell.018": {
+  "material": "M_Wooden_Crate_02",
+  "texture": "T_Wooden_Crate_02_BC",
+  "colors": {
+   "_Color": [
+    1.0,
+    0.5486493110656738,
+    0.0,
+    1.0
+   ]
+  }
+ },
+ "Ground (47)": {
+  "material": "Sand",
+  "texture": "Desert Sand",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "Ground (40)": {
+  "material": "Sand",
+  "texture": "Desert Sand",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "Ground (53)": {
+  "material": "Sand",
+  "texture": "Desert Sand",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "Ground (46)": {
+  "material": "Sand",
+  "texture": "Desert Sand",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "Ground (55)": {
+  "material": "Sand",
+  "texture": "Desert Sand",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "Cube (2)": {
+  "material": "Finish",
+  "texture": "Minimal3D_PlaneCheckers",
+  "colors": {
+   "_Color": [
+    0.3207547068595886,
+    0.3207547068595886,
+    0.3207547068595886,
+    1.0
+   ]
+  }
+ },
+ "Ground (54)": {
+  "material": "Sand",
+  "texture": "Desert Sand",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "Ground (1)": {
+  "material": "Sand",
+  "texture": "Desert Sand",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "Obstacle-1 (6)": {
+  "material": "Obstacle-1-31",
+  "texture": "Obstacle-1-31",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "Obstacle-10-R (3)": {
+  "material": "Obstacle-10",
+  "texture": "Obstacle-10",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "Ground (38)": {
+  "material": "Sand",
+  "texture": "Desert Sand",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "Ground (13)": {
+  "material": "Sand",
+  "texture": "Desert Sand",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "Obstacle-10-M (5)": {
+  "material": "Obstacle-10",
+  "texture": "Obstacle-10",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "Ground (11)": {
+  "material": "Sand",
+  "texture": "Desert Sand",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "Obstacle-10-L": {
+  "material": "Obstacle-10",
+  "texture": "Obstacle-10",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "BorderLeft": {
+  "material": "Concrete",
+  "texture": "CementNM",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "Ground (5)": {
+  "material": "Sand",
+  "texture": "Desert Sand",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "Ground (31)": {
+  "material": "Sand",
+  "texture": "Desert Sand",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "Ground (12)": {
+  "material": "Sand",
+  "texture": "Desert Sand",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "Ground (56)": {
+  "material": "Sand",
+  "texture": "Desert Sand",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "Cube (15)": {
+  "material": "Default-Material",
+  "texture": null,
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "Obstacle-1-Child": {
+  "material": "Obstacle-1-31",
+  "texture": "Obstacle-1-31",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "Cube (4)": {
+  "material": "Sand",
+  "texture": "Desert Sand",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "Yellow arrow": {
+  "material": "Yellow arrow",
+  "texture": "Yellow arrow",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "Decal": {
+  "material": "Decal",
+  "texture": "Decal",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "SM_Wooden_Crate_02_cell.023": {
+  "material": "M_Wooden_Crate_02",
+  "texture": "T_Wooden_Crate_02_BC",
+  "colors": {
+   "_Color": [
+    1.0,
+    0.5486493110656738,
+    0.0,
+    1.0
+   ]
+  }
+ },
+ "Ground (17)": {
+  "material": "Sand",
+  "texture": "Desert Sand",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "Obstacle-10-M (4)": {
+  "material": "Obstacle-10",
+  "texture": "Obstacle-10",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "SM_Wooden_Crate_02_cell.002": {
+  "material": "M_Wooden_Crate_02",
+  "texture": "T_Wooden_Crate_02_BC",
+  "colors": {
+   "_Color": [
+    1.0,
+    0.5486493110656738,
+    0.0,
+    1.0
+   ]
+  }
+ },
+ "SM_Wooden_Crate_02_cell.008": {
+  "material": "M_Wooden_Crate_02",
+  "texture": "T_Wooden_Crate_02_BC",
+  "colors": {
+   "_Color": [
+    1.0,
+    0.5486493110656738,
+    0.0,
+    1.0
+   ]
+  }
+ },
+ "Ground (20)": {
+  "material": "Sand",
+  "texture": "Desert Sand",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "SM_Wooden_Crate_02_cell.003": {
+  "material": "M_Wooden_Crate_02",
+  "texture": "T_Wooden_Crate_02_BC",
+  "colors": {
+   "_Color": [
+    1.0,
+    0.5486493110656738,
+    0.0,
+    1.0
+   ]
+  }
+ },
+ "SM_Wooden_Crate_02_cell.013": {
+  "material": "M_Wooden_Crate_02",
+  "texture": "T_Wooden_Crate_02_BC",
+  "colors": {
+   "_Color": [
+    1.0,
+    0.5486493110656738,
+    0.0,
+    1.0
+   ]
+  }
+ },
+ "Ground (35)": {
+  "material": "Sand",
+  "texture": "Desert Sand",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "SM_Wooden_Crate_02_cell.026": {
+  "material": "M_Wooden_Crate_02",
+  "texture": "T_Wooden_Crate_02_BC",
+  "colors": {
+   "_Color": [
+    1.0,
+    0.5486493110656738,
+    0.0,
+    1.0
+   ]
+  }
+ },
+ "Ramp": {
+  "material": "Stone concrete",
+  "texture": "Concrete stone texture",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "Obstacle-10 (1)": {
+  "material": "Obstacle-10",
+  "texture": "Obstacle-10",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "Obstacle-10-R (2)": {
+  "material": "Obstacle-10",
+  "texture": "Obstacle-10",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "Ground (28)": {
+  "material": "Sand",
+  "texture": "Desert Sand",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "SM_Wooden_Crate_02_cell.025": {
+  "material": "M_Wooden_Crate_02",
+  "texture": "T_Wooden_Crate_02_BC",
+  "colors": {
+   "_Color": [
+    1.0,
+    0.5486493110656738,
+    0.0,
+    1.0
+   ]
+  }
+ },
+ "Ground (30)": {
+  "material": "Sand",
+  "texture": "Desert Sand",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "SM_Wooden_Crate_02_cell.009": {
+  "material": "M_Wooden_Crate_02",
+  "texture": "T_Wooden_Crate_02_BC",
+  "colors": {
+   "_Color": [
+    1.0,
+    0.5486493110656738,
+    0.0,
+    1.0
+   ]
+  }
+ },
+ "White arrow": {
+  "material": "White arrow",
+  "texture": "White arrow",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "Obstacle-10-R (4)": {
+  "material": "Obstacle-10",
+  "texture": "Obstacle-10",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "Cube (7)": {
+  "material": "Spike",
+  "texture": "CementNM",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "Ground (43)": {
+  "material": "Sand",
+  "texture": "Desert Sand",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "Ground (10)": {
+  "material": "Sand",
+  "texture": "Desert Sand",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "Obstacle-10-R": {
+  "material": "Obstacle-10",
+  "texture": "Obstacle-10",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "building_01_a": {
+  "material": "building_01_a",
+  "texture": "Building_01_a",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "Obstacle-12-Hammer": {
+  "material": "Obstacle-13",
+  "texture": "Obstacle-13",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "building_09_a": {
+  "material": "building_09_a",
+  "texture": "Building_09_a",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "Ground (44)": {
+  "material": "Sand",
+  "texture": "Desert Sand",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "SM_Wooden_Crate_02_cell.027": {
+  "material": "M_Wooden_Crate_02",
+  "texture": "T_Wooden_Crate_02_BC",
+  "colors": {
+   "_Color": [
+    1.0,
+    0.5486493110656738,
+    0.0,
+    1.0
+   ]
+  }
+ },
+ "building_07_a": {
+  "material": "building_07_a",
+  "texture": "Building_07_a",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "Obstacle-10-R (5)": {
+  "material": "Obstacle-10",
+  "texture": "Obstacle-10",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "building_01_a (1)": {
+  "material": "building_01_a",
+  "texture": "Building_01_a",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "Obstacle-1 (8)": {
+  "material": "Obstacle-1-31",
+  "texture": "Obstacle-1-31",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "Ground (52)": {
+  "material": "Sand",
+  "texture": "Desert Sand",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "Ground (8)": {
+  "material": "Sand",
+  "texture": "Desert Sand",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "Body": {
+  "material": "Metal black",
+  "texture": "Metal 2 texture",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "Ground (39)": {
+  "material": "Sand",
+  "texture": "Desert Sand",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "Cube (14)": {
+  "material": "Default-Material",
+  "texture": null,
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "Ground (21)": {
+  "material": "Sand",
+  "texture": "Desert Sand",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "Floor": {
+  "material": "Grid",
+  "texture": "Grid",
+  "colors": {
+   "_Color": [
+    0.3207547068595886,
+    0.3207547068595886,
+    0.3207547068595886,
+    1.0
+   ]
+  }
+ },
+ "Obstacle-13 (2)": {
+  "material": "Obstacle-13",
+  "texture": "Obstacle-13",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "Cube (5)": {
+  "material": "Concrete",
+  "texture": "CementNM",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "SM_Wooden_Crate_02_cell.001": {
+  "material": "M_Wooden_Crate_02",
+  "texture": "T_Wooden_Crate_02_BC",
+  "colors": {
+   "_Color": [
+    1.0,
+    0.5486493110656738,
+    0.0,
+    1.0
+   ]
+  }
+ },
+ "SM_Wooden_Crate_02_cell.020": {
+  "material": "M_Wooden_Crate_02",
+  "texture": "T_Wooden_Crate_02_BC",
+  "colors": {
+   "_Color": [
+    1.0,
+    0.5486493110656738,
+    0.0,
+    1.0
+   ]
+  }
+ },
+ "SM_Wooden_Crate_02_cell.014": {
+  "material": "M_Wooden_Crate_02",
+  "texture": "T_Wooden_Crate_02_BC",
+  "colors": {
+   "_Color": [
+    1.0,
+    0.5486493110656738,
+    0.0,
+    1.0
+   ]
+  }
+ },
+ "Ground (51)": {
+  "material": "Sand",
+  "texture": "Desert Sand",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "Ground (7)": {
+  "material": "Sand",
+  "texture": "Desert Sand",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "Cube (11)": {
+  "material": "Default-Material",
+  "texture": null,
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "Ground (15)": {
+  "material": "Sand",
+  "texture": "Desert Sand",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "Ground (23)": {
+  "material": "Sand",
+  "texture": "Desert Sand",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "SM_Wooden_Crate_02_cell.012": {
+  "material": "M_Wooden_Crate_02",
+  "texture": "T_Wooden_Crate_02_BC",
+  "colors": {
+   "_Color": [
+    1.0,
+    0.5486493110656738,
+    0.0,
+    1.0
+   ]
+  }
+ },
+ "Cube (10)": {
+  "material": "Spike",
+  "texture": "CementNM",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "SM_Wooden_Crate_02_cell": {
+  "material": "M_Wooden_Crate_02",
+  "texture": "T_Wooden_Crate_02_BC",
+  "colors": {
+   "_Color": [
+    1.0,
+    0.5486493110656738,
+    0.0,
+    1.0
+   ]
+  }
+ },
+ "Ground (26)": {
+  "material": "Sand",
+  "texture": "Desert Sand",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "gora_uv (2)": {
+  "material": "gora",
+  "texture": "gora_uv_lambert1_AlbedoTransparency",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "Ground (22)": {
+  "material": "Sand",
+  "texture": "Desert Sand",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "Ground (32)": {
+  "material": "Sand",
+  "texture": "Desert Sand",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "SM_Wooden_Crate_02_cell.017": {
+  "material": "M_Wooden_Crate_02",
+  "texture": "T_Wooden_Crate_02_BC",
+  "colors": {
+   "_Color": [
+    1.0,
+    0.5486493110656738,
+    0.0,
+    1.0
+   ]
+  }
+ },
+ "Cube (6)": {
+  "material": "Spike",
+  "texture": "CementNM",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "BorderRight": {
+  "material": "Concrete",
+  "texture": "CementNM",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "Cube (8)": {
+  "material": "Default-Material",
+  "texture": null,
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "Cylinder": {
+  "material": "CoinMat",
+  "texture": "iconCoin",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "Ground (34)": {
+  "material": "Sand",
+  "texture": "Desert Sand",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "Ground (50)": {
+  "material": "Sand",
+  "texture": "Desert Sand",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "Ground (9)": {
+  "material": "Sand",
+  "texture": "Desert Sand",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "SM_Wooden_Crate_02_cell.006": {
+  "material": "M_Wooden_Crate_02",
+  "texture": "T_Wooden_Crate_02_BC",
+  "colors": {
+   "_Color": [
+    1.0,
+    0.5486493110656738,
+    0.0,
+    1.0
+   ]
+  }
+ },
+ "Ground (6)": {
+  "material": "Sand",
+  "texture": "Desert Sand",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "Ground (33)": {
+  "material": "Sand",
+  "texture": "Desert Sand",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "Cube (13)": {
+  "material": "Default-Material",
+  "texture": null,
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "BorderBack": {
+  "material": "Concrete",
+  "texture": "CementNM",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "Wooden_Crate_02": {
+  "material": "M_Wooden_Crate_02",
+  "texture": "T_Wooden_Crate_02_BC",
+  "colors": {
+   "_Color": [
+    1.0,
+    0.5486493110656738,
+    0.0,
+    1.0
+   ]
+  }
+ },
+ "building_08_c": {
+  "material": "building_08_c",
+  "texture": "Building_08_c",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "Ground (24)": {
+  "material": "Sand",
+  "texture": "Desert Sand",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "Ground (41)": {
+  "material": "Sand",
+  "texture": "Desert Sand",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "building_07_a (1)": {
+  "material": "building_07_a",
+  "texture": "Building_07_a",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "Ground (25)": {
+  "material": "Sand",
+  "texture": "Desert Sand",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "SM_Wooden_Crate_02_cell.005": {
+  "material": "M_Wooden_Crate_02",
+  "texture": "T_Wooden_Crate_02_BC",
+  "colors": {
+   "_Color": [
+    1.0,
+    0.5486493110656738,
+    0.0,
+    1.0
+   ]
+  }
+ },
+ "Ground (4)": {
+  "material": "Sand",
+  "texture": "Desert Sand",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "Ground (16)": {
+  "material": "Sand",
+  "texture": "Desert Sand",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "Ground (37)": {
+  "material": "Sand",
+  "texture": "Desert Sand",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "Obstacle-13 (4)": {
+  "material": "Obstacle-13",
+  "texture": "Obstacle-13",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "SM_Wooden_Crate_02_cell.004": {
+  "material": "M_Wooden_Crate_02",
+  "texture": "T_Wooden_Crate_02_BC",
+  "colors": {
+   "_Color": [
+    1.0,
+    0.5486493110656738,
+    0.0,
+    1.0
+   ]
+  }
+ },
+ "Cube (3)": {
+  "material": "Concrete",
+  "texture": "CementNM",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "gora_uv (5)": {
+  "material": "gora",
+  "texture": "gora_uv_lambert1_AlbedoTransparency",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "SM_Wooden_Crate_02_cell.019": {
+  "material": "M_Wooden_Crate_02",
+  "texture": "T_Wooden_Crate_02_BC",
+  "colors": {
+   "_Color": [
+    1.0,
+    0.5486493110656738,
+    0.0,
+    1.0
+   ]
+  }
+ },
+ "SM_Wooden_Crate_02_cell.010": {
+  "material": "M_Wooden_Crate_02",
+  "texture": "T_Wooden_Crate_02_BC",
+  "colors": {
+   "_Color": [
+    1.0,
+    0.5486493110656738,
+    0.0,
+    1.0
+   ]
+  }
+ },
+ "Ground (49)": {
+  "material": "Sand",
+  "texture": "Desert Sand",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "gora_uv (7)": {
+  "material": "gora",
+  "texture": "gora_uv_lambert1_AlbedoTransparency",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "Ground (14)": {
+  "material": "Sand",
+  "texture": "Desert Sand",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "Ground (3)": {
+  "material": "Sand",
+  "texture": "Desert Sand",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "Obstacle-1 (7)": {
+  "material": "Obstacle-1-31",
+  "texture": "Obstacle-1-31",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "gora_uv (6)": {
+  "material": "gora",
+  "texture": "gora_uv_lambert1_AlbedoTransparency",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "Cube (16)": {
+  "material": "Default-Material",
+  "texture": null,
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "Ground (27)": {
+  "material": "Sand",
+  "texture": "Desert Sand",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "Ground (45)": {
+  "material": "Sand",
+  "texture": "Desert Sand",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "Ground (42)": {
+  "material": "Sand",
+  "texture": "Desert Sand",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "Ground (29)": {
+  "material": "Sand",
+  "texture": "Desert Sand",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "Obstacle-13 (3)": {
+  "material": "Obstacle-13",
+  "texture": "Obstacle-13",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "Obstacle-1 (5)": {
+  "material": "Obstacle-1-31",
+  "texture": "Obstacle-1-31",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "Ground (2)": {
+  "material": "Sand",
+  "texture": "Desert Sand",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "Obstacle-1 (4)": {
+  "material": "Obstacle-1-31",
+  "texture": "Obstacle-1-31",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "Ground (19)": {
+  "material": "Sand",
+  "texture": "Desert Sand",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "building_01_a (2)": {
+  "material": "building_01_a",
+  "texture": "Building_01_a",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "SmoothHighRamp": {
+  "material": "Grid 2",
+  "texture": "Grid",
+  "colors": {
+   "_Color": [
+    0.26290491223335266,
+    0.2641509175300598,
+    0.2640073895454407,
+    1.0
+   ]
+  }
+ },
+ "Circle.001 (2)": {
+  "material": "Concrete",
+  "texture": "CementNM",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "Cube.002 (1)": {
+  "material": "Road",
+  "texture": "RoadTexture 1",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "Circle (1)": {
+  "material": "Concrete",
+  "texture": "CementNM",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "TerrainPiece": {
+  "material": "Terrain",
+  "texture": "UnityGrass",
+  "colors": {
+   "_Color": [
+    0.3207547068595886,
+    0.3207547068595886,
+    0.3207547068595886,
+    1.0
+   ]
+  }
+ },
+ "Circle.002": {
+  "material": "Concrete",
+  "texture": "CementNM",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "Circle.001": {
+  "material": "Concrete",
+  "texture": "CementNM",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "Cube.002": {
+  "material": "Road",
+  "texture": "RoadTexture 1",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "HoleSpikes (3)": {
+  "material": "Spike",
+  "texture": "CementNM",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "HoleSpikes": {
+  "material": "Spike",
+  "texture": "CementNM",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "HoleSpikes (1)": {
+  "material": "Spike",
+  "texture": "CementNM",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "HoleRamp.001": {
+  "material": "Road",
+  "texture": "RoadTexture 1",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "Cube.003": {
+  "material": "Material",
+  "texture": null,
+  "colors": {
+   "_Color": [
+    0.08713995665311813,
+    0.058629728853702545,
+    0.029757177457213402,
+    1.0
+   ]
+  }
+ },
+ "Retopo_Hole": {
+  "material": "Pit",
+  "texture": "Grass_Dry_ALB",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "HoleRamp": {
+  "material": "Road",
+  "texture": "RoadTexture 1",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "HoleSpikes (2)": {
+  "material": "Spike",
+  "texture": "CementNM",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "HoleSpikes (4)": {
+  "material": "Spike",
+  "texture": "CementNM",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "HoleRamp.001 (1)": {
+  "material": "Road",
+  "texture": "RoadTexture 1",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "Cube.002 (2)": {
+  "material": "Road",
+  "texture": "RoadTexture 1",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "HoleRamp.001 (3)": {
+  "material": "Road",
+  "texture": "RoadTexture 1",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "HoleRamp.001 (2)": {
+  "material": "Road",
+  "texture": "RoadTexture 1",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "Cargo_container_v1_LD1close (29)": {
+  "material": "Cargo_container_v1 1",
+  "texture": "Cargo_container_v1",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "Cargo_container_v1_LD1close (6)": {
+  "material": "Cargo_container_v1 1",
+  "texture": "Cargo_container_v1",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "Cargo_container_v1_LD1close (26)": {
+  "material": "Cargo_container_v1 1",
+  "texture": "Cargo_container_v1",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "Cargo_container_v1_LD1close (17)": {
+  "material": "Cargo_container_v1 1",
+  "texture": "Cargo_container_v1",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "Cargo_container_v1_LD1close (30)": {
+  "material": "Cargo_container_v1 1",
+  "texture": "Cargo_container_v1",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "Cargo_container_v1_LD1close (7)": {
+  "material": "Cargo_container_v1 1",
+  "texture": "Cargo_container_v1",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "Cargo_container_v1_LD1close (27)": {
+  "material": "Cargo_container_v1 1",
+  "texture": "Cargo_container_v1",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "Cargo_container_v1_LD1close (8)": {
+  "material": "Cargo_container_v1 1",
+  "texture": "Cargo_container_v1",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "Cargo_container_v1_LD1close (32)": {
+  "material": "Cargo_container_v1 1",
+  "texture": "Cargo_container_v1",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "Cargo_container_v1_LD1close (9)": {
+  "material": "Cargo_container_v1 1",
+  "texture": "Cargo_container_v1",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "Cargo_container_v1_LD1close (28)": {
+  "material": "Cargo_container_v1 1",
+  "texture": "Cargo_container_v1",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "Cargo_container_v1_LD1close (31)": {
+  "material": "Cargo_container_v1 1",
+  "texture": "Cargo_container_v1",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "Cargo_container_v1_LD1close (16)": {
+  "material": "Cargo_container_v1 1",
+  "texture": "Cargo_container_v1",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "Cargo_container_v1_LD1close (15)": {
+  "material": "Cargo_container_v1 1",
+  "texture": "Cargo_container_v1",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "Cargo_container_v1_LD1close (18)": {
+  "material": "Cargo_container_v1 1",
+  "texture": "Cargo_container_v1",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "SchoolBus (3)": {
+  "material": "03___Default",
+  "texture": "schoolbus",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "SchoolBus (5)": {
+  "material": "03___Default",
+  "texture": "schoolbus",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "SchoolBus (2)": {
+  "material": "03___Default",
+  "texture": "schoolbus",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "SchoolBus (4)": {
+  "material": "03___Default",
+  "texture": "schoolbus",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "gora_uv (8)": {
+  "material": "gora",
+  "texture": "gora_uv_lambert1_AlbedoTransparency",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "gora_uv (9)": {
+  "material": "gora",
+  "texture": "gora_uv_lambert1_AlbedoTransparency",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "Tube": {
+  "material": "Stone concrete",
+  "texture": "Concrete stone texture",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "Cube.002 (7)": {
+  "material": "Road",
+  "texture": "RoadTexture 1",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "Cube.002 (4)": {
+  "material": "Road",
+  "texture": "RoadTexture 1",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "ArkBlue (18)": {
+  "material": "BackGround",
+  "texture": "gradient",
+  "colors": {
+   "_BaseColor": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "ArkBlue (12)": {
+  "material": "BackGround",
+  "texture": "gradient",
+  "colors": {
+   "_BaseColor": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "ArkBlue (11)": {
+  "material": "BackGround",
+  "texture": "gradient",
+  "colors": {
+   "_BaseColor": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "ArkBlue (17)": {
+  "material": "BackGround",
+  "texture": "gradient",
+  "colors": {
+   "_BaseColor": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "ArkBlue (9)": {
+  "material": "BackGround",
+  "texture": "gradient",
+  "colors": {
+   "_BaseColor": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "ArkBlue (16)": {
+  "material": "BackGround",
+  "texture": "gradient",
+  "colors": {
+   "_BaseColor": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "ArkBlue (14)": {
+  "material": "BackGround",
+  "texture": "gradient",
+  "colors": {
+   "_BaseColor": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "ArkBlue (8)": {
+  "material": "BackGround",
+  "texture": "gradient",
+  "colors": {
+   "_BaseColor": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "Cargo_container_v1_LD1close": {
+  "material": "Cargo_container_v1 1",
+  "texture": "Cargo_container_v1",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "Cargo_container_v1_LD1close (5)": {
+  "material": "Cargo_container_v1 1",
+  "texture": "Cargo_container_v1",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "Cargo_container_v1_LD1close (2)": {
+  "material": "Cargo_container_v1 1",
+  "texture": "Cargo_container_v1",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "Cargo_container_v1_LD1close (3)": {
+  "material": "Cargo_container_v1 1",
+  "texture": "Cargo_container_v1",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "Cargo_container_v1_LD1close (1)": {
+  "material": "Cargo_container_v1 1",
+  "texture": "Cargo_container_v1",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "Cargo_container_v1_LD1close (10)": {
+  "material": "Cargo_container_v1 1",
+  "texture": "Cargo_container_v1",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "Cargo_container_v1_LD1close (4)": {
+  "material": "Cargo_container_v1 1",
+  "texture": "Cargo_container_v1",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "HoleRoad": {
+  "material": "Road",
+  "texture": "RoadTexture 1",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "ArkBlue (7)": {
+  "material": "BackGround",
+  "texture": "gradient",
+  "colors": {
+   "_BaseColor": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "Yellow": {
+  "material": "GradientTexture",
+  "texture": "GradientTexture",
+  "colors": {
+   "_Color": [
+    1.0,
+    0.8448516130447388,
+    0.0,
+    1.0
+   ]
+  }
+ },
+ "HoleRoad (2)": {
+  "material": "Road",
+  "texture": "RoadTexture 1",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "HoleRoad (4)": {
+  "material": "Road",
+  "texture": "RoadTexture 1",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "HoleRoad (3)": {
+  "material": "Road",
+  "texture": "RoadTexture 1",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "HoleRoad (1)": {
+  "material": "Road",
+  "texture": "RoadTexture 1",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "HoleRoadCenter": {
+  "material": "Road",
+  "texture": "RoadTexture 1",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "Background": {
+  "material": "GradientTexture 1",
+  "texture": "GradientTexture",
+  "colors": {
+   "_Color": [
+    0.0,
+    0.0,
+    0.0,
+    0.4274509847164154
+   ]
+  }
+ },
+ "HoleRoadCenter (1)": {
+  "material": "Road",
+  "texture": "RoadTexture 1",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "HoleRoadCenter (2)": {
+  "material": "Road",
+  "texture": "RoadTexture 1",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "HoleRoadCenter (3)": {
+  "material": "Road",
+  "texture": "RoadTexture 1",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "leg": {
+  "material": "molot2",
+  "texture": "molot2_molot1_AlbedoTransparency",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "Sphere": {
+  "material": "Obstacle",
+  "texture": null,
+  "colors": {
+   "_Color": [
+    0.650943398475647,
+    0.10746705532073975,
+    0.10746705532073975,
+    1.0
+   ]
+  }
+ },
+ "circle2": {
+  "material": "circle2",
+  "texture": "circle2_circle3_AlbedoTransparency",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "cube_engine": {
+  "material": "box_engine",
+  "texture": "lambert1_Base_Color",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "molot.001": {
+  "material": "Black",
+  "texture": null,
+  "colors": {
+   "_Color": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ },
+ "molot": {
+  "material": "molot2",
+  "texture": "molot2_molot1_AlbedoTransparency",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "Cube.002 (3)": {
+  "material": "Road",
+  "texture": "RoadTexture 1",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "Cargo_container_v1_LD1close (11)": {
+  "material": "Cargo_container_v1 1",
+  "texture": "Cargo_container_v1",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "Cargo_container_v1_LD1close (12)": {
+  "material": "Cargo_container_v1 1",
+  "texture": "Cargo_container_v1",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "SingleSpike (1)": {
+  "material": "SpikeRed",
+  "texture": "CementNM",
+  "colors": {
+   "_Color": [
+    1.0,
+    0.3254716992378235,
+    0.3254716992378235,
+    1.0
+   ]
+  }
+ },
+ "SingleSpike": {
+  "material": "SpikeRed",
+  "texture": "CementNM",
+  "colors": {
+   "_Color": [
+    1.0,
+    0.3254716992378235,
+    0.3254716992378235,
+    1.0
+   ]
+  }
+ },
+ "SingleSpike (3)": {
+  "material": "SpikeRed",
+  "texture": "CementNM",
+  "colors": {
+   "_Color": [
+    1.0,
+    0.3254716992378235,
+    0.3254716992378235,
+    1.0
+   ]
+  }
+ },
+ "Cylinder (2)": {
+  "material": "Concrete",
+  "texture": "CementNM",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "Cylinder (1)": {
+  "material": "SPike",
+  "texture": null,
+  "colors": {
+   "_Color": [
+    1.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ },
+ "MiniRamp": {
+  "material": "Grid",
+  "texture": "Grid",
+  "colors": {
+   "_Color": [
+    0.3207547068595886,
+    0.3207547068595886,
+    0.3207547068595886,
+    1.0
+   ]
+  }
+ },
+ "MiniRamp (2)": {
+  "material": "Grid",
+  "texture": "Grid",
+  "colors": {
+   "_Color": [
+    0.3207547068595886,
+    0.3207547068595886,
+    0.3207547068595886,
+    1.0
+   ]
+  }
+ },
+ "MiniRamp (1)": {
+  "material": "Grid",
+  "texture": "Grid",
+  "colors": {
+   "_Color": [
+    0.3207547068595886,
+    0.3207547068595886,
+    0.3207547068595886,
+    1.0
+   ]
+  }
+ },
+ "SingleSpike (5)": {
+  "material": "SpikeRed",
+  "texture": "CementNM",
+  "colors": {
+   "_Color": [
+    1.0,
+    0.3254716992378235,
+    0.3254716992378235,
+    1.0
+   ]
+  }
+ },
+ "RoadGlide": {
+  "material": "Terrain",
+  "texture": "UnityGrass",
+  "colors": {
+   "_Color": [
+    0.3207547068595886,
+    0.3207547068595886,
+    0.3207547068595886,
+    1.0
+   ]
+  }
+ },
+ "SingleSpike (2)": {
+  "material": "SpikeRed",
+  "texture": "CementNM",
+  "colors": {
+   "_Color": [
+    1.0,
+    0.3254716992378235,
+    0.3254716992378235,
+    1.0
+   ]
+  }
+ },
+ "RoadBlock (1)": {
+  "material": "Bumps",
+  "texture": null,
+  "colors": {
+   "_BaseColor": [
+    0.5754716992378235,
+    0.046146322041749954,
+    0.046146322041749954,
+    1.0
+   ],
+   "_Color": [
+    0.6037735939025879,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ },
+ "RoadBlock": {
+  "material": "Bumps",
+  "texture": null,
+  "colors": {
+   "_BaseColor": [
+    0.5754716992378235,
+    0.046146322041749954,
+    0.046146322041749954,
+    1.0
+   ],
+   "_Color": [
+    0.6037735939025879,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ },
+ "RoadBlock (2)": {
+  "material": "Bumps",
+  "texture": null,
+  "colors": {
+   "_BaseColor": [
+    0.5754716992378235,
+    0.046146322041749954,
+    0.046146322041749954,
+    1.0
+   ],
+   "_Color": [
+    0.6037735939025879,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ },
+ "SingleSpike (4)": {
+  "material": "SpikeRed",
+  "texture": "CementNM",
+  "colors": {
+   "_Color": [
+    1.0,
+    0.3254716992378235,
+    0.3254716992378235,
+    1.0
+   ]
+  }
+ },
+ "SimpleRamp (5)": {
+  "material": "Grid",
+  "texture": "Grid",
+  "colors": {
+   "_Color": [
+    0.3207547068595886,
+    0.3207547068595886,
+    0.3207547068595886,
+    1.0
+   ]
+  }
+ },
+ "SimpleRamp (3)": {
+  "material": "Grid",
+  "texture": "Grid",
+  "colors": {
+   "_Color": [
+    0.3207547068595886,
+    0.3207547068595886,
+    0.3207547068595886,
+    1.0
+   ]
+  }
+ },
+ "SimpleRamp (6)": {
+  "material": "Grid",
+  "texture": "Grid",
+  "colors": {
+   "_Color": [
+    0.3207547068595886,
+    0.3207547068595886,
+    0.3207547068595886,
+    1.0
+   ]
+  }
+ },
+ "SimpleRamp (4)": {
+  "material": "Grid",
+  "texture": "Grid",
+  "colors": {
+   "_Color": [
+    0.3207547068595886,
+    0.3207547068595886,
+    0.3207547068595886,
+    1.0
+   ]
+  }
+ },
+ "SimpleRamp (1)": {
+  "material": "Grid",
+  "texture": "Grid",
+  "colors": {
+   "_Color": [
+    0.3207547068595886,
+    0.3207547068595886,
+    0.3207547068595886,
+    1.0
+   ]
+  }
+ },
+ "SimpleRamp (7)": {
+  "material": "Grid",
+  "texture": "Grid",
+  "colors": {
+   "_Color": [
+    0.3207547068595886,
+    0.3207547068595886,
+    0.3207547068595886,
+    1.0
+   ]
+  }
+ },
+ "SimpleRamp": {
+  "material": "Grid",
+  "texture": "Grid",
+  "colors": {
+   "_Color": [
+    0.3207547068595886,
+    0.3207547068595886,
+    0.3207547068595886,
+    1.0
+   ]
+  }
+ },
+ "SimpleRamp (9)": {
+  "material": "Grid",
+  "texture": "Grid",
+  "colors": {
+   "_Color": [
+    0.3207547068595886,
+    0.3207547068595886,
+    0.3207547068595886,
+    1.0
+   ]
+  }
+ },
+ "SimpleRamp (2)": {
+  "material": "Grid",
+  "texture": "Grid",
+  "colors": {
+   "_Color": [
+    0.3207547068595886,
+    0.3207547068595886,
+    0.3207547068595886,
+    1.0
+   ]
+  }
+ },
+ "cube_engine (2)": {
+  "material": "box_engine",
+  "texture": "lambert1_Base_Color",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "cube_engine (3)": {
+  "material": "box_engine",
+  "texture": "lambert1_Base_Color",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "cube_engine (1)": {
+  "material": "box_engine",
+  "texture": "lambert1_Base_Color",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "Circle.002 (1)": {
+  "material": "Concrete",
+  "texture": "CementNM",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "Circle.001 (1)": {
+  "material": "Concrete",
+  "texture": "CementNM",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "SingleSpike (6)": {
+  "material": "SpikeRed",
+  "texture": "CementNM",
+  "colors": {
+   "_Color": [
+    1.0,
+    0.3254716992378235,
+    0.3254716992378235,
+    1.0
+   ]
+  }
+ },
+ "SingleSpike (8)": {
+  "material": "SpikeRed",
+  "texture": "CementNM",
+  "colors": {
+   "_Color": [
+    1.0,
+    0.3254716992378235,
+    0.3254716992378235,
+    1.0
+   ]
+  }
+ },
+ "cube_engine (6)": {
+  "material": "box_engine",
+  "texture": "lambert1_Base_Color",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "cube_engine (10)": {
+  "material": "box_engine",
+  "texture": "lambert1_Base_Color",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "cube_engine (12)": {
+  "material": "box_engine",
+  "texture": "lambert1_Base_Color",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "road": {
+  "material": "asphalt",
+  "texture": "CurveRoad",
+  "colors": {
+   "_Color": [
+    0.349056601524353,
+    0.349056601524353,
+    0.349056601524353,
+    1.0
+   ]
+  }
+ },
+ "cube_engine (7)": {
+  "material": "box_engine",
+  "texture": "lambert1_Base_Color",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "cube_engine (11)": {
+  "material": "box_engine",
+  "texture": "lambert1_Base_Color",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "cube_engine (8)": {
+  "material": "box_engine",
+  "texture": "lambert1_Base_Color",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "cube_engine (9)": {
+  "material": "box_engine",
+  "texture": "lambert1_Base_Color",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "cube_engine (4)": {
+  "material": "box_engine",
+  "texture": "lambert1_Base_Color",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "cube_engine (5)": {
+  "material": "box_engine",
+  "texture": "lambert1_Base_Color",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "road2.001": {
+  "material": "asphalt",
+  "texture": "CurveRoad",
+  "colors": {
+   "_Color": [
+    0.349056601524353,
+    0.349056601524353,
+    0.349056601524353,
+    1.0
+   ]
+  }
+ },
+ "Bump": {
+  "material": "Bumps",
+  "texture": null,
+  "colors": {
+   "_BaseColor": [
+    0.5754716992378235,
+    0.046146322041749954,
+    0.046146322041749954,
+    1.0
+   ],
+   "_Color": [
+    0.6037735939025879,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ },
+ "CurveRoad2": {
+  "material": "CurveRoad",
+  "texture": "Grass_Dry_ALB",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "SingleSpike (7)": {
+  "material": "SpikeRed",
+  "texture": "CementNM",
+  "colors": {
+   "_Color": [
+    1.0,
+    0.3254716992378235,
+    0.3254716992378235,
+    1.0
+   ]
+  }
+ },
+ "Bump (2)": {
+  "material": "Bumps",
+  "texture": null,
+  "colors": {
+   "_BaseColor": [
+    0.5754716992378235,
+    0.046146322041749954,
+    0.046146322041749954,
+    1.0
+   ],
+   "_Color": [
+    0.6037735939025879,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ },
+ "road2.002": {
+  "material": "asphalt",
+  "texture": "CurveRoad",
+  "colors": {
+   "_Color": [
+    0.349056601524353,
+    0.349056601524353,
+    0.349056601524353,
+    1.0
+   ]
+  }
+ },
+ "Bump (3)": {
+  "material": "Bumps",
+  "texture": null,
+  "colors": {
+   "_BaseColor": [
+    0.5754716992378235,
+    0.046146322041749954,
+    0.046146322041749954,
+    1.0
+   ],
+   "_Color": [
+    0.6037735939025879,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ },
+ "CurveRoad1": {
+  "material": "CurveRoad",
+  "texture": "Grass_Dry_ALB",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "Bump (1)": {
+  "material": "Bumps",
+  "texture": null,
+  "colors": {
+   "_BaseColor": [
+    0.5754716992378235,
+    0.046146322041749954,
+    0.046146322041749954,
+    1.0
+   ],
+   "_Color": [
+    0.6037735939025879,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ },
+ "ArkBlue": {
+  "material": "BackGround",
+  "texture": "gradient",
+  "colors": {
+   "_BaseColor": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "building_07_a (3)": {
+  "material": "building_07_a",
+  "texture": "Building_07_a",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "building_09_a (1)": {
+  "material": "building_09_a",
+  "texture": "Building_09_a",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "building_07_a (2)": {
+  "material": "building_07_a",
+  "texture": "Building_07_a",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "ArkBlue (1)": {
+  "material": "BackGround",
+  "texture": "gradient",
+  "colors": {
+   "_BaseColor": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "ArkBlue (2)": {
+  "material": "BackGround",
+  "texture": "gradient",
+  "colors": {
+   "_BaseColor": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "building_09_a (2)": {
+  "material": "building_09_a",
+  "texture": "Building_09_a",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "Circle": {
+  "material": "Grid",
+  "texture": "Grid",
+  "colors": {
+   "_Color": [
+    0.3207547068595886,
+    0.3207547068595886,
+    0.3207547068595886,
+    1.0
+   ]
+  }
+ },
+ "RampRounded.002": {
+  "material": "Grid",
+  "texture": "Grid",
+  "colors": {
+   "_Color": [
+    0.3207547068595886,
+    0.3207547068595886,
+    0.3207547068595886,
+    1.0
+   ]
+  }
+ },
+ "RampRounded.002 (1)": {
+  "material": "Grid",
+  "texture": "Grid",
+  "colors": {
+   "_Color": [
+    0.3207547068595886,
+    0.3207547068595886,
+    0.3207547068595886,
+    1.0
+   ]
+  }
+ },
+ "RampRounded.001 (1)": {
+  "material": "Grid",
+  "texture": "Grid",
+  "colors": {
+   "_Color": [
+    0.3207547068595886,
+    0.3207547068595886,
+    0.3207547068595886,
+    1.0
+   ]
+  }
+ },
+ "RampRounded.001": {
+  "material": "Grid",
+  "texture": "Grid",
+  "colors": {
+   "_Color": [
+    0.3207547068595886,
+    0.3207547068595886,
+    0.3207547068595886,
+    1.0
+   ]
+  }
+ },
+ "Dunes": {
+  "material": "Dunes",
+  "texture": "Desert Sand",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "SchoolBus (12)": {
+  "material": "03___Default",
+  "texture": "schoolbus",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "SchoolBus (15)": {
+  "material": "03___Default",
+  "texture": "schoolbus",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "SchoolBus (6)": {
+  "material": "03___Default",
+  "texture": "schoolbus",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "SchoolBus (16)": {
+  "material": "03___Default",
+  "texture": "schoolbus",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "SchoolBus (13)": {
+  "material": "03___Default",
+  "texture": "schoolbus",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "SchoolBus (14)": {
+  "material": "03___Default",
+  "texture": "schoolbus",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "SchoolBus (11)": {
+  "material": "03___Default",
+  "texture": "schoolbus",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "SchoolBus (1)": {
+  "material": "03___Default",
+  "texture": "schoolbus",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "ArkBlue (13)": {
+  "material": "BackGround",
+  "texture": "gradient",
+  "colors": {
+   "_BaseColor": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "Cargo_container_v1_LD1close (19)": {
+  "material": "Cargo_container_v1 1",
+  "texture": "Cargo_container_v1",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "Cargo_container_v1_LD1close (21)": {
+  "material": "Cargo_container_v1 1",
+  "texture": "Cargo_container_v1",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "Cargo_container_v1_LD1close (23)": {
+  "material": "Cargo_container_v1 1",
+  "texture": "Cargo_container_v1",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "Cargo_container_v1_LD1close (25)": {
+  "material": "Cargo_container_v1 1",
+  "texture": "Cargo_container_v1",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "Cargo_container_v1_LD1close (20)": {
+  "material": "Cargo_container_v1 1",
+  "texture": "Cargo_container_v1",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "Cargo_container_v1_LD1close (13)": {
+  "material": "Cargo_container_v1 1",
+  "texture": "Cargo_container_v1",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "Cargo_container_v1_LD1close (24)": {
+  "material": "Cargo_container_v1 1",
+  "texture": "Cargo_container_v1",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "Cargo_container_v1_LD1close (14)": {
+  "material": "Cargo_container_v1 1",
+  "texture": "Cargo_container_v1",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "Cargo_container_v1_LD1close (22)": {
+  "material": "Cargo_container_v1 1",
+  "texture": "Cargo_container_v1",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "RoadBlock (7)": {
+  "material": "Bumps",
+  "texture": null,
+  "colors": {
+   "_BaseColor": [
+    0.5754716992378235,
+    0.046146322041749954,
+    0.046146322041749954,
+    1.0
+   ],
+   "_Color": [
+    0.6037735939025879,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ },
+ "RoadBlock (4)": {
+  "material": "Bumps",
+  "texture": null,
+  "colors": {
+   "_BaseColor": [
+    0.5754716992378235,
+    0.046146322041749954,
+    0.046146322041749954,
+    1.0
+   ],
+   "_Color": [
+    0.6037735939025879,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ },
+ "RoadBlock (6)": {
+  "material": "Bumps",
+  "texture": null,
+  "colors": {
+   "_BaseColor": [
+    0.5754716992378235,
+    0.046146322041749954,
+    0.046146322041749954,
+    1.0
+   ],
+   "_Color": [
+    0.6037735939025879,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ },
+ "RoadBlock (8)": {
+  "material": "Bumps",
+  "texture": null,
+  "colors": {
+   "_BaseColor": [
+    0.5754716992378235,
+    0.046146322041749954,
+    0.046146322041749954,
+    1.0
+   ],
+   "_Color": [
+    0.6037735939025879,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ },
+ "RoadBlock (5)": {
+  "material": "Bumps",
+  "texture": null,
+  "colors": {
+   "_BaseColor": [
+    0.5754716992378235,
+    0.046146322041749954,
+    0.046146322041749954,
+    1.0
+   ],
+   "_Color": [
+    0.6037735939025879,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ },
+ "Tube (4)": {
+  "material": "BackGround",
+  "texture": "gradient",
+  "colors": {
+   "_BaseColor": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "Tube (6)": {
+  "material": "BackGround",
+  "texture": "gradient",
+  "colors": {
+   "_BaseColor": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "Tube (9)": {
+  "material": "BackGround",
+  "texture": "gradient",
+  "colors": {
+   "_BaseColor": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "Tube (8)": {
+  "material": "BackGround",
+  "texture": "gradient",
+  "colors": {
+   "_BaseColor": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "Tube (7)": {
+  "material": "BackGround",
+  "texture": "gradient",
+  "colors": {
+   "_BaseColor": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "Tube (1)": {
+  "material": "BackGround",
+  "texture": "gradient",
+  "colors": {
+   "_BaseColor": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "Tube (3)": {
+  "material": "BackGround",
+  "texture": "gradient",
+  "colors": {
+   "_BaseColor": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "ArkBlue (5)": {
+  "material": "BackGround",
+  "texture": "gradient",
+  "colors": {
+   "_BaseColor": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "ArkBlue (3)": {
+  "material": "BackGround",
+  "texture": "gradient",
+  "colors": {
+   "_BaseColor": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "ArkBlue (6)": {
+  "material": "BackGround",
+  "texture": "gradient",
+  "colors": {
+   "_BaseColor": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "ArkBlue (4)": {
+  "material": "BackGround",
+  "texture": "gradient",
+  "colors": {
+   "_BaseColor": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "SingleSpike (9)": {
+  "material": "SpikeRed",
+  "texture": "CementNM",
+  "colors": {
+   "_Color": [
+    1.0,
+    0.3254716992378235,
+    0.3254716992378235,
+    1.0
+   ]
+  }
+ },
+ "Road": {
+  "material": "Road",
+  "texture": "RoadTexture 1",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "SingleSpike (13)": {
+  "material": "SpikeGray 1",
+  "texture": null,
+  "colors": {
+   "_Color": [
+    0.15094339847564697,
+    0.15094339847564697,
+    0.15094339847564697,
+    1.0
+   ]
+  }
+ },
+ "SingleSpike (43)": {
+  "material": "SpikeGray 1",
+  "texture": null,
+  "colors": {
+   "_Color": [
+    0.15094339847564697,
+    0.15094339847564697,
+    0.15094339847564697,
+    1.0
+   ]
+  }
+ },
+ "SingleSpike (16)": {
+  "material": "SpikeGray 1",
+  "texture": null,
+  "colors": {
+   "_Color": [
+    0.15094339847564697,
+    0.15094339847564697,
+    0.15094339847564697,
+    1.0
+   ]
+  }
+ },
+ "SingleSpike (46)": {
+  "material": "SpikeGray 1",
+  "texture": null,
+  "colors": {
+   "_Color": [
+    0.15094339847564697,
+    0.15094339847564697,
+    0.15094339847564697,
+    1.0
+   ]
+  }
+ },
+ "SingleSpike (31)": {
+  "material": "SpikeGray 1",
+  "texture": null,
+  "colors": {
+   "_Color": [
+    0.15094339847564697,
+    0.15094339847564697,
+    0.15094339847564697,
+    1.0
+   ]
+  }
+ },
+ "SingleSpike (24)": {
+  "material": "SpikeGray 1",
+  "texture": null,
+  "colors": {
+   "_Color": [
+    0.15094339847564697,
+    0.15094339847564697,
+    0.15094339847564697,
+    1.0
+   ]
+  }
+ },
+ "SingleSpike (34)": {
+  "material": "SpikeGray 1",
+  "texture": null,
+  "colors": {
+   "_Color": [
+    0.15094339847564697,
+    0.15094339847564697,
+    0.15094339847564697,
+    1.0
+   ]
+  }
+ },
+ "SingleSpike (17)": {
+  "material": "SpikeGray 1",
+  "texture": null,
+  "colors": {
+   "_Color": [
+    0.15094339847564697,
+    0.15094339847564697,
+    0.15094339847564697,
+    1.0
+   ]
+  }
+ },
+ "SingleSpike (25)": {
+  "material": "SpikeGray 1",
+  "texture": null,
+  "colors": {
+   "_Color": [
+    0.15094339847564697,
+    0.15094339847564697,
+    0.15094339847564697,
+    1.0
+   ]
+  }
+ },
+ "SingleSpike (10)": {
+  "material": "SpikeGray 1",
+  "texture": null,
+  "colors": {
+   "_Color": [
+    0.15094339847564697,
+    0.15094339847564697,
+    0.15094339847564697,
+    1.0
+   ]
+  }
+ },
+ "SingleSpike (27)": {
+  "material": "SpikeGray 1",
+  "texture": null,
+  "colors": {
+   "_Color": [
+    0.15094339847564697,
+    0.15094339847564697,
+    0.15094339847564697,
+    1.0
+   ]
+  }
+ },
+ "SingleSpike (26)": {
+  "material": "SpikeGray 1",
+  "texture": null,
+  "colors": {
+   "_Color": [
+    0.15094339847564697,
+    0.15094339847564697,
+    0.15094339847564697,
+    1.0
+   ]
+  }
+ },
+ "SingleSpike (29)": {
+  "material": "SpikeGray 1",
+  "texture": null,
+  "colors": {
+   "_Color": [
+    0.15094339847564697,
+    0.15094339847564697,
+    0.15094339847564697,
+    1.0
+   ]
+  }
+ },
+ "SingleSpike (30)": {
+  "material": "SpikeGray 1",
+  "texture": null,
+  "colors": {
+   "_Color": [
+    0.15094339847564697,
+    0.15094339847564697,
+    0.15094339847564697,
+    1.0
+   ]
+  }
+ },
+ "SingleSpike (41)": {
+  "material": "SpikeGray 1",
+  "texture": null,
+  "colors": {
+   "_Color": [
+    0.15094339847564697,
+    0.15094339847564697,
+    0.15094339847564697,
+    1.0
+   ]
+  }
+ },
+ "SingleSpike (47)": {
+  "material": "SpikeGray 1",
+  "texture": null,
+  "colors": {
+   "_Color": [
+    0.15094339847564697,
+    0.15094339847564697,
+    0.15094339847564697,
+    1.0
+   ]
+  }
+ },
+ "SingleSpike (23)": {
+  "material": "SpikeGray 1",
+  "texture": null,
+  "colors": {
+   "_Color": [
+    0.15094339847564697,
+    0.15094339847564697,
+    0.15094339847564697,
+    1.0
+   ]
+  }
+ },
+ "SingleSpike (22)": {
+  "material": "SpikeGray 1",
+  "texture": null,
+  "colors": {
+   "_Color": [
+    0.15094339847564697,
+    0.15094339847564697,
+    0.15094339847564697,
+    1.0
+   ]
+  }
+ },
+ "SingleSpike (32)": {
+  "material": "SpikeGray 1",
+  "texture": null,
+  "colors": {
+   "_Color": [
+    0.15094339847564697,
+    0.15094339847564697,
+    0.15094339847564697,
+    1.0
+   ]
+  }
+ },
+ "SingleSpike (48)": {
+  "material": "SpikeGray 1",
+  "texture": null,
+  "colors": {
+   "_Color": [
+    0.15094339847564697,
+    0.15094339847564697,
+    0.15094339847564697,
+    1.0
+   ]
+  }
+ },
+ "SingleSpike (42)": {
+  "material": "SpikeGray 1",
+  "texture": null,
+  "colors": {
+   "_Color": [
+    0.15094339847564697,
+    0.15094339847564697,
+    0.15094339847564697,
+    1.0
+   ]
+  }
+ },
+ "SingleSpike (20)": {
+  "material": "SpikeGray 1",
+  "texture": null,
+  "colors": {
+   "_Color": [
+    0.15094339847564697,
+    0.15094339847564697,
+    0.15094339847564697,
+    1.0
+   ]
+  }
+ },
+ "SingleSpike (37)": {
+  "material": "SpikeGray 1",
+  "texture": null,
+  "colors": {
+   "_Color": [
+    0.15094339847564697,
+    0.15094339847564697,
+    0.15094339847564697,
+    1.0
+   ]
+  }
+ },
+ "SingleSpike (35)": {
+  "material": "SpikeGray 1",
+  "texture": null,
+  "colors": {
+   "_Color": [
+    0.15094339847564697,
+    0.15094339847564697,
+    0.15094339847564697,
+    1.0
+   ]
+  }
+ },
+ "SingleSpike (39)": {
+  "material": "SpikeGray 1",
+  "texture": null,
+  "colors": {
+   "_Color": [
+    0.15094339847564697,
+    0.15094339847564697,
+    0.15094339847564697,
+    1.0
+   ]
+  }
+ },
+ "SingleSpike (15)": {
+  "material": "SpikeGray 1",
+  "texture": null,
+  "colors": {
+   "_Color": [
+    0.15094339847564697,
+    0.15094339847564697,
+    0.15094339847564697,
+    1.0
+   ]
+  }
+ },
+ "SingleSpike (18)": {
+  "material": "SpikeGray 1",
+  "texture": null,
+  "colors": {
+   "_Color": [
+    0.15094339847564697,
+    0.15094339847564697,
+    0.15094339847564697,
+    1.0
+   ]
+  }
+ },
+ "SingleSpike (33)": {
+  "material": "SpikeGray 1",
+  "texture": null,
+  "colors": {
+   "_Color": [
+    0.15094339847564697,
+    0.15094339847564697,
+    0.15094339847564697,
+    1.0
+   ]
+  }
+ },
+ "SingleSpike (12)": {
+  "material": "SpikeGray 1",
+  "texture": null,
+  "colors": {
+   "_Color": [
+    0.15094339847564697,
+    0.15094339847564697,
+    0.15094339847564697,
+    1.0
+   ]
+  }
+ },
+ "SingleSpike (38)": {
+  "material": "SpikeGray 1",
+  "texture": null,
+  "colors": {
+   "_Color": [
+    0.15094339847564697,
+    0.15094339847564697,
+    0.15094339847564697,
+    1.0
+   ]
+  }
+ },
+ "SingleSpike (44)": {
+  "material": "SpikeGray 1",
+  "texture": null,
+  "colors": {
+   "_Color": [
+    0.15094339847564697,
+    0.15094339847564697,
+    0.15094339847564697,
+    1.0
+   ]
+  }
+ },
+ "SingleSpike (28)": {
+  "material": "SpikeGray 1",
+  "texture": null,
+  "colors": {
+   "_Color": [
+    0.15094339847564697,
+    0.15094339847564697,
+    0.15094339847564697,
+    1.0
+   ]
+  }
+ },
+ "SingleSpike (40)": {
+  "material": "SpikeGray 1",
+  "texture": null,
+  "colors": {
+   "_Color": [
+    0.15094339847564697,
+    0.15094339847564697,
+    0.15094339847564697,
+    1.0
+   ]
+  }
+ },
+ "SingleSpike (14)": {
+  "material": "SpikeGray 1",
+  "texture": null,
+  "colors": {
+   "_Color": [
+    0.15094339847564697,
+    0.15094339847564697,
+    0.15094339847564697,
+    1.0
+   ]
+  }
+ },
+ "SingleSpike (11)": {
+  "material": "SpikeGray 1",
+  "texture": null,
+  "colors": {
+   "_Color": [
+    0.15094339847564697,
+    0.15094339847564697,
+    0.15094339847564697,
+    1.0
+   ]
+  }
+ },
+ "SingleSpike (36)": {
+  "material": "SpikeGray 1",
+  "texture": null,
+  "colors": {
+   "_Color": [
+    0.15094339847564697,
+    0.15094339847564697,
+    0.15094339847564697,
+    1.0
+   ]
+  }
+ },
+ "SingleSpike (45)": {
+  "material": "SpikeGray 1",
+  "texture": null,
+  "colors": {
+   "_Color": [
+    0.15094339847564697,
+    0.15094339847564697,
+    0.15094339847564697,
+    1.0
+   ]
+  }
+ },
+ "SingleSpike (21)": {
+  "material": "SpikeGray 1",
+  "texture": null,
+  "colors": {
+   "_Color": [
+    0.15094339847564697,
+    0.15094339847564697,
+    0.15094339847564697,
+    1.0
+   ]
+  }
+ },
+ "SingleSpike (19)": {
+  "material": "SpikeGray 1",
+  "texture": null,
+  "colors": {
+   "_Color": [
+    0.15094339847564697,
+    0.15094339847564697,
+    0.15094339847564697,
+    1.0
+   ]
+  }
+ },
+ "Cube.002 (11)": {
+  "material": "Concrete",
+  "texture": "CementNM",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "Cube.002 (10)": {
+  "material": "Concrete",
+  "texture": "CementNM",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "Cube.002 (6)": {
+  "material": "Road",
+  "texture": "RoadTexture 1",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "Cube.002 (13)": {
+  "material": "Pit",
+  "texture": "Grass_Dry_ALB",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "Cube.002 (9)": {
+  "material": "Terrain",
+  "texture": "UnityGrass",
+  "colors": {
+   "_Color": [
+    0.3207547068595886,
+    0.3207547068595886,
+    0.3207547068595886,
+    1.0
+   ]
+  }
+ },
+ "Cube.002 (5)": {
+  "material": "Road",
+  "texture": "RoadTexture 1",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "Cube.002 (17)": {
+  "material": "Concrete",
+  "texture": "CementNM",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "Cube.002 (8)": {
+  "material": "Pit",
+  "texture": "Grass_Dry_ALB",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "Cube.002 (16)": {
+  "material": "Concrete",
+  "texture": "CementNM",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "Cube.002 (12)": {
+  "material": "Pit",
+  "texture": "Grass_Dry_ALB",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "Cube.002 (14)": {
+  "material": "Pit",
+  "texture": "Grass_Dry_ALB",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "Cube.002 (15)": {
+  "material": "Pit",
+  "texture": "Grass_Dry_ALB",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "MiniRamp (5)": {
+  "material": "Concrete",
+  "texture": "CementNM",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "DownHillMid (18)": {
+  "material": "Concrete",
+  "texture": "CementNM",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "DownHillMid (2)": {
+  "material": "Concrete",
+  "texture": "CementNM",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "MiniRamp (4)": {
+  "material": "Road",
+  "texture": "RoadTexture 1",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "UpHill": {
+  "material": "Road",
+  "texture": "RoadTexture 1",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "DownHillMid (19)": {
+  "material": "Road",
+  "texture": "RoadTexture 1",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "DownHillMid": {
+  "material": "Road",
+  "texture": "RoadTexture 1",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "DownHillMid (1)": {
+  "material": "Road",
+  "texture": "RoadTexture 1",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "DownHillMid (8)": {
+  "material": "Road",
+  "texture": "RoadTexture 1",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "DownHillMid (20)": {
+  "material": "Pit",
+  "texture": "Grass_Dry_ALB",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "DownHillMid (5)": {
+  "material": "Road",
+  "texture": "RoadTexture 1",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "DownHillMid (14)": {
+  "material": "Pit",
+  "texture": "Grass_Dry_ALB",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "DownHillMid (21)": {
+  "material": "Road",
+  "texture": "RoadTexture 1",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "DownHillMid (22)": {
+  "material": "Road",
+  "texture": "RoadTexture 1",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "DownHillMid (9)": {
+  "material": "Pit",
+  "texture": "Grass_Dry_ALB",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "DownHillMid (6)": {
+  "material": "Road",
+  "texture": "RoadTexture 1",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "DownHillMid (7)": {
+  "material": "Road",
+  "texture": "RoadTexture 1",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "DownHillMid (3)": {
+  "material": "Pit",
+  "texture": "Grass_Dry_ALB",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "DownHillMid (12)": {
+  "material": "Pit",
+  "texture": "Grass_Dry_ALB",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "DownHillMid (15)": {
+  "material": "Concrete",
+  "texture": "CementNM",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "DownHillMid (13)": {
+  "material": "Pit",
+  "texture": "Grass_Dry_ALB",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "DownHillMid (4)": {
+  "material": "Road",
+  "texture": "RoadTexture 1",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "DownHillMid (10)": {
+  "material": "Pit",
+  "texture": "Grass_Dry_ALB",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "DownHillMid (17)": {
+  "material": "Pit",
+  "texture": "Grass_Dry_ALB",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "DownHillMid (16)": {
+  "material": "Concrete",
+  "texture": "CementNM",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "DownHillMid (11)": {
+  "material": "Pit",
+  "texture": "Grass_Dry_ALB",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "HoleRoad (14)": {
+  "material": "Road",
+  "texture": "RoadTexture 1",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "HoleRoad (5)": {
+  "material": "Road",
+  "texture": "RoadTexture 1",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "HoleRoad (8)": {
+  "material": "Road",
+  "texture": "RoadTexture 1",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "HoleRoad (9)": {
+  "material": "Road",
+  "texture": "RoadTexture 1",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "HoleRoad (12)": {
+  "material": "Road",
+  "texture": "RoadTexture 1",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "HoleRoad (6)": {
+  "material": "Road",
+  "texture": "RoadTexture 1",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "HoleRoad (7)": {
+  "material": "Road",
+  "texture": "RoadTexture 1",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "HoleRoad (10)": {
+  "material": "Road",
+  "texture": "RoadTexture 1",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "HoleRoad (11)": {
+  "material": "Road",
+  "texture": "RoadTexture 1",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "HoleRoad (13)": {
+  "material": "Road",
+  "texture": "RoadTexture 1",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "HoleRoadCenter (5)": {
+  "material": "Road",
+  "texture": "RoadTexture 1",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "HoleRoadCenter (4)": {
+  "material": "Road",
+  "texture": "RoadTexture 1",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "HoleRoadCenter (6)": {
+  "material": "Road",
+  "texture": "RoadTexture 1",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "ArkBlue (10)": {
+  "material": "BackGround",
+  "texture": "gradient",
+  "colors": {
+   "_BaseColor": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "Box": {
+  "material": "Boxes",
+  "texture": "Boxes_on_pallet1",
+  "colors": {
+   "_Color": [
+    1.0,
+    0.6190027594566345,
+    0.0,
+    1.0
+   ]
+  }
+ },
+ "Covered_boxes2": {
+  "material": "Fab",
+  "texture": "Boxes_on_pallet0",
+  "colors": {
+   "_Color": [
+    0.9150943160057068,
+    0.49559685587882996,
+    0.0,
+    1.0
+   ]
+  }
+ },
+ "Pallet and covered boxes": {
+  "material": "Boxes",
+  "texture": "Boxes_on_pallet1",
+  "colors": {
+   "_Color": [
+    1.0,
+    0.6190027594566345,
+    0.0,
+    1.0
+   ]
+  }
+ },
+ "gora_uv (10)": {
+  "material": "gora",
+  "texture": "gora_uv_lambert1_AlbedoTransparency",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "gora_uv (11)": {
+  "material": "gora",
+  "texture": "gora_uv_lambert1_AlbedoTransparency",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "gora_uv (16)": {
+  "material": "gora",
+  "texture": "gora_uv_lambert1_AlbedoTransparency",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "gora_uv (13)": {
+  "material": "gora",
+  "texture": "gora_uv_lambert1_AlbedoTransparency",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "gora_uv (17)": {
+  "material": "gora",
+  "texture": "gora_uv_lambert1_AlbedoTransparency",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "gora_uv (18)": {
+  "material": "gora",
+  "texture": "gora_uv_lambert1_AlbedoTransparency",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "gora_uv (19)": {
+  "material": "gora",
+  "texture": "gora_uv_lambert1_AlbedoTransparency",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "gora_uv (12)": {
+  "material": "gora",
+  "texture": "gora_uv_lambert1_AlbedoTransparency",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "gora_uv (15)": {
+  "material": "gora",
+  "texture": "gora_uv_lambert1_AlbedoTransparency",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "gora_uv (14)": {
+  "material": "gora",
+  "texture": "gora_uv_lambert1_AlbedoTransparency",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "Circle.002 (3)": {
+  "material": "Concrete",
+  "texture": "CementNM",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "Simple Border_cell.005": {
+  "material": "Concrete Variant",
+  "texture": "CementNM",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "Simple Border_cell.009": {
+  "material": "Concrete Variant",
+  "texture": "CementNM",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "Simple Border": {
+  "material": "Concrete Variant",
+  "texture": "CementNM",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "Simple Border_cell.001": {
+  "material": "Concrete Variant",
+  "texture": "CementNM",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "Road.001": {
+  "material": "Concrete Variant",
+  "texture": "CementNM",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "Simple Border_cell.002": {
+  "material": "Concrete Variant",
+  "texture": "CementNM",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "Simple Border_cell.012": {
+  "material": "Concrete Variant",
+  "texture": "CementNM",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "Simple Border_cell.004": {
+  "material": "Concrete Variant",
+  "texture": "CementNM",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "Simple Border_cell.010": {
+  "material": "Concrete Variant",
+  "texture": "CementNM",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "BezierCurve.001": {
+  "material": "Default-Material",
+  "texture": null,
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "Simple Border_cell.007": {
+  "material": "Concrete Variant",
+  "texture": "CementNM",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "Simple Border_cell": {
+  "material": "Concrete Variant",
+  "texture": "CementNM",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "Pillar": {
+  "material": "Concrete",
+  "texture": "CementNM",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "Simple Border_cell.011": {
+  "material": "Concrete Variant",
+  "texture": "CementNM",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "Simple Border_cell.008": {
+  "material": "Concrete Variant",
+  "texture": "CementNM",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "Simple Border_cell.006": {
+  "material": "Concrete Variant",
+  "texture": "CementNM",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "Simple Border_cell.003": {
+  "material": "Concrete Variant",
+  "texture": "CementNM",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "gora": {
+  "material": "lambert1",
+  "texture": "gora_uv_lambert1_AlbedoTransparency",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "Simple Border_cell.013": {
+  "material": "Concrete Variant",
+  "texture": "CementNM",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "Simple Border_cell.014": {
+  "material": "Concrete Variant",
+  "texture": "CementNM",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "gora_uv (4)": {
+  "material": "gora",
+  "texture": "gora_uv_lambert1_AlbedoTransparency",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "Wheel.004": {
+  "material": "Industrial Train Dr14",
+  "texture": "Industrial Train Dr14_Albedo",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "Wheel": {
+  "material": "Industrial Train Dr14",
+  "texture": "Industrial Train Dr14_Albedo",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "Black": {
+  "material": "Black",
+  "texture": null,
+  "colors": {
+   "_Color": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ]
+  }
+ },
+ "TerrainPiece (1)": {
+  "material": "Terrain",
+  "texture": "UnityGrass",
+  "colors": {
+   "_Color": [
+    0.3207547068595886,
+    0.3207547068595886,
+    0.3207547068595886,
+    1.0
+   ]
+  }
+ },
+ "TerrainPiece (2)": {
+  "material": "Terrain",
+  "texture": "UnityGrass",
+  "colors": {
+   "_Color": [
+    0.3207547068595886,
+    0.3207547068595886,
+    0.3207547068595886,
+    1.0
+   ]
+  }
+ },
+ "Industrial Train Dr14": {
+  "material": "Industrial Train Dr14",
+  "texture": "Industrial Train Dr14_Albedo",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "Rails": {
+  "material": "Rails",
+  "texture": "rails_texture",
+  "colors": {
+   "_Color": [
+    0.4716981053352356,
+    0.4716981053352356,
+    0.4716981053352356,
+    1.0
+   ]
+  }
+ },
+ "Wheel.005": {
+  "material": "Industrial Train Dr14",
+  "texture": "Industrial Train Dr14_Albedo",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "Wheel.001": {
+  "material": "Industrial Train Dr14",
+  "texture": "Industrial Train Dr14_Albedo",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "Brakes L": {
+  "material": "Dr14 brakes lights",
+  "texture": "Light",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    0.9803921580314636
+   ]
+  }
+ },
+ "Dr14 lights": {
+  "material": "Default-Material",
+  "texture": null,
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "Headlight UR": {
+  "material": "Dr14 headlights",
+  "texture": "Light",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    0.9803921580314636
+   ]
+  }
+ },
+ "Headlight UL": {
+  "material": "Dr14 headlights",
+  "texture": "Light",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    0.9803921580314636
+   ]
+  }
+ },
+ "Headlight DR": {
+  "material": "Dr14 headlights",
+  "texture": "Light",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    0.9803921580314636
+   ]
+  }
+ },
+ "Headlight DL": {
+  "material": "Dr14 headlights",
+  "texture": "Light",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    0.9803921580314636
+   ]
+  }
+ },
+ "Brakes R": {
+  "material": "Dr14 brakes lights",
+  "texture": "Light",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    0.9803921580314636
+   ]
+  }
+ },
+ "Wheel.003": {
+  "material": "Industrial Train Dr14",
+  "texture": "Industrial Train Dr14_Albedo",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "Wheel.006": {
+  "material": "Industrial Train Dr14",
+  "texture": "Industrial Train Dr14_Albedo",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "Wheel.002": {
+  "material": "Industrial Train Dr14",
+  "texture": "Industrial Train Dr14_Albedo",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "Wheel.007": {
+  "material": "Industrial Train Dr14",
+  "texture": "Industrial Train Dr14_Albedo",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "Cylinder (3)": {
+  "material": "Concrete",
+  "texture": "CementNM",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "Quad": {
+  "material": "Concrete Variant",
+  "texture": "CementNM",
+  "colors": {
+   "_Color": [
+    0.43396228551864624,
+    0.43396228551864624,
+    0.43396228551864624,
+    1.0
+   ]
+  }
+ },
+ "Industrial Train Dr14 (1)": {
+  "material": "Industrial Train Dr14",
+  "texture": "Industrial Train Dr14_Albedo",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "Stand-06": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "Camera": {
+  "material": "Metal",
+  "texture": "Metal",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "Wirefence": {
+  "material": "TrackSide-A",
+  "texture": "TrackSide-A",
+  "colors": {
+   "_Color": [
+    0.772549033164978,
+    0.772549033164978,
+    0.772549033164978,
+    1.0
+   ]
+  }
+ },
+ "Light-03 (4)": {
+  "material": "Metal",
+  "texture": "Metal",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "StallsandUmbrellas8 (1)": {
+  "material": "Metal",
+  "texture": "Metal",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "Light-02 (2)": {
+  "material": "Metal",
+  "texture": "Metal",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "Outdoor-i-3": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "Stand-03": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "Audience": {
+  "material": "Audience",
+  "texture": "Audience",
+  "colors": {
+   "_Color": [
+    0.7867647409439087,
+    0.7867647409439087,
+    0.7867647409439087,
+    0.8970000147819519
+   ]
+  }
+ },
+ "Stand-02": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "Light-02 (1)": {
+  "material": "Metal",
+  "texture": "Metal",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "Metal_Extructure": {
+  "material": "Atlas-02",
+  "texture": "Atlas-02",
+  "colors": {
+   "_Color": [
+    0.6985294222831726,
+    0.6985294222831726,
+    0.6985294222831726,
+    0.9470000267028809
+   ]
+  }
+ },
+ "StallsandUmbrellas (4)": {
+  "material": "Metal",
+  "texture": "Metal",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "Track": {
+  "material": "Trackside",
+  "texture": "Trackside",
+  "colors": {
+   "_Color": [
+    0.772549033164978,
+    0.772549033164978,
+    0.772549033164978,
+    1.0
+   ]
+  }
+ },
+ "Light-02 (4)": {
+  "material": "Metal",
+  "texture": "Metal",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "OutDoor-A-4": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "Barrier-Red-five": {
+  "material": "Crane",
+  "texture": "Crane",
+  "colors": {
+   "_Color": [
+    0.7426470518112183,
+    0.7426470518112183,
+    0.7426470518112183,
+    1.0
+   ]
+  }
+ },
+ "OutDoor-C-4": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "Light-02": {
+  "material": "Metal",
+  "texture": "Metal",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "StallsandUmbrellas": {
+  "material": "Metal",
+  "texture": "Metal",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "Grass": {
+  "material": "Grass-01",
+  "texture": null,
+  "colors": {
+   "_Color": [
+    0.8308823704719543,
+    0.8308823704719543,
+    0.8308823704719543,
+    1.0
+   ]
+  }
+ },
+ "Cabin-I-b": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "Light-02 (3)": {
+  "material": "Metal",
+  "texture": "Metal",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "Outdoor-HB-02": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "FootBridge-D": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "FootBridge-E-02": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "MetalPole": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "Outdoor-F": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "Screen": {
+  "material": "ScreenTexture",
+  "texture": null,
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "Outdoor-i-2": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "OutDoor-E-1": {
+  "material": "Atlas-02",
+  "texture": "Atlas-02",
+  "colors": {
+   "_Color": [
+    0.6985294222831726,
+    0.6985294222831726,
+    0.6985294222831726,
+    0.9470000267028809
+   ]
+  }
+ },
+ "Stand-07": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "OutDoor-C2-2": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "Tents-Four (2)": {
+  "material": "Metal",
+  "texture": "Metal",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "Stand-10": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "Camera (1)": {
+  "material": "Metal",
+  "texture": "Metal",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "OutDoor-D-1": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "OutDoor-K": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "megaphone": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "Tents-eight (1)": {
+  "material": "Metal",
+  "texture": "Metal",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "OutDoor-E-2": {
+  "material": "Atlas-02",
+  "texture": "Atlas-02",
+  "colors": {
+   "_Color": [
+    0.6985294222831726,
+    0.6985294222831726,
+    0.6985294222831726,
+    0.9470000267028809
+   ]
+  }
+ },
+ "Trees": {
+  "material": "Trees-01",
+  "texture": "Trees-01",
+  "colors": {
+   "_Color": [
+    0.6764705777168274,
+    0.6764705777168274,
+    0.6764705777168274,
+    1.0
+   ]
+  }
+ },
+ "Light-02 (5)": {
+  "material": "Metal",
+  "texture": "Metal",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "Cabin-G-2": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "FootBridge-E-01": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "Stand-08": {
+  "material": "Metal",
+  "texture": "Metal",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "Barrier-Blue": {
+  "material": "Crane",
+  "texture": "Crane",
+  "colors": {
+   "_Color": [
+    0.7426470518112183,
+    0.7426470518112183,
+    0.7426470518112183,
+    1.0
+   ]
+  }
+ },
+ "Light-01": {
+  "material": "Metal",
+  "texture": "Metal",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "Cabin-FB": {
+  "material": "Glass",
+  "texture": null,
+  "colors": {
+   "_Color": [
+    0.13235294818878174,
+    0.13235294818878174,
+    0.13235294818878174,
+    0.5899999737739563
+   ]
+  }
+ },
+ "Light-02 (10)": {
+  "material": "Metal",
+  "texture": "Metal",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "OutDoor-D-2": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "Tents-Four (1)": {
+  "material": "Metal",
+  "texture": "Metal",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "Quimical-Five": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "Stand-01": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "Light-01 (2)": {
+  "material": "Metal",
+  "texture": "Metal",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "Cabin-G-1": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "Outdoor-F (1)": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "Light-02 (7)": {
+  "material": "Metal",
+  "texture": "Metal",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "Light-04": {
+  "material": "Metal",
+  "texture": "Metal",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "Tents-eight": {
+  "material": "Metal",
+  "texture": "Metal",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "Quimical": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "Tires_Barrier-02": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "Light-02 (6)": {
+  "material": "Metal",
+  "texture": "Metal",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "Cabin-E-01": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "Cabin-D": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "Stand-04": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "Outdoor-i-1": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "GrandStand-04-L": {
+  "material": "Atlas-02",
+  "texture": "Atlas-02",
+  "colors": {
+   "_Color": [
+    0.6985294222831726,
+    0.6985294222831726,
+    0.6985294222831726,
+    0.9470000267028809
+   ]
+  }
+ },
+ "Cabin-H": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "StallsandUmbrellas (5)": {
+  "material": "Metal",
+  "texture": "Metal",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "Crane": {
+  "material": "Crane",
+  "texture": "Crane",
+  "colors": {
+   "_Color": [
+    0.7426470518112183,
+    0.7426470518112183,
+    0.7426470518112183,
+    1.0
+   ]
+  }
+ },
+ "Outdoor-J": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "Quimical-Five (1)": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "StallsandUmbrellas (1)": {
+  "material": "Metal",
+  "texture": "Metal",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "Stone-02": {
+  "material": "Stone",
+  "texture": "Stone",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "SignPlate-R-(L)": {
+  "material": "Metal",
+  "texture": "Metal",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "Crane-02": {
+  "material": "Crane",
+  "texture": "Crane",
+  "colors": {
+   "_Color": [
+    0.7426470518112183,
+    0.7426470518112183,
+    0.7426470518112183,
+    1.0
+   ]
+  }
+ },
+ "Wire-a": {
+  "material": "Atlas-02",
+  "texture": "Atlas-02",
+  "colors": {
+   "_Color": [
+    0.6985294222831726,
+    0.6985294222831726,
+    0.6985294222831726,
+    0.9470000267028809
+   ]
+  }
+ },
+ "Stone-01": {
+  "material": "Stone",
+  "texture": "Stone",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "Barrier-02": {
+  "material": "Trackside",
+  "texture": "Trackside",
+  "colors": {
+   "_Color": [
+    0.772549033164978,
+    0.772549033164978,
+    0.772549033164978,
+    1.0
+   ]
+  }
+ },
+ "Screen-Container": {
+  "material": "Crane",
+  "texture": "Crane",
+  "colors": {
+   "_Color": [
+    0.7426470518112183,
+    0.7426470518112183,
+    0.7426470518112183,
+    1.0
+   ]
+  }
+ },
+ "Light-02 (9)": {
+  "material": "Metal",
+  "texture": "Metal",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "Cabin-E-02": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "OutDoor-C2-1": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "Tents-eight (2)": {
+  "material": "Metal",
+  "texture": "Metal",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "Light-03": {
+  "material": "Metal",
+  "texture": "Metal",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "StallsandUmbrellas8 (2)": {
+  "material": "Metal",
+  "texture": "Metal",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "Outdoor-J (1)": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "OutDoor-A-2": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "Light-01 (4)": {
+  "material": "Metal",
+  "texture": "Metal",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "Light-04 (4)": {
+  "material": "Metal",
+  "texture": "Metal",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "Light-01 (9)": {
+  "material": "Metal",
+  "texture": "Metal",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "OutDoor-K (1)": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "Outdoor-HB-01": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "Light-03 (2)": {
+  "material": "Metal",
+  "texture": "Metal",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "Light-01 (3)": {
+  "material": "Metal",
+  "texture": "Metal",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "StallsandUmbrellas (2)": {
+  "material": "Metal",
+  "texture": "Metal",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "Truss-01": {
+  "material": "Crane",
+  "texture": "Crane",
+  "colors": {
+   "_Color": [
+    0.7426470518112183,
+    0.7426470518112183,
+    0.7426470518112183,
+    1.0
+   ]
+  }
+ },
+ "Building-G-05": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "OutDoor-C2-2 (1)": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "Outdoor-i-4": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "Stand-08-m": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "OutDoor-B-4": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "OutDoor-C-1": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "Barrier-Red-five (1)": {
+  "material": "Crane",
+  "texture": "Crane",
+  "colors": {
+   "_Color": [
+    0.7426470518112183,
+    0.7426470518112183,
+    0.7426470518112183,
+    1.0
+   ]
+  }
+ },
+ "Light-04 (7)": {
+  "material": "Metal",
+  "texture": "Metal",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "Detail-01": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "Outdoor-F (5)": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "Outdoor-i-1 (1)": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "Outdoor-G-2": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "OutDoor-C-2": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "SignPlate-R-(50-100)": {
+  "material": "Metal",
+  "texture": "Metal",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "Stone-03": {
+  "material": "Stone",
+  "texture": "Stone",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "Light-04 (1)": {
+  "material": "Metal",
+  "texture": "Metal",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "Cabin-L-02": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "Quimical (1)": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "Curbs": {
+  "material": "Trackside",
+  "texture": "Trackside",
+  "colors": {
+   "_Color": [
+    0.772549033164978,
+    0.772549033164978,
+    0.772549033164978,
+    1.0
+   ]
+  }
+ },
+ "Outdoor-G-4": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "OutDoor-L": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "Outdoor-H-4": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "StallsandUmbrellas (6)": {
+  "material": "Metal",
+  "texture": "Metal",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "Light-04 (8)": {
+  "material": "Metal",
+  "texture": "Metal",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "Light-03 (1)": {
+  "material": "Metal",
+  "texture": "Metal",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "FootBridge-B-02": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "Green-ON": {
+  "material": "Metal",
+  "texture": "Metal",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "GrandStand-01": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "Post-Start-04": {
+  "material": "Metal",
+  "texture": "Metal",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "StallsandUmbrellas (3)": {
+  "material": "Metal",
+  "texture": "Metal",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "OutDoor-A (5)": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "Green": {
+  "material": "Metal",
+  "texture": "Metal",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "Footbridge-C-02": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "Outdoor-G-1": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "Cabin-L-03": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "Building-Grid-13": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "OutDoor-A (6)": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "Light-04 (2)": {
+  "material": "Metal",
+  "texture": "Metal",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "OutDoor-B-1": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "Tents-eight (3)": {
+  "material": "Metal",
+  "texture": "Metal",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "Tress": {
+  "material": "Trees-01",
+  "texture": "Trees-01",
+  "colors": {
+   "_Color": [
+    0.6764705777168274,
+    0.6764705777168274,
+    0.6764705777168274,
+    1.0
+   ]
+  }
+ },
+ "OutDoor-A (4)": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "Wirefences": {
+  "material": "TrackSide-A",
+  "texture": "TrackSide-A",
+  "colors": {
+   "_Color": [
+    0.772549033164978,
+    0.772549033164978,
+    0.772549033164978,
+    1.0
+   ]
+  }
+ },
+ "Light-06 (5)": {
+  "material": "Metal",
+  "texture": "Metal",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "Light-03 (3)": {
+  "material": "Metal",
+  "texture": "Metal",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "Light-02 (8)": {
+  "material": "Metal",
+  "texture": "Metal",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "OutDoor-B-2": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "StallsandUmbrellas8": {
+  "material": "Metal",
+  "texture": "Metal",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "SignPlate-L- (100)": {
+  "material": "Metal",
+  "texture": "Metal",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "GrandStand-09-m": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "StallsandUmbrellas (9)": {
+  "material": "Metal",
+  "texture": "Metal",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "StallsandUmbrellas (8)": {
+  "material": "Metal",
+  "texture": "Metal",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "Light-03 (5)": {
+  "material": "Metal",
+  "texture": "Metal",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "Light-06 (2)": {
+  "material": "Metal",
+  "texture": "Metal",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "Stone-03 (1)": {
+  "material": "Stone",
+  "texture": "Stone",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "Building": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "GrandStand-05": {
+  "material": "Atlas-02",
+  "texture": "Atlas-02",
+  "colors": {
+   "_Color": [
+    0.6985294222831726,
+    0.6985294222831726,
+    0.6985294222831726,
+    0.9470000267028809
+   ]
+  }
+ },
+ "FootBridge-E-02 (1)": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "Containers": {
+  "material": "Crane",
+  "texture": "Crane",
+  "colors": {
+   "_Color": [
+    0.7426470518112183,
+    0.7426470518112183,
+    0.7426470518112183,
+    1.0
+   ]
+  }
+ },
+ "GrandStand-07": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "Cabin-K-1": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "StartGrid": {
+  "material": "strip",
+  "texture": "strip",
+  "colors": {
+   "_Color": [
+    0.6029411554336548,
+    0.6029411554336548,
+    0.6029411554336548,
+    0.23399999737739563
+   ]
+  }
+ },
+ "Tires_Barrier (1)": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "stalls": {
+  "material": "Metal",
+  "texture": "Metal",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "Stone-03 (2)": {
+  "material": "Stone",
+  "texture": "Stone",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "WireFence": {
+  "material": "TrackSide-A",
+  "texture": "TrackSide-A",
+  "colors": {
+   "_Color": [
+    0.772549033164978,
+    0.772549033164978,
+    0.772549033164978,
+    1.0
+   ]
+  }
+ },
+ "Cabin-A-2": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "Outdoor-G-3": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "Light-01 (1)": {
+  "material": "Metal",
+  "texture": "Metal",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "FootBridge-A-02": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "Tree-B-04": {
+  "material": "Trees-01",
+  "texture": "Trees-01",
+  "colors": {
+   "_Color": [
+    0.6764705777168274,
+    0.6764705777168274,
+    0.6764705777168274,
+    1.0
+   ]
+  }
+ },
+ "Post": {
+  "material": "Metal",
+  "texture": "Metal",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "SignPlate-L-(R)": {
+  "material": "Metal",
+  "texture": "Metal",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "GrandStand-02": {
+  "material": "Atlas-02",
+  "texture": "Atlas-02",
+  "colors": {
+   "_Color": [
+    0.6985294222831726,
+    0.6985294222831726,
+    0.6985294222831726,
+    0.9470000267028809
+   ]
+  }
+ },
+ "Light-06 (1)": {
+  "material": "Metal",
+  "texture": "Metal",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "Outdoor-F (4)": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "Footbridge-C-02 (1)": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "Containers (1)": {
+  "material": "Crane",
+  "texture": "Crane",
+  "colors": {
+   "_Color": [
+    0.7426470518112183,
+    0.7426470518112183,
+    0.7426470518112183,
+    1.0
+   ]
+  }
+ },
+ "Container (2)": {
+  "material": "Crane",
+  "texture": "Crane",
+  "colors": {
+   "_Color": [
+    0.7426470518112183,
+    0.7426470518112183,
+    0.7426470518112183,
+    1.0
+   ]
+  }
+ },
+ "SignPlate-L-(50-100-150)": {
+  "material": "Metal",
+  "texture": "Metal",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "StallsandUmbrellas (10)": {
+  "material": "Metal",
+  "texture": "Metal",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "Cabin-H (1)": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "Barrier-Blue (1)": {
+  "material": "Crane",
+  "texture": "Crane",
+  "colors": {
+   "_Color": [
+    0.7426470518112183,
+    0.7426470518112183,
+    0.7426470518112183,
+    1.0
+   ]
+  }
+ },
+ "OutDoor-C2-3": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "GrandStand-09": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "Outdoor-F-3": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "Building-G-07": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "Light-06 (8)": {
+  "material": "Metal",
+  "texture": "Metal",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "Tires_Barrier": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "Cabin-Ex": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "Outdoor-H-3": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "Building-Grid-02": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "Cabin-J-1": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "Building-G-09": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "Umbrellas": {
+  "material": "Metal",
+  "texture": "Metal",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "Building-G-04": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "Light-04 (5)": {
+  "material": "Metal",
+  "texture": "Metal",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "Cabin-03": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "Building-Grid-09": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "FootBridge-A-01": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "FootBridge-B-01": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "Cabin-L-01": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "Light-04 (3)": {
+  "material": "Metal",
+  "texture": "Metal",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "Light-01 (10)": {
+  "material": "Metal",
+  "texture": "Metal",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "SignPlate-L- (150)": {
+  "material": "Metal",
+  "texture": "Metal",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "Barrier-Red": {
+  "material": "Crane",
+  "texture": "Crane",
+  "colors": {
+   "_Color": [
+    0.7426470518112183,
+    0.7426470518112183,
+    0.7426470518112183,
+    1.0
+   ]
+  }
+ },
+ "Cabin-C": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "Building-Grid-11": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "Light-04 (10)": {
+  "material": "Metal",
+  "texture": "Metal",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "StallsandUmbrellas8 (3)": {
+  "material": "Metal",
+  "texture": "Metal",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "Light-04 (6)": {
+  "material": "Metal",
+  "texture": "Metal",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "Poster": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "Light-05": {
+  "material": "Metal",
+  "texture": "Metal",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "Tree-A-01": {
+  "material": "Trees-01",
+  "texture": "Trees-01",
+  "colors": {
+   "_Color": [
+    0.6764705777168274,
+    0.6764705777168274,
+    0.6764705777168274,
+    1.0
+   ]
+  }
+ },
+ "Barrier-Blue-five": {
+  "material": "Crane",
+  "texture": "Crane",
+  "colors": {
+   "_Color": [
+    0.7426470518112183,
+    0.7426470518112183,
+    0.7426470518112183,
+    1.0
+   ]
+  }
+ },
+ "Stand-09-m": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "scaffold": {
+  "material": "Metal",
+  "texture": "Metal",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "Cabin-I": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "Quimical-Five (3)": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "Tents-Four": {
+  "material": "Metal",
+  "texture": "Metal",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "Detail-03": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "Cabin-F": {
+  "material": "Glass",
+  "texture": null,
+  "colors": {
+   "_Color": [
+    0.13235294818878174,
+    0.13235294818878174,
+    0.13235294818878174,
+    0.5899999737739563
+   ]
+  }
+ },
+ "Cabin-B-1": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "Stand-05": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "Cabin-K-4": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "GrandStand-11": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "Container": {
+  "material": "Crane",
+  "texture": "Crane",
+  "colors": {
+   "_Color": [
+    0.7426470518112183,
+    0.7426470518112183,
+    0.7426470518112183,
+    1.0
+   ]
+  }
+ },
+ "Light-01 (5)": {
+  "material": "Metal",
+  "texture": "Metal",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "Building-Grid-04": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "Cabin-J-3": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "Building-G2": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "GrandStand-04": {
+  "material": "Atlas-02",
+  "texture": "Atlas-02",
+  "colors": {
+   "_Color": [
+    0.6985294222831726,
+    0.6985294222831726,
+    0.6985294222831726,
+    0.9470000267028809
+   ]
+  }
+ },
+ "StallsandUmbrellas (7)": {
+  "material": "Metal",
+  "texture": "Metal",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "Stone-02 (1)": {
+  "material": "Stone",
+  "texture": "Stone",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "Stone-01 (1)": {
+  "material": "Stone",
+  "texture": "Stone",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "Outdoor-H-1": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "OutDoor-A-1": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "Light-02 (11)": {
+  "material": "Metal",
+  "texture": "Metal",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "Poster-Grid-08": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "GrandStand-06": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "Light-06 (3)": {
+  "material": "Metal",
+  "texture": "Metal",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "Cabin-A-1": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "Light-06 (4)": {
+  "material": "Metal",
+  "texture": "Metal",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "Cabin-E": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "Light-06": {
+  "material": "Metal",
+  "texture": "Metal",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "Post-Start--03": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "Building-G-03": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "Light-01 (6)": {
+  "material": "Metal",
+  "texture": "Metal",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "Building-G-06": {
+  "material": "wins",
+  "texture": "Wins",
+  "colors": {
+   "_Color": [
+    0.375,
+    0.375,
+    0.375,
+    1.0
+   ]
+  }
+ },
+ "StallsandUmbrellas (11)": {
+  "material": "Metal",
+  "texture": "Metal",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "Light-04 (11)": {
+  "material": "Metal",
+  "texture": "Metal",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "Building-G-01": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "Light-01 (7)": {
+  "material": "Metal",
+  "texture": "Metal",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "Building-G-08": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "Quimical-Five (4)": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "GrandStand-10": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "Tree-A-02": {
+  "material": "Trees-01",
+  "texture": "Trees-01",
+  "colors": {
+   "_Color": [
+    0.6764705777168274,
+    0.6764705777168274,
+    0.6764705777168274,
+    1.0
+   ]
+  }
+ },
+ "Light-01 (11)": {
+  "material": "Metal",
+  "texture": "Metal",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "Stand-07-m": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "Light-04 (9)": {
+  "material": "Metal",
+  "texture": "Metal",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "SignPlate-L- (50)": {
+  "material": "Metal",
+  "texture": "Metal",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "Container (1)": {
+  "material": "Crane",
+  "texture": "Crane",
+  "colors": {
+   "_Color": [
+    0.7426470518112183,
+    0.7426470518112183,
+    0.7426470518112183,
+    1.0
+   ]
+  }
+ },
+ "StallsandUmbrellas (12)": {
+  "material": "Metal",
+  "texture": "Metal",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "Building-Grid-07": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "SignPlate-L-(R) (1)": {
+  "material": "Metal",
+  "texture": "Metal",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "SignPlate-L-(50-100)": {
+  "material": "Metal",
+  "texture": "Metal",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "Building-Grid-03": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "stalls (1)": {
+  "material": "Metal",
+  "texture": "Metal",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "Quimical-Five (2)": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "Building-01": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "Building-Grid-05": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "OutDoor-C2-4": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "Footbridge-C-01": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "Building-Poster": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "Tree-B-03": {
+  "material": "Trees-01",
+  "texture": "Trees-01",
+  "colors": {
+   "_Color": [
+    0.6764705777168274,
+    0.6764705777168274,
+    0.6764705777168274,
+    1.0
+   ]
+  }
+ },
+ "Cabin-B-2": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "Light-06 (7)": {
+  "material": "Metal",
+  "texture": "Metal",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "GrandStand-03": {
+  "material": "wins",
+  "texture": "Wins",
+  "colors": {
+   "_Color": [
+    0.375,
+    0.375,
+    0.375,
+    1.0
+   ]
+  }
+ },
+ "Outdoor-F (7)": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "OutDoor-C-3": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "Light-06 (6)": {
+  "material": "Metal",
+  "texture": "Metal",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "Building-Grid-08": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "Stone-03 (3)": {
+  "material": "Stone",
+  "texture": "Stone",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "Cabin-A-4": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "Light-04 (13)": {
+  "material": "Metal",
+  "texture": "Metal",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "Light-01 (8)": {
+  "material": "Metal",
+  "texture": "Metal",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "Building-Grid-10": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "Building-Grid-12": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "Stand-09": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "Barrier-02 (1)": {
+  "material": "Trackside",
+  "texture": "Trackside",
+  "colors": {
+   "_Color": [
+    0.772549033164978,
+    0.772549033164978,
+    0.772549033164978,
+    1.0
+   ]
+  }
+ },
+ "Stone-03 (4)": {
+  "material": "Stone",
+  "texture": "Stone",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "Cabin-K-2": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "OutDoor-B-3": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "Camera (2)": {
+  "material": "Metal",
+  "texture": "Metal",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "Screen-04": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "Outdoor-H-2": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "OutDoor-A (7)": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "Light-04 (12)": {
+  "material": "Metal",
+  "texture": "Metal",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "Building-G-02": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "scaffold (1)": {
+  "material": "Metal",
+  "texture": "Metal",
+  "colors": {
+   "_Color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929,
+    1.0
+   ]
+  }
+ },
+ "Outdoor-F (6)": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "Building-Grid-03 (1)": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "Building-Grid-12 (1)": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "Building-Grid-05 (1)": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "Building-01 (1)": {
+  "material": "Atlas-01",
+  "texture": "Atlas-01",
+  "colors": {
+   "_Color": [
+    0.779411792755127,
+    0.779411792755127,
+    0.779411792755127,
+    1.0
+   ]
+  }
+ },
+ "default": {
+  "material": "Default-Material",
+  "texture": null,
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ }
+}

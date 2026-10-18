@@ -445,17 +445,49 @@ RenFile(
                         keyframes: [],
                     ),
                     kind: Style(Fill(
-                        paint: Solid(
-                            color: Animated(
-                                base: Color(
-                                    r: 0.8784313725490196,
-                                    g: 0.6078431372549019,
-                                    b: 0.12156862745098039,
-                                    a: 1.0,
-                                ),
+                        paint: Gradient(Gradient(
+                            kind: Linear,
+                            start: Animated(
+                                base: DVec2(4.0, 3.0),
                                 keyframes: [],
                             ),
-                        ),
+                            end: Animated(
+                                base: DVec2(38.0, 39.0),
+                                keyframes: [],
+                            ),
+                            stops: Animated(
+                                base: GradientStops([
+                                    GradientStop(
+                                        offset: 0.0,
+                                        color: Color(
+                                            r: 0.9725490196078431,
+                                            g: 0.7254901960784313,
+                                            b: 0.19607843137254902,
+                                            a: 1.0,
+                                        ),
+                                    ),
+                                    GradientStop(
+                                        offset: 0.55,
+                                        color: Color(
+                                            r: 0.8784313725490196,
+                                            g: 0.6078431372549019,
+                                            b: 0.12156862745098039,
+                                            a: 1.0,
+                                        ),
+                                    ),
+                                    GradientStop(
+                                        offset: 1.0,
+                                        color: Color(
+                                            r: 0.7294117647058823,
+                                            g: 0.44313725490196076,
+                                            b: 0.06274509803921569,
+                                            a: 1.0,
+                                        ),
+                                    ),
+                                ]),
+                                keyframes: [],
+                            ),
+                        )),
                         rule: NonZero,
                     )),
                 )),

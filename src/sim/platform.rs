@@ -1,4 +1,3 @@
-
 use bevy_ecs::prelude::*;
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
@@ -29,8 +28,25 @@ impl BreakKind {
 #[derive(Clone, Debug, PartialEq)]
 pub enum PlatformRequest {
     SendMessage(PlatformMessage),
-    ShowInterstitial { placement: String },
-    ShowRewarded { placement: String },
+    ShowInterstitial {
+        placement: String,
+    },
+    ShowRewarded {
+        placement: String,
+    },
+    /// Post a level score to the platform leaderboard.
+    SubmitScore {
+        id: String,
+        score: f64,
+    },
+    /// Open the platform's own leaderboard UI.
+    ShowLeaderboard {
+        id: String,
+    },
+    /// Buy a shop item (coin packs, "no ads").
+    Purchase {
+        id: String,
+    },
 }
 
 #[derive(Resource, Clone, Debug, Default)]
@@ -40,6 +56,10 @@ pub struct Platform {
     pending: Option<BreakKind>,
     reward_granted: bool,
     requests: Vec<PlatformRequest>,
+    /// Shop item the platform reported as purchased and not yet consumed.
+    purchase_granted: Option<String>,
+    /// True once a leaderboard submit succeeded, cleared when read.
+    score_posted: bool,
 }
 
 impl Platform {
@@ -110,6 +130,44 @@ impl Platform {
 
     pub fn note_reward_granted(&mut self) {
         self.reward_granted = true;
+    }
+
+    /// Queue a leaderboard score post.
+    pub fn submit_score(&mut self, id: &str, score: f64) {
+        self.requests.push(PlatformRequest::SubmitScore {
+            id: id.to_string(),
+            score,
+        });
+    }
+
+    /// Queue the platform's leaderboard popup.
+    pub fn show_leaderboard(&mut self, id: &str) {
+        self.requests
+            .push(PlatformRequest::ShowLeaderboard { id: id.to_string() });
+    }
+
+    /// Queue a shop purchase.
+    pub fn purchase(&mut self, id: &str) {
+        self.requests
+            .push(PlatformRequest::Purchase { id: id.to_string() });
+    }
+
+    /// Record a purchase reported by the platform.
+    pub fn note_purchase(&mut self, id: &str) {
+        self.purchase_granted = Some(id.to_string());
+    }
+
+    /// Take the purchased item id, if any arrived since the last call.
+    pub fn take_purchase(&mut self) -> Option<String> {
+        self.purchase_granted.take()
+    }
+
+    pub fn note_score_posted(&mut self) {
+        self.score_posted = true;
+    }
+
+    pub fn take_score_posted(&mut self) -> bool {
+        std::mem::take(&mut self.score_posted)
     }
 
     pub fn take_requests(&mut self) -> Vec<PlatformRequest> {

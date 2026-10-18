@@ -1,0 +1,5358 @@
+{
+ "BMW_M3": [
+  {
+   "go": "Caliper FL",
+   "mesh": 271,
+   "material": "BM_E30M3-rimcaliper",
+   "texture": "BM_E30M3-rimcaliper-silver_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.7452830076217651,
+     0.7452830076217651,
+     0.7452830076217651,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "body",
+   "mesh": 242,
+   "material": "BM_E30M3-carpaint",
+   "texture": "BM_E30M3-carpaint_Mstripe",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.8207547068595886,
+     0.8207547068595886,
+     0.8207547068595886,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "wing",
+   "mesh": 376,
+   "material": "BM_E30M3-carpaint",
+   "texture": "BM_E30M3-carpaint_Mstripe",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.8207547068595886,
+     0.8207547068595886,
+     0.8207547068595886,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "1_Collider",
+   "mesh": 396
+  },
+  {
+   "go": "Caliper RR",
+   "mesh": 364,
+   "material": "BM_E30M3-rimcaliper",
+   "texture": "BM_E30M3-rimcaliper-silver_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.7452830076217651,
+     0.7452830076217651,
+     0.7452830076217651,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Caliper RL",
+   "mesh": 419,
+   "material": "BM_E30M3-rimcaliper",
+   "texture": "BM_E30M3-rimcaliper-silver_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.7452830076217651,
+     0.7452830076217651,
+     0.7452830076217651,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "2_Collider",
+   "mesh": 422
+  },
+  {
+   "go": "3_Collider",
+   "mesh": 403
+  },
+  {
+   "go": "interior",
+   "mesh": 411,
+   "material": "BM_E30M3-interior",
+   "texture": "BM_E30M3-interior_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.801886796951294,
+     0.801886796951294,
+     0.801886796951294,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Caliper FR",
+   "mesh": 286,
+   "material": "BM_E30M3-rimcaliper",
+   "texture": "BM_E30M3-rimcaliper-silver_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.7452830076217651,
+     0.7452830076217651,
+     0.7452830076217651,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "dial rpm",
+   "mesh": 429,
+   "material": "BM_E30M3-interior",
+   "texture": "BM_E30M3-interior_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.801886796951294,
+     0.801886796951294,
+     0.801886796951294,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "dial speed",
+   "mesh": 268,
+   "material": "BM_E30M3-interior",
+   "texture": "BM_E30M3-interior_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.801886796951294,
+     0.801886796951294,
+     0.801886796951294,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "steering wheel",
+   "mesh": 384,
+   "material": "BM_E30M3-interior",
+   "texture": "BM_E30M3-interior_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.801886796951294,
+     0.801886796951294,
+     0.801886796951294,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "W FL",
+   "mesh": 416,
+   "material": "BM_E30M3-tire",
+   "texture": "GR3D-tire-disc-D_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.801886796951294,
+     0.801886796951294,
+     0.801886796951294,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "W FR",
+   "mesh": 436,
+   "material": "BM_E30M3-tire",
+   "texture": "GR3D-tire-disc-D_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.801886796951294,
+     0.801886796951294,
+     0.801886796951294,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "W RR",
+   "mesh": 361,
+   "material": "BM_E30M3-tire",
+   "texture": "GR3D-tire-disc-D_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.801886796951294,
+     0.801886796951294,
+     0.801886796951294,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "W RL",
+   "mesh": 279,
+   "material": "BM_E30M3-tire",
+   "texture": "GR3D-tire-disc-D_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.801886796951294,
+     0.801886796951294,
+     0.801886796951294,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Caliper FL",
+   "mesh": 271,
+   "material": "BM_E30M3-rimcaliper",
+   "texture": "BM_E30M3-rimcaliper-silver_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.7452830076217651,
+     0.7452830076217651,
+     0.7452830076217651,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "body",
+   "mesh": 242,
+   "material": "BM_E30M3-carpaint",
+   "texture": "BM_E30M3-carpaint_Mstripe",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.8207547068595886,
+     0.8207547068595886,
+     0.8207547068595886,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "wing",
+   "mesh": 376,
+   "material": "BM_E30M3-carpaint",
+   "texture": "BM_E30M3-carpaint_Mstripe",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.8207547068595886,
+     0.8207547068595886,
+     0.8207547068595886,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "1_Collider",
+   "mesh": 396
+  },
+  {
+   "go": "Caliper RR",
+   "mesh": 364,
+   "material": "BM_E30M3-rimcaliper",
+   "texture": "BM_E30M3-rimcaliper-silver_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.7452830076217651,
+     0.7452830076217651,
+     0.7452830076217651,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Caliper RL",
+   "mesh": 419,
+   "material": "BM_E30M3-rimcaliper",
+   "texture": "BM_E30M3-rimcaliper-silver_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.7452830076217651,
+     0.7452830076217651,
+     0.7452830076217651,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "2_Collider",
+   "mesh": 422
+  },
+  {
+   "go": "3_Collider",
+   "mesh": 403
+  },
+  {
+   "go": "interior",
+   "mesh": 411,
+   "material": "BM_E30M3-interior",
+   "texture": "BM_E30M3-interior_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.801886796951294,
+     0.801886796951294,
+     0.801886796951294,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Caliper FR",
+   "mesh": 286,
+   "material": "BM_E30M3-rimcaliper",
+   "texture": "BM_E30M3-rimcaliper-silver_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.7452830076217651,
+     0.7452830076217651,
+     0.7452830076217651,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "dial rpm",
+   "mesh": 429,
+   "material": "BM_E30M3-interior",
+   "texture": "BM_E30M3-interior_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.801886796951294,
+     0.801886796951294,
+     0.801886796951294,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "dial speed",
+   "mesh": 268,
+   "material": "BM_E30M3-interior",
+   "texture": "BM_E30M3-interior_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.801886796951294,
+     0.801886796951294,
+     0.801886796951294,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "steering wheel",
+   "mesh": 384,
+   "material": "BM_E30M3-interior",
+   "texture": "BM_E30M3-interior_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.801886796951294,
+     0.801886796951294,
+     0.801886796951294,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "W FL",
+   "mesh": 416,
+   "material": "BM_E30M3-tire",
+   "texture": "GR3D-tire-disc-D_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.801886796951294,
+     0.801886796951294,
+     0.801886796951294,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "W FR",
+   "mesh": 436,
+   "material": "BM_E30M3-tire",
+   "texture": "GR3D-tire-disc-D_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.801886796951294,
+     0.801886796951294,
+     0.801886796951294,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "W RR",
+   "mesh": 361,
+   "material": "BM_E30M3-tire",
+   "texture": "GR3D-tire-disc-D_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.801886796951294,
+     0.801886796951294,
+     0.801886796951294,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "W RL",
+   "mesh": 279,
+   "material": "BM_E30M3-tire",
+   "texture": "GR3D-tire-disc-D_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.801886796951294,
+     0.801886796951294,
+     0.801886796951294,
+     1.0
+    ]
+   }
+  }
+ ],
+ "Porsche_911": [
+  {
+   "go": "_Collider",
+   "mesh": 425
+  },
+  {
+   "go": "tire rl",
+   "mesh": 275,
+   "material": "POR_997GT3RS-tire",
+   "texture": "GR3D-tire-disc-C_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.801886796951294,
+     0.801886796951294,
+     0.801886796951294,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "tire fr",
+   "mesh": 290,
+   "material": "POR_997GT3RS-tire",
+   "texture": "GR3D-tire-disc-C_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.801886796951294,
+     0.801886796951294,
+     0.801886796951294,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "tire rr",
+   "mesh": 236,
+   "material": "POR_997GT3RS-tire",
+   "texture": "GR3D-tire-disc-C_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.801886796951294,
+     0.801886796951294,
+     0.801886796951294,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "tire fl",
+   "mesh": 374,
+   "material": "POR_997GT3RS-tire",
+   "texture": "GR3D-tire-disc-C_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.801886796951294,
+     0.801886796951294,
+     0.801886796951294,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "dial rpm",
+   "mesh": 428,
+   "material": "POR_997GT3RS-interior",
+   "texture": "POR_997GT3RS-interior_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.801886796951294,
+     0.801886796951294,
+     0.801886796951294,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "caliper rl",
+   "mesh": 248,
+   "material": "POR_997GT3RS-rimcaliper",
+   "texture": "POR_997GT3RS-rimcaliper-black_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     1.0,
+     1.0,
+     1.0,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "caliper rr",
+   "mesh": 440,
+   "material": "POR_997GT3RS-rimcaliper",
+   "texture": "POR_997GT3RS-rimcaliper-black_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     1.0,
+     1.0,
+     1.0,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "body",
+   "mesh": 241,
+   "material": "POR_997GT3RS-carpaint",
+   "texture": "POR_997GT3RS-carpaint_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.6886792182922363,
+     0.29216694831848145,
+     0.0,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "interior",
+   "mesh": 410,
+   "material": "POR_997GT3RS-interior",
+   "texture": "POR_997GT3RS-interior_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.801886796951294,
+     0.801886796951294,
+     0.801886796951294,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "roll cage",
+   "mesh": 430,
+   "material": "POR_997GT3RS-carpaint",
+   "texture": "POR_997GT3RS-carpaint_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.6886792182922363,
+     0.29216694831848145,
+     0.0,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "caliper fl",
+   "mesh": 282,
+   "material": "POR_997GT3RS-rimcaliper",
+   "texture": "POR_997GT3RS-rimcaliper-black_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     1.0,
+     1.0,
+     1.0,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "caliper fr",
+   "mesh": 233,
+   "material": "POR_997GT3RS-rimcaliper",
+   "texture": "POR_997GT3RS-rimcaliper-black_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     1.0,
+     1.0,
+     1.0,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "dial speed",
+   "mesh": 267,
+   "material": "POR_997GT3RS-interior",
+   "texture": "POR_997GT3RS-interior_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.801886796951294,
+     0.801886796951294,
+     0.801886796951294,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "_Collider",
+   "mesh": 404
+  },
+  {
+   "go": "steering wheel",
+   "mesh": 383,
+   "material": "POR_997GT3RS-interior",
+   "texture": "POR_997GT3RS-interior_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.801886796951294,
+     0.801886796951294,
+     0.801886796951294,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "_Collider",
+   "mesh": 399
+  },
+  {
+   "go": "_Collider",
+   "mesh": 425
+  },
+  {
+   "go": "tire rl",
+   "mesh": 275,
+   "material": "POR_997GT3RS-tire",
+   "texture": "GR3D-tire-disc-C_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.801886796951294,
+     0.801886796951294,
+     0.801886796951294,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "tire fr",
+   "mesh": 290,
+   "material": "POR_997GT3RS-tire",
+   "texture": "GR3D-tire-disc-C_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.801886796951294,
+     0.801886796951294,
+     0.801886796951294,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "tire rr",
+   "mesh": 236,
+   "material": "POR_997GT3RS-tire",
+   "texture": "GR3D-tire-disc-C_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.801886796951294,
+     0.801886796951294,
+     0.801886796951294,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "tire fl",
+   "mesh": 374,
+   "material": "POR_997GT3RS-tire",
+   "texture": "GR3D-tire-disc-C_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.801886796951294,
+     0.801886796951294,
+     0.801886796951294,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "dial rpm",
+   "mesh": 428,
+   "material": "POR_997GT3RS-interior",
+   "texture": "POR_997GT3RS-interior_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.801886796951294,
+     0.801886796951294,
+     0.801886796951294,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "caliper rl",
+   "mesh": 248,
+   "material": "POR_997GT3RS-rimcaliper",
+   "texture": "POR_997GT3RS-rimcaliper-black_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     1.0,
+     1.0,
+     1.0,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "caliper rr",
+   "mesh": 440,
+   "material": "POR_997GT3RS-rimcaliper",
+   "texture": "POR_997GT3RS-rimcaliper-black_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     1.0,
+     1.0,
+     1.0,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "body",
+   "mesh": 241,
+   "material": "POR_997GT3RS-carpaint",
+   "texture": "POR_997GT3RS-carpaint_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.6886792182922363,
+     0.29216694831848145,
+     0.0,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "interior",
+   "mesh": 410,
+   "material": "POR_997GT3RS-interior",
+   "texture": "POR_997GT3RS-interior_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.801886796951294,
+     0.801886796951294,
+     0.801886796951294,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "roll cage",
+   "mesh": 430,
+   "material": "POR_997GT3RS-carpaint",
+   "texture": "POR_997GT3RS-carpaint_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.6886792182922363,
+     0.29216694831848145,
+     0.0,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "caliper fl",
+   "mesh": 282,
+   "material": "POR_997GT3RS-rimcaliper",
+   "texture": "POR_997GT3RS-rimcaliper-black_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     1.0,
+     1.0,
+     1.0,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "caliper fr",
+   "mesh": 233,
+   "material": "POR_997GT3RS-rimcaliper",
+   "texture": "POR_997GT3RS-rimcaliper-black_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     1.0,
+     1.0,
+     1.0,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "dial speed",
+   "mesh": 267,
+   "material": "POR_997GT3RS-interior",
+   "texture": "POR_997GT3RS-interior_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.801886796951294,
+     0.801886796951294,
+     0.801886796951294,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "_Collider",
+   "mesh": 404
+  },
+  {
+   "go": "steering wheel",
+   "mesh": 383,
+   "material": "POR_997GT3RS-interior",
+   "texture": "POR_997GT3RS-interior_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.801886796951294,
+     0.801886796951294,
+     0.801886796951294,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "_Collider",
+   "mesh": 399
+  }
+ ],
+ "McLaren_MP4": [
+  {
+   "go": "Whl HD RR",
+   "mesh": 320,
+   "material": "122313SSPC-HD-wheeltyre",
+   "texture": "wheelstyle_color1",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.8805969953536987,
+     0.8805969953536987,
+     0.8805969953536987,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Whl HD FR",
+   "mesh": 330,
+   "material": "122313SSPC-HD-wheeltyre",
+   "texture": "wheelstyle_color1",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.8805969953536987,
+     0.8805969953536987,
+     0.8805969953536987,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Whl HD FL",
+   "mesh": 348,
+   "material": "122313SSPC-HD-wheeltyre",
+   "texture": "wheelstyle_color1",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.8805969953536987,
+     0.8805969953536987,
+     0.8805969953536987,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Whl HD RL",
+   "mesh": 340,
+   "material": "122313SSPC-HD-wheeltyre",
+   "texture": "wheelstyle_color1",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.8805969953536987,
+     0.8805969953536987,
+     0.8805969953536987,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "steering wheel",
+   "mesh": 304,
+   "material": "122313SSPC-interior",
+   "texture": "122313SSPC_interior ",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.9701492786407471,
+     0.9701492786407471,
+     0.9701492786407471,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "interior",
+   "mesh": 297,
+   "material": "122313SSPC-interior",
+   "texture": "122313SSPC_interior ",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.9701492786407471,
+     0.9701492786407471,
+     0.9701492786407471,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Caliper RL",
+   "mesh": 335,
+   "material": "122313SSPC-HD-wheeltyre",
+   "texture": "wheelstyle_color1",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.8805969953536987,
+     0.8805969953536987,
+     0.8805969953536987,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Caliper FR",
+   "mesh": 325,
+   "material": "122313SSPC-HD-wheeltyre",
+   "texture": "wheelstyle_color1",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.8805969953536987,
+     0.8805969953536987,
+     0.8805969953536987,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Caliper FL",
+   "mesh": 344,
+   "material": "122313SSPC-HD-wheeltyre",
+   "texture": "wheelstyle_color1",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.8805969953536987,
+     0.8805969953536987,
+     0.8805969953536987,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "body",
+   "mesh": 309,
+   "material": "122313SSPC-bodycolor",
+   "texture": null,
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.9372549057006836,
+     0.42352941632270813,
+     0.0,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Caliper RR",
+   "mesh": 315,
+   "material": "122313SSPC-HD-wheeltyre",
+   "texture": "wheelstyle_color1",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.8805969953536987,
+     0.8805969953536987,
+     0.8805969953536987,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "_Collider",
+   "mesh": 292
+  },
+  {
+   "go": "Whl HD RR",
+   "mesh": 320,
+   "material": "122313SSPC-HD-wheeltyre",
+   "texture": "wheelstyle_color1",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.8805969953536987,
+     0.8805969953536987,
+     0.8805969953536987,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Whl HD FR",
+   "mesh": 330,
+   "material": "122313SSPC-HD-wheeltyre",
+   "texture": "wheelstyle_color1",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.8805969953536987,
+     0.8805969953536987,
+     0.8805969953536987,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Whl HD FL",
+   "mesh": 348,
+   "material": "122313SSPC-HD-wheeltyre",
+   "texture": "wheelstyle_color1",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.8805969953536987,
+     0.8805969953536987,
+     0.8805969953536987,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Whl HD RL",
+   "mesh": 340,
+   "material": "122313SSPC-HD-wheeltyre",
+   "texture": "wheelstyle_color1",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.8805969953536987,
+     0.8805969953536987,
+     0.8805969953536987,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "steering wheel",
+   "mesh": 304,
+   "material": "122313SSPC-interior",
+   "texture": "122313SSPC_interior ",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.9701492786407471,
+     0.9701492786407471,
+     0.9701492786407471,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "interior",
+   "mesh": 297,
+   "material": "122313SSPC-interior",
+   "texture": "122313SSPC_interior ",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.9701492786407471,
+     0.9701492786407471,
+     0.9701492786407471,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Caliper RL",
+   "mesh": 335,
+   "material": "122313SSPC-HD-wheeltyre",
+   "texture": "wheelstyle_color1",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.8805969953536987,
+     0.8805969953536987,
+     0.8805969953536987,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Caliper FR",
+   "mesh": 325,
+   "material": "122313SSPC-HD-wheeltyre",
+   "texture": "wheelstyle_color1",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.8805969953536987,
+     0.8805969953536987,
+     0.8805969953536987,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Caliper FL",
+   "mesh": 344,
+   "material": "122313SSPC-HD-wheeltyre",
+   "texture": "wheelstyle_color1",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.8805969953536987,
+     0.8805969953536987,
+     0.8805969953536987,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "body",
+   "mesh": 309,
+   "material": "122313SSPC-bodycolor",
+   "texture": null,
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.9372549057006836,
+     0.42352941632270813,
+     0.0,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Caliper RR",
+   "mesh": 315,
+   "material": "122313SSPC-HD-wheeltyre",
+   "texture": "wheelstyle_color1",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.8805969953536987,
+     0.8805969953536987,
+     0.8805969953536987,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "_Collider",
+   "mesh": 292
+  }
+ ],
+ "LamborghiniReventon": [
+  {
+   "go": "steering_wheel",
+   "mesh": 356,
+   "material": "Lam_Rvntn_interior",
+   "texture": "Lam_Rvntn-interior_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.7735849022865295,
+     0.7735849022865295,
+     0.7735849022865295,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "caliper_FR",
+   "mesh": 266,
+   "material": "Lam_Rvntn_rimcaliper",
+   "texture": "Lam_Rvntn-rimcaliper_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.800000011920929,
+     0.800000011920929,
+     0.800000011920929,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "caliper_RR",
+   "mesh": 431,
+   "material": "Lam_Rvntn_rimcaliper",
+   "texture": "Lam_Rvntn-rimcaliper_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.800000011920929,
+     0.800000011920929,
+     0.800000011920929,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "body",
+   "mesh": 240,
+   "material": "Lam_Rvntn_carpaint",
+   "texture": "Lam_Rvntn-carpaint_ao",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.1320754885673523,
+     0.1320754885673523,
+     0.1320754885673523,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "caliper_FL",
+   "mesh": 261,
+   "material": "Lam_Rvntn_rimcaliper",
+   "texture": "Lam_Rvntn-rimcaliper_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.800000011920929,
+     0.800000011920929,
+     0.800000011920929,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "caliper_RL",
+   "mesh": 439,
+   "material": "Lam_Rvntn_rimcaliper",
+   "texture": "Lam_Rvntn-rimcaliper_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.800000011920929,
+     0.800000011920929,
+     0.800000011920929,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Signal_left",
+   "mesh": 249,
+   "material": "Lam_Rvntn_lights",
+   "texture": null,
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Headlights",
+   "mesh": 417,
+   "material": "Lam_Rvntn_lights",
+   "texture": null,
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Brake",
+   "mesh": 395,
+   "material": "Lam_Rvntn_lights",
+   "texture": null,
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Signal_right",
+   "mesh": 388,
+   "material": "Lam_Rvntn_lights",
+   "texture": null,
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Reverse",
+   "mesh": 269,
+   "material": "Lam_Rvntn_lights",
+   "texture": null,
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "interior",
+   "mesh": 409,
+   "material": "Lam_Rvntn_interior",
+   "texture": "Lam_Rvntn-interior_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.7735849022865295,
+     0.7735849022865295,
+     0.7735849022865295,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "dial_rpm",
+   "mesh": 259,
+   "material": "Lam_Rvntn_interior",
+   "texture": "Lam_Rvntn-interior_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.7735849022865295,
+     0.7735849022865295,
+     0.7735849022865295,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Tire_RL",
+   "mesh": 438,
+   "material": "Lam_Rvntn_tire",
+   "texture": "GR3D-tire-disc-E_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     1.0,
+     1.0,
+     1.0,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Tire_FL",
+   "mesh": 368,
+   "material": "Lam_Rvntn_tire",
+   "texture": "GR3D-tire-disc-E_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     1.0,
+     1.0,
+     1.0,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Tire_RR",
+   "mesh": 427,
+   "material": "Lam_Rvntn_tire",
+   "texture": "GR3D-tire-disc-E_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     1.0,
+     1.0,
+     1.0,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Tire_FR",
+   "mesh": 281,
+   "material": "Lam_Rvntn_tire",
+   "texture": "GR3D-tire-disc-E_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     1.0,
+     1.0,
+     1.0,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "dial_speed",
+   "mesh": 257,
+   "material": "Lam_Rvntn_interior",
+   "texture": "Lam_Rvntn-interior_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.7735849022865295,
+     0.7735849022865295,
+     0.7735849022865295,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "_Collider",
+   "mesh": 263
+  },
+  {
+   "go": "steering_wheel",
+   "mesh": 356,
+   "material": "Lam_Rvntn_interior",
+   "texture": "Lam_Rvntn-interior_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.7735849022865295,
+     0.7735849022865295,
+     0.7735849022865295,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "caliper_FR",
+   "mesh": 266,
+   "material": "Lam_Rvntn_rimcaliper",
+   "texture": "Lam_Rvntn-rimcaliper_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.800000011920929,
+     0.800000011920929,
+     0.800000011920929,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "caliper_RR",
+   "mesh": 431,
+   "material": "Lam_Rvntn_rimcaliper",
+   "texture": "Lam_Rvntn-rimcaliper_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.800000011920929,
+     0.800000011920929,
+     0.800000011920929,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "body",
+   "mesh": 240,
+   "material": "Lam_Rvntn_carpaint",
+   "texture": "Lam_Rvntn-carpaint_ao",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.1320754885673523,
+     0.1320754885673523,
+     0.1320754885673523,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "caliper_FL",
+   "mesh": 261,
+   "material": "Lam_Rvntn_rimcaliper",
+   "texture": "Lam_Rvntn-rimcaliper_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.800000011920929,
+     0.800000011920929,
+     0.800000011920929,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "caliper_RL",
+   "mesh": 439,
+   "material": "Lam_Rvntn_rimcaliper",
+   "texture": "Lam_Rvntn-rimcaliper_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.800000011920929,
+     0.800000011920929,
+     0.800000011920929,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Signal_left",
+   "mesh": 249,
+   "material": "Lam_Rvntn_lights",
+   "texture": null,
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Headlights",
+   "mesh": 417,
+   "material": "Lam_Rvntn_lights",
+   "texture": null,
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Brake",
+   "mesh": 395,
+   "material": "Lam_Rvntn_lights",
+   "texture": null,
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Signal_right",
+   "mesh": 388,
+   "material": "Lam_Rvntn_lights",
+   "texture": null,
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Reverse",
+   "mesh": 269,
+   "material": "Lam_Rvntn_lights",
+   "texture": null,
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "interior",
+   "mesh": 409,
+   "material": "Lam_Rvntn_interior",
+   "texture": "Lam_Rvntn-interior_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.7735849022865295,
+     0.7735849022865295,
+     0.7735849022865295,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "dial_rpm",
+   "mesh": 259,
+   "material": "Lam_Rvntn_interior",
+   "texture": "Lam_Rvntn-interior_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.7735849022865295,
+     0.7735849022865295,
+     0.7735849022865295,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Tire_RL",
+   "mesh": 438,
+   "material": "Lam_Rvntn_tire",
+   "texture": "GR3D-tire-disc-E_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     1.0,
+     1.0,
+     1.0,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Tire_FL",
+   "mesh": 368,
+   "material": "Lam_Rvntn_tire",
+   "texture": "GR3D-tire-disc-E_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     1.0,
+     1.0,
+     1.0,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Tire_RR",
+   "mesh": 427,
+   "material": "Lam_Rvntn_tire",
+   "texture": "GR3D-tire-disc-E_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     1.0,
+     1.0,
+     1.0,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Tire_FR",
+   "mesh": 281,
+   "material": "Lam_Rvntn_tire",
+   "texture": "GR3D-tire-disc-E_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     1.0,
+     1.0,
+     1.0,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "dial_speed",
+   "mesh": 257,
+   "material": "Lam_Rvntn_interior",
+   "texture": "Lam_Rvntn-interior_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.7735849022865295,
+     0.7735849022865295,
+     0.7735849022865295,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "_Collider",
+   "mesh": 263
+  }
+ ],
+ "Ford_F150_Raptor": [
+  {
+   "go": "Tire FR",
+   "mesh": 434,
+   "material": "FOR_RPTR-tire",
+   "texture": "GR3D-tire-disc-offroad-a_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.7735849022865295,
+     0.7735849022865295,
+     0.7735849022865295,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Tire RL",
+   "mesh": 277,
+   "material": "FOR_RPTR-tire",
+   "texture": "GR3D-tire-disc-offroad-a_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.7735849022865295,
+     0.7735849022865295,
+     0.7735849022865295,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Tire RR",
+   "mesh": 359,
+   "material": "FOR_RPTR-tire",
+   "texture": "GR3D-tire-disc-offroad-a_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.7735849022865295,
+     0.7735849022865295,
+     0.7735849022865295,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Tire FL",
+   "mesh": 415,
+   "material": "FOR_RPTR-tire",
+   "texture": "GR3D-tire-disc-offroad-a_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.7735849022865295,
+     0.7735849022865295,
+     0.7735849022865295,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "_Collider",
+   "mesh": 405
+  },
+  {
+   "go": "bumper front",
+   "mesh": 262,
+   "material": "FOR_RPTR-parts-metal",
+   "texture": "FOR_RPTR-parts-metal_ao",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.0754716768860817,
+     0.0754716768860817,
+     0.0754716768860817,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "suspension",
+   "mesh": 288,
+   "material": "FOR_RPTR-parts-metal",
+   "texture": "FOR_RPTR-parts-metal_ao",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.0754716768860817,
+     0.0754716768860817,
+     0.0754716768860817,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "tow hitch",
+   "mesh": 421,
+   "material": "FOR_RPTR-parts-metal",
+   "texture": "FOR_RPTR-parts-metal_ao",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.0754716768860817,
+     0.0754716768860817,
+     0.0754716768860817,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "skidplate",
+   "mesh": 363,
+   "material": "FOR_RPTR-parts-metal",
+   "texture": "FOR_RPTR-parts-metal_ao",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.0754716768860817,
+     0.0754716768860817,
+     0.0754716768860817,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "rpm dial",
+   "mesh": 252,
+   "material": "FOR_RPTR-interior",
+   "texture": "FOR_RPTR-interior_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.7735849022865295,
+     0.7735849022865295,
+     0.7735849022865295,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "interior",
+   "mesh": 407,
+   "material": "FOR_RPTR-interior",
+   "texture": "FOR_RPTR-interior_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.7735849022865295,
+     0.7735849022865295,
+     0.7735849022865295,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "tire carrier",
+   "mesh": 289,
+   "material": "FOR_RPTR-parts-metal",
+   "texture": "FOR_RPTR-parts-metal_ao",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.0754716768860817,
+     0.0754716768860817,
+     0.0754716768860817,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "speed dial",
+   "mesh": 255,
+   "material": "FOR_RPTR-interior",
+   "texture": "FOR_RPTR-interior_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.7735849022865295,
+     0.7735849022865295,
+     0.7735849022865295,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "offroad lights 4 wide",
+   "mesh": 432,
+   "material": "FOR_RPTR-parts-metal",
+   "texture": "FOR_RPTR-parts-metal_ao",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.0754716768860817,
+     0.0754716768860817,
+     0.0754716768860817,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "bull bars",
+   "mesh": 285,
+   "material": "FOR_RPTR-parts-metal",
+   "texture": "FOR_RPTR-parts-metal_ao",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.0754716768860817,
+     0.0754716768860817,
+     0.0754716768860817,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "step bars",
+   "mesh": 413,
+   "material": "FOR_RPTR-parts-metal",
+   "texture": "FOR_RPTR-parts-metal_ao",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.0754716768860817,
+     0.0754716768860817,
+     0.0754716768860817,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Caliper FL ",
+   "mesh": 283,
+   "material": "FOR_RPTR-rimcaliper",
+   "texture": "FOR_RPTR-rimcaliper_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.7735849022865295,
+     0.7735849022865295,
+     0.7735849022865295,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "winch",
+   "mesh": 362,
+   "material": "FOR_RPTR-parts",
+   "texture": "FOR_RPTR-parts_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.7830188870429993,
+     0.7830188870429993,
+     0.7830188870429993,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "tow hooks",
+   "mesh": 386,
+   "material": "FOR_RPTR-parts-metal",
+   "texture": "FOR_RPTR-parts-metal_ao",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.0754716768860817,
+     0.0754716768860817,
+     0.0754716768860817,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Caliper RL ",
+   "mesh": 372,
+   "material": "FOR_RPTR-rimcaliper",
+   "texture": "FOR_RPTR-rimcaliper_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.7735849022865295,
+     0.7735849022865295,
+     0.7735849022865295,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "offroad lights 4 narrow",
+   "mesh": 389,
+   "material": "FOR_RPTR-parts-metal",
+   "texture": "FOR_RPTR-parts-metal_ao",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.0754716768860817,
+     0.0754716768860817,
+     0.0754716768860817,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Caliper FR ",
+   "mesh": 244,
+   "material": "FOR_RPTR-rimcaliper",
+   "texture": "FOR_RPTR-rimcaliper_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.7735849022865295,
+     0.7735849022865295,
+     0.7735849022865295,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "light bar ",
+   "mesh": 274,
+   "material": "FOR_RPTR-parts-metal",
+   "texture": "FOR_RPTR-parts-metal_ao",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.0754716768860817,
+     0.0754716768860817,
+     0.0754716768860817,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "spare tire",
+   "mesh": 378,
+   "material": "FOR_RPTR-tire",
+   "texture": "GR3D-tire-disc-offroad-a_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.7735849022865295,
+     0.7735849022865295,
+     0.7735849022865295,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "body",
+   "mesh": 238,
+   "material": "FOR_RPTR-carpaint",
+   "texture": null,
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.5283018946647644,
+     0.2575368583202362,
+     0.0,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "steering wheel",
+   "mesh": 381,
+   "material": "FOR_RPTR-interior",
+   "texture": "FOR_RPTR-interior_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.7735849022865295,
+     0.7735849022865295,
+     0.7735849022865295,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Caliper RR ",
+   "mesh": 392,
+   "material": "FOR_RPTR-rimcaliper",
+   "texture": "FOR_RPTR-rimcaliper_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.7735849022865295,
+     0.7735849022865295,
+     0.7735849022865295,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "roll bars",
+   "mesh": 247,
+   "material": "FOR_RPTR-parts-metal",
+   "texture": "FOR_RPTR-parts-metal_ao",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.0754716768860817,
+     0.0754716768860817,
+     0.0754716768860817,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "roof rack",
+   "mesh": 418,
+   "material": "FOR_RPTR-parts-metal",
+   "texture": "FOR_RPTR-parts-metal_ao",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.0754716768860817,
+     0.0754716768860817,
+     0.0754716768860817,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "tail gate",
+   "mesh": 264,
+   "material": "FOR_RPTR-carpaint",
+   "texture": null,
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.5283018946647644,
+     0.2575368583202362,
+     0.0,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "bumper rear",
+   "mesh": 265,
+   "material": "FOR_RPTR-parts-metal",
+   "texture": "FOR_RPTR-parts-metal_ao",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.0754716768860817,
+     0.0754716768860817,
+     0.0754716768860817,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "_Collider",
+   "mesh": 426
+  },
+  {
+   "go": "signal left",
+   "mesh": 246,
+   "material": "FOR_RPTR-lightemissive",
+   "texture": null,
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "headlights",
+   "mesh": 437,
+   "material": "FOR_RPTR-lightemissive",
+   "texture": null,
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "signal right",
+   "mesh": 394,
+   "material": "FOR_RPTR-lightemissive",
+   "texture": null,
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "light bar",
+   "mesh": 370,
+   "material": "FOR_RPTR-lightemissive",
+   "texture": null,
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "aux lights",
+   "mesh": 258,
+   "material": "FOR_RPTR-lightemissive",
+   "texture": null,
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "reverse light",
+   "mesh": 280,
+   "material": "FOR_RPTR-lightemissive",
+   "texture": null,
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "offroad lights top",
+   "mesh": 377,
+   "material": "FOR_RPTR-lightemissive",
+   "texture": null,
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "bumper lights",
+   "mesh": 420,
+   "material": "FOR_RPTR-lightemissive",
+   "texture": null,
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "offroad lights bumper",
+   "mesh": 412,
+   "material": "FOR_RPTR-lightemissive",
+   "texture": null,
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "brakelights",
+   "mesh": 385,
+   "material": "FOR_RPTR-lightemissive",
+   "texture": null,
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "_Collider",
+   "mesh": 387
+  },
+  {
+   "go": "_Collider",
+   "mesh": 400
+  },
+  {
+   "go": "Tire FR",
+   "mesh": 434,
+   "material": "FOR_RPTR-tire",
+   "texture": "GR3D-tire-disc-offroad-a_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.7735849022865295,
+     0.7735849022865295,
+     0.7735849022865295,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Tire RL",
+   "mesh": 277,
+   "material": "FOR_RPTR-tire",
+   "texture": "GR3D-tire-disc-offroad-a_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.7735849022865295,
+     0.7735849022865295,
+     0.7735849022865295,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Tire RR",
+   "mesh": 359,
+   "material": "FOR_RPTR-tire",
+   "texture": "GR3D-tire-disc-offroad-a_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.7735849022865295,
+     0.7735849022865295,
+     0.7735849022865295,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Tire FL",
+   "mesh": 415,
+   "material": "FOR_RPTR-tire",
+   "texture": "GR3D-tire-disc-offroad-a_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.7735849022865295,
+     0.7735849022865295,
+     0.7735849022865295,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "_Collider",
+   "mesh": 405
+  },
+  {
+   "go": "bumper front",
+   "mesh": 262,
+   "material": "FOR_RPTR-parts-metal",
+   "texture": "FOR_RPTR-parts-metal_ao",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.0754716768860817,
+     0.0754716768860817,
+     0.0754716768860817,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "suspension",
+   "mesh": 288,
+   "material": "FOR_RPTR-parts-metal",
+   "texture": "FOR_RPTR-parts-metal_ao",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.0754716768860817,
+     0.0754716768860817,
+     0.0754716768860817,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "tow hitch",
+   "mesh": 421,
+   "material": "FOR_RPTR-parts-metal",
+   "texture": "FOR_RPTR-parts-metal_ao",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.0754716768860817,
+     0.0754716768860817,
+     0.0754716768860817,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "skidplate",
+   "mesh": 363,
+   "material": "FOR_RPTR-parts-metal",
+   "texture": "FOR_RPTR-parts-metal_ao",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.0754716768860817,
+     0.0754716768860817,
+     0.0754716768860817,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "rpm dial",
+   "mesh": 252,
+   "material": "FOR_RPTR-interior",
+   "texture": "FOR_RPTR-interior_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.7735849022865295,
+     0.7735849022865295,
+     0.7735849022865295,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "interior",
+   "mesh": 407,
+   "material": "FOR_RPTR-interior",
+   "texture": "FOR_RPTR-interior_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.7735849022865295,
+     0.7735849022865295,
+     0.7735849022865295,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "tire carrier",
+   "mesh": 289,
+   "material": "FOR_RPTR-parts-metal",
+   "texture": "FOR_RPTR-parts-metal_ao",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.0754716768860817,
+     0.0754716768860817,
+     0.0754716768860817,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "speed dial",
+   "mesh": 255,
+   "material": "FOR_RPTR-interior",
+   "texture": "FOR_RPTR-interior_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.7735849022865295,
+     0.7735849022865295,
+     0.7735849022865295,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "offroad lights 4 wide",
+   "mesh": 432,
+   "material": "FOR_RPTR-parts-metal",
+   "texture": "FOR_RPTR-parts-metal_ao",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.0754716768860817,
+     0.0754716768860817,
+     0.0754716768860817,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "bull bars",
+   "mesh": 285,
+   "material": "FOR_RPTR-parts-metal",
+   "texture": "FOR_RPTR-parts-metal_ao",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.0754716768860817,
+     0.0754716768860817,
+     0.0754716768860817,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "step bars",
+   "mesh": 413,
+   "material": "FOR_RPTR-parts-metal",
+   "texture": "FOR_RPTR-parts-metal_ao",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.0754716768860817,
+     0.0754716768860817,
+     0.0754716768860817,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Caliper FL ",
+   "mesh": 283,
+   "material": "FOR_RPTR-rimcaliper",
+   "texture": "FOR_RPTR-rimcaliper_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.7735849022865295,
+     0.7735849022865295,
+     0.7735849022865295,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "winch",
+   "mesh": 362,
+   "material": "FOR_RPTR-parts",
+   "texture": "FOR_RPTR-parts_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.7830188870429993,
+     0.7830188870429993,
+     0.7830188870429993,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "tow hooks",
+   "mesh": 386,
+   "material": "FOR_RPTR-parts-metal",
+   "texture": "FOR_RPTR-parts-metal_ao",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.0754716768860817,
+     0.0754716768860817,
+     0.0754716768860817,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Caliper RL ",
+   "mesh": 372,
+   "material": "FOR_RPTR-rimcaliper",
+   "texture": "FOR_RPTR-rimcaliper_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.7735849022865295,
+     0.7735849022865295,
+     0.7735849022865295,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "offroad lights 4 narrow",
+   "mesh": 389,
+   "material": "FOR_RPTR-parts-metal",
+   "texture": "FOR_RPTR-parts-metal_ao",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.0754716768860817,
+     0.0754716768860817,
+     0.0754716768860817,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Caliper FR ",
+   "mesh": 244,
+   "material": "FOR_RPTR-rimcaliper",
+   "texture": "FOR_RPTR-rimcaliper_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.7735849022865295,
+     0.7735849022865295,
+     0.7735849022865295,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "light bar ",
+   "mesh": 274,
+   "material": "FOR_RPTR-parts-metal",
+   "texture": "FOR_RPTR-parts-metal_ao",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.0754716768860817,
+     0.0754716768860817,
+     0.0754716768860817,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "spare tire",
+   "mesh": 378,
+   "material": "FOR_RPTR-tire",
+   "texture": "GR3D-tire-disc-offroad-a_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.7735849022865295,
+     0.7735849022865295,
+     0.7735849022865295,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "body",
+   "mesh": 238,
+   "material": "FOR_RPTR-carpaint",
+   "texture": null,
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.5283018946647644,
+     0.2575368583202362,
+     0.0,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "steering wheel",
+   "mesh": 381,
+   "material": "FOR_RPTR-interior",
+   "texture": "FOR_RPTR-interior_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.7735849022865295,
+     0.7735849022865295,
+     0.7735849022865295,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Caliper RR ",
+   "mesh": 392,
+   "material": "FOR_RPTR-rimcaliper",
+   "texture": "FOR_RPTR-rimcaliper_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.7735849022865295,
+     0.7735849022865295,
+     0.7735849022865295,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "roll bars",
+   "mesh": 247,
+   "material": "FOR_RPTR-parts-metal",
+   "texture": "FOR_RPTR-parts-metal_ao",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.0754716768860817,
+     0.0754716768860817,
+     0.0754716768860817,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "roof rack",
+   "mesh": 418,
+   "material": "FOR_RPTR-parts-metal",
+   "texture": "FOR_RPTR-parts-metal_ao",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.0754716768860817,
+     0.0754716768860817,
+     0.0754716768860817,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "tail gate",
+   "mesh": 264,
+   "material": "FOR_RPTR-carpaint",
+   "texture": null,
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.5283018946647644,
+     0.2575368583202362,
+     0.0,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "bumper rear",
+   "mesh": 265,
+   "material": "FOR_RPTR-parts-metal",
+   "texture": "FOR_RPTR-parts-metal_ao",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.0754716768860817,
+     0.0754716768860817,
+     0.0754716768860817,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "_Collider",
+   "mesh": 426
+  },
+  {
+   "go": "signal left",
+   "mesh": 246,
+   "material": "FOR_RPTR-lightemissive",
+   "texture": null,
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "headlights",
+   "mesh": 437,
+   "material": "FOR_RPTR-lightemissive",
+   "texture": null,
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "signal right",
+   "mesh": 394,
+   "material": "FOR_RPTR-lightemissive",
+   "texture": null,
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "light bar",
+   "mesh": 370,
+   "material": "FOR_RPTR-lightemissive",
+   "texture": null,
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "aux lights",
+   "mesh": 258,
+   "material": "FOR_RPTR-lightemissive",
+   "texture": null,
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "reverse light",
+   "mesh": 280,
+   "material": "FOR_RPTR-lightemissive",
+   "texture": null,
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "offroad lights top",
+   "mesh": 377,
+   "material": "FOR_RPTR-lightemissive",
+   "texture": null,
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "bumper lights",
+   "mesh": 420,
+   "material": "FOR_RPTR-lightemissive",
+   "texture": null,
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "offroad lights bumper",
+   "mesh": 412,
+   "material": "FOR_RPTR-lightemissive",
+   "texture": null,
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "brakelights",
+   "mesh": 385,
+   "material": "FOR_RPTR-lightemissive",
+   "texture": null,
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "_Collider",
+   "mesh": 387
+  },
+  {
+   "go": "_Collider",
+   "mesh": 400
+  }
+ ],
+ "AMG4.0": [
+  {
+   "go": "_Collider",
+   "mesh": 306
+  },
+  {
+   "go": "Whl HD RR",
+   "mesh": 322,
+   "material": "121913SSPC-HD-wheeltyre",
+   "texture": "wheelstyle_color1",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.8805969953536987,
+     0.8805969953536987,
+     0.8805969953536987,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Whl HD FR",
+   "mesh": 332,
+   "material": "121913SSPC-HD-wheeltyre",
+   "texture": "wheelstyle_color1",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.8805969953536987,
+     0.8805969953536987,
+     0.8805969953536987,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Whl HD FL",
+   "mesh": 342,
+   "material": "121913SSPC-HD-wheeltyre",
+   "texture": "wheelstyle_color1",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.8805969953536987,
+     0.8805969953536987,
+     0.8805969953536987,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Whl HD RL",
+   "mesh": 350,
+   "material": "121913SSPC-HD-wheeltyre",
+   "texture": "wheelstyle_color1",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.8805969953536987,
+     0.8805969953536987,
+     0.8805969953536987,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "body",
+   "mesh": 293,
+   "material": "121913SSPC-bodycolor",
+   "texture": null,
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.5176470875740051,
+     0.5215686559677124,
+     0.5372549295425415,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "interior",
+   "mesh": 301,
+   "material": "121913SSPC-interior",
+   "texture": "121913SSPC_interior",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.8432835936546326,
+     0.8432835936546326,
+     0.8432835936546326,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Caliper FL",
+   "mesh": 338,
+   "material": "121913SSPC-HD-wheeltyre",
+   "texture": "wheelstyle_color1",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.8805969953536987,
+     0.8805969953536987,
+     0.8805969953536987,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Caliper RL",
+   "mesh": 346,
+   "material": "121913SSPC-HD-wheeltyre",
+   "texture": "wheelstyle_color1",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.8805969953536987,
+     0.8805969953536987,
+     0.8805969953536987,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Caliper FR",
+   "mesh": 327,
+   "material": "121913SSPC-HD-wheeltyre",
+   "texture": "wheelstyle_color1",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.8805969953536987,
+     0.8805969953536987,
+     0.8805969953536987,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Caliper RR",
+   "mesh": 317,
+   "material": "121913SSPC-HD-wheeltyre",
+   "texture": "wheelstyle_color1",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.8805969953536987,
+     0.8805969953536987,
+     0.8805969953536987,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "_Collider",
+   "mesh": 300
+  },
+  {
+   "go": "steering wheel",
+   "mesh": 312,
+   "material": "121913SSPC-interior",
+   "texture": "121913SSPC_interior",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.8432835936546326,
+     0.8432835936546326,
+     0.8432835936546326,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "_Collider",
+   "mesh": 306
+  },
+  {
+   "go": "Whl HD RR",
+   "mesh": 322,
+   "material": "121913SSPC-HD-wheeltyre",
+   "texture": "wheelstyle_color1",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.8805969953536987,
+     0.8805969953536987,
+     0.8805969953536987,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Whl HD FR",
+   "mesh": 332,
+   "material": "121913SSPC-HD-wheeltyre",
+   "texture": "wheelstyle_color1",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.8805969953536987,
+     0.8805969953536987,
+     0.8805969953536987,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Whl HD FL",
+   "mesh": 342,
+   "material": "121913SSPC-HD-wheeltyre",
+   "texture": "wheelstyle_color1",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.8805969953536987,
+     0.8805969953536987,
+     0.8805969953536987,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Whl HD RL",
+   "mesh": 350,
+   "material": "121913SSPC-HD-wheeltyre",
+   "texture": "wheelstyle_color1",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.8805969953536987,
+     0.8805969953536987,
+     0.8805969953536987,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "body",
+   "mesh": 293,
+   "material": "121913SSPC-bodycolor",
+   "texture": null,
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.5176470875740051,
+     0.5215686559677124,
+     0.5372549295425415,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "interior",
+   "mesh": 301,
+   "material": "121913SSPC-interior",
+   "texture": "121913SSPC_interior",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.8432835936546326,
+     0.8432835936546326,
+     0.8432835936546326,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Caliper FL",
+   "mesh": 338,
+   "material": "121913SSPC-HD-wheeltyre",
+   "texture": "wheelstyle_color1",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.8805969953536987,
+     0.8805969953536987,
+     0.8805969953536987,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Caliper RL",
+   "mesh": 346,
+   "material": "121913SSPC-HD-wheeltyre",
+   "texture": "wheelstyle_color1",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.8805969953536987,
+     0.8805969953536987,
+     0.8805969953536987,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Caliper FR",
+   "mesh": 327,
+   "material": "121913SSPC-HD-wheeltyre",
+   "texture": "wheelstyle_color1",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.8805969953536987,
+     0.8805969953536987,
+     0.8805969953536987,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Caliper RR",
+   "mesh": 317,
+   "material": "121913SSPC-HD-wheeltyre",
+   "texture": "wheelstyle_color1",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.8805969953536987,
+     0.8805969953536987,
+     0.8805969953536987,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "_Collider",
+   "mesh": 300
+  },
+  {
+   "go": "steering wheel",
+   "mesh": 312,
+   "material": "121913SSPC-interior",
+   "texture": "121913SSPC_interior",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.8432835936546326,
+     0.8432835936546326,
+     0.8432835936546326,
+     1.0
+    ]
+   }
+  }
+ ],
+ "DodgeChallenger": [
+  {
+   "go": "Caliper LF",
+   "mesh": 402,
+   "material": "HLCAT-wheeltire",
+   "texture": "HLCAT-wheels-gold_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.8588235378265381,
+     0.8588235378265381,
+     0.8588235378265381,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Caliper FR ",
+   "mesh": 245,
+   "material": "HLCAT-wheeltire",
+   "texture": "HLCAT-wheels-gold_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.8588235378265381,
+     0.8588235378265381,
+     0.8588235378265381,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Caliper RR ",
+   "mesh": 393,
+   "material": "HLCAT-wheeltire",
+   "texture": "HLCAT-wheels-gold_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.8588235378265381,
+     0.8588235378265381,
+     0.8588235378265381,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Caliper RL ",
+   "mesh": 373,
+   "material": "HLCAT-wheeltire",
+   "texture": "HLCAT-wheels-gold_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.8588235378265381,
+     0.8588235378265381,
+     0.8588235378265381,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "body",
+   "mesh": 239,
+   "material": "HLCATL-bodycolor",
+   "texture": "HLCAT-bodycolor-red-stripe",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.849056601524353,
+     0.849056601524353,
+     0.849056601524353,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "interior",
+   "mesh": 408,
+   "material": "HLCAT-interior",
+   "texture": "HLCAT-interior-v2_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.8207547068595886,
+     0.8207547068595886,
+     0.8207547068595886,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "center",
+   "mesh": 270,
+   "material": "HLCAT-interior",
+   "texture": "HLCAT-interior-v2_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.8207547068595886,
+     0.8207547068595886,
+     0.8207547068595886,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "center ",
+   "mesh": 235,
+   "material": "HLCAT-interior",
+   "texture": "HLCAT-interior-v2_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.8207547068595886,
+     0.8207547068595886,
+     0.8207547068595886,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "spoiler",
+   "mesh": 367,
+   "material": "HLCAT-carbonfiber",
+   "texture": null,
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.3490564823150635,
+     0.3490564823150635,
+     0.3490564823150635,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "steering wheel",
+   "mesh": 382,
+   "material": "HLCAT-interior",
+   "texture": "HLCAT-interior-v2_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.8207547068595886,
+     0.8207547068595886,
+     0.8207547068595886,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "_Collider",
+   "mesh": 397
+  },
+  {
+   "go": "Tire FR",
+   "mesh": 435,
+   "material": "HLCAT-wheeltire",
+   "texture": "HLCAT-wheels-gold_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.8588235378265381,
+     0.8588235378265381,
+     0.8588235378265381,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Tire LF",
+   "mesh": 251,
+   "material": "HLCAT-wheeltire",
+   "texture": "HLCAT-wheels-gold_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.8588235378265381,
+     0.8588235378265381,
+     0.8588235378265381,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Tire RR",
+   "mesh": 360,
+   "material": "HLCAT-wheeltire",
+   "texture": "HLCAT-wheels-gold_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.8588235378265381,
+     0.8588235378265381,
+     0.8588235378265381,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Tire RL",
+   "mesh": 278,
+   "material": "HLCAT-wheeltire",
+   "texture": "HLCAT-wheels-gold_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.8588235378265381,
+     0.8588235378265381,
+     0.8588235378265381,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "_Collider",
+   "mesh": 423
+  },
+  {
+   "go": "Caliper LF",
+   "mesh": 402,
+   "material": "HLCAT-wheeltire",
+   "texture": "HLCAT-wheels-gold_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.8588235378265381,
+     0.8588235378265381,
+     0.8588235378265381,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Caliper FR ",
+   "mesh": 245,
+   "material": "HLCAT-wheeltire",
+   "texture": "HLCAT-wheels-gold_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.8588235378265381,
+     0.8588235378265381,
+     0.8588235378265381,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Caliper RR ",
+   "mesh": 393,
+   "material": "HLCAT-wheeltire",
+   "texture": "HLCAT-wheels-gold_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.8588235378265381,
+     0.8588235378265381,
+     0.8588235378265381,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Caliper RL ",
+   "mesh": 373,
+   "material": "HLCAT-wheeltire",
+   "texture": "HLCAT-wheels-gold_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.8588235378265381,
+     0.8588235378265381,
+     0.8588235378265381,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "body",
+   "mesh": 239,
+   "material": "HLCATL-bodycolor",
+   "texture": "HLCAT-bodycolor-red-stripe",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.849056601524353,
+     0.849056601524353,
+     0.849056601524353,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "interior",
+   "mesh": 408,
+   "material": "HLCAT-interior",
+   "texture": "HLCAT-interior-v2_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.8207547068595886,
+     0.8207547068595886,
+     0.8207547068595886,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "center",
+   "mesh": 270,
+   "material": "HLCAT-interior",
+   "texture": "HLCAT-interior-v2_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.8207547068595886,
+     0.8207547068595886,
+     0.8207547068595886,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "center ",
+   "mesh": 235,
+   "material": "HLCAT-interior",
+   "texture": "HLCAT-interior-v2_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.8207547068595886,
+     0.8207547068595886,
+     0.8207547068595886,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "spoiler",
+   "mesh": 367,
+   "material": "HLCAT-carbonfiber",
+   "texture": null,
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.3490564823150635,
+     0.3490564823150635,
+     0.3490564823150635,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "steering wheel",
+   "mesh": 382,
+   "material": "HLCAT-interior",
+   "texture": "HLCAT-interior-v2_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.8207547068595886,
+     0.8207547068595886,
+     0.8207547068595886,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "_Collider",
+   "mesh": 397
+  },
+  {
+   "go": "Tire FR",
+   "mesh": 435,
+   "material": "HLCAT-wheeltire",
+   "texture": "HLCAT-wheels-gold_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.8588235378265381,
+     0.8588235378265381,
+     0.8588235378265381,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Tire LF",
+   "mesh": 251,
+   "material": "HLCAT-wheeltire",
+   "texture": "HLCAT-wheels-gold_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.8588235378265381,
+     0.8588235378265381,
+     0.8588235378265381,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Tire RR",
+   "mesh": 360,
+   "material": "HLCAT-wheeltire",
+   "texture": "HLCAT-wheels-gold_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.8588235378265381,
+     0.8588235378265381,
+     0.8588235378265381,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Tire RL",
+   "mesh": 278,
+   "material": "HLCAT-wheeltire",
+   "texture": "HLCAT-wheels-gold_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.8588235378265381,
+     0.8588235378265381,
+     0.8588235378265381,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "_Collider",
+   "mesh": 423
+  }
+ ],
+ "BugattiVeyron": [
+  {
+   "go": "interior",
+   "mesh": 298,
+   "material": "072614SSPC-interior",
+   "texture": "BugattiVeyron_interior",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.9552238583564758,
+     0.9552238583564758,
+     0.9552238583564758,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "1_Collider",
+   "mesh": 294
+  },
+  {
+   "go": "Caliper RL",
+   "mesh": 316,
+   "material": "072614SSPC-HD-wheeltyre",
+   "texture": "wheelstyle_color1E",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.8805969953536987,
+     0.8805969953536987,
+     0.8805969953536987,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "body",
+   "mesh": 291,
+   "material": "072614SSPC-bodycolor",
+   "texture": null,
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "steering wheel",
+   "mesh": 310,
+   "material": "072614SSPC-interior",
+   "texture": "BugattiVeyron_interior",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.9552238583564758,
+     0.9552238583564758,
+     0.9552238583564758,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Caliper FL",
+   "mesh": 326,
+   "material": "072614SSPC-HD-wheeltyre",
+   "texture": "wheelstyle_color1E",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.8805969953536987,
+     0.8805969953536987,
+     0.8805969953536987,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Caliper FR",
+   "mesh": 336,
+   "material": "072614SSPC-HD-wheeltyre",
+   "texture": "wheelstyle_color1E",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.8805969953536987,
+     0.8805969953536987,
+     0.8805969953536987,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Whl HD RL",
+   "mesh": 321,
+   "material": "072614SSPC-HD-wheeltyre",
+   "texture": "wheelstyle_color1E",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.8805969953536987,
+     0.8805969953536987,
+     0.8805969953536987,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Whl HD FL",
+   "mesh": 331,
+   "material": "072614SSPC-HD-wheeltyre",
+   "texture": "wheelstyle_color1E",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.8805969953536987,
+     0.8805969953536987,
+     0.8805969953536987,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Whl HD FR",
+   "mesh": 341,
+   "material": "072614SSPC-HD-wheeltyre",
+   "texture": "wheelstyle_color1E",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.8805969953536987,
+     0.8805969953536987,
+     0.8805969953536987,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Whl HD RR",
+   "mesh": 349,
+   "material": "072614SSPC-HD-wheeltyre",
+   "texture": "wheelstyle_color1E",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.8805969953536987,
+     0.8805969953536987,
+     0.8805969953536987,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Caliper RR",
+   "mesh": 345,
+   "material": "072614SSPC-HD-wheeltyre",
+   "texture": "wheelstyle_color1E",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.8805969953536987,
+     0.8805969953536987,
+     0.8805969953536987,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "interior",
+   "mesh": 298,
+   "material": "072614SSPC-interior",
+   "texture": "BugattiVeyron_interior",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.9552238583564758,
+     0.9552238583564758,
+     0.9552238583564758,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "1_Collider",
+   "mesh": 294
+  },
+  {
+   "go": "Caliper RL",
+   "mesh": 316,
+   "material": "072614SSPC-HD-wheeltyre",
+   "texture": "wheelstyle_color1E",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.8805969953536987,
+     0.8805969953536987,
+     0.8805969953536987,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "body",
+   "mesh": 291,
+   "material": "072614SSPC-bodycolor",
+   "texture": null,
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "steering wheel",
+   "mesh": 310,
+   "material": "072614SSPC-interior",
+   "texture": "BugattiVeyron_interior",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.9552238583564758,
+     0.9552238583564758,
+     0.9552238583564758,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Caliper FL",
+   "mesh": 326,
+   "material": "072614SSPC-HD-wheeltyre",
+   "texture": "wheelstyle_color1E",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.8805969953536987,
+     0.8805969953536987,
+     0.8805969953536987,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Caliper FR",
+   "mesh": 336,
+   "material": "072614SSPC-HD-wheeltyre",
+   "texture": "wheelstyle_color1E",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.8805969953536987,
+     0.8805969953536987,
+     0.8805969953536987,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Whl HD RL",
+   "mesh": 321,
+   "material": "072614SSPC-HD-wheeltyre",
+   "texture": "wheelstyle_color1E",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.8805969953536987,
+     0.8805969953536987,
+     0.8805969953536987,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Whl HD FL",
+   "mesh": 331,
+   "material": "072614SSPC-HD-wheeltyre",
+   "texture": "wheelstyle_color1E",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.8805969953536987,
+     0.8805969953536987,
+     0.8805969953536987,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Whl HD FR",
+   "mesh": 341,
+   "material": "072614SSPC-HD-wheeltyre",
+   "texture": "wheelstyle_color1E",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.8805969953536987,
+     0.8805969953536987,
+     0.8805969953536987,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Whl HD RR",
+   "mesh": 349,
+   "material": "072614SSPC-HD-wheeltyre",
+   "texture": "wheelstyle_color1E",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.8805969953536987,
+     0.8805969953536987,
+     0.8805969953536987,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Caliper RR",
+   "mesh": 345,
+   "material": "072614SSPC-HD-wheeltyre",
+   "texture": "wheelstyle_color1E",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.8805969953536987,
+     0.8805969953536987,
+     0.8805969953536987,
+     1.0
+    ]
+   }
+  }
+ ],
+ "KoenigseggAgera": [
+  {
+   "go": "Caliper FR",
+   "mesh": 319,
+   "material": "082514SSPC-HD-wheeltyre",
+   "texture": "wheelstyle_color1F",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     1.0,
+     1.0,
+     1.0,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "wing",
+   "mesh": 308,
+   "material": "082514SSPC-carbonfiber",
+   "texture": "carbonfiber",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.8805969953536987,
+     0.8805969953536987,
+     0.8805969953536987,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "diffuser",
+   "mesh": 303,
+   "material": "082514SSPC-carbonfiber",
+   "texture": "carbonfiber",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.8805969953536987,
+     0.8805969953536987,
+     0.8805969953536987,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "interior",
+   "mesh": 334,
+   "material": "082514SSPC-interior",
+   "texture": "082514SSPC_interior",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.9776119589805603,
+     0.9776119589805603,
+     0.9776119589805603,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Caliper RL",
+   "mesh": 343,
+   "material": "082514SSPC-HD-wheeltyre",
+   "texture": "wheelstyle_color1F",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     1.0,
+     1.0,
+     1.0,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Caliper RR",
+   "mesh": 329,
+   "material": "082514SSPC-HD-wheeltyre",
+   "texture": "wheelstyle_color1F",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     1.0,
+     1.0,
+     1.0,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "body",
+   "mesh": 296,
+   "material": "082514SSPC-bodycolor",
+   "texture": null,
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.18039216101169586,
+     0.18431372940540314,
+     0.18039216101169586,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Caliper FL",
+   "mesh": 351,
+   "material": "082514SSPC-HD-wheeltyre",
+   "texture": "wheelstyle_color1F",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     1.0,
+     1.0,
+     1.0,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "_Collider",
+   "mesh": 305
+  },
+  {
+   "go": "_Collider",
+   "mesh": 311
+  },
+  {
+   "go": "_Collider",
+   "mesh": 299
+  },
+  {
+   "go": "Whl HD RL",
+   "mesh": 339,
+   "material": "082514SSPC-HD-wheeltyre",
+   "texture": "wheelstyle_color1F",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     1.0,
+     1.0,
+     1.0,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Whl HD FL",
+   "mesh": 347,
+   "material": "082514SSPC-HD-wheeltyre",
+   "texture": "wheelstyle_color1F",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     1.0,
+     1.0,
+     1.0,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Whl HD FR",
+   "mesh": 314,
+   "material": "082514SSPC-HD-wheeltyre",
+   "texture": "wheelstyle_color1F",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     1.0,
+     1.0,
+     1.0,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Whl HD RR",
+   "mesh": 324,
+   "material": "082514SSPC-HD-wheeltyre",
+   "texture": "wheelstyle_color1F",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     1.0,
+     1.0,
+     1.0,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "steering wheel",
+   "mesh": 353,
+   "material": "082514SSPC-interior",
+   "texture": "082514SSPC_interior",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.9776119589805603,
+     0.9776119589805603,
+     0.9776119589805603,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Caliper FR",
+   "mesh": 319,
+   "material": "082514SSPC-HD-wheeltyre",
+   "texture": "wheelstyle_color1F",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     1.0,
+     1.0,
+     1.0,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "wing",
+   "mesh": 308,
+   "material": "082514SSPC-carbonfiber",
+   "texture": "carbonfiber",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.8805969953536987,
+     0.8805969953536987,
+     0.8805969953536987,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "diffuser",
+   "mesh": 303,
+   "material": "082514SSPC-carbonfiber",
+   "texture": "carbonfiber",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.8805969953536987,
+     0.8805969953536987,
+     0.8805969953536987,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "interior",
+   "mesh": 334,
+   "material": "082514SSPC-interior",
+   "texture": "082514SSPC_interior",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.9776119589805603,
+     0.9776119589805603,
+     0.9776119589805603,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Caliper RL",
+   "mesh": 343,
+   "material": "082514SSPC-HD-wheeltyre",
+   "texture": "wheelstyle_color1F",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     1.0,
+     1.0,
+     1.0,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Caliper RR",
+   "mesh": 329,
+   "material": "082514SSPC-HD-wheeltyre",
+   "texture": "wheelstyle_color1F",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     1.0,
+     1.0,
+     1.0,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "body",
+   "mesh": 296,
+   "material": "082514SSPC-bodycolor",
+   "texture": null,
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.18039216101169586,
+     0.18431372940540314,
+     0.18039216101169586,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Caliper FL",
+   "mesh": 351,
+   "material": "082514SSPC-HD-wheeltyre",
+   "texture": "wheelstyle_color1F",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     1.0,
+     1.0,
+     1.0,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "_Collider",
+   "mesh": 305
+  },
+  {
+   "go": "_Collider",
+   "mesh": 311
+  },
+  {
+   "go": "_Collider",
+   "mesh": 299
+  },
+  {
+   "go": "Whl HD RL",
+   "mesh": 339,
+   "material": "082514SSPC-HD-wheeltyre",
+   "texture": "wheelstyle_color1F",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     1.0,
+     1.0,
+     1.0,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Whl HD FL",
+   "mesh": 347,
+   "material": "082514SSPC-HD-wheeltyre",
+   "texture": "wheelstyle_color1F",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     1.0,
+     1.0,
+     1.0,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Whl HD FR",
+   "mesh": 314,
+   "material": "082514SSPC-HD-wheeltyre",
+   "texture": "wheelstyle_color1F",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     1.0,
+     1.0,
+     1.0,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Whl HD RR",
+   "mesh": 324,
+   "material": "082514SSPC-HD-wheeltyre",
+   "texture": "wheelstyle_color1F",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     1.0,
+     1.0,
+     1.0,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "steering wheel",
+   "mesh": 353,
+   "material": "082514SSPC-interior",
+   "texture": "082514SSPC_interior",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.9776119589805603,
+     0.9776119589805603,
+     0.9776119589805603,
+     1.0
+    ]
+   }
+  }
+ ],
+ "Audi_R8": [
+  {
+   "go": "speed dial",
+   "mesh": 256,
+   "material": "AUDR8-interior",
+   "texture": "AUDR8-interior_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.8773584961891174,
+     0.8773584961891174,
+     0.8773584961891174,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "_Collider",
+   "mesh": 424
+  },
+  {
+   "go": "Tire RL",
+   "mesh": 276,
+   "material": "AUDR8-wheeltire_hre",
+   "texture": "AUDR8-HREwheels_red",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.8588235378265381,
+     0.8588235378265381,
+     0.8588235378265381,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Tire RR",
+   "mesh": 358,
+   "material": "AUDR8-wheeltire_hre",
+   "texture": "AUDR8-HREwheels_red",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.8588235378265381,
+     0.8588235378265381,
+     0.8588235378265381,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Tire FR",
+   "mesh": 433,
+   "material": "AUDR8-wheeltire_hre",
+   "texture": "AUDR8-HREwheels_red",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.8588235378265381,
+     0.8588235378265381,
+     0.8588235378265381,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Tire LF",
+   "mesh": 250,
+   "material": "AUDR8-wheeltire_hre",
+   "texture": "AUDR8-HREwheels_red",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.8588235378265381,
+     0.8588235378265381,
+     0.8588235378265381,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "_Collider",
+   "mesh": 398
+  },
+  {
+   "go": "steering wheel",
+   "mesh": 380,
+   "material": "AUDR8-interior",
+   "texture": "AUDR8-interior_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.8773584961891174,
+     0.8773584961891174,
+     0.8773584961891174,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Light-daylight",
+   "mesh": 357,
+   "material": "AUDR8-light-emissive",
+   "texture": null,
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  },
+  {
+   "go": "Light-reverse",
+   "mesh": 272,
+   "material": "AUDR8-light-emissive",
+   "texture": null,
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  },
+  {
+   "go": "Light-turn-right",
+   "mesh": 390,
+   "material": "AUDR8-light-emissive",
+   "texture": null,
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  },
+  {
+   "go": "Light-rear",
+   "mesh": 273,
+   "material": "AUDR8-light-emissive",
+   "texture": null,
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  },
+  {
+   "go": "Light-headlights",
+   "mesh": 365,
+   "material": "AUDR8-light-emissive",
+   "texture": null,
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  },
+  {
+   "go": "Light-brakes",
+   "mesh": 287,
+   "material": "AUDR8-light-emissive",
+   "texture": null,
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  },
+  {
+   "go": "Light-turn-left",
+   "mesh": 234,
+   "material": "AUDR8-light-emissive",
+   "texture": null,
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  },
+  {
+   "go": "rpm dial",
+   "mesh": 253,
+   "material": "AUDR8-interior",
+   "texture": "AUDR8-interior_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.8773584961891174,
+     0.8773584961891174,
+     0.8773584961891174,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Caliper RR ",
+   "mesh": 391,
+   "material": "AUDR8-wheeltire_hre",
+   "texture": "AUDR8-HREwheels_red",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.8588235378265381,
+     0.8588235378265381,
+     0.8588235378265381,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "wing",
+   "mesh": 375,
+   "material": "AUDR8-carbonfiber",
+   "texture": null,
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.34905651211738586,
+     0.34905651211738586,
+     0.34905651211738586,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "diffuser",
+   "mesh": 369,
+   "material": "AUDR8-carbonfiber",
+   "texture": null,
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.34905651211738586,
+     0.34905651211738586,
+     0.34905651211738586,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "side skirt",
+   "mesh": 254,
+   "material": "AUDR8-carbonfiber",
+   "texture": null,
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.34905651211738586,
+     0.34905651211738586,
+     0.34905651211738586,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "spoiler",
+   "mesh": 366,
+   "material": "AUDR8-carbonfiber",
+   "texture": null,
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.34905651211738586,
+     0.34905651211738586,
+     0.34905651211738586,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "splitter",
+   "mesh": 260,
+   "material": "AUDR8-diffuse",
+   "texture": "AUDR8-parts_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.698113203048706,
+     0.698113203048706,
+     0.698113203048706,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "canards",
+   "mesh": 414,
+   "material": "AUDR8-carbonfiber",
+   "texture": null,
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.34905651211738586,
+     0.34905651211738586,
+     0.34905651211738586,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "body",
+   "mesh": 237,
+   "material": "AUDR8-bodycolor",
+   "texture": "AUDR8-bodycolor_ao",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.035822365432977676,
+     0.16036194562911987,
+     0.33018869161605835,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Caliper FR ",
+   "mesh": 243,
+   "material": "AUDR8-wheeltire_hre",
+   "texture": "AUDR8-HREwheels_red",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.8588235378265381,
+     0.8588235378265381,
+     0.8588235378265381,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Caliper LF",
+   "mesh": 401,
+   "material": "AUDR8-wheeltire_hre",
+   "texture": "AUDR8-HREwheels_red",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.8588235378265381,
+     0.8588235378265381,
+     0.8588235378265381,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Caliper RL ",
+   "mesh": 371,
+   "material": "AUDR8-wheeltire_hre",
+   "texture": "AUDR8-HREwheels_red",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.8588235378265381,
+     0.8588235378265381,
+     0.8588235378265381,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "interior",
+   "mesh": 406,
+   "material": "AUDR8-interior",
+   "texture": "AUDR8-interior_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.8773584961891174,
+     0.8773584961891174,
+     0.8773584961891174,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "speed dial",
+   "mesh": 256,
+   "material": "AUDR8-interior",
+   "texture": "AUDR8-interior_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.8773584961891174,
+     0.8773584961891174,
+     0.8773584961891174,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "_Collider",
+   "mesh": 424
+  },
+  {
+   "go": "Tire RL",
+   "mesh": 276,
+   "material": "AUDR8-wheeltire_hre",
+   "texture": "AUDR8-HREwheels_red",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.8588235378265381,
+     0.8588235378265381,
+     0.8588235378265381,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Tire RR",
+   "mesh": 358,
+   "material": "AUDR8-wheeltire_hre",
+   "texture": "AUDR8-HREwheels_red",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.8588235378265381,
+     0.8588235378265381,
+     0.8588235378265381,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Tire FR",
+   "mesh": 433,
+   "material": "AUDR8-wheeltire_hre",
+   "texture": "AUDR8-HREwheels_red",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.8588235378265381,
+     0.8588235378265381,
+     0.8588235378265381,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Tire LF",
+   "mesh": 250,
+   "material": "AUDR8-wheeltire_hre",
+   "texture": "AUDR8-HREwheels_red",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.8588235378265381,
+     0.8588235378265381,
+     0.8588235378265381,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "_Collider",
+   "mesh": 398
+  },
+  {
+   "go": "steering wheel",
+   "mesh": 380,
+   "material": "AUDR8-interior",
+   "texture": "AUDR8-interior_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.8773584961891174,
+     0.8773584961891174,
+     0.8773584961891174,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Light-daylight",
+   "mesh": 357,
+   "material": "AUDR8-light-emissive",
+   "texture": null,
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  },
+  {
+   "go": "Light-reverse",
+   "mesh": 272,
+   "material": "AUDR8-light-emissive",
+   "texture": null,
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  },
+  {
+   "go": "Light-turn-right",
+   "mesh": 390,
+   "material": "AUDR8-light-emissive",
+   "texture": null,
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  },
+  {
+   "go": "Light-rear",
+   "mesh": 273,
+   "material": "AUDR8-light-emissive",
+   "texture": null,
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  },
+  {
+   "go": "Light-headlights",
+   "mesh": 365,
+   "material": "AUDR8-light-emissive",
+   "texture": null,
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  },
+  {
+   "go": "Light-brakes",
+   "mesh": 287,
+   "material": "AUDR8-light-emissive",
+   "texture": null,
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  },
+  {
+   "go": "Light-turn-left",
+   "mesh": 234,
+   "material": "AUDR8-light-emissive",
+   "texture": null,
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ]
+   }
+  },
+  {
+   "go": "rpm dial",
+   "mesh": 253,
+   "material": "AUDR8-interior",
+   "texture": "AUDR8-interior_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.8773584961891174,
+     0.8773584961891174,
+     0.8773584961891174,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Caliper RR ",
+   "mesh": 391,
+   "material": "AUDR8-wheeltire_hre",
+   "texture": "AUDR8-HREwheels_red",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.8588235378265381,
+     0.8588235378265381,
+     0.8588235378265381,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "wing",
+   "mesh": 375,
+   "material": "AUDR8-carbonfiber",
+   "texture": null,
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.34905651211738586,
+     0.34905651211738586,
+     0.34905651211738586,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "diffuser",
+   "mesh": 369,
+   "material": "AUDR8-carbonfiber",
+   "texture": null,
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.34905651211738586,
+     0.34905651211738586,
+     0.34905651211738586,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "side skirt",
+   "mesh": 254,
+   "material": "AUDR8-carbonfiber",
+   "texture": null,
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.34905651211738586,
+     0.34905651211738586,
+     0.34905651211738586,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "spoiler",
+   "mesh": 366,
+   "material": "AUDR8-carbonfiber",
+   "texture": null,
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.34905651211738586,
+     0.34905651211738586,
+     0.34905651211738586,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "splitter",
+   "mesh": 260,
+   "material": "AUDR8-diffuse",
+   "texture": "AUDR8-parts_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.698113203048706,
+     0.698113203048706,
+     0.698113203048706,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "canards",
+   "mesh": 414,
+   "material": "AUDR8-carbonfiber",
+   "texture": null,
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.34905651211738586,
+     0.34905651211738586,
+     0.34905651211738586,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "body",
+   "mesh": 237,
+   "material": "AUDR8-bodycolor",
+   "texture": "AUDR8-bodycolor_ao",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.035822365432977676,
+     0.16036194562911987,
+     0.33018869161605835,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Caliper FR ",
+   "mesh": 243,
+   "material": "AUDR8-wheeltire_hre",
+   "texture": "AUDR8-HREwheels_red",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.8588235378265381,
+     0.8588235378265381,
+     0.8588235378265381,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Caliper LF",
+   "mesh": 401,
+   "material": "AUDR8-wheeltire_hre",
+   "texture": "AUDR8-HREwheels_red",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.8588235378265381,
+     0.8588235378265381,
+     0.8588235378265381,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "Caliper RL ",
+   "mesh": 371,
+   "material": "AUDR8-wheeltire_hre",
+   "texture": "AUDR8-HREwheels_red",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.8588235378265381,
+     0.8588235378265381,
+     0.8588235378265381,
+     1.0
+    ]
+   }
+  },
+  {
+   "go": "interior",
+   "mesh": 406,
+   "material": "AUDR8-interior",
+   "texture": "AUDR8-interior_albedo",
+   "material_file": "sharedassets1.assets",
+   "colors": {
+    "_Color": [
+     0.8773584961891174,
+     0.8773584961891174,
+     0.8773584961891174,
+     1.0
+    ]
+   }
+  }
+ ]
+}
