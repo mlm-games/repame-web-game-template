@@ -231,7 +231,14 @@ fn build_static(track_world: &TrackWorld, level: &data::Level) -> Vec<MeshGroup>
             let b = vec3(c1.x + side * half, c1.y, s1);
             let c = vec3(c1.x + side * half, c1.y - 9.0, s1);
             let d = vec3(c0.x + side * half, c0.y - 9.0, s0);
-            push_quad(&mut shoulder, [a, b, c, d], MOUNTAIN);
+            // Winding follows the corner order, and the lateral extent changes
+            // sign with `side`: without this the left-hand ground faces down and
+            // is culled, leaving sky under the road.
+            if side > 0.0 {
+                push_quad(&mut shoulder, [a, b, c, d], MOUNTAIN);
+            } else {
+                push_quad(&mut shoulder, [d, c, b, a], MOUNTAIN);
+            }
         }
     }
     // grass verges
@@ -252,7 +259,11 @@ fn build_static(track_world: &TrackWorld, level: &data::Level) -> Vec<MeshGroup>
                 c0.y - 5.0 - i as f32 * 0.05,
                 s0,
             );
-            push_quad(&mut verge, [a, b, c, d], verge_tone);
+            if side > 0.0 {
+                push_quad(&mut verge, [a, b, c, d], verge_tone);
+            } else {
+                push_quad(&mut verge, [d, c, b, a], verge_tone);
+            }
         }
     }
     // The apron carries the ground out to the horizon on both sides. Without it
@@ -270,7 +281,11 @@ fn build_static(track_world: &TrackWorld, level: &data::Level) -> Vec<MeshGroup>
             let b = vec3(c1.x + side * inner, c1.y - drop0, s1);
             let c = vec3(c1.x + side * outer, c1.y - drop0 - 34.0, s1);
             let d = vec3(c0.x + side * outer, c0.y - drop0 - 34.0, s0);
-            push_quad(&mut apron, [a, b, c, d], SAND);
+            if side > 0.0 {
+                push_quad(&mut apron, [a, b, c, d], SAND);
+            } else {
+                push_quad(&mut apron, [d, c, b, a], SAND);
+            }
         }
     }
     vec![road, shoulder, verge, apron]
@@ -532,6 +547,10 @@ pub fn frame_for(
     // track a level camera loses the road out of the bottom of the frame.
     let mut road_ahead = player.pos;
     let mut groups: Vec<MeshGroup> = Vec::new();
+    // Isolation aid: the car's groups ahead of the world's, to tell an upload
+    // order problem from a world one.
+    let car_first = std::env::var("DD_DEBUG_CAR_FIRST").is_ok();
+    let mut car_first_groups: Vec<MeshGroup> = Vec::new();
     let mut geometry_ready = false;
     // `resource_scope` gives the cache a mutable borrow while the track stays in
     // the world: nothing can observe a world without a track mid-frame.
@@ -583,6 +602,13 @@ pub fn frame_for(
         }
         geometry_ready = true;
     });
+    // Bisect the world without losing the car: the car is pushed after this, so
+    // truncating the static list is what finds a group that hides it.
+    if let Ok(n) = std::env::var("DD_DEBUG_STATIC_MAX")
+        && let Ok(n) = n.parse::<usize>()
+    {
+        groups.truncate(n);
+    }
     if std::env::var("DD_DEBUG_ONLY_CAR").is_ok() {
         // Isolation aid: the car alone, on the background.
         groups.clear();
@@ -590,6 +616,13 @@ pub fn frame_for(
     if geometry_ready {
         // cars: original meshes when the reference export is present, stand-ins
         // otherwise (the stand-ins always cover whatever art is missing).
+        // Isolation aid: the car's groups ahead of the world's, to tell an upload
+        // order problem from a world problem.
+        let car_first = std::env::var("DD_DEBUG_CAR_FIRST").is_ok();
+        // Isolation aid: the car's groups ahead of the world's, to tell an
+        // upload order problem from a world one.
+        let car_first = std::env::var("DD_DEBUG_CAR_FIRST").is_ok();
+        let mut car_first_groups: Vec<MeshGroup> = Vec::new();
         let mut cars: Vec<(CarSim, [f32; 3])> = Vec::new();
         if !matches!(phase, Phase::Garage | Phase::MapSelect) {
             cars.push((player.clone(), car_colour(car_index)));
@@ -603,6 +636,18 @@ pub fn frame_for(
                 crate::sim::car::CarSim::new(car, Vec3::new(0.0, 0.5, 0.0), 0.6, upgrades);
             show.yaw = 0.6 + viewport_px[0] * 0.0001;
             cars.push((show, car_colour(car_index)));
+        }
+        if std::env::var("DD_DEBUG_CAR_BOX").is_ok() {
+            // Isolation aid: a hand-built box where the car is, so an art problem
+            // can be told from a position or depth problem.
+            let mut m = MeshGroup::default();
+            push_box(
+                &mut m,
+                player.pos + vec3(0.0, 1.0, 0.0),
+                vec3(1.2, 1.0, 2.6),
+                [0.85, 0.2, 0.16],
+            );
+            groups.push(m);
         }
         let mut art_used = 0usize;
         for (sim, colour) in cars {
@@ -655,6 +700,26 @@ pub fn frame_for(
                             );
                         }
                         let placed = crate::art::part_groups(part, &sim, colour);
+                        if std::env::var("DD_TRACE_DRAW").is_ok()
+                            && part.kind == crate::art::PartKind::Body
+                        {
+                            let c = placed.iter().flat_map(|g| g.colors.iter()).fold(
+                                None::<([f32; 3], [f32; 3])>,
+                                |acc, c| {
+                                    Some(match acc {
+                                        None => (*c, *c),
+                                        Some((lo, hi)) => (
+                                            [lo[0].min(c[0]), lo[1].min(c[1]), lo[2].min(c[2])],
+                                            [hi[0].max(c[0]), hi[1].max(c[1]), hi[2].max(c[2])],
+                                        ),
+                                    })
+                                },
+                            );
+                            eprintln!(
+                                "car paint colour range for {}: {c:?} (livery {:?})",
+                                sim.spec.id, colour
+                            );
+                        }
                         if std::env::var("DD_TRACE_DRAW").is_ok() {
                             // Where the part actually lands, not where its mesh sits.
                             let world = placed.iter().filter_map(|g| g.bounds()).fold(
@@ -693,12 +758,52 @@ pub fn frame_for(
                                 );
                             }
                         }
-                        groups.extend(placed);
+                        if std::env::var("DD_TRACE_DRAW").is_ok()
+                            && matches!(
+                                part.kind,
+                                crate::art::PartKind::Body | crate::art::PartKind::Wheel
+                            )
+                        {
+                            for (i, g) in placed.iter().enumerate() {
+                                let max_index =
+                                    g.indices.iter().copied().max().unwrap_or(0) as usize;
+                                eprintln!(
+                                    "group {}-{i}: pos={} uvs={} normals={} idx={} max_idx={} page={} \
+                                     alpha={:.3} transparent={} depth_test={} finite={}",
+                                    part.source,
+                                    g.positions.len(),
+                                    g.uvs.len(),
+                                    g.normals.len(),
+                                    g.indices.len(),
+                                    max_index,
+                                    g.texture_page,
+                                    g.alpha,
+                                    g.transparent,
+                                    g.depth_test,
+                                    g.positions.iter().all(|p| p.iter().all(|v| v.is_finite()))
+                                        && g.normals
+                                            .iter()
+                                            .all(|n| n.iter().all(|v| v.is_finite()))
+                                );
+                            }
+                        }
+                        if car_first {
+                            car_first_groups.extend(placed);
+                        } else {
+                            groups.extend(placed);
+                        }
                         art_used += 1;
                     }
                     groups.extend(crate::art::missing_wheel_groups(&sim, &art, colour));
                 }
-                _ => groups.extend(car_groups(&sim, colour)),
+                _ => {
+                    let stand_in = car_groups(&sim, colour);
+                    if car_first {
+                        car_first_groups.extend(stand_in);
+                    } else {
+                        groups.extend(stand_in);
+                    }
+                }
             }
         }
         let _ = art_used;
@@ -941,6 +1046,15 @@ pub fn frame_for(
         );
         groups.clear();
         groups.push(m);
+    }
+    if car_first {
+        let cars = std::mem::take(&mut car_first_groups);
+        for g in cars {
+            let g = with_normals(g);
+            if !g.is_empty() {
+                frame.push(g);
+            }
+        }
     }
     for g in groups {
         let g = with_normals(g);

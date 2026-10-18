@@ -575,17 +575,41 @@ pub fn part_groups(art: &ArtPart, sim: &CarSim, colour: [f32; 3]) -> Vec<MeshGro
                 );
             *p = world.to_array();
         }
-        // Untextured parts still carry the livery so cars stay distinguishable.
+        // Untextured parts carry the paint. Multiplying keeps the material colour
+        // as authored: an added floor desaturated every car toward tan, which is
+        // how an orange truck dissolved into the road.
         if g.uvs.is_empty() && matches!(art.kind, PartKind::Body | PartKind::Wing) {
             for c in g.colors.iter_mut() {
                 *c = [
-                    c[0] * (0.35 + colour[0] * 0.65),
-                    c[1] * (0.35 + colour[1] * 0.65),
-                    c[2] * (0.35 + colour[2] * 0.65),
+                    (c[0] * colour[0]).clamp(0.0, 1.0),
+                    (c[1] * colour[1]).clamp(0.0, 1.0),
+                    (c[2] * colour[2]).clamp(0.0, 1.0),
                 ];
             }
         }
         out.push(g);
+    }
+    // The shipped car meshes arrive split per material, each sub-group carrying the
+    // *same* vertex buffer with a different index range (the body is four of
+    // them). Handed to the batch separately, those siblings do not draw at all —
+    // measured as 0 of the body's pixels versus 6575 once merged. Merging them
+    // into one group with the indices rebased is equivalent geometry, so the
+    // loader does it rather than depending on the batch's handling of siblings.
+    if out.len() > 1 {
+        let mut merged = MeshGroup::default();
+        for g in &out {
+            let base = merged.positions.len() as u32;
+            merged.positions.extend_from_slice(&g.positions);
+            merged.colors.extend_from_slice(&g.colors);
+            merged.normals.extend_from_slice(&g.normals);
+            merged.uvs.extend_from_slice(&g.uvs);
+            merged.indices.extend(g.indices.iter().map(|i| i + base));
+            merged.texture_page = g.texture_page;
+            merged.material = g.material;
+            merged.alpha = merged.alpha.min(g.alpha);
+            merged.transparent |= g.transparent;
+        }
+        out = vec![merged];
     }
     out
 }
