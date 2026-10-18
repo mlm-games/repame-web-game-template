@@ -1,4 +1,3 @@
-
 use super::UiAction;
 use repose_core::prelude::{Color, Modifier, StateColors, View};
 use repose_core::text::TextAlign;

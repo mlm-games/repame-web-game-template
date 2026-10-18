@@ -1,8 +1,7 @@
-
 use repame_audio::{Audio, AudioChannel, CueDef, Variation, db_to_linear};
 
-use crate::sim::rng::Rng;
 use crate::sim::state::SfxCue;
+use repame_sim::rng::{Rng as _, SimRng};
 
 const RATE: u32 = 22050;
 const VARIATIONS: usize = 2;
@@ -57,14 +56,14 @@ impl AudioDirector {
     }
 }
 
-fn render_blip(cue: SfxCue, rng: &mut Rng) -> Vec<f32> {
+fn render_blip(cue: SfxCue, rng: &mut SimRng) -> Vec<f32> {
     let (frames, f0, f1, decay, noise) = match cue {
         SfxCue::Pickup => (2200, 880.0, 1320.0, 0.16, 0.0),
         SfxCue::Ui => (1600, 440.0, 660.0, 0.10, 0.0),
         SfxCue::Death => (7000, 320.0, 90.0, 0.55, 0.35),
         SfxCue::Revive => (6000, 330.0, 990.0, 0.45, 0.0),
     };
-    let jitter = 0.98 + 0.04 * rng.randf();
+    let jitter = 0.98 + 0.04 * rng.unit_f32();
     let mut out = Vec::with_capacity(frames);
     let mut phase = 0.0f32;
     for i in 0..frames {
@@ -74,7 +73,7 @@ fn render_blip(cue: SfxCue, rng: &mut Rng) -> Vec<f32> {
         phase += std::f32::consts::TAU * freq / RATE as f32;
         let mut s = phase.sin() * env;
         if noise > 0.0 {
-            s += (rng.randf() * 2.0 - 1.0) * noise * env * env;
+            s += (rng.unit_f32() * 2.0 - 1.0) * noise * env * env;
         }
         out.push(s.clamp(-1.0, 1.0));
     }
@@ -106,7 +105,7 @@ fn install_audio(audio: &mut Audio) {
     for cue in SfxCue::ALL {
         let files: Vec<Vec<u8>> = (0..VARIATIONS)
             .map(|v| {
-                let mut rng = Rng::new(0xB1EE + cue as u64 * 691 + v as u64 * 7919);
+                let mut rng = SimRng::seeded(0xB1EE + cue as u64 * 691 + v as u64 * 7919);
                 encode_wav(&render_blip(cue, &mut rng), RATE)
             })
             .collect();

@@ -19,16 +19,15 @@ path = "src/main.rs"
 
 [dependencies]
 # Engine, from crates.io: the published line is the source of truth, so every
-# renderer-state crate unifies to one copy in one binary. To pick up a fix that
-# is in ~/Documents/Repos but not released yet, redirect these through
-# [patch.crates-io] at the bottom of this file.
-repame-sim = "0.3.11"
-repame-shell = "0.3.11"
-repame-audio = "0.3.11"
-repame-actors = "0.3.11"
+# renderer-state crate unifies to one copy in one binary.
+repame-sim = "0.3.29"
+repame-shell = "0.3.29"
+repame-audio = "0.3.29"
+repame-view2d = "0.3.29"
+repame-save = "0.3.29"
 # Direct dep: bevy derive macros expand to `bevy_ecs::` paths, so every game
-# crate names it explicitly. Must unify with repame-sim's 0.19.
-bevy_ecs = "0.19"
+# crate names it explicitly. Must unify with repame-sim's 0.20.
+bevy_ecs = "0.20"
 # Same glam as repame: shared math types must unify to one version.
 glam = "0.33"
 repose-core = "0.31"
@@ -42,7 +41,6 @@ game-utils = "0.4"
 # Playgama bridge: Poki, CrazyGames, Y8, GameDistribution et al. behind one API,
 # plus offline stand-ins so desktop builds need no cfg soup.
 playgama-bridge = "0.2.0"
-rand = "0.10"
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"
 log = "0.4"
@@ -82,15 +80,3 @@ lto = "thin"
 inherits = "release"
 opt-level = "s"
 strip = "debuginfo"
-
-# Point these at the sibling checkouts to build against unreleased engine code.
-# Keep every repame-* / repose-* entry in the same state (all version, or all
-# path): a half-patched tree lets two copies of the renderer into one binary.
-# [patch.crates-io]
-# repame-sim = { path = "../../../Repos/repame/crates/repame-sim" }
-# repame-shell = { path = "../../../Repos/repame/crates/repame-shell" }
-# repame-actors = { path = "../../../Repos/repame/crates/repame-actors" }
-# repame-audio = { path = "../../../Repos/repame/crates/repame-audio" }
-# repose-core = { path = "../../../Repos/repose/crates/repose-core" }
-# repose-ui = { path = "../../../Repos/repose/crates/repose-ui" }
-# repose-text = { path = "../../../Repos/repose/crates/repose-text" }

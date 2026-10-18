@@ -1,4 +1,3 @@
-
 use bevy_ecs::prelude::*;
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]

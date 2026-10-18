@@ -1,9 +1,9 @@
-
 use bevy_ecs::prelude::*;
 use glam::Vec2;
 
 use super::platform::Platform;
 use super::save::SaveGame;
+use repame_sim::rng::{Rng as _, SimRng};
 
 pub const WORLD: [f32; 2] = [960.0, 540.0];
 pub const RUN_SECONDS: f32 = 60.0;
@@ -385,7 +385,7 @@ pub fn player_entity(world: &mut World) -> Option<Entity> {
 
 pub fn spawn_world(world: &mut World) {
     let field = *world.resource::<Field>();
-    let mut rng = crate::sim::rng::Rng::new(0x5EED_1234);
+    let mut rng = SimRng::seeded(0x5EED_1234);
     if let Some(entity) = player_entity(world) {
         world.entity_mut(entity).despawn();
     }
@@ -406,7 +406,7 @@ pub fn spawn_world(world: &mut World) {
     }
 }
 
-fn free_spot(rng: &mut crate::sim::rng::Rng, world: &mut World) -> Vec2 {
+fn free_spot(rng: &mut SimRng, world: &mut World) -> Vec2 {
     let field = world.resource::<Field>();
     let (fw, fh) = (field.width, field.height);
     let mut existing = world
@@ -416,8 +416,8 @@ fn free_spot(rng: &mut crate::sim::rng::Rng, world: &mut World) -> Vec2 {
         .collect::<Vec<_>>();
     for _ in 0..32 {
         let candidate = Vec2::new(
-            rng.range(SPAWN_MARGIN, fw - SPAWN_MARGIN),
-            rng.range(SPAWN_MARGIN, fh - SPAWN_MARGIN),
+            rng.random_range(SPAWN_MARGIN..fw - SPAWN_MARGIN),
+            rng.random_range(SPAWN_MARGIN..fh - SPAWN_MARGIN),
         );
         if existing
             .iter()
@@ -434,8 +434,7 @@ pub fn respawn_orbs(world: &mut World) {
     for entity in orb_entities(world) {
         world.entity_mut(entity).despawn();
     }
-    let mut rng =
-        crate::sim::rng::Rng::new(0x5EED_1234 ^ world.resource::<RunState>().score as u64);
+    let mut rng = SimRng::seeded(0x5EED_1234 ^ world.resource::<RunState>().score as u64);
     for i in 0..ORB_COUNT {
         let pos = free_spot(&mut rng, world);
         world.spawn(Orb {
@@ -516,6 +515,7 @@ mod wipe_tests {
         world.init_resource::<SfxQueue>();
         world.init_resource::<repame_sim::SimTime>();
         world.init_resource::<Intents>();
+        world.insert_resource(Field::new(WORLD[0], WORLD[1]));
         world
     }
 

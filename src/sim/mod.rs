@@ -1,17 +1,15 @@
-
 pub mod platform;
-pub mod rng;
 pub mod save;
 pub mod state;
 
 use bevy_ecs::prelude::*;
 use glam::Vec2;
 
-use crate::sim::rng::Rng;
 use crate::sim::state::{
     BURST_LIFE, InputState, LOOK_LERP, Orb, PLAYER_R, PLAYER_SPEED, POP_LIFE, PlayerBody, Pops,
     RunState, SfxCue, end_run, queue_sfx,
 };
+use repame_sim::rng::{Rng as _, SimRng};
 
 pub fn build_schedule() -> Schedule {
     let mut s = Schedule::default();
@@ -45,8 +43,7 @@ fn player_system(world: &mut World) {
     let target = dir.normalize_or_zero();
     let k = 1.0 - (-LOOK_LERP * dt).exp();
     let look = body.get_mut::<PlayerBody>().expect("player").look;
-    body.get_mut::<PlayerBody>().expect("player").look =
-        look.lerp(target, k.clamp(0.0, 1.0));
+    body.get_mut::<PlayerBody>().expect("player").look = look.lerp(target, k.clamp(0.0, 1.0));
 }
 
 fn pickup_system(world: &mut World) {
@@ -73,7 +70,7 @@ fn pickup_system(world: &mut World) {
     if collected.is_empty() {
         return;
     }
-    let mut rng = Rng::new(
+    let mut rng = SimRng::seeded(
         0x5EED_ABCD ^ (world.resource::<RunState>().score as u64).wrapping_mul(2_654_435_761),
     );
     for (entity, at) in collected {
@@ -123,7 +120,7 @@ fn run_clock(world: &mut World) {
     end_run(world);
 }
 
-fn free_orb_spot(rng: &mut Rng, world: &mut World) -> Vec2 {
+fn free_orb_spot(rng: &mut SimRng, world: &mut World) -> Vec2 {
     let field = world.resource::<crate::sim::state::Field>();
     let (fw, fh) = (field.width, field.height);
     let taken = world
@@ -139,14 +136,8 @@ fn free_orb_spot(rng: &mut Rng, world: &mut World) -> Vec2 {
         .unwrap_or(Vec2::new(fw * 0.5, fh * 0.5));
     for _ in 0..32 {
         let candidate = Vec2::new(
-            rng.range(
-                crate::sim::state::SPAWN_MARGIN,
-                fw - crate::sim::state::SPAWN_MARGIN,
-            ),
-            rng.range(
-                crate::sim::state::SPAWN_MARGIN,
-                fh - crate::sim::state::SPAWN_MARGIN,
-            ),
+            rng.random_range(crate::sim::state::SPAWN_MARGIN..fw - crate::sim::state::SPAWN_MARGIN),
+            rng.random_range(crate::sim::state::SPAWN_MARGIN..fh - crate::sim::state::SPAWN_MARGIN),
         );
         if taken
             .iter()

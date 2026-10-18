@@ -1,4 +1,3 @@
-
 mod audio;
 mod platform;
 
@@ -87,7 +86,8 @@ impl App {
         sim.world.insert_resource(state::SfxQueue::default());
         sim.world.insert_resource(sim_platform::Platform::default());
         sim.world.insert_resource(Transition::default());
-        sim.world.insert_resource(state::Field::new(state::WORLD[0], state::WORLD[1]));
+        sim.world
+            .insert_resource(state::Field::new(state::WORLD[0], state::WORLD[1]));
         spawn_world(&mut sim.world);
         let touch = TouchHandle::default();
         Self {
@@ -300,6 +300,7 @@ impl AppRuntime {
     }
 }
 
+#[cfg(not(target_arch = "wasm32"))]
 pub fn run_desktop() -> anyhow::Result<()> {
     let _ = env_logger::try_init();
     let mut runtime = AppRuntime {

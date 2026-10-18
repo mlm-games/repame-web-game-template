@@ -1,9 +1,11 @@
-
 use bevy_ecs::prelude::*;
 use glam::Vec2;
-use repame_actors::{PlayerHostRef, actors_view, host_from_str};
+use repame_view2d::{PlayerHostRef, actors_view, host_from_str};
 use repose_core::RenderContext;
-use repose_core::{Alignment, prelude::{Dp, Modifier, View}};
+use repose_core::{
+    Alignment,
+    prelude::{Dp, Modifier, View},
+};
 use repose_ui::{Box as RBox, ViewExt as _, ZStack};
 
 use crate::sim::state::{
@@ -55,14 +57,10 @@ impl Rigs {
             return;
         }
         let dt = f64::from(steps) / 60.0;
-        for host in [
-            &self.backdrop,
-            &self.player,
-            &self.player_pupils,
-        ]
-        .into_iter()
-        .chain(&self.coins)
-        .chain(&self.bursts)
+        for host in [&self.backdrop, &self.player, &self.player_pupils]
+            .into_iter()
+            .chain(&self.coins)
+            .chain(&self.bursts)
         {
             host.borrow_mut().tick_playback_fixed(dt);
         }
@@ -94,8 +92,12 @@ impl Rigs {
             let eyes = pos + look * PUPIL_LOOK;
             layers.push(actor(&self.player_pupils, eyes, size, 1.0, vp, s, ctx));
         }
-        ZStack(Modifier::new().fill_max_size().content_alignment(Alignment::Center))
-            .child(layers)
+        ZStack(
+            Modifier::new()
+                .fill_max_size()
+                .content_alignment(Alignment::Center),
+        )
+        .child(layers)
     }
 }
 
@@ -161,7 +163,5 @@ fn burst_alpha(frac: f32) -> f32 {
 
 fn player_body(world: &mut World) -> Option<(Vec2, Vec2)> {
     let mut q = world.query::<&PlayerBody>();
-    q.iter(world)
-        .next()
-        .map(|b| (b.pos, b.look))
+    q.iter(world).next().map(|b| (b.pos, b.look))
 }
