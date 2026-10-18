@@ -183,11 +183,12 @@ fn track_key(level: &data::Level) -> u64 {
 /// Emit a quad as two triangles wound so the surface faces *up*: the renderer
 /// culls back faces, and a ground surface wound the other way is invisible from
 /// every camera above it.
-fn push_quad(g: &mut MeshGroup, verts: [Vec3; 4], colour: [f32; 3]) {
+fn push_quad(g: &mut MeshGroup, verts: [Vec3; 4], colour: [f32; 3], uv: [[f32; 2]; 4]) {
     let base = g.positions.len() as u32;
-    for v in verts {
+    for (v, uv) in verts.into_iter().zip(uv) {
         g.positions.push(v.to_array());
         g.colors.push(colour);
+        g.uvs.push(uv);
     }
     g.indices
         .extend_from_slice(&[base + 2, base + 1, base, base + 3, base + 2, base]);
@@ -197,7 +198,34 @@ fn push_quad(g: &mut MeshGroup, verts: [Vec3; 4], colour: [f32; 3]) {
 /// behind the line, so without it the bottom of the frame looks into empty space.
 const RUN_OFF: f32 = 60.0;
 
-fn build_static(track_world: &TrackWorld, level: &data::Level) -> Vec<MeshGroup> {
+/// Bind the surfacing textures the shipped materials name, when the reference
+/// export is present. Without it the groups keep flat colours, which is the
+/// fallback every art path in this port follows.
+fn ground_pages(textures: &mut crate::art::Textures) -> [Option<u32>; 4] {
+    let page = |textures: &mut crate::art::Textures, name: &str| {
+        textures.page_sized(name, crate::art::PAGE)
+    };
+    let road = page(textures, "CurveRoad");
+    let shoulder = page(textures, "CementNM");
+    let verge = page(textures, "UnityGrass");
+    let apron = page(textures, "Desert Sand");
+    [road, shoulder, verge, apron]
+}
+
+/// Give a group the page its surface wants, or leave it untextured.
+fn bind_page(mut group: MeshGroup, page: Option<u32>) -> MeshGroup {
+    match page {
+        Some(page) => group.texture_page = page,
+        None => group.uvs.clear(),
+    }
+    group
+}
+
+fn build_static(
+    track_world: &TrackWorld,
+    level: &data::Level,
+    textures: &mut crate::art::Textures,
+) -> Vec<MeshGroup> {
     let racing = level.is_racing_track();
     let road_tone = if racing { ASPHALT } else { DIRT };
     let verge_tone = if racing { GRASS } else { SAND };
@@ -223,8 +251,15 @@ fn build_static(track_world: &TrackWorld, level: &data::Level) -> Vec<MeshGroup>
             vec3(c1.x + half, c1.y, s1),
             vec3(c1.x - half, c1.y, s1),
         ];
-        let tone = if i % 12 < 6 { road_tone } else { ROAD_EDGE };
-        push_quad(&mut road, quad, tone);
+        // The road no longer bands by vertex colour: the shipped asphalt texture
+        // carries the look, one page per quad. UVs beyond 0..1 clamp to an edge
+        // texel, which is how a metre-scaled mapping read as one flat colour.
+        push_quad(
+            &mut road,
+            quad,
+            road_tone,
+            [[0.0, 0.0], [1.0, 0.0], [1.0, 1.0], [0.0, 1.0]],
+        );
         // downhill skirt either side, so the road reads as cut into a slope
         for side in [-1.0f32, 1.0] {
             let a = vec3(c0.x + side * half, c0.y, s0);
@@ -234,10 +269,11 @@ fn build_static(track_world: &TrackWorld, level: &data::Level) -> Vec<MeshGroup>
             // Winding follows the corner order, and the lateral extent changes
             // sign with `side`: without this the left-hand ground faces down and
             // is culled, leaving sky under the road.
+            let uv = [[0.0, 0.0], [1.0, 0.0], [1.0, 1.0], [0.0, 1.0]];
             if side > 0.0 {
-                push_quad(&mut shoulder, [a, b, c, d], MOUNTAIN);
+                push_quad(&mut shoulder, [a, b, c, d], MOUNTAIN, uv);
             } else {
-                push_quad(&mut shoulder, [d, c, b, a], MOUNTAIN);
+                push_quad(&mut shoulder, [d, c, b, a], MOUNTAIN, uv);
             }
         }
     }
@@ -259,10 +295,11 @@ fn build_static(track_world: &TrackWorld, level: &data::Level) -> Vec<MeshGroup>
                 c0.y - 5.0 - i as f32 * 0.05,
                 s0,
             );
+            let uv = [[0.0, 0.0], [1.0, 0.0], [1.0, 1.0], [0.0, 1.0]];
             if side > 0.0 {
-                push_quad(&mut verge, [a, b, c, d], verge_tone);
+                push_quad(&mut verge, [a, b, c, d], verge_tone, uv);
             } else {
-                push_quad(&mut verge, [d, c, b, a], verge_tone);
+                push_quad(&mut verge, [d, c, b, a], verge_tone, uv);
             }
         }
     }
@@ -281,14 +318,28 @@ fn build_static(track_world: &TrackWorld, level: &data::Level) -> Vec<MeshGroup>
             let b = vec3(c1.x + side * inner, c1.y - drop0, s1);
             let c = vec3(c1.x + side * outer, c1.y - drop0 - 34.0, s1);
             let d = vec3(c0.x + side * outer, c0.y - drop0 - 34.0, s0);
+            let uv = [[0.0, 0.0], [1.0, 0.0], [1.0, 1.0], [0.0, 1.0]];
             if side > 0.0 {
-                push_quad(&mut apron, [a, b, c, d], SAND);
+                push_quad(&mut apron, [a, b, c, d], SAND, uv);
             } else {
-                push_quad(&mut apron, [d, c, b, a], SAND);
+                push_quad(&mut apron, [d, c, b, a], SAND, uv);
             }
         }
     }
-    vec![road, shoulder, verge, apron]
+    let [road_page, shoulder_page, verge_page, apron_page] = ground_pages(textures);
+    if std::env::var("DD_TRACE_SCENE").is_ok() {
+        eprintln!(
+            "ground pages: road={road_page:?} shoulder={shoulder_page:?} verge={verge_page:?} \
+             apron={apron_page:?} (layers {})",
+            textures.layer_count()
+        );
+    }
+    vec![
+        bind_page(road, road_page),
+        bind_page(shoulder, shoulder_page),
+        bind_page(verge, verge_page),
+        bind_page(apron, apron_page),
+    ]
 }
 
 /// Procedural stand-in for hazards the export has no mesh for.
@@ -560,7 +611,10 @@ pub fn frame_for(
             let mut cache = world.resource_mut::<SceneCache>();
             if cache.key != key || cache.static_groups.is_empty() {
                 cache.key = key;
-                let mut built = build_static(&track_world, &level);
+                let mut built = {
+                    let SceneCache { art, .. } = &mut *cache;
+                    build_static(&track_world, &level, &mut art.textures)
+                };
                 let SceneCache { props, art, .. } = &mut *cache;
                 let dressing =
                     props.dressing(&track_world.track, level.segment(), &mut art.textures);

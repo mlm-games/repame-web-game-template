@@ -21,6 +21,9 @@ use crate::sim::car::CarSim;
 /// per texture keeps them legible without packing.
 pub const PAGE: u32 = 512;
 
+/// How many frames re-send every texture page. See [`Textures::uploads`].
+pub const UPLOAD_ROUNDS: u32 = 3;
+
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum PartKind {
     Body,
@@ -201,6 +204,8 @@ pub struct Textures {
     /// Layer count the pages were last uploaded against; a change means the
     /// batch was rebuilt and every page has to go up again.
     uploaded_layers: u32,
+    /// Frames uploaded so far: the first few rounds are repeated on purpose.
+    upload_rounds: u32,
     preloaded: bool,
 }
 
@@ -241,8 +246,14 @@ impl Textures {
 
     pub fn uploads(&mut self) -> Vec<SceneUpload> {
         let layers = self.layer_count();
-        if self.uploaded_layers != layers {
+        // Pages go up whenever the batch may have been rebuilt: the layer count
+        // changing means it was, and the first frames cover the case where the
+        // batch is built after the uploads that were meant to fill it. A page the
+        // renderer never received draws untextured — the flat-colour look this
+        // once produced on every road and verge.
+        if self.uploaded_layers != layers || self.upload_rounds < UPLOAD_ROUNDS {
             self.uploaded_layers = layers;
+            self.upload_rounds += 1;
             let all: Vec<u32> = (0..self.pages.len() as u32).collect();
             self.pending = all;
         }
