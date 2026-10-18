@@ -76,12 +76,50 @@ impl App {
         let mut runtime = ReposeRuntime::new();
         runtime.set_viewport_and_scale(request.width, request.height, 1.0);
         let dt = Duration::from_secs_f64(1.0 / request.fps.max(1) as f64);
+        // `DD_CAPTURE_FLOW=1` walks the game the way a player does: garage, map,
+        // race. Fixed frame indices keep the recording reproducible.
+        let flow = std::env::var("DD_CAPTURE_FLOW").is_ok();
         for frame in 0..request.frames {
+            if flow {
+                let intent = match frame {
+                    45 => Some(crate::sim::Intent::ToMapSelect),
+                    90 => Some(crate::sim::Intent::StartLevel(request.level.unwrap_or(6))),
+                    _ => None,
+                };
+                if let Some(intent) = intent {
+                    self.sim
+                        .world
+                        .resource_mut::<crate::sim::Intents>()
+                        .0
+                        .push(intent);
+                }
+            }
             let mut root =
                 |sched: &mut Scheduler, ctx: &RenderContext| -> View { self.view(sched, ctx, dt) };
             let out = runtime.compose_frame_output(&mut root, &ctx);
             apply_render_commands(gpu.renderer_mut(), ctx.drain()).log_failures();
             let rgba = gpu.render_rgba(&out.scene, Some([0.05, 0.06, 0.08, 1.0]))?;
+            if std::env::var("DD_TRACE_CAR").is_ok() && frame % 30 == 0 {
+                // Is the player's car actually painted into the frame? Count the
+                // pixels that carry paint (warm, red-dominant) anywhere in view.
+                let mut paint = 0usize;
+                let mut dark = 0usize;
+                for px in rgba.chunks_exact(4) {
+                    let (r, g, b) = (px[0] as i32, px[1] as i32, px[2] as i32);
+                    if r > g + 25 && g >= b {
+                        paint += 1;
+                    }
+                    if r < 40 && g < 40 && b < 40 {
+                        dark += 1;
+                    }
+                }
+                let total = (request.width * request.height) as f64;
+                eprintln!(
+                    "car trace f{frame}: paint {:.2}% dark {:.2}%",
+                    paint as f64 / total * 100.0,
+                    dark as f64 / total * 100.0
+                );
+            }
             let path = dir.join(format!("frame_{frame:04}.png"));
             image::save_buffer(
                 &path,

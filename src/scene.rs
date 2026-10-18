@@ -583,6 +583,10 @@ pub fn frame_for(
         }
         geometry_ready = true;
     });
+    if std::env::var("DD_DEBUG_ONLY_CAR").is_ok() {
+        // Isolation aid: the car alone, on the background.
+        groups.clear();
+    }
     if geometry_ready {
         // cars: original meshes when the reference export is present, stand-ins
         // otherwise (the stand-ins always cover whatever art is missing).
@@ -637,10 +641,12 @@ pub fn frame_for(
                                 },
                             );
                             eprintln!(
-                                "draw car={} part={} kind={:?} local_bounds={:?} car_pos=({:.1},{:.1},{:.1}) yaw={:.2}",
+                                "draw car={} part={} kind={:?} corner={:?} mirror={:?} local_bounds={:?} car_pos=({:.1},{:.1},{:.1}) yaw={:.2}",
                                 sim.spec.id,
                                 part.source,
                                 part.kind,
+                                part.corner,
+                                part.mirror,
                                 bounds,
                                 sim.pos.x,
                                 sim.pos.y,
@@ -648,7 +654,46 @@ pub fn frame_for(
                                 sim.yaw
                             );
                         }
-                        groups.extend(crate::art::part_groups(part, &sim, colour));
+                        let placed = crate::art::part_groups(part, &sim, colour);
+                        if std::env::var("DD_TRACE_DRAW").is_ok() {
+                            // Where the part actually lands, not where its mesh sits.
+                            let world = placed.iter().filter_map(|g| g.bounds()).fold(
+                                None::<([f32; 3], [f32; 3])>,
+                                |acc, (lo, hi)| {
+                                    Some(match acc {
+                                        None => (lo, hi),
+                                        Some((alo, ahi)) => (
+                                            [
+                                                alo[0].min(lo[0]),
+                                                alo[1].min(lo[1]),
+                                                alo[2].min(lo[2]),
+                                            ],
+                                            [
+                                                ahi[0].max(hi[0]),
+                                                ahi[1].max(hi[1]),
+                                                ahi[2].max(hi[2]),
+                                            ],
+                                        ),
+                                    })
+                                },
+                            );
+                            if let Some((lo, hi)) = world {
+                                eprintln!(
+                                    "placed car={} part={} corner={:?} world_x=[{:.1},{:.1}] \
+                                     world_y=[{:.1},{:.1}] world_z=[{:.1},{:.1}]",
+                                    sim.spec.id,
+                                    part.source,
+                                    part.corner,
+                                    lo[0],
+                                    hi[0],
+                                    lo[1],
+                                    hi[1],
+                                    lo[2],
+                                    hi[2]
+                                );
+                            }
+                        }
+                        groups.extend(placed);
                         art_used += 1;
                     }
                     groups.extend(crate::art::missing_wheel_groups(&sim, &art, colour));
@@ -723,6 +768,39 @@ pub fn frame_for(
         },
         ..Default::default()
     };
+    if std::env::var("DD_TRACE_FLOATERS").is_ok() {
+        // Anything whose lowest vertex is well above the road at its own z is
+        // floating, which reads in motion as debris in the sky.
+        if let Some(track_world) = world.get_resource::<TrackWorld>() {
+            let track = &track_world.track;
+            let mut floating = 0usize;
+            for g in &groups {
+                let Some((min, max)) = g.bounds() else {
+                    continue;
+                };
+                let z = (min[2] + max[2]) * 0.5;
+                if !(0.0..=track.length).contains(&z) {
+                    continue;
+                }
+                let height = track.height(z.clamp(0.0, track.length));
+                if min[1] - height > 3.0 {
+                    floating += 1;
+                    if floating <= 12 {
+                        eprintln!(
+                            "floater: min_y {:.1} road {:.1} above by {:.1} size ({:.1},{:.1},{:.1})",
+                            min[1],
+                            height,
+                            min[1] - height,
+                            max[0] - min[0],
+                            max[1] - min[1],
+                            max[2] - min[2]
+                        );
+                    }
+                }
+            }
+            eprintln!("floating groups: {floating}/{}", groups.len());
+        }
+    }
     if std::env::var("DD_TRACE_SCENE").is_ok() {
         let bad = groups
             .iter()
@@ -774,6 +852,42 @@ pub fn frame_for(
             bad,
             bounds
         );
+    }
+    if std::env::var("DD_TRACE_CAMERA").is_ok() {
+        // Where the car lands on screen: a camera that loses it is the failure
+        // the trace needs to show, not just describe.
+        let aspect = viewport_px[0].max(1.0) / viewport_px[1].max(1.0);
+        let clip = frame.cam.view_proj(aspect) * (player.pos + vec3(0.0, 1.0, 0.0)).extend(1.0);
+        if clip.w > 1e-4 {
+            let ndc = clip.truncate() / clip.w;
+            eprintln!(
+                "car-on-screen x={:.0}/{} y={:.0}/{} (ndc {:.2},{:.2})",
+                (ndc.x * 0.5 + 0.5) * viewport_px[0],
+                viewport_px[0] as i32,
+                (1.0 - (ndc.y * 0.5 + 0.5)) * viewport_px[1],
+                viewport_px[1] as i32,
+                ndc.x,
+                ndc.y
+            );
+        } else {
+            eprintln!("car-on-screen: behind the camera");
+        }
+        {
+            let clip = frame.cam.view_proj(aspect) * (road_ahead + vec3(0.0, 1.2, 0.0)).extend(1.0);
+            if clip.w > 1e-4 {
+                let ndc = clip.truncate() / clip.w;
+                eprintln!(
+                    "road-on-screen x={:.0}/{} ({}% from centre) forward=({:.2},{:.2},{:.2})",
+                    (ndc.x * 0.5 + 0.5) * viewport_px[0],
+                    viewport_px[0] as i32,
+                    ((ndc.x * 0.5 + 0.5) * viewport_px[0] - viewport_px[0] * 0.5) / viewport_px[0]
+                        * 100.0,
+                    frame.cam.forward().x,
+                    frame.cam.forward().y,
+                    frame.cam.forward().z
+                );
+            }
+        }
     }
     if std::env::var("DD_TRACE_CAMERA").is_ok() {
         let eye = frame.cam.eye();
@@ -843,8 +957,9 @@ pub enum CameraMode {
     Cockpit,
 }
 
-/// How far down the track the camera aims, in metres.
-const CAMERA_LOOK_AHEAD: f32 = 24.0;
+/// How far down the track the camera aims, in metres. Short enough that the car
+/// stays above the bottom of the frame at speed: aiming far ahead drops it out.
+const CAMERA_LOOK_AHEAD: f32 = 12.0;
 
 fn camera_for(
     car: &CarSim,
@@ -860,8 +975,8 @@ fn camera_for(
     let portrait = viewport_px[1] > viewport_px[0];
     let (back, up, aim_height) = match mode {
         CameraMode::Chase => {
-            let back = if portrait { 11.0 } else { 9.0 } + speed * 0.06;
-            (back, 3.6 + speed * 0.012, 1.3)
+            let back = if portrait { 10.5 } else { 8.5 } + speed * 0.05;
+            (back, 3.4 + speed * 0.010, 1.2)
         }
         CameraMode::Cockpit => (0.0, 1.35, 0.6),
     };

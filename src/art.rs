@@ -360,17 +360,35 @@ fn half_scale(rgba: &[u8], width: u32, height: u32) -> Vec<u8> {
 
 // ---------------------------------------------------------------- meshes
 
+/// Tokens of a scene-object name, lowercased: `Tire FR` is `["tire", "fr"]`.
+fn tokens(name: &str) -> Vec<String> {
+    name.split(|c: char| !c.is_ascii_alphanumeric())
+        .filter(|t| !t.is_empty())
+        .map(|t| t.to_ascii_lowercase())
+        .collect()
+}
+
+/// Which wheel a part belongs to, by whole token.
+///
+/// Substring matching is not safe here: `Ford_F150_Raptor_View_Body_body`
+/// contains `_f` (in `_Ford`) and `_r` (in `_Raptor`), which used to tag the
+/// whole body as the front-right wheel — and then it was drawn at that wheel,
+/// once per corner, with no body left on the car.
+fn wheel_corner(name: &str, wheels: &[crate::sim::data::WheelSpec]) -> Option<usize> {
+    let part = tokens(name);
+    wheels.iter().position(|w| {
+        let wheel = tokens(&w.name);
+        // The tag is the last token of the wheel's name: "Tire FR" -> "fr".
+        let Some(tag) = wheel.last() else {
+            return false;
+        };
+        tag.len() <= 2 && part.iter().any(|t| t == tag)
+    })
+}
+
 fn classify(name: &str, wheels: &[crate::sim::data::WheelSpec]) -> (PartKind, Option<usize>) {
     let lower = name.to_ascii_lowercase();
-    let corner = wheels.iter().position(|w| {
-        let tag = w.name.to_ascii_lowercase();
-        let (f, r) = (tag.starts_with('f'), tag.starts_with('r'));
-        let (l, rt) = (tag.ends_with('l'), tag.ends_with('r'));
-        let low = name.to_ascii_lowercase();
-        ((f && low.contains("_f")) || (r && low.contains("_r")))
-            && ((l && (low.contains("_l") || low.contains("fl") || low.contains("rl")))
-                || (rt && (low.contains("_r") || low.contains("fr") || low.contains("rr"))))
-    });
+    let corner = wheel_corner(name, wheels);
     if lower.contains("collider") {
         return (PartKind::Hidden, corner);
     }
@@ -395,6 +413,12 @@ fn classify(name: &str, wheels: &[crate::sim::data::WheelSpec]) -> (PartKind, Op
         PartKind::Body
     } else {
         PartKind::Other
+    };
+    // Only wheel-corner parts are moved to a wheel: everything else is drawn in
+    // the car's own frame, and a corner on it would teleport it.
+    let corner = match kind {
+        PartKind::Wheel | PartKind::Caliper => corner,
+        _ => None,
     };
     (kind, corner)
 }

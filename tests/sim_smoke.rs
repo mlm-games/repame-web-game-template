@@ -519,3 +519,66 @@ fn touch_buttons_reach_the_sim_input() {
     assert_eq!(touch.throttle, 0.0);
     assert!(!touch.any_input(), "everything released");
 }
+
+#[test]
+fn the_car_body_is_not_pinned_to_a_wheel() {
+    // Regression: the corner classifier matched substrings, and
+    // `Ford_F150_Raptor_View_Body_body` contains `_f` (in `_Ford`) and `_r` (in
+    // `_Raptor`), so the whole body was tagged front-right, drawn at that wheel
+    // and replicated per corner — the car had no body, just wheel-sized blobs.
+    let mut textures = deadly_descent::art::Textures::default();
+    let cars = data::cars();
+    for spec in cars {
+        let Some(art) = deadly_descent::art::load_car_art(&spec.id, &spec.wheels, &mut textures)
+        else {
+            continue;
+        };
+        for part in &art.parts {
+            if part.kind == deadly_descent::art::PartKind::Wheel
+                || part.kind == deadly_descent::art::PartKind::Caliper
+            {
+                continue;
+            }
+            assert!(
+                part.corner.is_none(),
+                "{}: {} is a {:?} but carries wheel corner {:?}; only wheels and \
+                 calipers belong at a corner",
+                spec.id,
+                part.source,
+                part.kind,
+                part.corner
+            );
+        }
+        // And the body must be car-sized where it stands.
+        // A car whose export has no part named for its body cannot be measured.
+        let Some(body) = art
+            .parts
+            .iter()
+            .find(|p| p.kind == deadly_descent::art::PartKind::Body)
+        else {
+            continue;
+        };
+        let joined =
+            deadly_descent::sim::car::CarSim::new(spec, glam::Vec3::ZERO, 0.0, Default::default());
+        let placed = deadly_descent::art::part_groups(body, &joined, [1.0, 1.0, 1.0]);
+        let (lo, hi) = placed
+            .iter()
+            .filter_map(|g| g.bounds())
+            .fold(None::<([f32; 3], [f32; 3])>, |acc, (lo, hi)| {
+                Some(match acc {
+                    None => (lo, hi),
+                    Some((alo, ahi)) => (
+                        [alo[0].min(lo[0]), alo[1].min(lo[1]), alo[2].min(lo[2])],
+                        [ahi[0].max(hi[0]), ahi[1].max(hi[1]), ahi[2].max(hi[2])],
+                    ),
+                })
+            })
+            .expect("the body has bounds");
+        let length = hi[2] - lo[2];
+        assert!(
+            (3.0..9.0).contains(&length),
+            "{}: the body is {length:.1} m long; a car body belongs on the car",
+            spec.id
+        );
+    }
+}
