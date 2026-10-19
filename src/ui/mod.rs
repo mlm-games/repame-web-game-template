@@ -38,6 +38,7 @@ pub enum UiAction {
     UpgradeDurability,
     ToGarage,
     ToMapSelect,
+    MapPage(i32),
     Restart,
     NextLevel,
     ToggleMute,
@@ -113,6 +114,8 @@ pub struct SharedUi {
     pub car: usize,
     pub coins: i32,
     pub levels: Vec<LevelView>,
+    /// Map screen page, 15 levels each; the grid has room for three rows.
+    pub map_page: usize,
     pub cars: Vec<CarView>,
     pub time: f32,
     pub countdown: f32,
@@ -156,6 +159,7 @@ impl Default for SharedUi {
             car: 0,
             coins: 0,
             levels: Vec::new(),
+            map_page: 0,
             cars: Vec::new(),
             time: 0.0,
             countdown: 0.0,
@@ -931,30 +935,64 @@ fn map_select(ui: &SharedUi, s: f32, vp: [f32; 2], sink: &Sink) -> View {
         }
         grid.push(
             Row(Modifier::new()
-                .gap(Dp(8.0 * s))
+                .gap(Dp(6.0 * s))
                 .align_items(AlignItems::CENTER))
             .child(cells),
         );
     }
     let mut col: Vec<View> = header;
     col.push(Spacer());
-    // 61 levels in 13 rows of 5: show a window around the selected one
-    let start = (ui.level / 10) * 10;
-    for row in grid.into_iter().skip(start / 5).take(5) {
+    // Three rows fit under the header and above the page buttons.
+    let per_page = 15;
+    let pages = ui.levels.len().div_ceil(per_page).max(1);
+    let page = ui.map_page.min(pages - 1);
+    let start = page * per_page;
+    for row in grid.into_iter().skip(start / 5).take(3) {
         col.push(row);
     }
     if ui.tutorial_stage <= 1 {
         col.push(hint_ring(ui, "PICK ANY MAP TO START", s));
     }
     col.push(Spacer());
+    let mut nav: Vec<View> = vec![button(
+        "BACK",
+        STEEL,
+        20.0,
+        s,
+        UiAction::ToGarage,
+        sink,
+        false,
+    )];
+    if pages > 1 {
+        nav.push(small_button(
+            ui,
+            "PREV",
+            UiAction::MapPage(-1),
+            sink,
+            s,
+            page == 0,
+        ));
+        nav.push(label_plain(
+            Modifier::new(),
+            &format!("{} / {}", page + 1, pages),
+            18.0,
+            CREAM,
+            s,
+        ));
+        nav.push(small_button(
+            ui,
+            "NEXT",
+            UiAction::MapPage(1),
+            sink,
+            s,
+            page + 1 >= pages,
+        ));
+    }
     col.push(
         Row(Modifier::new()
             .gap(Dp(10.0 * s))
             .align_items(AlignItems::CENTER))
-        .child((
-            button("BACK", STEEL, 20.0, s, UiAction::ToGarage, sink, false),
-            small_button(ui, "NEXT PAGE", UiAction::ToMapSelect, sink, s, false),
-        )),
+        .child(nav),
     );
     let content = Column(
         Modifier::new()
@@ -962,7 +1000,7 @@ fn map_select(ui: &SharedUi, s: f32, vp: [f32; 2], sink: &Sink) -> View {
             .align_items(AlignItems::CENTER),
     )
     .child(col);
-    palette::panel(vp, s, content)
+    padded_panel(vp, s, content, 10.0)
 }
 
 fn hud(ui: &SharedUi, s: f32, vp: [f32; 2], sink: &Sink) -> View {

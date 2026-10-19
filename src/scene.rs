@@ -207,7 +207,9 @@ fn ground_pages(textures: &mut crate::art::Textures) -> [Option<u32>; 4] {
     let road = page(textures, "CurveRoad");
     let shoulder = page(textures, "CementNM");
     let verge = page(textures, "UnityGrass");
-    let apron = page(textures, "Desert Sand");
+    // The apron is the ground out to the horizon: a flat tone reads better than
+    // a 300 m wide stretch of a 256 px texture, which bands as it repeats.
+    let apron = None;
     [road, shoulder, verge, apron]
 }
 
@@ -267,14 +269,23 @@ fn build_static(
             vec3(c1.x + half, c1.y, s1),
             vec3(c1.x - half, c1.y, s1),
         ];
-        // The road no longer bands by vertex colour: the shipped asphalt texture
-        // carries the look, one page per quad. UVs beyond 0..1 clamp to an edge
-        // texel, which is how a metre-scaled mapping read as one flat colour.
+        // The shipped `CurveRoad` sheet is a road piece, not a tiling surface:
+        // asphalt fills the top left of the page, with a kerb band to the right
+        // and a skirt below. Sampling the whole page per quad painted those
+        // bands across the road every `step` metres, so the quads take the
+        // asphalt rect only.
+        const ROAD_U: [f32; 2] = [0.005, 0.75];
+        const ROAD_V: [f32; 2] = [0.005, 0.61];
         push_quad(
             &mut road,
             quad,
             road_tone,
-            [[0.0, 0.0], [1.0, 0.0], [1.0, 1.0], [0.0, 1.0]],
+            [
+                [ROAD_U[0], ROAD_V[0]],
+                [ROAD_U[1], ROAD_V[0]],
+                [ROAD_U[1], ROAD_V[1]],
+                [ROAD_U[0], ROAD_V[1]],
+            ],
         );
         // downhill skirt either side, so the road reads as cut into a slope
         for side in [-1.0f32, 1.0] {
@@ -287,9 +298,9 @@ fn build_static(
             // is culled, leaving sky under the road.
             let uv = [[0.0, 0.0], [1.0, 0.0], [1.0, 1.0], [0.0, 1.0]];
             if side > 0.0 {
-                push_quad(&mut shoulder, [a, b, c, d], MOUNTAIN, uv);
+                push_quad(&mut shoulder, [a, d, c, b], MOUNTAIN, uv);
             } else {
-                push_quad(&mut shoulder, [d, c, b, a], MOUNTAIN, uv);
+                push_quad(&mut shoulder, [b, c, d, a], MOUNTAIN, uv);
             }
         }
     }
@@ -313,9 +324,9 @@ fn build_static(
             );
             let uv = [[0.0, 0.0], [1.0, 0.0], [1.0, 1.0], [0.0, 1.0]];
             if side > 0.0 {
-                push_quad(&mut verge, [a, b, c, d], verge_tone, uv);
+                push_quad(&mut verge, [a, d, c, b], verge_tone, uv);
             } else {
-                push_quad(&mut verge, [d, c, b, a], verge_tone, uv);
+                push_quad(&mut verge, [b, c, d, a], verge_tone, uv);
             }
         }
     }
@@ -336,9 +347,9 @@ fn build_static(
             let d = vec3(c0.x + side * outer, c0.y - drop0 - 34.0, s0);
             let uv = [[0.0, 0.0], [1.0, 0.0], [1.0, 1.0], [0.0, 1.0]];
             if side > 0.0 {
-                push_quad(&mut apron, [a, b, c, d], SAND, uv);
+                push_quad(&mut apron, [a, d, c, b], SAND, uv);
             } else {
-                push_quad(&mut apron, [d, c, b, a], SAND, uv);
+                push_quad(&mut apron, [b, c, d, a], SAND, uv);
             }
         }
     }

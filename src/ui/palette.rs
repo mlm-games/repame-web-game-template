@@ -131,6 +131,10 @@ pub fn bar(frac: f32, fg: Color, s: f32, width: f32, height: f32) -> View {
 }
 
 pub fn panel(vp: [f32; 2], s: f32, content: View) -> View {
+    padded_panel(vp, s, content, 20.0)
+}
+
+pub fn padded_panel(vp: [f32; 2], s: f32, content: View, pad: f32) -> View {
     RBox(
         Modifier::new()
             .fill_max_size()
@@ -143,10 +147,10 @@ pub fn panel(vp: [f32; 2], s: f32, content: View) -> View {
                 .background(PANEL)
                 .clip_rounded(Dp(20.0 * s))
                 .padding_values(PaddingValues {
-                    left: Dp(20.0 * s),
-                    right: Dp(20.0 * s),
-                    top: Dp(20.0 * s),
-                    bottom: Dp(20.0 * s),
+                    left: Dp(pad * s),
+                    right: Dp(pad * s),
+                    top: Dp(pad * s),
+                    bottom: Dp(pad * s),
                 })
                 .max_width(Dp(vp[0] * 0.94)),
         )

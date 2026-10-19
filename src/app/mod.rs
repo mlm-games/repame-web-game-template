@@ -499,8 +499,13 @@ impl App {
                 self.ui.paused = false;
             }
             UiAction::ToMapSelect => {
+                self.ui.map_page = self.ui.level / 15;
                 intents.0.push(Intent::ToMapSelect);
                 self.ui.paused = false;
+            }
+            UiAction::MapPage(delta) => {
+                let pages = self.ui.levels.len().div_ceil(15).max(1) as i32;
+                self.ui.map_page = (self.ui.map_page as i32 + delta).clamp(0, pages - 1) as usize;
             }
             UiAction::Restart => {
                 intents.0.push(Intent::Restart);
