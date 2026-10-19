@@ -124,6 +124,10 @@ pub struct PropCache {
     meshes: HashMap<String, Option<PropMesh>>,
 }
 
+/// Roadside dressing stays inside this footprint (metres); the scatter puts it
+/// 13 to 47 m from the road, so anything wider ends up with the road inside it.
+const DRESSING_ENVELOPE: f32 = 20.0;
+
 fn traced() -> bool {
     std::env::var("DD_TRACE_PROPS").is_ok()
 }
@@ -220,6 +224,39 @@ impl PropCache {
                 continue;
             };
             let groups = mesh.groups;
+            // The shipped scenes mix units: terrain chunks and arches are in
+            // centimetres, hedge pieces in metres, hole craters in decimetres.
+            // Placed at 1:1 a crater lands 58 m tall around a 9 m road and the
+            // camera ends up inside it. Normalise the unit, then hold the
+            // footprint inside the dressing envelope the scatter uses.
+            let (lo, hi) = groups
+                .iter()
+                .filter_map(|g| g.bounds())
+                .fold(None::<([f32; 3], [f32; 3])>, |acc, (lo, hi)| {
+                    Some(match acc {
+                        None => (lo, hi),
+                        Some((alo, ahi)) => (
+                            [alo[0].min(lo[0]), alo[1].min(lo[1]), alo[2].min(lo[2])],
+                            [ahi[0].max(hi[0]), ahi[1].max(hi[1]), ahi[2].max(hi[2])],
+                        ),
+                    })
+                })
+                .unwrap_or(([0.0; 3], [1.0; 3]));
+            let size = [hi[0] - lo[0], hi[1] - lo[1], hi[2] - lo[2]];
+            let mut scale = 1.0f32;
+            if size.iter().fold(0.0f32, |m, v| m.max(*v)) > 200.0 {
+                scale *= 0.01;
+            }
+            let footprint = size[0].max(size[2]) * scale;
+            if footprint > DRESSING_ENVELOPE {
+                scale *= DRESSING_ENVELOPE / footprint;
+            }
+            if std::env::var("DD_TRACE_PROPS").is_ok() {
+                eprintln!(
+                    "palette {file}: size ({:.1},{:.1},{:.1}) m -> scale {:.3}",
+                    size[0], size[1], size[2], scale
+                );
+            }
             let mut s = 40.0;
             let mut salt = 31u32;
             while s < track.length - 20.0 {
@@ -239,9 +276,9 @@ impl PropCache {
                 for g in &groups {
                     out.push(place(
                         g,
-                        pos + Vec3::Y * mesh.ground_offset,
+                        pos + Vec3::Y * (mesh.ground_offset * scale),
                         yaw,
-                        [1.0, 1.0, 1.0],
+                        [scale, scale, scale],
                     ));
                 }
 
@@ -369,16 +406,49 @@ pub fn obstacle_groups(
     def: &PropDef,
     at: Vec3,
     yaw: f32,
+    collision: Vec3,
 ) -> Option<Vec<MeshGroup>> {
     let mesh = cache.get(&def.file, textures)?.clone();
-    let yaw = yaw + def.yaw_deg.to_radians();
+    let base = yaw + def.yaw_deg.to_radians();
+
+    // Some shipped hazards are authored with their length across the road (a bus,
+    // a train), where the collision box runs it along the road. Rather than carry
+    // a per-file fudge, place the mesh in whichever of the two right angles fits
+    // the box the car collides with.
+    let extent = |groups: &[MeshGroup]| {
+        groups
+            .iter()
+            .filter_map(|g| g.bounds())
+            .fold(None::<([f32; 3], [f32; 3])>, |acc, (lo, hi)| {
+                Some(match acc {
+                    None => (lo, hi),
+                    Some((alo, ahi)) => (
+                        [alo[0].min(lo[0]), alo[1].min(lo[1]), alo[2].min(lo[2])],
+                        [ahi[0].max(hi[0]), ahi[1].max(hi[1]), ahi[2].max(hi[2])],
+                    ),
+                })
+            })
+            .map(|(lo, hi)| Vec3::new(hi[0] - lo[0], hi[1] - lo[1], hi[2] - lo[2]))
+            .unwrap_or(Vec3::ZERO)
+    };
     let lift = def.lift + mesh.ground_offset * def.scale[1];
-    Some(
+    let build = |yaw: f32| -> Vec<MeshGroup> {
         mesh.groups
             .iter()
             .map(|g| place(g, at + vec3(0.0, lift, 0.0), yaw, def.scale))
-            .collect(),
-    )
+            .collect()
+    };
+    let fit = |yaw: f32| {
+        let e = extent(&build(yaw));
+        (e.x - collision.x).abs() + (e.z - collision.z).abs()
+    };
+    let straight = fit(base);
+    let turned = fit(base + std::f32::consts::FRAC_PI_2);
+    Some(build(if turned < straight - 0.5 {
+        base + std::f32::consts::FRAC_PI_2
+    } else {
+        base
+    }))
 }
 
 const PROPS_JSON: &str = include_str!("../assets/dd1/props.json");
@@ -413,11 +483,14 @@ fn load_prop(file: &str, textures: &mut crate::art::Textures) -> Option<PropMesh
         }
     };
     let meshes = gltf::import_slice(&bytes).ok()?;
-    let entry = crate::art::mesh_material(file);
+    let entry = crate::art::manifest_material(&format!("meshes/{file}.glb"))
+        .or_else(|| crate::art::mesh_material(file));
     let page = entry
         .and_then(|e| e.texture_name())
         .and_then(|name| textures.page_sized(name, crate::art::Textures::PROP_PAGE));
     let tint = entry.and_then(|e| e.tint());
+    let cutoff = entry.map(|e| e.cutoff()).unwrap_or(0.0);
+    let blends = entry.map(|e| e.blends()).unwrap_or(false);
     let mut groups: Vec<MeshGroup> = Vec::new();
     for mesh in meshes {
         for mut group in mesh.groups {
@@ -427,6 +500,8 @@ fn load_prop(file: &str, textures: &mut crate::art::Textures) -> Option<PropMesh
             match page {
                 Some(page) => {
                     group.texture_page = page;
+                    group.alpha_cutoff = cutoff;
+                    group.transparent |= blends;
                     if let Some(tint) = tint {
                         for c in group.colors.iter_mut() {
                             *c = [c[0] * tint[0], c[1] * tint[1], c[2] * tint[2]];
@@ -441,6 +516,27 @@ fn load_prop(file: &str, textures: &mut crate::art::Textures) -> Option<PropMesh
             groups.push(group);
         }
     }
+    // Sibling sub-meshes that share one vertex buffer do not draw when the batch
+    // is handed them separately (the same engine behaviour the car loader merges
+    // around); merging is equivalent geometry, so do it here too.
+    let groups = if groups.len() > 1 {
+        let mut merged = MeshGroup::default();
+        for g in &groups {
+            let base = merged.positions.len() as u32;
+            merged.positions.extend_from_slice(&g.positions);
+            merged.colors.extend_from_slice(&g.colors);
+            merged.normals.extend_from_slice(&g.normals);
+            merged.uvs.extend_from_slice(&g.uvs);
+            merged.indices.extend(g.indices.iter().map(|i| i + base));
+            merged.texture_page = g.texture_page;
+            merged.material = g.material;
+            merged.alpha = merged.alpha.min(g.alpha);
+            merged.transparent |= g.transparent;
+        }
+        vec![merged]
+    } else {
+        groups
+    };
     if groups.is_empty() {
         return None;
     }

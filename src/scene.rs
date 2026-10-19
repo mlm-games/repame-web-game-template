@@ -32,7 +32,6 @@ pub fn scene_desc(layers: u32) -> BatchDesc {
 // variant) 0.434, `Terrain`/`RoadGlide` 0.321, `Dunes` sand 0.434.
 const ASPHALT: [f32; 3] = [0.349, 0.345, 0.34];
 const DIRT: [f32; 3] = [0.30, 0.26, 0.22];
-const ROAD_EDGE: [f32; 3] = [0.24, 0.22, 0.21];
 const GRASS: [f32; 3] = [0.27, 0.32, 0.20];
 const MOUNTAIN: [f32; 3] = [0.40, 0.39, 0.375];
 const SAND: [f32; 3] = [0.43, 0.40, 0.33];
@@ -464,7 +463,10 @@ fn obstacle_groups_with_props(
         let yaw = crate::props::tangent_yaw(track, ob.s);
         let wrecked = ob.broken && ob.kind.is_breakable();
         if let Some(def) = table.obstacle_for(ob.kind)
-            && let Some(groups) = crate::props::obstacle_groups(cache, textures, def, at, yaw)
+            && let Some(groups) = crate::props::obstacle_groups(cache, textures, def, at, yaw, {
+                let half = ob.kind.half_extents();
+                Vec3::new(half.x * 2.0, half.y * 2.0, half.z * 2.0)
+            })
         {
             for mut g in groups {
                 if wrecked {

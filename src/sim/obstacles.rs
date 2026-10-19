@@ -53,19 +53,27 @@ impl Kind {
         matches!(self, Kind::Spikes | Kind::Ball | Kind::Press | Kind::Train)
     }
 
+    /// Half extents the car collides with, in metres.
+    ///
+    /// For the kinds the shipped build has art for, these are *measured* from
+    /// those meshes (see `obstacle_art_fits_the_box_the_simulation_collides_with`,
+    /// which fails when the two drift apart): art 3.4 x 2.9 x 12.4 m for a
+    /// container, 3.6 m of wall, 6.2 x 2.3 m of spikes, a 5.2 m ramp. The rest
+    /// have no shipped mesh and the port builds a stand-in from these numbers, so
+    /// art and box agree by construction.
     pub fn half_extents(self) -> Vec3 {
         match self {
-            Kind::Container => Vec3::new(1.3, 1.3, 2.6),
-            Kind::Crate => Vec3::new(0.6, 0.6, 0.6),
-            Kind::Spikes => Vec3::new(1.6, 0.35, 1.6),
+            Kind::Container => Vec3::new(1.7, 1.45, 6.2),
+            Kind::Crate => Vec3::new(0.7, 0.8, 0.7),
+            Kind::Spikes => Vec3::new(3.1, 1.15, 2.4),
             Kind::Ball => Vec3::splat(1.1),
             Kind::Press => Vec3::new(2.2, 1.0, 2.2),
             Kind::Gate => Vec3::new(0.35, 1.6, 4.0),
-            Kind::Train => Vec3::new(1.6, 2.2, 9.0),
+            Kind::Train => Vec3::new(1.6, 2.2, 6.85),
             Kind::Hole => Vec3::new(3.0, 0.5, 3.5),
-            Kind::Ramp => Vec3::new(3.2, 0.9, 4.5),
-            Kind::Bus => Vec3::new(1.3, 1.5, 5.5),
-            Kind::Wall => Vec3::new(0.7, 1.6, 3.0),
+            Kind::Ramp => Vec3::new(3.4, 0.7, 2.6),
+            Kind::Bus => Vec3::new(1.9, 1.75, 5.3),
+            Kind::Wall => Vec3::new(1.8, 1.6, 3.0),
         }
     }
 }

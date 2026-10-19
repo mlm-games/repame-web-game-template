@@ -1,0 +1,1295 @@
+{
+ "0": [
+  "Trackside"
+ ],
+ "10": [
+  "Concrete Variant"
+ ],
+ "100": [
+  "Metal"
+ ],
+ "101": [
+  "Atlas-02",
+  "Atlas-01"
+ ],
+ "102": [
+  "Crane"
+ ],
+ "10202": [
+  "Concrete Variant"
+ ],
+ "10206": [
+  "Black"
+ ],
+ "10207": [
+  "Obstacle"
+ ],
+ "10210": [
+  "GradientTexture 1"
+ ],
+ "103": [
+  "building_01_a"
+ ],
+ "104": [
+  "Atlas-01"
+ ],
+ "106": [
+  "Atlas-01"
+ ],
+ "107": [
+  "Atlas-01"
+ ],
+ "108": [
+  "Atlas-01",
+  "Metal"
+ ],
+ "109": [
+  "Atlas-01"
+ ],
+ "110": [
+  "Atlas-01"
+ ],
+ "113": [
+  "Audience"
+ ],
+ "114": [
+  "Atlas-01",
+  "Metal"
+ ],
+ "115": [
+  "Atlas-01"
+ ],
+ "116": [
+  "Metal"
+ ],
+ "117": [
+  "Atlas-02"
+ ],
+ "118": [
+  "Crane"
+ ],
+ "119": [
+  "ScreenTexture"
+ ],
+ "12": [
+  "Default-Material"
+ ],
+ "120": [
+  "Glass",
+  "Atlas-01",
+  "Metal"
+ ],
+ "121": [
+  "strip"
+ ],
+ "122": [
+  "ScreenTexture"
+ ],
+ "123": [
+  "Atlas-01",
+  "Metal",
+  "Atlas-02",
+  "wins"
+ ],
+ "125": [
+  "Atlas-01",
+  "Metal"
+ ],
+ "126": [
+  "Atlas-01"
+ ],
+ "127": [
+  "Atlas-01"
+ ],
+ "128": [
+  "Atlas-01"
+ ],
+ "129": [
+  "ScreenTexture"
+ ],
+ "13": [
+  "Industrial Train Dr14"
+ ],
+ "130": [
+  "Atlas-01"
+ ],
+ "132": [
+  "Atlas-01"
+ ],
+ "134": [
+  "Atlas-01",
+  "Glass"
+ ],
+ "135": [
+  "Atlas-01",
+  "Atlas-02"
+ ],
+ "136": [
+  "Atlas-01"
+ ],
+ "137": [
+  "Atlas-01"
+ ],
+ "139": [
+  "Metal",
+  "Atlas-01"
+ ],
+ "14": [
+  "Concrete Variant"
+ ],
+ "140": [
+  "Metal"
+ ],
+ "141": [
+  "Atlas-01",
+  "Metal"
+ ],
+ "142": [
+  "Atlas-01",
+  "Atlas-02"
+ ],
+ "143": [
+  "Trees-01"
+ ],
+ "144": [
+  "ScreenTexture"
+ ],
+ "146": [
+  "Atlas-01"
+ ],
+ "147": [
+  "Atlas-01"
+ ],
+ "148": [
+  "Stone"
+ ],
+ "149": [
+  "Atlas-01"
+ ],
+ "15": [
+  "Concrete Variant"
+ ],
+ "150": [
+  "Atlas-01",
+  "Metal"
+ ],
+ "151": [
+  "Metal"
+ ],
+ "152": [
+  "Audience"
+ ],
+ "153": [
+  "Atlas-01",
+  "Metal"
+ ],
+ "154": [
+  "Atlas-01"
+ ],
+ "155": [
+  "Atlas-01",
+  "wins",
+  "Metal",
+  "Atlas-02"
+ ],
+ "156": [
+  "Metal"
+ ],
+ "157": [
+  "ScreenTexture"
+ ],
+ "158": [
+  "Audience"
+ ],
+ "159": [
+  "Metal"
+ ],
+ "16": [
+  "Industrial Train Dr14"
+ ],
+ "160": [
+  "Atlas-01"
+ ],
+ "161": [
+  "Atlas-01",
+  "Glass"
+ ],
+ "162": [
+  "Atlas-01"
+ ],
+ "163": [
+  "Atlas-01"
+ ],
+ "164": [
+  "Atlas-01"
+ ],
+ "165": [
+  "Metal",
+  "Atlas-01"
+ ],
+ "166": [
+  "Atlas-01"
+ ],
+ "167": [
+  "Atlas-01",
+  "Glass"
+ ],
+ "168": [
+  "Metal",
+  "Atlas-01"
+ ],
+ "169": [
+  "Atlas-01"
+ ],
+ "17": [
+  "Dr14 headlights"
+ ],
+ "171": [
+  "Atlas-01"
+ ],
+ "172": [
+  "Metal"
+ ],
+ "173": [
+  "Glass",
+  "Atlas-01",
+  "Metal"
+ ],
+ "174": [
+  "Atlas-01",
+  "Atlas-02"
+ ],
+ "175": [
+  "Atlas-01"
+ ],
+ "176": [
+  "Atlas-01",
+  "Atlas-02",
+  "wins",
+  "Metal",
+  "Glass"
+ ],
+ "177": [
+  "Atlas-01",
+  "Metal"
+ ],
+ "178": [
+  "Atlas-01"
+ ],
+ "179": [
+  "Atlas-01"
+ ],
+ "18": [
+  "Dr14 headlights"
+ ],
+ "180": [
+  "Atlas-01",
+  "Atlas-02",
+  "Metal"
+ ],
+ "181": [
+  "Atlas-01",
+  "Metal"
+ ],
+ "182": [
+  "Atlas-01",
+  "Glass"
+ ],
+ "183": [
+  "Crane"
+ ],
+ "184": [
+  "Atlas-01"
+ ],
+ "185": [
+  "Atlas-01",
+  "Atlas-02",
+  "Metal"
+ ],
+ "186": [
+  "Metal"
+ ],
+ "187": [
+  "Atlas-01",
+  "wins",
+  "SideTrack_A"
+ ],
+ "188": [
+  "Atlas-01",
+  "OutDoor-01"
+ ],
+ "189": [
+  "Trees-01"
+ ],
+ "19": [
+  "Dr14 brakes lights"
+ ],
+ "190": [
+  "Crane"
+ ],
+ "191": [
+  "Metal"
+ ],
+ "192": [
+  "Atlas-01",
+  "Atlas-02",
+  "Metal"
+ ],
+ "193": [
+  "Atlas-01",
+  "Atlas-02"
+ ],
+ "194": [
+  "Atlas-01",
+  "Atlas-02"
+ ],
+ "195": [
+  "Atlas-01",
+  "Atlas-02"
+ ],
+ "196": [
+  "Atlas-01",
+  "Atlas-02"
+ ],
+ "197": [
+  "Audience"
+ ],
+ "198": [
+  "Atlas-01",
+  "Metal"
+ ],
+ "199": [
+  "Metal"
+ ],
+ "2": [
+  "Concrete",
+  "Pit"
+ ],
+ "20": [
+  "Dr14 brakes lights"
+ ],
+ "200": [
+  "Stone"
+ ],
+ "201": [
+  "Crane"
+ ],
+ "202": [
+  "Atlas-01",
+  "Metal"
+ ],
+ "203": [
+  "Atlas-01"
+ ],
+ "204": [
+  "Atlas-01"
+ ],
+ "205": [
+  "Audience"
+ ],
+ "206": [
+  "Metal"
+ ],
+ "208": [
+  "ScreenTexture"
+ ],
+ "209": [
+  "Atlas-01",
+  "Atlas-02"
+ ],
+ "21": [
+  "Dr14 headlights"
+ ],
+ "210": [
+  "Atlas-02",
+  "Atlas-01"
+ ],
+ "211": [
+  "Atlas-01"
+ ],
+ "212": [
+  "Metal"
+ ],
+ "213": [
+  "Stone"
+ ],
+ "214": [
+  "Metal"
+ ],
+ "215": [
+  "Atlas-01",
+  "Metal"
+ ],
+ "216": [
+  "ScreenTexture"
+ ],
+ "217": [
+  "Atlas-01"
+ ],
+ "218": [
+  "Atlas-01",
+  "Metal"
+ ],
+ "219": [
+  "Metal"
+ ],
+ "22": [
+  "Dr14 headlights"
+ ],
+ "220": [
+  "Atlas-01"
+ ],
+ "221": [
+  "Crane"
+ ],
+ "222": [
+  "Atlas-01"
+ ],
+ "223": [
+  "Atlas-01"
+ ],
+ "224": [
+  "Atlas-01"
+ ],
+ "225": [
+  "Atlas-01",
+  "Glass"
+ ],
+ "226": [
+  "Atlas-01",
+  "Metal"
+ ],
+ "227": [
+  "wins",
+  "Metal",
+  "Atlas-01",
+  "Atlas-02"
+ ],
+ "228": [
+  "Atlas-01"
+ ],
+ "229": [
+  "Metal"
+ ],
+ "23": [
+  "RedMat"
+ ],
+ "230": [
+  "Atlas-01",
+  "Atlas-02"
+ ],
+ "231": [
+  "Metal"
+ ],
+ "232": [
+  "Atlas-01"
+ ],
+ "233": [
+  "POR_997GT3RS-rimcaliper"
+ ],
+ "234": [
+  "AUDR8-light-emissive"
+ ],
+ "235": [
+  "HLCAT-interior"
+ ],
+ "236": [
+  "POR_997GT3RS-tire",
+  "POR_997GT3RS-rimcaliper"
+ ],
+ "237": [
+  "AUDR8-bodycolor",
+  "AUDR8-carbonfiber",
+  "AUDR8-diffuse",
+  "AUDR8-reflective",
+  "AUDR8-brakelights",
+  "AUDR8-glass",
+  "AUDR8-mirror"
+ ],
+ "238": [
+  "FOR_RPTR-carpaint",
+  "FOR_RPTR-parts",
+  "FOR_RPTR-mirror",
+  "FOR_RPTR-windows",
+  "FOR_RPTR-glass"
+ ],
+ "239": [
+  "HLCATL-bodycolor",
+  "HLCAT-carbonfiber",
+  "HLCATL-diffuse",
+  "HLCATL-brakelights",
+  "HLCAT-reflective",
+  "HLCAT-glass",
+  "HLCATL-mirror"
+ ],
+ "24": [
+  "Rails"
+ ],
+ "240": [
+  "Lam_Rvntn_carpaint",
+  "Lam_Rvntn_parts",
+  "Lam_Rvntn_glass",
+  "Lam_Rvntn_mirror"
+ ],
+ "241": [
+  "POR_997GT3RS-carpaint",
+  "POR_997GT3RS-carbonfiber",
+  "POR_997GT3RS-mirrors",
+  "POR_997GT3RS-parts",
+  "POR_997GT3RS-metallic",
+  "POR_997GT3RS-glass"
+ ],
+ "242": [
+  "BM_E30M3-carpaint",
+  "BM_E30M3-parts",
+  "BM_E30M3-glass",
+  "BM_E30M3-chrome"
+ ],
+ "243": [
+  "AUDR8-wheeltire_hre"
+ ],
+ "244": [
+  "FOR_RPTR-rimcaliper"
+ ],
+ "245": [
+  "HLCAT-wheeltire"
+ ],
+ "246": [
+  "FOR_RPTR-lightemissive"
+ ],
+ "247": [
+  "FOR_RPTR-parts-metal"
+ ],
+ "248": [
+  "POR_997GT3RS-rimcaliper"
+ ],
+ "249": [
+  "Lam_Rvntn_lights"
+ ],
+ "25": [
+  "Concrete Variant"
+ ],
+ "250": [
+  "AUDR8-wheeltire_hre",
+  "AUDR8-HRErim"
+ ],
+ "251": [
+  "HLCAT-wheeltire",
+  "HLCAT-rim"
+ ],
+ "252": [
+  "FOR_RPTR-interior"
+ ],
+ "253": [
+  "AUDR8-interior"
+ ],
+ "254": [
+  "AUDR8-carbonfiber"
+ ],
+ "255": [
+  "FOR_RPTR-interior"
+ ],
+ "256": [
+  "AUDR8-interior"
+ ],
+ "257": [
+  "Lam_Rvntn_interior"
+ ],
+ "258": [
+  "FOR_RPTR-lightemissive"
+ ],
+ "259": [
+  "Lam_Rvntn_interior"
+ ],
+ "26": [
+  "Concrete Variant"
+ ],
+ "260": [
+  "AUDR8-diffuse",
+  "AUDR8-carbonfiber"
+ ],
+ "261": [
+  "Lam_Rvntn_rimcaliper"
+ ],
+ "262": [
+  "FOR_RPTR-parts-metal",
+  "FOR_RPTR-parts"
+ ],
+ "263": [
+  "wins",
+  "Atlas-01",
+  "Atlas-02"
+ ],
+ "264": [
+  "FOR_RPTR-carpaint",
+  "FOR_RPTR-parts"
+ ],
+ "265": [
+  "FOR_RPTR-parts-metal"
+ ],
+ "266": [
+  "Lam_Rvntn_rimcaliper"
+ ],
+ "267": [
+  "POR_997GT3RS-interior"
+ ],
+ "268": [
+  "BM_E30M3-interior"
+ ],
+ "269": [
+  "Lam_Rvntn_lights"
+ ],
+ "27": [
+  "Default-Material"
+ ],
+ "270": [
+  "HLCAT-interior"
+ ],
+ "271": [
+  "BM_E30M3-rimcaliper"
+ ],
+ "272": [
+  "AUDR8-light-emissive"
+ ],
+ "273": [
+  "AUDR8-light-emissive"
+ ],
+ "274": [
+  "FOR_RPTR-parts-metal",
+  "FOR_RPTR-parts"
+ ],
+ "275": [
+  "POR_997GT3RS-tire",
+  "POR_997GT3RS-rimcaliper"
+ ],
+ "276": [
+  "AUDR8-wheeltire_hre",
+  "AUDR8-HRErim"
+ ],
+ "277": [
+  "FOR_RPTR-tire",
+  "FOR_RPTR-rimcaliper"
+ ],
+ "278": [
+  "HLCAT-wheeltire",
+  "HLCAT-rim"
+ ],
+ "279": [
+  "BM_E30M3-tire",
+  "BM_E30M3-rimcaliper"
+ ],
+ "280": [
+  "FOR_RPTR-lightemissive"
+ ],
+ "281": [
+  "Lam_Rvntn_tire",
+  "Lam_Rvntn_rimcaliper"
+ ],
+ "282": [
+  "POR_997GT3RS-rimcaliper"
+ ],
+ "283": [
+  "FOR_RPTR-rimcaliper"
+ ],
+ "284": [
+  "Atlas-01"
+ ],
+ "285": [
+  "FOR_RPTR-parts-metal"
+ ],
+ "286": [
+  "BM_E30M3-rimcaliper"
+ ],
+ "287": [
+  "AUDR8-light-emissive"
+ ],
+ "288": [
+  "FOR_RPTR-parts-metal",
+  "FOR_RPTR-parts"
+ ],
+ "289": [
+  "FOR_RPTR-parts-metal"
+ ],
+ "290": [
+  "POR_997GT3RS-tire",
+  "POR_997GT3RS-rimcaliper"
+ ],
+ "291": [
+  "072614SSPC-bodycolor",
+  "072614SSPC-bodycolor2",
+  "072614SSPC-bodycolor3",
+  "072614SSPC-diffuse",
+  "072614SSPC-reflective",
+  "072614SSPC-trims",
+  "072614SSPC-brakelights",
+  "072614SSPC-glass",
+  "072614SSPC-windows",
+  "072614SSPC-mirror"
+ ],
+ "292": [
+  "Audience"
+ ],
+ "293": [
+  "121913SSPC-bodycolor",
+  "121913SSPC-diffuse",
+  "121913SSPC-reflective",
+  "121913SSPC-windows",
+  "121913SSPC-brakelights",
+  "121913SSPC-trims",
+  "121913SSPC-mirror",
+  "121913SSPC-glass"
+ ],
+ "294": [
+  "Audience"
+ ],
+ "295": [
+  "Audience"
+ ],
+ "296": [
+  "082514SSPC-bodycolor",
+  "082514SSPC-carbonfiber",
+  "082514SSPC-diffuse",
+  "082514SSPC-reflective",
+  "082514SSPC-trims",
+  "082514SSPC-glass",
+  "082514SSPC-brakelights",
+  "082514SSPC-mirror",
+  "082514SSPC-windows"
+ ],
+ "297": [
+  "122313SSPC-interior",
+  "122313SSPC-glass",
+  "122313SSPC-mirror"
+ ],
+ "298": [
+  "072614SSPC-interior",
+  "072614SSPC-glass",
+  "072614SSPC-mirror"
+ ],
+ "299": [
+  "Atlas-01",
+  "wins"
+ ],
+ "3": [
+  "Road",
+  "Road"
+ ],
+ "300": [
+  "Atlas-01"
+ ],
+ "301": [
+  "121913SSPC-interior",
+  "121913SSPC-mirror"
+ ],
+ "302": [
+  "Atlas-02",
+  "Atlas-01"
+ ],
+ "303": [
+  "082514SSPC-carbonfiber",
+  "082514SSPC-diffuse"
+ ],
+ "304": [
+  "122313SSPC-interior"
+ ],
+ "305": [
+  "Atlas-01",
+  "Metal",
+  "Atlas-02",
+  "wins"
+ ],
+ "306": [
+  "Metal",
+  "Atlas-01",
+  "wins",
+  "Atlas-02"
+ ],
+ "307": [
+  "Audience"
+ ],
+ "308": [
+  "082514SSPC-carbonfiber"
+ ],
+ "309": [
+  "122313SSPC-bodycolor",
+  "122313SSPC-diffuse",
+  "122313SSPC-reflective",
+  "122313SSPC-windows",
+  "122313SSPC-mirror",
+  "122313SSPC-brakelights",
+  "122313SSPC-trims",
+  "122313SSPC-glass"
+ ],
+ "310": [
+  "072614SSPC-interior"
+ ],
+ "311": [
+  "Audience"
+ ],
+ "312": [
+  "121913SSPC-interior"
+ ],
+ "313": [
+  "Atlas-01",
+  "wins",
+  "Atlas-02"
+ ],
+ "314": [
+  "082514SSPC-HD-wheeltyre",
+  "082514SSPC-HD-wheelrim"
+ ],
+ "315": [
+  "122313SSPC-HD-wheeltyre"
+ ],
+ "316": [
+  "072614SSPC-HD-wheeltyre"
+ ],
+ "317": [
+  "121913SSPC-HD-wheeltyre"
+ ],
+ "318": [
+  "garage_a"
+ ],
+ "319": [
+  "082514SSPC-HD-wheeltyre"
+ ],
+ "320": [
+  "122313SSPC-HD-wheeltyre",
+  "122313SSPC-HD-wheelrim"
+ ],
+ "321": [
+  "072614SSPC-HD-wheeltyre",
+  "072614SSPC-HD-wheelrim"
+ ],
+ "322": [
+  "121913SSPC-HD-wheeltyre",
+  "121913SSPC-HD-wheelrim"
+ ],
+ "323": [
+  "garage_b",
+  "garage_a",
+  "garage_b",
+  "garage_c"
+ ],
+ "324": [
+  "082514SSPC-HD-wheeltyre",
+  "082514SSPC-HD-wheelrim"
+ ],
+ "325": [
+  "122313SSPC-HD-wheeltyre"
+ ],
+ "326": [
+  "072614SSPC-HD-wheeltyre"
+ ],
+ "327": [
+  "121913SSPC-HD-wheeltyre"
+ ],
+ "328": [
+  "garage_b",
+  "garage_b"
+ ],
+ "329": [
+  "082514SSPC-HD-wheeltyre"
+ ],
+ "330": [
+  "122313SSPC-HD-wheeltyre",
+  "122313SSPC-HD-wheelrim"
+ ],
+ "331": [
+  "072614SSPC-HD-wheeltyre",
+  "072614SSPC-HD-wheelrim"
+ ],
+ "332": [
+  "121913SSPC-HD-wheeltyre",
+  "121913SSPC-HD-wheelrim"
+ ],
+ "333": [
+  "Window"
+ ],
+ "334": [
+  "082514SSPC-interior"
+ ],
+ "335": [
+  "122313SSPC-HD-wheeltyre"
+ ],
+ "336": [
+  "072614SSPC-HD-wheeltyre"
+ ],
+ "338": [
+  "121913SSPC-HD-wheeltyre"
+ ],
+ "339": [
+  "082514SSPC-HD-wheeltyre",
+  "082514SSPC-HD-wheelrim"
+ ],
+ "340": [
+  "122313SSPC-HD-wheeltyre",
+  "122313SSPC-HD-wheelrim"
+ ],
+ "341": [
+  "072614SSPC-HD-wheeltyre",
+  "072614SSPC-HD-wheelrim"
+ ],
+ "342": [
+  "121913SSPC-HD-wheeltyre",
+  "121913SSPC-HD-wheelrim"
+ ],
+ "343": [
+  "082514SSPC-HD-wheeltyre"
+ ],
+ "344": [
+  "122313SSPC-HD-wheeltyre"
+ ],
+ "345": [
+  "072614SSPC-HD-wheeltyre"
+ ],
+ "346": [
+  "121913SSPC-HD-wheeltyre"
+ ],
+ "347": [
+  "082514SSPC-HD-wheeltyre",
+  "082514SSPC-HD-wheelrim"
+ ],
+ "348": [
+  "122313SSPC-HD-wheeltyre",
+  "122313SSPC-HD-wheelrim"
+ ],
+ "349": [
+  "072614SSPC-HD-wheeltyre",
+  "072614SSPC-HD-wheelrim"
+ ],
+ "350": [
+  "121913SSPC-HD-wheeltyre",
+  "121913SSPC-HD-wheelrim"
+ ],
+ "351": [
+  "082514SSPC-HD-wheeltyre"
+ ],
+ "353": [
+  "082514SSPC-interior"
+ ],
+ "356": [
+  "Lam_Rvntn_interior"
+ ],
+ "357": [
+  "AUDR8-light-emissive"
+ ],
+ "358": [
+  "AUDR8-wheeltire_hre",
+  "AUDR8-HRErim"
+ ],
+ "359": [
+  "FOR_RPTR-tire",
+  "FOR_RPTR-rimcaliper"
+ ],
+ "360": [
+  "HLCAT-wheeltire",
+  "HLCAT-rim"
+ ],
+ "361": [
+  "BM_E30M3-tire",
+  "BM_E30M3-rimcaliper"
+ ],
+ "362": [
+  "FOR_RPTR-parts",
+  "FOR_RPTR-parts-metal"
+ ],
+ "363": [
+  "FOR_RPTR-parts-metal",
+  "FOR_RPTR-parts"
+ ],
+ "364": [
+  "BM_E30M3-rimcaliper"
+ ],
+ "365": [
+  "AUDR8-light-emissive"
+ ],
+ "366": [
+  "AUDR8-carbonfiber",
+  "AUDR8-diffuse"
+ ],
+ "367": [
+  "HLCAT-carbonfiber"
+ ],
+ "368": [
+  "Lam_Rvntn_tire",
+  "Lam_Rvntn_rimcaliper"
+ ],
+ "369": [
+  "AUDR8-carbonfiber"
+ ],
+ "370": [
+  "FOR_RPTR-lightemissive"
+ ],
+ "371": [
+  "AUDR8-wheeltire_hre"
+ ],
+ "372": [
+  "FOR_RPTR-rimcaliper"
+ ],
+ "373": [
+  "HLCAT-wheeltire"
+ ],
+ "374": [
+  "POR_997GT3RS-tire",
+  "POR_997GT3RS-rimcaliper"
+ ],
+ "375": [
+  "AUDR8-carbonfiber"
+ ],
+ "376": [
+  "BM_E30M3-carpaint"
+ ],
+ "377": [
+  "FOR_RPTR-lightemissive"
+ ],
+ "378": [
+  "FOR_RPTR-tire",
+  "FOR_RPTR-rimcaliper"
+ ],
+ "380": [
+  "AUDR8-interior"
+ ],
+ "381": [
+  "FOR_RPTR-interior"
+ ],
+ "382": [
+  "HLCAT-interior"
+ ],
+ "383": [
+  "POR_997GT3RS-interior"
+ ],
+ "384": [
+  "BM_E30M3-interior"
+ ],
+ "385": [
+  "FOR_RPTR-lightemissive"
+ ],
+ "386": [
+  "FOR_RPTR-parts-metal"
+ ],
+ "388": [
+  "Lam_Rvntn_lights"
+ ],
+ "389": [
+  "FOR_RPTR-parts-metal",
+  "FOR_RPTR-parts"
+ ],
+ "390": [
+  "AUDR8-light-emissive"
+ ],
+ "391": [
+  "AUDR8-wheeltire_hre"
+ ],
+ "392": [
+  "FOR_RPTR-rimcaliper"
+ ],
+ "393": [
+  "HLCAT-wheeltire"
+ ],
+ "394": [
+  "FOR_RPTR-lightemissive"
+ ],
+ "395": [
+  "Lam_Rvntn_lights"
+ ],
+ "401": [
+  "AUDR8-wheeltire_hre"
+ ],
+ "402": [
+  "HLCAT-wheeltire"
+ ],
+ "406": [
+  "AUDR8-interior",
+  "AUDR8-mirror"
+ ],
+ "407": [
+  "FOR_RPTR-interior",
+  "FOR_RPTR-mirror"
+ ],
+ "408": [
+  "HLCAT-interior",
+  "HLCATL-mirror"
+ ],
+ "409": [
+  "Lam_Rvntn_interior",
+  "Lam_Rvntn_mirror"
+ ],
+ "410": [
+  "POR_997GT3RS-interior",
+  "POR_997GT3RS-mirrors"
+ ],
+ "411": [
+  "BM_E30M3-interior",
+  "BM_E30M3-chrome"
+ ],
+ "412": [
+  "FOR_RPTR-lightemissive"
+ ],
+ "413": [
+  "FOR_RPTR-parts-metal"
+ ],
+ "414": [
+  "AUDR8-carbonfiber"
+ ],
+ "415": [
+  "FOR_RPTR-tire",
+  "FOR_RPTR-rimcaliper"
+ ],
+ "416": [
+  "BM_E30M3-tire",
+  "BM_E30M3-rimcaliper"
+ ],
+ "417": [
+  "Lam_Rvntn_lights"
+ ],
+ "418": [
+  "FOR_RPTR-parts-metal"
+ ],
+ "419": [
+  "BM_E30M3-rimcaliper"
+ ],
+ "420": [
+  "FOR_RPTR-lightemissive"
+ ],
+ "421": [
+  "FOR_RPTR-parts-metal"
+ ],
+ "427": [
+  "Lam_Rvntn_tire",
+  "Lam_Rvntn_rimcaliper"
+ ],
+ "428": [
+  "POR_997GT3RS-interior"
+ ],
+ "429": [
+  "BM_E30M3-interior"
+ ],
+ "430": [
+  "POR_997GT3RS-carpaint"
+ ],
+ "431": [
+  "Lam_Rvntn_rimcaliper"
+ ],
+ "432": [
+  "FOR_RPTR-parts-metal",
+  "FOR_RPTR-parts"
+ ],
+ "433": [
+  "AUDR8-wheeltire_hre",
+  "AUDR8-HRErim"
+ ],
+ "434": [
+  "FOR_RPTR-tire",
+  "FOR_RPTR-rimcaliper"
+ ],
+ "435": [
+  "HLCAT-wheeltire",
+  "HLCAT-rim"
+ ],
+ "436": [
+  "BM_E30M3-tire",
+  "BM_E30M3-rimcaliper"
+ ],
+ "437": [
+  "FOR_RPTR-lightemissive"
+ ],
+ "438": [
+  "Lam_Rvntn_tire",
+  "Lam_Rvntn_rimcaliper"
+ ],
+ "439": [
+  "Lam_Rvntn_rimcaliper"
+ ],
+ "440": [
+  "POR_997GT3RS-rimcaliper"
+ ],
+ "5": [
+  "Bumps"
+ ],
+ "6": [
+  "Concrete Variant"
+ ],
+ "75": [
+  "Spike"
+ ],
+ "76": [
+  "Material",
+  "Material.001"
+ ],
+ "77": [
+  "Obstacle-10"
+ ],
+ "78": [
+  "M_Wooden_Crate_02"
+ ],
+ "79": [
+  "M_Wooden_Crate_02"
+ ],
+ "8": [
+  "Road",
+  "Ground"
+ ],
+ "80": [
+  "Atlas-01"
+ ],
+ "81": [
+  "Atlas-01",
+  "wins"
+ ],
+ "82": [
+  "Atlas-01",
+  "Glass"
+ ],
+ "84": [
+  "Atlas-01",
+  "Atlas-02",
+  "wins"
+ ],
+ "85": [
+  "Atlas-01",
+  "wins"
+ ],
+ "86": [
+  "Metal"
+ ],
+ "87": [
+  "Obstacle-1-31"
+ ],
+ "88": [
+  "Metal"
+ ],
+ "89": [
+  "Atlas-01",
+  "Atlas-02",
+  "Glass",
+  "Metal"
+ ],
+ "9": [
+  "Road",
+  "Ground"
+ ],
+ "90": [
+  "Atlas-01",
+  "Metal"
+ ],
+ "91": [
+  "Trackside"
+ ],
+ "92": [
+  "Atlas-01"
+ ],
+ "93": [
+  "Atlas-01"
+ ],
+ "97": [
+  "Metal",
+  "Atlas-01"
+ ],
+ "98": [
+  "Atlas-01"
+ ],
+ "99": [
+  "Stone concrete"
+ ]
+}

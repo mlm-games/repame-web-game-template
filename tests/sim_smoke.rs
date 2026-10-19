@@ -582,3 +582,76 @@ fn the_car_body_is_not_pinned_to_a_wheel() {
         );
     }
 }
+
+#[test]
+fn obstacle_art_fits_the_box_the_simulation_collides_with() {
+    // Parity guard: a hazard's mesh and its collision box come from two places —
+    // the shipped art and this port's tables — and when they disagree the car
+    // either clips through a wall or stops short of it. Measured per level so a
+    // mismatch names the kind and the level.
+    let Some(_) = deadly_descent::art::art_root() else {
+        return;
+    };
+    let mut textures = deadly_descent::art::Textures::default();
+    let mut cache = deadly_descent::props::PropCache::default();
+    let table = deadly_descent::props::prop_table();
+    let mut worst: Vec<String> = Vec::new();
+    for level in data::levels().iter().take(61) {
+        let track = TrackWorld::load(level);
+        let mut seen = std::collections::HashSet::new();
+        for ob in track.obstacles.iter() {
+            let kind = format!("{:?}", ob.kind);
+            if !seen.insert(kind.clone()) {
+                continue;
+            }
+            let Some(def) = table.obstacle_for(ob.kind) else {
+                continue; // no shipped art: the stand-in is built from the box
+            };
+            let Some(groups) = deadly_descent::props::obstacle_groups(
+                &mut cache,
+                &mut textures,
+                def,
+                glam::Vec3::ZERO,
+                0.0,
+                {
+                    let half = ob.kind.half_extents();
+                    glam::Vec3::new(half.x * 2.0, half.y * 2.0, half.z * 2.0)
+                },
+            ) else {
+                continue;
+            };
+            let (lo, hi) = groups
+                .iter()
+                .filter_map(|g| g.bounds())
+                .fold(None::<([f32; 3], [f32; 3])>, |acc, (lo, hi)| {
+                    Some(match acc {
+                        None => (lo, hi),
+                        Some((alo, ahi)) => (
+                            [alo[0].min(lo[0]), alo[1].min(lo[1]), alo[2].min(lo[2])],
+                            [ahi[0].max(hi[0]), ahi[1].max(hi[1]), ahi[2].max(hi[2])],
+                        ),
+                    })
+                })
+                .expect("art has bounds");
+            let half = ob.kind.half_extents();
+            let art = [hi[0] - lo[0], hi[1] - lo[1], hi[2] - lo[2]];
+            let want = [half.x * 2.0, half.y * 2.0, half.z * 2.0];
+            for axis in 0..3 {
+                let ratio = art[axis] / want[axis].max(0.01);
+                if !(0.75..=1.35).contains(&ratio) {
+                    worst.push(format!(
+                        "level {} {kind} axis {axis}: art {:.1} m vs box {:.1} m ({ratio:.2}x)",
+                        level.name, art[axis], want[axis]
+                    ));
+                }
+            }
+        }
+    }
+    worst.dedup();
+    assert!(
+        worst.is_empty(),
+        "{} obstacle kinds disagree with their shipped art:\n{}",
+        worst.len(),
+        worst.join("\n")
+    );
+}

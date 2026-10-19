@@ -1,0 +1,2102 @@
+{
+ "03_Default": {
+  "color": [
+   0.8,
+   0.8,
+   0.8
+  ],
+  "texture": "schoolbus"
+ },
+ "03___Default": {
+  "color": [
+   0.8,
+   0.8,
+   0.8
+  ],
+  "texture": "schoolbus"
+ },
+ "072614SSPC-HD-wheelrim": {
+  "color": [
+   1.0,
+   0.1882,
+   0.0
+  ]
+ },
+ "072614SSPC-HD-wheeltyre": {
+  "color": [
+   0.8806,
+   0.8806,
+   0.8806
+  ],
+  "texture": "wheelstyle_color1E"
+ },
+ "072614SSPC-bodycolor": {
+  "color": [
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ "072614SSPC-bodycolor2": {
+  "color": [
+   0.8657,
+   0.163,
+   0.0
+  ]
+ },
+ "072614SSPC-bodycolor3": {
+  "color": [
+   0.1013,
+   0.1013,
+   0.1013
+  ]
+ },
+ "072614SSPC-brakelights": {
+  "color": [
+   0.8824,
+   0.8824,
+   0.8824
+  ],
+  "texture": "BugattiVeyron"
+ },
+ "072614SSPC-diffuse": {
+  "color": [
+   0.6716,
+   0.6716,
+   0.6716
+  ],
+  "texture": "BugattiVeyron"
+ },
+ "072614SSPC-glass": {
+  "color": [
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ "072614SSPC-interior": {
+  "color": [
+   0.9552,
+   0.9552,
+   0.9552
+  ],
+  "texture": "BugattiVeyron_interior"
+ },
+ "072614SSPC-mirror": {
+  "color": [
+   1.0,
+   1.0,
+   1.0
+  ]
+ },
+ "072614SSPC-reflective": {
+  "color": [
+   0.8881,
+   0.8881,
+   0.8881
+  ],
+  "texture": "BugattiVeyron"
+ },
+ "072614SSPC-trims": {
+  "color": [
+   0.1269,
+   0.1269,
+   0.1269
+  ]
+ },
+ "072614SSPC-windows": {
+  "color": [
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ "082514SSPC-HD-wheelrim": {
+  "color": [
+   0.1804,
+   0.1843,
+   0.1804
+  ]
+ },
+ "082514SSPC-HD-wheeltyre": {
+  "color": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "texture": "wheelstyle_color1F"
+ },
+ "082514SSPC-bodycolor": {
+  "color": [
+   0.1804,
+   0.1843,
+   0.1804
+  ]
+ },
+ "082514SSPC-brakelights": {
+  "color": [
+   0.8824,
+   0.8824,
+   0.8824
+  ],
+  "texture": "082514SSPC"
+ },
+ "082514SSPC-carbonfiber": {
+  "color": [
+   0.8806,
+   0.8806,
+   0.8806
+  ],
+  "texture": "carbonfiber"
+ },
+ "082514SSPC-diffuse": {
+  "color": [
+   0.9776,
+   0.9776,
+   0.9776
+  ],
+  "texture": "082514SSPC"
+ },
+ "082514SSPC-glass": {
+  "color": [
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ "082514SSPC-interior": {
+  "color": [
+   0.9776,
+   0.9776,
+   0.9776
+  ],
+  "texture": "082514SSPC_interior"
+ },
+ "082514SSPC-mirror": {
+  "color": [
+   1.0,
+   1.0,
+   1.0
+  ]
+ },
+ "082514SSPC-reflective": {
+  "color": [
+   0.8806,
+   0.8806,
+   0.8806
+  ],
+  "texture": "082514SSPC"
+ },
+ "082514SSPC-trims": {
+  "color": [
+   0.1269,
+   0.1269,
+   0.1269
+  ]
+ },
+ "082514SSPC-windows": {
+  "color": [
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ "121913SSPC-HD-wheelrim": {
+  "color": [
+   0.5,
+   0.5,
+   0.5
+  ],
+  "texture": "wheelstyle_color1"
+ },
+ "121913SSPC-HD-wheeltyre": {
+  "color": [
+   0.8806,
+   0.8806,
+   0.8806
+  ],
+  "texture": "wheelstyle_color1"
+ },
+ "121913SSPC-bodycolor": {
+  "color": [
+   0.5176,
+   0.5216,
+   0.5373
+  ]
+ },
+ "121913SSPC-brakelights": {
+  "color": [
+   0.8824,
+   0.8824,
+   0.8824
+  ],
+  "texture": "121913SSPC"
+ },
+ "121913SSPC-diffuse": {
+  "color": [
+   0.7687,
+   0.7687,
+   0.7687
+  ],
+  "texture": "121913SSPC"
+ },
+ "121913SSPC-glass": {
+  "color": [
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ "121913SSPC-interior": {
+  "color": [
+   0.8433,
+   0.8433,
+   0.8433
+  ],
+  "texture": "121913SSPC_interior"
+ },
+ "121913SSPC-mirror": {
+  "color": [
+   1.0,
+   1.0,
+   1.0
+  ]
+ },
+ "121913SSPC-reflective": {
+  "color": [
+   0.8881,
+   0.8881,
+   0.8881
+  ],
+  "texture": "121913SSPC"
+ },
+ "121913SSPC-trims": {
+  "color": [
+   0.1269,
+   0.1269,
+   0.1269
+  ]
+ },
+ "121913SSPC-windows": {
+  "color": [
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ "122313SSPC-HD-wheelrim": {
+  "color": [
+   0.5,
+   0.5,
+   0.5
+  ],
+  "texture": "wheelstyle_color1"
+ },
+ "122313SSPC-HD-wheeltyre": {
+  "color": [
+   0.8806,
+   0.8806,
+   0.8806
+  ],
+  "texture": "wheelstyle_color1"
+ },
+ "122313SSPC-bodycolor": {
+  "color": [
+   0.9373,
+   0.4235,
+   0.0
+  ]
+ },
+ "122313SSPC-brakelights": {
+  "color": [
+   0.8824,
+   0.8824,
+   0.8824
+  ],
+  "texture": "122313SSPC"
+ },
+ "122313SSPC-diffuse": {
+  "color": [
+   0.9478,
+   0.9478,
+   0.9478
+  ],
+  "texture": "122313SSPC"
+ },
+ "122313SSPC-glass": {
+  "color": [
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ "122313SSPC-interior": {
+  "color": [
+   0.9701,
+   0.9701,
+   0.9701
+  ],
+  "texture": "122313SSPC_interior "
+ },
+ "122313SSPC-mirror": {
+  "color": [
+   1.0,
+   1.0,
+   1.0
+  ]
+ },
+ "122313SSPC-reflective": {
+  "color": [
+   0.8806,
+   0.8806,
+   0.8806
+  ],
+  "texture": "122313SSPC"
+ },
+ "122313SSPC-trims": {
+  "color": [
+   0.1269,
+   0.1269,
+   0.1269
+  ]
+ },
+ "122313SSPC-windows": {
+  "color": [
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ "AUDR8-HRErim": {
+  "color": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "texture": "AUDR8-HREwheels_red"
+ },
+ "AUDR8-bodycolor": {
+  "color": [
+   0.0358,
+   0.1604,
+   0.3302
+  ],
+  "texture": "AUDR8-bodycolor_ao"
+ },
+ "AUDR8-brakelights": {
+  "color": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "texture": "AUDR8-parts_albedo"
+ },
+ "AUDR8-carbonfiber": {
+  "color": [
+   0.3491,
+   0.3491,
+   0.3491
+  ]
+ },
+ "AUDR8-diffuse": {
+  "color": [
+   0.6981,
+   0.6981,
+   0.6981
+  ],
+  "texture": "AUDR8-parts_albedo"
+ },
+ "AUDR8-glass": {
+  "color": [
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ "AUDR8-interior": {
+  "color": [
+   0.8774,
+   0.8774,
+   0.8774
+  ],
+  "texture": "AUDR8-interior_albedo"
+ },
+ "AUDR8-light-emissive": {
+  "color": [
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ "AUDR8-mirror": {
+  "color": [
+   1.0,
+   1.0,
+   1.0
+  ]
+ },
+ "AUDR8-reflective": {
+  "color": [
+   0.8019,
+   0.8019,
+   0.8019
+  ],
+  "texture": "AUDR8-parts_albedo"
+ },
+ "AUDR8-wheeltire_hre": {
+  "color": [
+   0.8588,
+   0.8588,
+   0.8588
+  ],
+  "texture": "AUDR8-HREwheels_red"
+ },
+ "Atlas-01": {
+  "color": [
+   0.7794,
+   0.7794,
+   0.7794
+  ],
+  "texture": "Atlas-01"
+ },
+ "Atlas-02": {
+  "color": [
+   0.6985,
+   0.6985,
+   0.6985
+  ],
+  "cutoff": 0.288,
+  "texture": "Atlas-02"
+ },
+ "Audience": {
+  "color": [
+   0.7868,
+   0.7868,
+   0.7868
+  ],
+  "cutoff": 0.461,
+  "texture": "Audience"
+ },
+ "BM_E30M3-carpaint": {
+  "color": [
+   0.8208,
+   0.8208,
+   0.8208
+  ],
+  "texture": "BM_E30M3-carpaint_Mstripe"
+ },
+ "BM_E30M3-chrome": {
+  "color": [
+   1.0,
+   1.0,
+   1.0
+  ]
+ },
+ "BM_E30M3-glass": {
+  "color": [
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ "BM_E30M3-interior": {
+  "color": [
+   0.8019,
+   0.8019,
+   0.8019
+  ],
+  "texture": "BM_E30M3-interior_albedo"
+ },
+ "BM_E30M3-parts": {
+  "color": [
+   0.8019,
+   0.8019,
+   0.8019
+  ],
+  "texture": "BM_E30M3-parts_albedo"
+ },
+ "BM_E30M3-rimcaliper": {
+  "color": [
+   0.7453,
+   0.7453,
+   0.7453
+  ],
+  "texture": "BM_E30M3-rimcaliper-silver_albedo"
+ },
+ "BM_E30M3-tire": {
+  "color": [
+   0.8019,
+   0.8019,
+   0.8019
+  ],
+  "texture": "GR3D-tire-disc-D_albedo"
+ },
+ "BackGround": {
+  "color": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "texture": "gradient"
+ },
+ "Black": {
+  "color": [
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ "Boxes": {
+  "color": [
+   1.0,
+   0.619,
+   0.0
+  ],
+  "texture": "Boxes_on_pallet1"
+ },
+ "Bumps": {
+  "color": [
+   0.6038,
+   0.0,
+   0.0
+  ]
+ },
+ "Cargo_container_v1 1": {
+  "color": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "texture": "Cargo_container_v1"
+ },
+ "Cargo_container_v1_1": {
+  "color": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "texture": "Cargo_container_v1"
+ },
+ "CoinMat": {
+  "color": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "texture": "iconCoin"
+ },
+ "ColorRoad": {
+  "color": [
+   0.2059,
+   0.2059,
+   0.2059
+  ]
+ },
+ "Concrete": {
+  "color": [
+   0.434,
+   0.434,
+   0.434
+  ],
+  "texture": "CementNM"
+ },
+ "Concrete Variant": {
+  "color": [
+   0.434,
+   0.434,
+   0.434
+  ],
+  "texture": "CementNM"
+ },
+ "Concrete Variant 2": {
+  "color": [
+   0.434,
+   0.434,
+   0.434
+  ],
+  "texture": "CementNM"
+ },
+ "Concrete_Variant": {
+  "color": [
+   0.434,
+   0.434,
+   0.434
+  ],
+  "texture": "CementNM"
+ },
+ "Concrete_Variant_2": {
+  "color": [
+   0.434,
+   0.434,
+   0.434
+  ],
+  "texture": "CementNM"
+ },
+ "Crane": {
+  "color": [
+   0.7426,
+   0.7426,
+   0.7426
+  ],
+  "texture": "Crane"
+ },
+ "Cubemap 1": {},
+ "Cubemap 2": {},
+ "Cubemap 3": {},
+ "Cubemap 4": {},
+ "Cubemap 5": {},
+ "Cubemap 6": {},
+ "Cubemap 7": {},
+ "Cubemap 8": {},
+ "Cubemap 9": {},
+ "Cubemap_1": {},
+ "Cubemap_2": {},
+ "Cubemap_3": {},
+ "Cubemap_4": {},
+ "Cubemap_5": {},
+ "Cubemap_6": {},
+ "Cubemap_7": {},
+ "Cubemap_8": {},
+ "Cubemap_9": {},
+ "CurveRoad": {
+  "color": [
+   0.434,
+   0.434,
+   0.434
+  ],
+  "texture": "Grass_Dry_ALB"
+ },
+ "Decal": {
+  "color": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "texture": "Decal"
+ },
+ "Default-Material": {
+  "color": [
+   1.0,
+   1.0,
+   1.0
+  ]
+ },
+ "Default-Particle": {
+  "color": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "texture": "Default-Particle",
+  "transparent": true
+ },
+ "Default-ParticleSystem": {
+  "color": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "texture": "Default-ParticleSystem",
+  "transparent": true
+ },
+ "Default-Skybox": {},
+ "Dr14 brakes lights": {
+  "color": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "texture": "Light"
+ },
+ "Dr14 headlights": {
+  "color": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "texture": "Light"
+ },
+ "Dr14_brakes_lights": {
+  "color": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "texture": "Light"
+ },
+ "Dr14_headlights": {
+  "color": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "texture": "Light"
+ },
+ "Dunes": {
+  "color": [
+   0.434,
+   0.434,
+   0.434
+  ],
+  "texture": "Desert Sand"
+ },
+ "Embers": {
+  "color": [
+   2.8284,
+   2.8284,
+   2.8284
+  ],
+  "texture": "Default-Particle",
+  "transparent": true
+ },
+ "Explosion": {
+  "color": [
+   47.9373,
+   29.1137,
+   14.3059
+  ],
+  "texture": "Explosion",
+  "transparent": true
+ },
+ "ExplosionDistortion": {
+  "color": [
+   1.1888,
+   0.7668,
+   0.4339
+  ],
+  "texture": "shockwave",
+  "transparent": true
+ },
+ "FOR_RPTR-carpaint": {
+  "color": [
+   0.5283,
+   0.2575,
+   0.0
+  ]
+ },
+ "FOR_RPTR-glass": {
+  "color": [
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ "FOR_RPTR-interior": {
+  "color": [
+   0.7736,
+   0.7736,
+   0.7736
+  ],
+  "texture": "FOR_RPTR-interior_albedo"
+ },
+ "FOR_RPTR-lightemissive": {
+  "color": [
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ "FOR_RPTR-mirror": {
+  "color": [
+   1.0,
+   1.0,
+   1.0
+  ]
+ },
+ "FOR_RPTR-parts": {
+  "color": [
+   0.783,
+   0.783,
+   0.783
+  ],
+  "texture": "FOR_RPTR-parts_albedo"
+ },
+ "FOR_RPTR-parts-metal": {
+  "color": [
+   0.0755,
+   0.0755,
+   0.0755
+  ],
+  "texture": "FOR_RPTR-parts-metal_ao"
+ },
+ "FOR_RPTR-rimcaliper": {
+  "color": [
+   0.7736,
+   0.7736,
+   0.7736
+  ],
+  "texture": "FOR_RPTR-rimcaliper_albedo"
+ },
+ "FOR_RPTR-tire": {
+  "color": [
+   0.7736,
+   0.7736,
+   0.7736
+  ],
+  "texture": "GR3D-tire-disc-offroad-a_albedo"
+ },
+ "FOR_RPTR-windows": {
+  "color": [
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ "Fab": {
+  "color": [
+   0.9151,
+   0.4956,
+   0.0
+  ],
+  "texture": "Boxes_on_pallet0"
+ },
+ "Finish": {
+  "color": [
+   0.3208,
+   0.3208,
+   0.3208
+  ],
+  "texture": "Minimal3D_PlaneCheckers"
+ },
+ "Font Material": {
+  "color": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "texture": "Font Texture"
+ },
+ "Font_Material": {
+  "color": [
+   1.0,
+   1.0,
+   1.0
+  ]
+ },
+ "Font_Material__3": {
+  "color": [
+   1.0,
+   1.0,
+   1.0
+  ]
+ },
+ "Garage": {
+  "color": [
+   0.6038,
+   0.6038,
+   0.6038
+  ],
+  "texture": "Garage"
+ },
+ "Garage Floor": {
+  "color": [
+   0.6226,
+   0.6226,
+   0.6226
+  ],
+  "texture": "Garage Floor"
+ },
+ "Garage_Floor": {
+  "color": [
+   0.6226,
+   0.6226,
+   0.6226
+  ],
+  "texture": "Garage_Floor"
+ },
+ "Glass": {
+  "color": [
+   0.1324,
+   0.1324,
+   0.1324
+  ],
+  "transparent": true
+ },
+ "GradientTexture": {
+  "color": [
+   1.0,
+   0.8449,
+   0.0
+  ],
+  "texture": "GradientTexture"
+ },
+ "GradientTexture 1": {
+  "color": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "texture": "GradientTexture"
+ },
+ "GradientTexture_1": {
+  "color": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "texture": "GradientTexture"
+ },
+ "Grass-01": {
+  "color": [
+   0.8309,
+   0.8309,
+   0.8309
+  ]
+ },
+ "Grass-02": {
+  "color": [
+   0.5928,
+   0.625,
+   0.6183
+  ]
+ },
+ "Grass-03": {
+  "color": [
+   0.5928,
+   0.625,
+   0.6183
+  ]
+ },
+ "Grass-04": {
+  "color": [
+   0.6103,
+   0.6103,
+   0.6103
+  ]
+ },
+ "Grass-05": {
+  "color": [
+   0.6103,
+   0.6103,
+   0.6103
+  ]
+ },
+ "Grass-06": {
+  "color": [
+   0.6103,
+   0.6103,
+   0.6103
+  ]
+ },
+ "Grass-07": {
+  "color": [
+   0.6103,
+   0.6103,
+   0.6103
+  ]
+ },
+ "Grass-08": {
+  "color": [
+   0.6103,
+   0.6103,
+   0.6103
+  ]
+ },
+ "Grass-09": {
+  "color": [
+   0.6103,
+   0.6103,
+   0.6103
+  ]
+ },
+ "Grass-10": {
+  "color": [
+   0.6103,
+   0.6103,
+   0.6103
+  ]
+ },
+ "Grass-11": {
+  "color": [
+   0.5928,
+   0.625,
+   0.6183
+  ]
+ },
+ "Grass-12": {
+  "color": [
+   0.5928,
+   0.625,
+   0.6183
+  ]
+ },
+ "Grass-13": {
+  "color": [
+   0.7059,
+   0.7059,
+   0.7059
+  ]
+ },
+ "Grass-14": {
+  "color": [
+   0.5928,
+   0.625,
+   0.6183
+  ]
+ },
+ "Grass-15": {
+  "color": [
+   0.6103,
+   0.6103,
+   0.6103
+  ]
+ },
+ "Grid": {
+  "color": [
+   0.3208,
+   0.3208,
+   0.3208
+  ],
+  "texture": "Grid"
+ },
+ "Grid 1": {
+  "color": [
+   0.4717,
+   0.4717,
+   0.4717
+  ],
+  "texture": "Grid"
+ },
+ "Grid 2": {
+  "color": [
+   0.2629,
+   0.2642,
+   0.264
+  ],
+  "texture": "Grid"
+ },
+ "Grid_1": {
+  "color": [
+   0.4717,
+   0.4717,
+   0.4717
+  ],
+  "texture": "Grid"
+ },
+ "Grid_2": {
+  "color": [
+   0.2629,
+   0.2642,
+   0.264
+  ],
+  "texture": "Grid"
+ },
+ "Ground": {
+  "color": [
+   0.434,
+   0.434,
+   0.434
+  ],
+  "texture": "Grass_Dry_ALB"
+ },
+ "HLCAT-carbonfiber": {
+  "color": [
+   0.3491,
+   0.3491,
+   0.3491
+  ]
+ },
+ "HLCAT-glass": {
+  "color": [
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ "HLCAT-interior": {
+  "color": [
+   0.8208,
+   0.8208,
+   0.8208
+  ],
+  "texture": "HLCAT-interior-v2_albedo"
+ },
+ "HLCAT-reflective": {
+  "color": [
+   0.8019,
+   0.8019,
+   0.8019
+  ],
+  "texture": "HLCAT-parts_albedo"
+ },
+ "HLCAT-rim": {
+  "color": [
+   1.0,
+   0.9814,
+   0.9928
+  ],
+  "texture": "HLCAT-wheels-gold_albedo"
+ },
+ "HLCAT-wheeltire": {
+  "color": [
+   0.8588,
+   0.8588,
+   0.8588
+  ],
+  "texture": "HLCAT-wheels-gold_albedo"
+ },
+ "HLCATL-bodycolor": {
+  "color": [
+   0.8491,
+   0.8491,
+   0.8491
+  ],
+  "texture": "HLCAT-bodycolor-red-stripe"
+ },
+ "HLCATL-brakelights": {
+  "color": [
+   0.8019,
+   0.8019,
+   0.8019
+  ],
+  "texture": "HLCAT-parts_albedo"
+ },
+ "HLCATL-diffuse": {
+  "color": [
+   0.8019,
+   0.8019,
+   0.8019
+  ],
+  "texture": "HLCAT-parts_albedo"
+ },
+ "HLCATL-mirror": {
+  "color": [
+   1.0,
+   1.0,
+   1.0
+  ]
+ },
+ "Industrial Train Dr14": {
+  "color": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "texture": "Industrial Train Dr14_Albedo"
+ },
+ "Industrial_Train_Dr14": {
+  "color": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "texture": "Industrial_Train_Dr14_Albedo"
+ },
+ "Joints": {
+  "color": [
+   0.0398,
+   0.0398,
+   0.0398
+  ]
+ },
+ "Knurling": {
+  "color": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "texture": "Knurling texture"
+ },
+ "Lam_Rvntn_carpaint": {
+  "color": [
+   0.1321,
+   0.1321,
+   0.1321
+  ],
+  "texture": "Lam_Rvntn-carpaint_ao"
+ },
+ "Lam_Rvntn_glass": {
+  "color": [
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ "Lam_Rvntn_interior": {
+  "color": [
+   0.7736,
+   0.7736,
+   0.7736
+  ],
+  "texture": "Lam_Rvntn-interior_albedo"
+ },
+ "Lam_Rvntn_lights": {
+  "color": [
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ "Lam_Rvntn_mirror": {
+  "color": [
+   1.0,
+   1.0,
+   1.0
+  ]
+ },
+ "Lam_Rvntn_parts": {
+  "color": [
+   0.8,
+   0.8,
+   0.8
+  ],
+  "texture": "Lam_Rvntn-parts_albedo"
+ },
+ "Lam_Rvntn_rimcaliper": {
+  "color": [
+   0.8,
+   0.8,
+   0.8
+  ],
+  "texture": "Lam_Rvntn-rimcaliper_albedo"
+ },
+ "Lam_Rvntn_tire": {
+  "color": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "texture": "GR3D-tire-disc-E_albedo"
+ },
+ "Line": {
+  "color": [
+   1.0,
+   1.0,
+   1.0
+  ]
+ },
+ "M_Ground": {
+  "color": [
+   0.0701,
+   0.0785,
+   0.0882
+  ]
+ },
+ "M_Shard_Particles": {
+  "color": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "texture": "T_Shard_Particles"
+ },
+ "M_Skidmarks": {
+  "color": [
+   0.5,
+   0.5,
+   0.5
+  ],
+  "texture": "T_Skidmarks"
+ },
+ "M_Smoke": {
+  "color": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "texture": "T_Smoke"
+ },
+ "M_Smoke_Unlit": {
+  "color": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "texture": "T_Smoke"
+ },
+ "M_Sparks_Particles": {
+  "color": [
+   1.0,
+   1.0,
+   1.0
+  ]
+ },
+ "M_Wooden_Crate_02": {
+  "color": [
+   1.0,
+   0.5486,
+   0.0
+  ],
+  "texture": "T_Wooden_Crate_02_BC"
+ },
+ "Material": {
+  "color": [
+   0.0871,
+   0.0586,
+   0.0298
+  ]
+ },
+ "Material.001": {
+  "color": [
+   0.8,
+   0.8,
+   0.8
+  ]
+ },
+ "Metal": {
+  "color": [
+   0.8,
+   0.8,
+   0.8
+  ],
+  "texture": "Metal"
+ },
+ "Metal black": {
+  "color": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "texture": "Metal 2 texture"
+ },
+ "Metal__30": {
+  "color": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "texture": "Metal_3_texture"
+ },
+ "Metal_black": {
+  "color": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "texture": "Metal_2_texture"
+ },
+ "NotoSansJP-Medium Material": {
+  "texture": "NotoSansJP-Medium Atlas"
+ },
+ "NotoSansJP-Medium_Material": {
+  "texture": "NotoSansJP-Medium_Atlas"
+ },
+ "Obstacle": {
+  "color": [
+   0.6509,
+   0.1075,
+   0.1075
+  ]
+ },
+ "Obstacle-1-31": {
+  "color": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "texture": "Obstacle-1-31"
+ },
+ "Obstacle-10": {
+  "color": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "texture": "Obstacle-10"
+ },
+ "Obstacle-13": {
+  "color": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "texture": "Obstacle-13"
+ },
+ "OrangeMannequin": {
+  "color": [
+   1.0,
+   0.3893,
+   0.0
+  ]
+ },
+ "OutDoor-01": {
+  "color": [
+   0.8,
+   0.8,
+   0.8
+  ],
+  "texture": "OutDoor-01"
+ },
+ "Outline": {},
+ "POR_997GT3RS-carbonfiber": {
+  "color": [
+   0.8019,
+   0.8019,
+   0.8019
+  ]
+ },
+ "POR_997GT3RS-carpaint": {
+  "color": [
+   0.6887,
+   0.2922,
+   0.0
+  ],
+  "texture": "POR_997GT3RS-carpaint_albedo"
+ },
+ "POR_997GT3RS-glass": {
+  "color": [
+   0.0,
+   0.0,
+   0.0
+  ]
+ },
+ "POR_997GT3RS-interior": {
+  "color": [
+   0.8019,
+   0.8019,
+   0.8019
+  ],
+  "texture": "POR_997GT3RS-interior_albedo"
+ },
+ "POR_997GT3RS-metallic": {
+  "color": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "texture": "POR_997GT3RS-parts_albedo"
+ },
+ "POR_997GT3RS-mirrors": {
+  "color": [
+   1.0,
+   1.0,
+   1.0
+  ]
+ },
+ "POR_997GT3RS-parts": {
+  "color": [
+   0.8019,
+   0.8019,
+   0.8019
+  ],
+  "texture": "POR_997GT3RS-parts_albedo"
+ },
+ "POR_997GT3RS-rimcaliper": {
+  "color": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "texture": "POR_997GT3RS-rimcaliper-black_albedo"
+ },
+ "POR_997GT3RS-tire": {
+  "color": [
+   0.8019,
+   0.8019,
+   0.8019
+  ],
+  "texture": "GR3D-tire-disc-C_albedo"
+ },
+ "Pit": {
+  "color": [
+   0.434,
+   0.434,
+   0.434
+  ],
+  "texture": "Grass_Dry_ALB"
+ },
+ "Rails": {
+  "color": [
+   0.4717,
+   0.4717,
+   0.4717
+  ],
+  "texture": "rails_texture"
+ },
+ "RedMat": {
+  "color": [
+   1.0,
+   0.0,
+   0.0
+  ]
+ },
+ "Road": {
+  "color": [
+   0.434,
+   0.434,
+   0.434
+  ],
+  "texture": "RoadTexture 1"
+ },
+ "Road Up.001": {
+  "color": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "texture": "RoadTexture 1"
+ },
+ "Road-01": {
+  "color": [
+   0.6691,
+   0.6691,
+   0.6691
+  ],
+  "texture": "Road-01"
+ },
+ "Road-02": {
+  "color": [
+   0.6691,
+   0.6691,
+   0.6691
+  ],
+  "texture": "Road-02"
+ },
+ "Road-03": {
+  "color": [
+   0.6691,
+   0.6691,
+   0.6691
+  ],
+  "texture": "Road-03"
+ },
+ "Road-04": {
+  "color": [
+   0.6691,
+   0.6691,
+   0.6691
+  ],
+  "texture": "Road-04"
+ },
+ "Road-05": {
+  "color": [
+   0.6691,
+   0.6691,
+   0.6691
+  ],
+  "texture": "Road-05"
+ },
+ "Road_Up.001": {
+  "color": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "texture": "RoadTexture_1"
+ },
+ "Roboto-MediumItalic Atlas Material": {
+  "texture": "Roboto-MediumItalic SDF Atlas"
+ },
+ "Roboto-MediumItalic Atlas Outline": {
+  "texture": "Roboto-MediumItalic SDF Atlas"
+ },
+ "Roboto-MediumItalic NoAds Yan": {
+  "texture": "Roboto-MediumItalic SDF Atlas"
+ },
+ "Roboto-MediumItalic_Atlas_Material": {
+  "texture": "Roboto-MediumItalic_SDF_Atlas"
+ },
+ "Roboto-MediumItalic_Atlas_Outline": {
+  "texture": "Roboto-MediumItalic_SDF_Atlas"
+ },
+ "Roboto-MediumItalic_NoAds_Yan": {
+  "texture": "Roboto-MediumItalic_SDF_Atlas"
+ },
+ "SPike": {
+  "color": [
+   1.0,
+   0.0,
+   0.0
+  ]
+ },
+ "SPike 1": {
+  "color": [
+   0.0472,
+   0.0472,
+   0.0472
+  ]
+ },
+ "SPike_1": {
+  "color": [
+   0.0472,
+   0.0472,
+   0.0472
+  ]
+ },
+ "Sand": {
+  "color": [
+   0.434,
+   0.434,
+   0.434
+  ],
+  "texture": "Desert Sand"
+ },
+ "ScreenTexture": {
+  "color": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "texture": "ScreenRender"
+ },
+ "SideTrack_A": {
+  "color": [
+   0.8,
+   0.8,
+   0.8
+  ],
+  "texture": "SideTrack_A"
+ },
+ "SmokeDark": {
+  "color": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "texture": "SmokePuff01",
+  "transparent": true
+ },
+ "Spike": {
+  "color": [
+   0.434,
+   0.434,
+   0.434
+  ],
+  "texture": "CementNM"
+ },
+ "SpikeGray 1": {
+  "color": [
+   0.1509,
+   0.1509,
+   0.1509
+  ]
+ },
+ "SpikeGray_1": {
+  "color": [
+   0.1509,
+   0.1509,
+   0.1509
+  ]
+ },
+ "SpikeRed": {
+  "color": [
+   1.0,
+   0.3255,
+   0.3255
+  ],
+  "texture": "CementNM"
+ },
+ "Sprites-Default": {
+  "color": [
+   1.0,
+   1.0,
+   1.0
+  ]
+ },
+ "Stone": {
+  "color": [
+   0.8,
+   0.8,
+   0.8
+  ],
+  "texture": "Stone"
+ },
+ "Stone concrete": {
+  "color": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "texture": "Concrete stone texture"
+ },
+ "Stone_concrete": {
+  "color": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "texture": "Concrete_stone_texture"
+ },
+ "Terrain": {
+  "color": [
+   0.3208,
+   0.3208,
+   0.3208
+  ],
+  "texture": "UnityGrass"
+ },
+ "TextMeshPro/Sprite": {
+  "color": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "texture": "EmojiOne"
+ },
+ "TextMeshPro_Sprite": {
+  "color": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "texture": "iconCoin"
+ },
+ "TextMeshPro_Sprite__2": {
+  "color": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "texture": "Yan"
+ },
+ "TextMeshPro_Sprite__6": {
+  "color": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "texture": "EmojiOne"
+ },
+ "TrackSide-A": {
+  "color": [
+   0.7725,
+   0.7725,
+   0.7725
+  ],
+  "cutoff": 0.527,
+  "texture": "TrackSide-A"
+ },
+ "Trackside": {
+  "color": [
+   0.7725,
+   0.7725,
+   0.7725
+  ],
+  "texture": "Trackside"
+ },
+ "Trackside-02": {
+  "color": [
+   0.7426,
+   0.7426,
+   0.7426
+  ],
+  "texture": "Trackside-02"
+ },
+ "Trackside-03": {
+  "color": [
+   0.7725,
+   0.7725,
+   0.7725
+  ],
+  "texture": "Trackside-03"
+ },
+ "TrailerSkybox Jump": {
+  "color": [
+   1.0,
+   1.0,
+   1.0
+  ]
+ },
+ "TrailerSkybox_Jump": {
+  "color": [
+   1.0,
+   1.0,
+   1.0
+  ]
+ },
+ "Trees-01": {
+  "color": [
+   0.6765,
+   0.6765,
+   0.6765
+  ],
+  "cutoff": 0.302,
+  "texture": "Trees-01"
+ },
+ "Wall-01": {
+  "color": [
+   0.8,
+   0.8,
+   0.8
+  ],
+  "texture": "Wall-01"
+ },
+ "White arrow": {
+  "color": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "texture": "White arrow"
+ },
+ "White_arrow": {
+  "color": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "texture": "White_arrow"
+ },
+ "Window": {
+  "color": [
+   0.2925,
+   0.2925,
+   0.2925
+  ],
+  "texture": "Window"
+ },
+ "Wood": {
+  "color": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "texture": "Wood texture"
+ },
+ "Yellow arrow": {
+  "color": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "texture": "Yellow arrow"
+ },
+ "Yellow_arrow": {
+  "color": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "texture": "Yellow_arrow"
+ },
+ "asphalt": {
+  "color": [
+   0.3491,
+   0.3491,
+   0.3491
+  ],
+  "texture": "CurveRoad"
+ },
+ "bortik": {
+  "color": [
+   0.4,
+   0.4,
+   0.4
+  ]
+ },
+ "box_engine": {
+  "color": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "texture": "lambert1_Base_Color"
+ },
+ "building_01_a": {
+  "color": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "texture": "Building_01_a"
+ },
+ "building_07_a": {
+  "color": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "texture": "Building_07_a"
+ },
+ "building_08_c": {
+  "color": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "texture": "Building_08_c"
+ },
+ "building_09_a": {
+  "color": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "texture": "Building_09_a"
+ },
+ "circle2": {
+  "color": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "texture": "circle2_circle3_AlbedoTransparency"
+ },
+ "circle_AB": {
+  "color": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "texture": "circle"
+ },
+ "cloud_2x2_default_AB": {
+  "color": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "texture": "cloud_2x2_hard_softshadow"
+ },
+ "cloud_2x2_soft_AB": {
+  "color": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "texture": "cloud_2x2_soft"
+ },
+ "coins_AB": {
+  "color": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "texture": "coins"
+ },
+ "confetti_AB": {
+  "color": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "texture": "confetti"
+ },
+ "decal_gibs_AB": {
+  "color": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "texture": "decal_gibs"
+ },
+ "fire_soft_blank_AB": {
+  "color": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "texture": "fire_soft_blank"
+ },
+ "fx_Star_l_clear_yellow": {
+  "color": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "texture": "fx_special_particle_yellow"
+ },
+ "fx_light02_line": {
+  "color": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "texture": "fx_rotate_line"
+ },
+ "fx_star_s_blurry_red": {
+  "color": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "texture": "fx_star_red"
+ },
+ "garage_a": {
+  "color": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "texture": "garage_a"
+ },
+ "garage_b": {
+  "color": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "texture": "garage_b"
+ },
+ "garage_c": {
+  "color": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "texture": "garage_c"
+ },
+ "glow1_ADD": {
+  "color": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "texture": "glow1"
+ },
+ "gora": {
+  "color": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "texture": "gora_uv_lambert1_AlbedoTransparency"
+ },
+ "lambert1": {
+  "color": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "texture": "gora_uv_lambert1_AlbedoTransparency"
+ },
+ "molot2": {
+  "color": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "texture": "molot2_molot1_AlbedoTransparency"
+ },
+ "ring_ADD": {
+  "color": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "texture": "ring",
+  "transparent": true
+ },
+ "sparkle2_ADD": {
+  "color": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "texture": "sparkle2"
+ },
+ "sparkle_ADD": {
+  "color": [
+   1.0,
+   1.0,
+   1.0
+  ],
+  "texture": "sparkle"
+ },
+ "strip": {
+  "color": [
+   0.6029,
+   0.6029,
+   0.6029
+  ],
+  "texture": "strip"
+ },
+ "wins": {
+  "color": [
+   0.375,
+   0.375,
+   0.375
+  ],
+  "texture": "Wins"
+ }
+}

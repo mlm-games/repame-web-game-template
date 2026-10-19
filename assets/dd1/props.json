@@ -1,191 +1,191 @@
 {
- "obstacle": {
-  "Container": {
-   "file": "Container",
-   "yaw_deg": 90.0,
-   "scale": [
-    1.0,
-    1.0,
-    1.0
-   ],
-   "lift": 0.0
+  "obstacle": {
+    "Container": {
+      "file": "Container",
+      "yaw_deg": 90.0,
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "lift": 0.0
+    },
+    "Crate": {
+      "file": "Wooden_Crate_02",
+      "yaw_deg": 0.0,
+      "scale": [
+        2.6,
+        3.0,
+        2.6
+      ],
+      "lift": 0.0
+    },
+    "Spikes": {
+      "file": "HoleSpikes_2",
+      "yaw_deg": 0.0,
+      "scale": [
+        0.18,
+        0.14,
+        0.66
+      ],
+      "lift": 0.0
+    },
+    "Train": {
+      "file": "Industrial_Train_Dr14",
+      "yaw_deg": 0.0,
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "lift": 0.0
+    },
+    "Ramp": {
+      "file": "Ramp",
+      "yaw_deg": 0.0,
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "lift": 0.0
+    },
+    "Bus": {
+      "file": "SchoolBus_2",
+      "yaw_deg": 0.0,
+      "scale": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "lift": 0.0
+    },
+    "Wall": {
+      "file": "RoadBlock_4",
+      "yaw_deg": 0.0,
+      "scale": [
+        1.2,
+        1.3,
+        1.1
+      ],
+      "lift": 0.0
+    }
   },
-  "Crate": {
-   "file": "Wooden_Crate_02",
-   "yaw_deg": 0.0,
-   "scale": [
-    2.6,
-    3.0,
-    2.6
-   ],
-   "lift": 0.0
+  "edge": {
+    "file": "Barrier-02",
+    "every": 12.0,
+    "offset": 10.4
   },
-  "Spikes": {
-   "file": "HoleSpikes_2",
-   "yaw_deg": 0.0,
-   "scale": [
-    0.18,
-    0.14,
-    0.66
-   ],
-   "lift": 0.0
-  },
-  "Train": {
-   "file": "Industrial_Train_Dr14",
-   "yaw_deg": 90.0,
-   "scale": [
-    1.0,
-    1.0,
-    1.0
-   ],
-   "lift": 0.0
-  },
-  "Ramp": {
-   "file": "Ramp",
-   "yaw_deg": 0.0,
-   "scale": [
-    1.0,
-    1.0,
-    1.0
-   ],
-   "lift": 0.0
-  },
-  "Bus": {
-   "file": "SchoolBus_2",
-   "yaw_deg": 90.0,
-   "scale": [
-    0.85,
-    0.85,
-    0.5
-   ],
-   "lift": 0.0
-  },
-  "Wall": {
-   "file": "RoadBlock_4",
-   "yaw_deg": 0.0,
-   "scale": [
-    1.2,
-    1.3,
-    1.1
-   ],
-   "lift": 0.0
-  }
- },
- "edge": {
-  "file": "Barrier-02",
-  "every": 12.0,
-  "offset": 10.4
- },
- "ridges": [
-  {
-   "file": "gora",
-   "scale": 1.0
-  },
-  {
-   "file": "TerrainPiece",
-   "scale": 1.0
-  }
- ],
- "scatter": [
-  {
-   "file": "Tree-A-01",
-   "prob": 0.55,
-   "min": 14.0,
-   "max": 46.0
-  },
-  {
-   "file": "Barrier-Red",
-   "prob": 0.25,
-   "min": 11.0,
-   "max": 15.0
-  },
-  {
-   "file": "Light-01",
-   "prob": 0.35,
-   "min": 12.0,
-   "max": 16.0
-  },
-  {
-   "file": "SignPlate-L-_100",
-   "prob": 0.2,
-   "min": 12.0,
-   "max": 15.0
-  },
-  {
-   "file": "Covered_boxes2",
-   "prob": 0.2,
-   "min": 12.0,
-   "max": 24.0
-  },
-  {
-   "file": "GrandStand-01",
-   "prob": 0.06,
-   "min": 34.0,
-   "max": 70.0
-  },
-  {
-   "file": "Tents-eight",
-   "prob": 0.1,
-   "min": 24.0,
-   "max": 60.0
-  },
-  {
-   "file": "Building-G-01",
-   "prob": 0.08,
-   "min": 40.0,
-   "max": 90.0
-  },
-  {
-   "file": "Crane-02",
-   "prob": 0.05,
-   "min": 30.0,
-   "max": 60.0
-  },
-  {
-   "file": "FootBridge-A-01",
-   "prob": 0.05,
-   "min": 0.0,
-   "max": 0.0,
-   "spans": true
-  },
-  {
-   "file": "Audience",
-   "prob": 0.04,
-   "min": 60.0,
-   "max": 120.0
-  }
- ],
- "track_pieces": {
-  "start": [
-   {
-    "file": "GRID-R-A",
-    "scale": 0.01,
-    "lateral": -7.3
-   },
-   {
-    "file": "GRID-R-B",
-    "scale": 0.01,
-    "lateral": -3.7
-   },
-   {
-    "file": "GRID-R-D",
-    "scale": 0.01,
-    "lateral": 0.0
-   },
-   {
-    "file": "GRID-R-E",
-    "scale": 0.01,
-    "lateral": 3.7
-   },
-   {
-    "file": "GRID-R-A",
-    "scale": 0.01,
-    "lateral": 7.3
-   }
+  "ridges": [
+    {
+      "file": "gora",
+      "scale": 1.0
+    },
+    {
+      "file": "TerrainPiece",
+      "scale": 1.0
+    }
   ],
-  "gantry": {
-   "file": "C-1-2-(T)",
-   "scale": 0.01
+  "scatter": [
+    {
+      "file": "Tree-A-01",
+      "prob": 0.55,
+      "min": 14.0,
+      "max": 46.0
+    },
+    {
+      "file": "Barrier-Red",
+      "prob": 0.25,
+      "min": 11.0,
+      "max": 15.0
+    },
+    {
+      "file": "Light-01",
+      "prob": 0.35,
+      "min": 12.0,
+      "max": 16.0
+    },
+    {
+      "file": "SignPlate-L-_100",
+      "prob": 0.2,
+      "min": 12.0,
+      "max": 15.0
+    },
+    {
+      "file": "Covered_boxes2",
+      "prob": 0.2,
+      "min": 12.0,
+      "max": 24.0
+    },
+    {
+      "file": "GrandStand-01",
+      "prob": 0.06,
+      "min": 34.0,
+      "max": 70.0
+    },
+    {
+      "file": "Tents-eight",
+      "prob": 0.1,
+      "min": 24.0,
+      "max": 60.0
+    },
+    {
+      "file": "Building-G-01",
+      "prob": 0.08,
+      "min": 40.0,
+      "max": 90.0
+    },
+    {
+      "file": "Crane-02",
+      "prob": 0.05,
+      "min": 30.0,
+      "max": 60.0
+    },
+    {
+      "file": "FootBridge-A-01",
+      "prob": 0.05,
+      "min": 0.0,
+      "max": 0.0,
+      "spans": true
+    },
+    {
+      "file": "Audience",
+      "prob": 0.04,
+      "min": 60.0,
+      "max": 120.0
+    }
+  ],
+  "track_pieces": {
+    "start": [
+      {
+        "file": "GRID-R-A",
+        "scale": 0.01,
+        "lateral": -7.3
+      },
+      {
+        "file": "GRID-R-B",
+        "scale": 0.01,
+        "lateral": -3.7
+      },
+      {
+        "file": "GRID-R-D",
+        "scale": 0.01,
+        "lateral": 0.0
+      },
+      {
+        "file": "GRID-R-E",
+        "scale": 0.01,
+        "lateral": 3.7
+      },
+      {
+        "file": "GRID-R-A",
+        "scale": 0.01,
+        "lateral": 7.3
+      }
+    ],
+    "gantry": {
+      "file": "C-1-2-(T)",
+      "scale": 0.01
+    }
   }
- }
 }

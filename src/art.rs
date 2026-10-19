@@ -39,8 +39,11 @@ pub enum PartKind {
 
 impl PartKind {
     /// Visible from the chase camera?
+    ///
+    /// The interior carries the glass: skipping it left every car a hollow shell
+    /// with its cabin open to the sky, which is not what the shipped build draws.
     pub fn visible_in_chase(self) -> bool {
-        !matches!(self, PartKind::Interior | PartKind::Hidden)
+        !matches!(self, PartKind::Hidden)
     }
 }
 
@@ -102,11 +105,28 @@ pub struct MaterialEntry {
     texture: Option<String>,
     #[serde(default)]
     colors: Option<HashMap<String, Vec<f32>>>,
+    /// Mesh the renderer drew, so a manifest part finds its material exactly.
+    #[serde(default)]
+    mesh: Option<u64>,
+    /// Alpha test threshold for cutout materials (foliage, fences, decals).
+    #[serde(default)]
+    cutoff: Option<f32>,
+    /// Blend instead of cut out.
+    #[serde(default)]
+    transparent: Option<bool>,
 }
 
 impl MaterialEntry {
     pub fn texture_name(&self) -> Option<&str> {
         self.texture.as_deref()
+    }
+
+    pub fn cutoff(&self) -> f32 {
+        self.cutoff.unwrap_or(0.0)
+    }
+
+    pub fn blends(&self) -> bool {
+        self.transparent.unwrap_or(false)
     }
 
     pub fn tint(&self) -> Option<[f32; 3]> {
@@ -160,6 +180,183 @@ fn material_table() -> &'static HashMap<String, MaterialEntry> {
         }
         out
     })
+}
+
+/// Materials by the mesh they render (`car|mesh id`): a manifest part names its
+/// mesh directly, so this beats guessing from the file name.
+fn car_mesh_table() -> &'static HashMap<(String, u64), MaterialEntry> {
+    static TABLE: OnceLock<HashMap<(String, u64), MaterialEntry>> = OnceLock::new();
+    TABLE.get_or_init(|| {
+        let raw: HashMap<String, Vec<MaterialEntry>> =
+            serde_json::from_str(CAR_MATERIALS_JSON).unwrap_or_default();
+        let mut out = HashMap::new();
+        for (car, entries) in raw {
+            for entry in entries {
+                if let Some(mesh) = entry.mesh {
+                    out.insert((car.clone(), mesh), entry);
+                }
+            }
+        }
+        out
+    })
+}
+
+// ------------------------------------------------------- export manifest
+
+#[derive(Deserialize, Default)]
+struct ManifestOwner {
+    #[serde(default)]
+    game_object_path: Option<String>,
+}
+
+#[derive(Deserialize, Default)]
+struct ManifestMeshEntry {
+    #[serde(default)]
+    file_rel: Option<String>,
+    #[serde(default)]
+    path_id: Option<u64>,
+    #[serde(default)]
+    owners: Vec<ManifestOwner>,
+}
+
+#[derive(Deserialize, Default)]
+struct Manifest {
+    #[serde(default)]
+    meshes: Vec<ManifestMeshEntry>,
+}
+
+/// The art export's own manifest, next to the meshes it names. Cars are built
+/// from it: the exporter writes each mesh once, under whichever GameObject name
+/// it found, so a part's *owner path* (`Ford_F150_Raptor/View/Body/roof rack`) is
+/// what says which car it belongs to.
+fn export_manifest() -> Option<&'static Manifest> {
+    static MANIFEST: OnceLock<Option<Manifest>> = OnceLock::new();
+    MANIFEST
+        .get_or_init(|| {
+            let root = art_root()?;
+            let bytes = std::fs::read(root.join("MANIFEST.json")).ok()?;
+            match serde_json::from_slice::<Manifest>(&bytes) {
+                Ok(manifest) => Some(manifest),
+                Err(error) => {
+                    log::warn!("deadly-descent: MANIFEST.json failed to parse: {error}");
+                    None
+                }
+            }
+        })
+        .as_ref()
+}
+
+/// Every exported mesh a car owns: the file to load, the GameObject path it came
+/// from (which classifies it) and its mesh id (which finds its material).
+fn manifest_parts(car_id: &str) -> Vec<(String, String, Option<u64>)> {
+    let Some(manifest) = export_manifest() else {
+        return Vec::new();
+    };
+    let mut out: Vec<(String, String, Option<u64>)> = Vec::new();
+    for mesh in &manifest.meshes {
+        let Some(file) = mesh.file_rel.as_deref() else {
+            continue;
+        };
+        let mut best: Option<(bool, usize, &str)> = None;
+        for owner in &mesh.owners {
+            let Some(path) = owner.game_object_path.as_deref() else {
+                continue;
+            };
+            if !path.split('/').any(|segment| segment == car_id) {
+                continue;
+            }
+            // The driver mannequin hangs off the car too, and its body is a
+            // torso: drawing it as car art puts a limb where the car should be.
+            if path.split('/').any(|segment| segment == "Mannequin") {
+                continue;
+            }
+            let prefab = path.starts_with("LevelPrefab");
+            let key = (prefab, path.len());
+            if best.map(|b| key < (b.0, b.1)).unwrap_or(true) {
+                best = Some((prefab, path.len(), path));
+            }
+        }
+        let Some((_, _, go_path)) = best else {
+            continue;
+        };
+        if out.iter().any(|(f, path, _)| f == file && path == go_path) {
+            continue;
+        }
+        out.push((file.to_string(), go_path.to_string(), mesh.path_id));
+    }
+    out.sort();
+    out
+}
+
+/// `assets/dd1/materials.json`: the shipped materials, by name.
+#[derive(Clone, Debug, Default, Deserialize)]
+pub struct PortMaterial {
+    #[serde(default)]
+    pub texture: Option<String>,
+    #[serde(default)]
+    pub color: Option<[f32; 3]>,
+    #[serde(default)]
+    pub cutoff: Option<f32>,
+    #[serde(default)]
+    pub transparent: Option<bool>,
+}
+
+const MATERIALS_JSON: &str = include_str!("../assets/dd1/materials.json");
+/// `assets/dd1/mesh_submaterials.json`: mesh id -> materials, one per submesh.
+const MESH_SUBMATERIALS_JSON: &str = include_str!("../assets/dd1/mesh_submaterials.json");
+
+fn materials() -> &'static HashMap<String, PortMaterial> {
+    static TABLE: OnceLock<HashMap<String, PortMaterial>> = OnceLock::new();
+    TABLE.get_or_init(|| serde_json::from_str(MATERIALS_JSON).unwrap_or_default())
+}
+
+fn submesh_materials() -> &'static HashMap<String, Vec<String>> {
+    static TABLE: OnceLock<HashMap<String, Vec<String>>> = OnceLock::new();
+    TABLE.get_or_init(|| serde_json::from_str(MESH_SUBMATERIALS_JSON).unwrap_or_default())
+}
+
+/// The material of one submesh (they are listed in submesh order).
+pub fn submesh_material(mesh_id: u64, submesh: usize) -> Option<&'static PortMaterial> {
+    let names = submesh_materials().get(&mesh_id.to_string())?;
+    materials().get(names.get(submesh)?)
+}
+
+/// Whether the mesh's submesh materials are usable: the import writes one group
+/// per submesh, so the lists line up or not at all.
+pub fn submesh_count(mesh_id: u64) -> Option<usize> {
+    submesh_materials().get(&mesh_id.to_string()).map(Vec::len)
+}
+
+/// Material for one exported mesh file, found through the manifest's owner names.
+///
+/// The export writes a mesh once, under one of the GameObjects that use it, so
+/// `Tree-A-01.glb` may be the mesh of a GameObject called `Trees` — and that is
+/// the name the material table is keyed by.
+pub fn manifest_material(file_rel: &str) -> Option<&'static MaterialEntry> {
+    let manifest = export_manifest()?;
+    let entry = manifest
+        .meshes
+        .iter()
+        .find(|mesh| mesh.file_rel.as_deref() == Some(file_rel))?;
+    for owner in &entry.owners {
+        let Some(path) = owner.game_object_path.as_deref() else {
+            continue;
+        };
+        let name = path.rsplit('/').next().unwrap_or("");
+        if let Some(hit) = mesh_material_table().get(name) {
+            return Some(hit);
+        }
+    }
+    None
+}
+
+/// Material for one of a car's own GameObjects, by the object's name.
+fn entry_owner(car_id: &str, go: &str) -> Option<&'static MaterialEntry> {
+    let owner = normalise(go);
+    if owner.is_empty() {
+        return None;
+    }
+    material_table().get(&format!("{car_id}|{owner}"))
 }
 
 /// Look up a mesh's material entry. Export file names keep the owner chain with
@@ -434,30 +631,42 @@ fn classify(name: &str, wheels: &[crate::sim::data::WheelSpec]) -> (PartKind, Op
     (kind, corner)
 }
 
-/// Load every exported mesh whose file name starts with the car's id, binding
-/// each mesh's material texture page and tint.
+/// Load every exported mesh the car owns, binding each mesh's material texture
+/// page and tint.
+///
+/// The export names most meshes after their GameObject, not their car, so the
+/// manifest's owner paths decide what belongs to a car. Without the manifest the
+/// loader falls back to the car-prefixed file names.
 pub fn load_car_art(
     car_id: &str,
     wheels: &[crate::sim::data::WheelSpec],
     textures: &mut Textures,
 ) -> Option<CarArt> {
     let root = art_root()?;
-    let dir = root.join("meshes");
-    let entries = std::fs::read_dir(&dir).ok()?;
     let mut art = CarArt::default();
-    let prefix = format!("{car_id}_");
-    let mut files: Vec<PathBuf> = entries
-        .flatten()
-        .map(|e| e.path())
-        .filter(|p| {
-            p.file_name()
+    let mut files: Vec<(PathBuf, String, Option<u64>)> = Vec::new();
+    for (file, go_path, mesh_id) in manifest_parts(car_id) {
+        let path = root.join(&file);
+        if path.is_file() {
+            files.push((path, go_path, mesh_id));
+        }
+    }
+    if files.is_empty() {
+        let dir = root.join("meshes");
+        let prefix = format!("{car_id}_");
+        for path in std::fs::read_dir(&dir).ok()?.flatten().map(|e| e.path()) {
+            let named = path
+                .file_name()
                 .and_then(|n| n.to_str())
                 .map(|n| n.starts_with(&prefix) && n.ends_with(".glb"))
-                .unwrap_or(false)
-        })
-        .collect();
-    files.sort();
-    for path in files {
+                .unwrap_or(false);
+            if named {
+                files.push((path, String::new(), None));
+            }
+        }
+        files.sort();
+    }
+    for (path, go_path, mesh_id) in files {
         let Some(name) = path.file_name().and_then(|n| n.to_str()) else {
             continue;
         };
@@ -476,25 +685,85 @@ pub fn load_car_art(
             }
         };
         let stem = name.trim_end_matches(".glb").to_string();
-        let (kind, corner) = classify(&stem, wheels);
-        let entry = entry_for(car_id, &stem);
+        // The owner path carries the tokens that name a part ("Wheels/FR/View/
+        // Tire FR"), so it classifies better than the file name ever could —
+        // but only its last segment: everything under `View/Body/` is car body
+        // area, and a diffuser is not what the paint goes on.
+        let key = if go_path.is_empty() {
+            stem.clone()
+        } else {
+            go_path.rsplit('/').next().unwrap_or("").to_string()
+        };
+        let (kind, corner) = classify(&key, wheels);
+        let entry = mesh_id
+            .and_then(|id| car_mesh_table().get(&(car_id.to_string(), id)))
+            .or_else(|| {
+                let go = go_path.rsplit('/').next().unwrap_or("");
+                entry_owner(car_id, go)
+            })
+            .or_else(|| entry_for(car_id, &stem));
         let page = entry
             .and_then(|e| e.texture.as_deref())
             .and_then(|t| textures.page(t));
         let tint = entry.and_then(|e| e.tint());
+        let cutoff = entry.map(|e| e.cutoff()).unwrap_or(0.0);
+        let blends = entry.map(|e| e.blends()).unwrap_or(false);
         for mesh in meshes {
             if mesh.groups.iter().all(|g| g.is_empty()) {
                 continue;
             }
+            // The export knows a mesh's submesh materials (a truck body is paint,
+            // parts, mirror, windows and glass at once) but the batch cannot
+            // take them apart: the submeshes share one vertex buffer, so the
+            // loader merges them and a merged group carries one material. They
+            // are therefore the fallback when no part-level material names the
+            // whole mesh — the dominant submesh is the one that reads as the
+            // part, which is the shell for a body and the frame for a rack.
+            let submesh_fallback = mesh_id.and_then(|id| {
+                let count = submesh_count(id)?;
+                (count > 1 && entry.is_none()).then_some(id)
+            });
+            let (part_page, part_tint, part_cutoff, part_blends) = match submesh_fallback {
+                Some(id) => {
+                    let mut best: Option<(usize, &PortMaterial)> = None;
+                    for index in 0..mesh.groups.len() {
+                        let Some(material) = submesh_material(id, index) else {
+                            continue;
+                        };
+                        let size = mesh.groups[index].tri_count();
+                        if best.map(|b| size > b.0).unwrap_or(true) {
+                            best = Some((size, material));
+                        }
+                    }
+                    match best.map(|b| b.1) {
+                        Some(material) => (
+                            material
+                                .texture
+                                .as_deref()
+                                .and_then(|t| textures.page(t))
+                                .or(page),
+                            material.color.or(tint),
+                            material.cutoff.unwrap_or(cutoff),
+                            material.transparent.unwrap_or(blends),
+                        ),
+                        None => (page, tint, cutoff, blends),
+                    }
+                }
+                None => (page, tint, cutoff, blends),
+            };
             let groups: Vec<MeshGroup> = mesh
                 .groups
                 .into_iter()
                 .map(|mut group| {
-                    match page {
-                        Some(page) => {
+                    let (bound_page, bound_tint, bound_cutoff, bound_blends) =
+                        (part_page, part_tint, part_cutoff, part_blends);
+                    match bound_page {
+                        Some(bound_page) => {
                             // Textured: keep uvs, sample the page.
-                            group.texture_page = page;
-                            if let Some(tint) = tint {
+                            group.texture_page = bound_page;
+                            group.alpha_cutoff = bound_cutoff;
+                            group.transparent |= bound_blends;
+                            if let Some(tint) = bound_tint {
                                 for c in group.colors.iter_mut() {
                                     *c = [c[0] * tint[0], c[1] * tint[1], c[2] * tint[2]];
                                 }
@@ -637,21 +906,28 @@ pub fn missing_wheel_groups(sim: &CarSim, art: &CarArt, colour: [f32; 3]) -> Vec
             continue;
         }
         let centre = sim.wheel_world(i);
+        // Tyres are rubber, whatever paint the car wears: tinting these with the
+        // livery turned a yellow car's wheels yellow, which is what "partly
+        // disassembled" looked like at distance. The rim keeps the car's colour.
         let mut g = MeshGroup::default();
         push_wheel(
             &mut g,
             centre,
             w.radius,
-            sim.spec.track_width() * 0.06,
-            [0.08, 0.08, 0.09],
+            w.radius * 0.55,
+            [0.06, 0.06, 0.07],
         );
-        for c in g.colors.iter_mut() {
-            *c = [
-                c[0] * (0.4 + colour[0] * 0.6),
-                c[1] * (0.4 + colour[1] * 0.6),
-                c[2] * (0.4 + colour[2] * 0.6),
-            ];
-        }
+        push_disc(
+            &mut g,
+            centre + vec3(0.0, 0.0, 0.0),
+            w.radius * 0.55,
+            w.radius * 0.56,
+            [
+                0.35 + colour[0] * 0.45,
+                0.35 + colour[1] * 0.45,
+                0.35 + colour[2] * 0.45,
+            ],
+        );
         out.push(g);
     }
     out
@@ -679,6 +955,11 @@ fn push_wheel(m: &mut MeshGroup, centre: Vec3, radius: f32, half_len: f32, colou
         m.indices
             .extend_from_slice(&[base, base + 1, base + 2, base, base + 2, base + 3]);
     }
+}
+
+/// A rim: a stubby cylinder on the wheel's axis, centred where the wheel is.
+fn push_disc(m: &mut MeshGroup, centre: Vec3, radius: f32, half_len: f32, colour: [f32; 3]) {
+    push_wheel(m, centre, radius, half_len, colour);
 }
 
 /// Cache of loaded car art, and the texture pages it binds.

@@ -7191,7 +7191,8 @@
     0.772549033164978,
     1.0
    ]
-  }
+  },
+  "cutoff": 0.527
  },
  "Light-03 (4)": {
   "material": "Metal",
@@ -7263,7 +7264,8 @@
     0.7867647409439087,
     0.8970000147819519
    ]
-  }
+  },
+  "cutoff": 0.461
  },
  "Stand-02": {
   "material": "Atlas-01",
@@ -7299,7 +7301,8 @@
     0.6985294222831726,
     0.9470000267028809
    ]
-  }
+  },
+  "cutoff": 0.288
  },
  "StallsandUmbrellas (4)": {
   "material": "Metal",
@@ -7527,7 +7530,8 @@
     0.6985294222831726,
     0.9470000267028809
    ]
-  }
+  },
+  "cutoff": 0.288
  },
  "Stand-07": {
   "material": "Atlas-01",
@@ -7647,7 +7651,8 @@
     0.6985294222831726,
     0.9470000267028809
    ]
-  }
+  },
+  "cutoff": 0.288
  },
  "Trees": {
   "material": "Trees-01",
@@ -7659,7 +7664,8 @@
     0.6764705777168274,
     1.0
    ]
-  }
+  },
+  "cutoff": 0.302
  },
  "Light-02 (5)": {
   "material": "Metal",
@@ -7743,7 +7749,8 @@
     0.13235294818878174,
     0.5899999737739563
    ]
-  }
+  },
+  "transparent": true
  },
  "Light-02 (10)": {
   "material": "Metal",
@@ -7971,7 +7978,8 @@
     0.6985294222831726,
     0.9470000267028809
    ]
-  }
+  },
+  "cutoff": 0.288
  },
  "Cabin-H": {
   "material": "Atlas-01",
@@ -8091,7 +8099,8 @@
     0.6985294222831726,
     0.9470000267028809
    ]
-  }
+  },
+  "cutoff": 0.288
  },
  "Stone-01": {
   "material": "Stone",
@@ -8823,7 +8832,8 @@
     0.6764705777168274,
     1.0
    ]
-  }
+  },
+  "cutoff": 0.302
  },
  "OutDoor-A (4)": {
   "material": "Atlas-01",
@@ -8847,7 +8857,8 @@
     0.772549033164978,
     1.0
    ]
-  }
+  },
+  "cutoff": 0.527
  },
  "Light-06 (5)": {
   "material": "Metal",
@@ -9015,7 +9026,8 @@
     0.6985294222831726,
     0.9470000267028809
    ]
-  }
+  },
+  "cutoff": 0.288
  },
  "FootBridge-E-02 (1)": {
   "material": "Atlas-01",
@@ -9123,7 +9135,8 @@
     0.772549033164978,
     1.0
    ]
-  }
+  },
+  "cutoff": 0.527
  },
  "Cabin-A-2": {
   "material": "Atlas-01",
@@ -9183,7 +9196,8 @@
     0.6764705777168274,
     1.0
    ]
-  }
+  },
+  "cutoff": 0.302
  },
  "Post": {
   "material": "Metal",
@@ -9219,7 +9233,8 @@
     0.6985294222831726,
     0.9470000267028809
    ]
-  }
+  },
+  "cutoff": 0.288
  },
  "Light-06 (1)": {
   "material": "Metal",
@@ -9699,7 +9714,8 @@
     0.6764705777168274,
     1.0
    ]
-  }
+  },
+  "cutoff": 0.302
  },
  "Barrier-Blue-five": {
   "material": "Crane",
@@ -9795,7 +9811,8 @@
     0.13235294818878174,
     0.5899999737739563
    ]
-  }
+  },
+  "transparent": true
  },
  "Cabin-B-1": {
   "material": "Atlas-01",
@@ -9915,7 +9932,8 @@
     0.6985294222831726,
     0.9470000267028809
    ]
-  }
+  },
+  "cutoff": 0.288
  },
  "StallsandUmbrellas (7)": {
   "material": "Metal",
@@ -10215,7 +10233,8 @@
     0.6764705777168274,
     1.0
    ]
-  }
+  },
+  "cutoff": 0.302
  },
  "Light-01 (11)": {
   "material": "Metal",
@@ -10431,7 +10450,8 @@
     0.6764705777168274,
     1.0
    ]
-  }
+  },
+  "cutoff": 0.302
  },
  "Cabin-B-2": {
   "material": "Atlas-01",
@@ -10796,6 +10816,379 @@
  "default": {
   "material": "Default-Material",
   "texture": null,
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "Joints": {
+  "material": "Joints",
+  "colors": {
+   "_Color": [
+    0.039765,
+    0.039765,
+    0.039765,
+    1.0
+   ]
+  }
+ },
+ "GRID-05_Objects_GrandStand-01_Audience": {
+  "material": "Audience",
+  "texture": "Audience",
+  "colors": {
+   "_Color": [
+    0.786765,
+    0.786765,
+    0.786765,
+    0.897
+   ]
+  },
+  "cutoff": 0.461
+ },
+ "GRID-04_Objects_GrandStand-02_Audience": {
+  "material": "Audience",
+  "texture": "Audience",
+  "colors": {
+   "_Color": [
+    0.786765,
+    0.786765,
+    0.786765,
+    0.897
+   ]
+  },
+  "cutoff": 0.461
+ },
+ "GRID-03_Objects_GrandStand-10_Audience": {
+  "material": "Audience",
+  "texture": "Audience",
+  "colors": {
+   "_Color": [
+    0.786765,
+    0.786765,
+    0.786765,
+    0.897
+   ]
+  },
+  "cutoff": 0.461
+ },
+ "C-3-3-p_Objects_Stand-08_Audience": {
+  "material": "Audience",
+  "texture": "Audience",
+  "colors": {
+   "_Color": [
+    0.786765,
+    0.786765,
+    0.786765,
+    0.897
+   ]
+  },
+  "cutoff": 0.461
+ },
+ "C-2-3-S_B_Objects_Stand-09-m2_Audience": {
+  "material": "Audience",
+  "texture": "Audience",
+  "colors": {
+   "_Color": [
+    0.786765,
+    0.786765,
+    0.786765,
+    0.897
+   ]
+  },
+  "cutoff": 0.461
+ },
+ "DC-3-3-S_Objects_Stand-08-m_1_Audience": {
+  "material": "Audience",
+  "texture": "Audience",
+  "colors": {
+   "_Color": [
+    0.786765,
+    0.786765,
+    0.786765,
+    0.897
+   ]
+  },
+  "cutoff": 0.461
+ },
+ "GRID-02_Objects_GrandStand-08_Audience": {
+  "material": "Audience",
+  "texture": "Audience",
+  "colors": {
+   "_Color": [
+    0.786765,
+    0.786765,
+    0.786765,
+    0.897
+   ]
+  },
+  "cutoff": 0.461
+ },
+ "GRID-11_Objects_GrandStand-11_Audience": {
+  "material": "Audience",
+  "texture": "Audience",
+  "colors": {
+   "_Color": [
+    0.786765,
+    0.786765,
+    0.786765,
+    0.897
+   ]
+  },
+  "cutoff": 0.461
+ },
+ "GRID-08_Objects_GrandStand-05_1_Audience": {
+  "material": "Audience",
+  "texture": "Audience",
+  "colors": {
+   "_Color": [
+    0.786765,
+    0.786765,
+    0.786765,
+    0.897
+   ]
+  },
+  "cutoff": 0.461
+ },
+ "C-1-1-_P_T_Objects_Stand-09-2_Audience": {
+  "material": "Audience",
+  "texture": "Audience",
+  "colors": {
+   "_Color": [
+    0.786765,
+    0.786765,
+    0.786765,
+    0.897
+   ]
+  },
+  "cutoff": 0.461
+ },
+ "GRID-07_Objects_Stand-05_Audience": {
+  "material": "Audience",
+  "texture": "Audience",
+  "colors": {
+   "_Color": [
+    0.786765,
+    0.786765,
+    0.786765,
+    0.897
+   ]
+  },
+  "cutoff": 0.461
+ },
+ "GRID-09_Objects_GrandStand-07_1_Audience": {
+  "material": "Audience",
+  "texture": "Audience",
+  "colors": {
+   "_Color": [
+    0.786765,
+    0.786765,
+    0.786765,
+    0.897
+   ]
+  },
+  "cutoff": 0.461
+ },
+ "GRID-07_Objects_GrandStand-06_1_Audience": {
+  "material": "Audience",
+  "texture": "Audience",
+  "colors": {
+   "_Color": [
+    0.786765,
+    0.786765,
+    0.786765,
+    0.897
+   ]
+  },
+  "cutoff": 0.461
+ },
+ "C-1-2-A3_Objects_Stand-06_Audience": {
+  "material": "Audience",
+  "texture": "Audience",
+  "colors": {
+   "_Color": [
+    0.786765,
+    0.786765,
+    0.786765,
+    0.897
+   ]
+  },
+  "cutoff": 0.461
+ },
+ "DC-1-2-A_Objects_GrandStand-09_Audience": {
+  "material": "Audience",
+  "texture": "Audience",
+  "colors": {
+   "_Color": [
+    0.786765,
+    0.786765,
+    0.786765,
+    0.897
+   ]
+  },
+  "cutoff": 0.461
+ },
+ "C-2-3-S_B_Objects_Stand-07_Audience": {
+  "material": "Audience",
+  "texture": "Audience",
+  "colors": {
+   "_Color": [
+    0.786765,
+    0.786765,
+    0.786765,
+    0.897
+   ]
+  },
+  "cutoff": 0.461
+ },
+ "DC-1-3-C_Objects_Stand-10_1_Audience": {
+  "material": "Audience",
+  "texture": "Audience",
+  "colors": {
+   "_Color": [
+    0.786765,
+    0.786765,
+    0.786765,
+    0.897
+   ]
+  },
+  "cutoff": 0.461
+ },
+ "C-1-3-A_Objects_Stand-04_1_Audience": {
+  "material": "Audience",
+  "texture": "Audience",
+  "colors": {
+   "_Color": [
+    0.786765,
+    0.786765,
+    0.786765,
+    0.897
+   ]
+  },
+  "cutoff": 0.461
+ },
+ "C-1-1-A_Objects_Stand-03_1_Audience": {
+  "material": "Audience",
+  "texture": "Audience",
+  "colors": {
+   "_Color": [
+    0.786765,
+    0.786765,
+    0.786765,
+    0.897
+   ]
+  },
+  "cutoff": 0.461
+ },
+ "GRID-10_Objects_GrandStand-03_1_Audience": {
+  "material": "Audience",
+  "texture": "Audience",
+  "colors": {
+   "_Color": [
+    0.786765,
+    0.786765,
+    0.786765,
+    0.897
+   ]
+  },
+  "cutoff": 0.461
+ },
+ "C-1-2-A3_Objects_Stand-01_Audience": {
+  "material": "Audience",
+  "texture": "Audience",
+  "colors": {
+   "_Color": [
+    0.786765,
+    0.786765,
+    0.786765,
+    0.897
+   ]
+  },
+  "cutoff": 0.461
+ },
+ "DC-1-3-L_Objects_GrandStand-09-m_Audience": {
+  "material": "Audience",
+  "texture": "Audience",
+  "colors": {
+   "_Color": [
+    0.786765,
+    0.786765,
+    0.786765,
+    0.897
+   ]
+  },
+  "cutoff": 0.461
+ },
+ "C-2-2-_P_Objects_GrandStand-04_1_Audience": {
+  "material": "Audience",
+  "texture": "Audience",
+  "colors": {
+   "_Color": [
+    0.786765,
+    0.786765,
+    0.786765,
+    0.897
+   ]
+  },
+  "cutoff": 0.461
+ },
+ "C-1-2-A_Objects_Stand-02_1_Audience": {
+  "material": "Audience",
+  "texture": "Audience",
+  "colors": {
+   "_Color": [
+    0.786765,
+    0.786765,
+    0.786765,
+    0.897
+   ]
+  },
+  "cutoff": 0.461
+ },
+ "GRID-06_Objects_Stand-07-m_Audience": {
+  "material": "Audience",
+  "texture": "Audience",
+  "colors": {
+   "_Color": [
+    0.786765,
+    0.786765,
+    0.786765,
+    0.897
+   ]
+  },
+  "cutoff": 0.461
+ },
+ "C-1-1-_P_T_Objects_GrandStand-04-L_Audience": {
+  "material": "Audience",
+  "texture": "Audience",
+  "colors": {
+   "_Color": [
+    0.786765,
+    0.786765,
+    0.786765,
+    0.897
+   ]
+  },
+  "cutoff": 0.461
+ },
+ "gora_uv_7": {
+  "material": "gora",
+  "texture": "gora_uv_lambert1_AlbedoTransparency",
+  "colors": {
+   "_Color": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  }
+ },
+ "Finish_Obstacles_Ramp_9_1_Decal": {
+  "material": "Decal",
+  "texture": "Decal",
   "colors": {
    "_Color": [
     1.0,
