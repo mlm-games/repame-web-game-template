@@ -1,6 +1,6 @@
 use repame_audio::{
-    AmplitudeEnvelope, Audio, AudioChannel, CueDef, CueSpec, Sweep, Variation, Waveform,
-    db_to_linear,
+    AmplitudeEnvelope, Audio, AudioChannel, CueDef, CueSpec, NoiseShape, Sweep, Variation,
+    Waveform, db_to_linear,
 };
 
 use crate::sim::state::SfxCue;
@@ -38,7 +38,7 @@ impl SfxCue {
         // `mix` leaves those amplitudes at `(1 - mix) * gain` and `mix * gain`,
         // so the ratio is split across the blend and the spec's gain.
         let level = 1.0 + noise;
-        CueSpec::new(Waveform::Sine, from_hz * jitter, secs)
+        let spec = CueSpec::new(Waveform::Sine, from_hz * jitter, secs)
             .with_sweep(to_hz * jitter, Sweep::Linear)
             .with_amplitude(AmplitudeEnvelope::Adsr {
                 attack_s: 0.0,
@@ -48,7 +48,12 @@ impl SfxCue {
             })
             .with_noise(noise / level, noise_seed)
             .with_gain(level)
-            .with_sample_rate(RATE)
+            .with_sample_rate(RATE);
+        if noise > 0.0 {
+            spec.with_noise_shape(NoiseShape::Squared)
+        } else {
+            spec
+        }
     }
 }
 
