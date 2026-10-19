@@ -84,6 +84,7 @@ impl App {
                 let intent = match frame {
                     45 => Some(crate::sim::Intent::ToMapSelect),
                     90 => Some(crate::sim::Intent::StartLevel(request.level.unwrap_or(6))),
+                    150 => Some(crate::sim::Intent::ToGarage),
                     _ => None,
                 };
                 if let Some(intent) = intent {
@@ -166,10 +167,13 @@ impl App {
                             ground
                         ));
                     }
-                    if lower_sky > 0.35 {
+                    // Only a race is meant to be all surface: the garage and the
+                    // map screens have their own sky, and the garage floor is
+                    // blue-grey enough to read as sky to a colour test.
+                    if racing && lower_sky > 0.35 {
                         notes.push(format!("{:.0}% sky below the horizon", lower_sky * 100.0));
                     }
-                    if sky > 0.97 {
+                    if racing && sky > 0.97 {
                         notes.push("frame is almost entirely sky".into());
                     }
                     if stray_obstacles > 0 {

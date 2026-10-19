@@ -584,6 +584,76 @@ fn the_car_body_is_not_pinned_to_a_wheel() {
 }
 
 #[test]
+fn the_garage_room_stands_on_its_floor() {
+    // Parity guard: the shipped Garage scene places its room with Unity
+    // quaternions, which are left-handed. Read the other way round, the floor
+    // faces down (and is culled out of view) while the walls hang over the car.
+    // The floor's world normal is what tells the two readings apart.
+    let Some(_) = deadly_descent::art::art_root() else {
+        return;
+    };
+    let mut textures = deadly_descent::art::Textures::default();
+    let mut cache = deadly_descent::props::PropCache::default();
+    let pieces = deadly_descent::props::garage_pieces();
+    assert!(!pieces.is_empty(), "the garage layout ships with the build");
+    let place = |cache: &mut deadly_descent::props::PropCache,
+                 textures: &mut deadly_descent::art::Textures,
+                 piece: &deadly_descent::props::GaragePiece| {
+        deadly_descent::props::placed_groups(
+            cache,
+            textures,
+            &piece.file,
+            glam::Vec3::from(piece.position),
+            piece.rotation,
+            piece.scale,
+        )
+    };
+    let floor = pieces
+        .iter()
+        .find(|piece| piece.file == "Plane001")
+        .expect("the garage floor is part of the layout");
+    let groups = place(&mut cache, &mut textures, floor).expect("the floor art loads");
+    let (up, count) = groups
+        .iter()
+        .flat_map(|group| group.normals.iter())
+        .fold((0.0f32, 0usize), |(up, count), normal| {
+            (up + normal[1], count + 1)
+        });
+    assert!(count > 0, "the floor has normals");
+    let mean = up / count as f32;
+    assert!(
+        mean > 0.5,
+        "the garage floor faces the sky (mean normal y {mean:.2}): scene quaternions are left-handed"
+    );
+    let floor_low = groups
+        .iter()
+        .filter_map(|group| group.bounds())
+        .map(|(low, _)| low[1])
+        .fold(f32::INFINITY, f32::min);
+    // `Cube` is the shipped ground slab under the whole scene, not a room piece:
+    // it is meant to run deep below the floor.
+    for piece in pieces
+        .iter()
+        .filter(|piece| !matches!(piece.file.as_str(), "Plane001" | "Cube"))
+    {
+        let Some(groups) = place(&mut cache, &mut textures, piece) else {
+            continue;
+        };
+        let low = groups
+            .iter()
+            .filter_map(|group| group.bounds())
+            .map(|(low, _)| low[1])
+            .fold(f32::INFINITY, f32::min);
+        assert!(
+            low > floor_low - 2.0,
+            "{} sinks {:.1} m below the garage floor",
+            piece.file,
+            floor_low - low
+        );
+    }
+}
+
+#[test]
 fn obstacle_art_fits_the_box_the_simulation_collides_with() {
     // Parity guard: a hazard's mesh and its collision box come from two places —
     // the shipped art and this port's tables — and when they disagree the car

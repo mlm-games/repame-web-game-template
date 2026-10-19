@@ -15,7 +15,7 @@ use repose_core::prelude::View;
 use crate::sim::car::CarSim;
 use crate::sim::data;
 use crate::sim::obstacles::Kind;
-use crate::sim::race::{Phase, Session, TrackWorld};
+use crate::sim::race::{Phase, Screen, Session, TrackWorld};
 
 /// Batch shape: one page per car texture, so the desc depends on how many
 /// pages the art cache has bound (fixed after the first frame).
@@ -565,15 +565,159 @@ pub fn car_colour(index: usize) -> [f32; 3] {
     LIVERY[index % LIVERY.len()]
 }
 
+/// One car's art, placed for this frame. The menu shows a car with the race's
+/// own loader, so an upgraded car looks the same in the garage as on the road.
+fn push_car(
+    art: &mut crate::art::ArtCache,
+    groups: &mut Vec<MeshGroup>,
+    sim: &CarSim,
+    livery: [f32; 3],
+) {
+    let wheels = sim.spec.wheels.clone();
+    let car = art.get(sim.spec.id.as_str(), &wheels).cloned();
+    match car {
+        Some(art) if !art.is_empty() => {
+            for part in &art.parts {
+                if !part.kind.visible_in_chase() || part.kind == crate::art::PartKind::Hidden {
+                    continue;
+                }
+                groups.extend(crate::art::part_groups(part, sim, livery));
+            }
+            groups.extend(crate::art::missing_wheel_groups(sim, &art, livery));
+        }
+        _ => groups.extend(car_groups(sim, livery)),
+    }
+}
+
+/// The light the game's scenes are lit with.
+fn scene_light() -> SceneLight {
+    SceneLight {
+        direction: [-0.45, -0.82, 0.35],
+        color: [1.0, 0.97, 0.9],
+        diffuse: 1.05,
+        ambient: [0.32, 0.34, 0.38],
+        fog: 0.18,
+        fog_color: [0.62, 0.72, 0.86],
+        fog_start: 90.0,
+        fog_end: 340.0,
+        exposure: 1.0,
+        tonemap: TonemapMethod::Reinhard,
+    }
+}
+
+/// The Garage scene: the shipped room with the selected car in it, on the menu
+/// camera. The reference keeps the room in the Garage scene itself and stacks all
+/// ten cars at the origin with only the selected one enabled, which is what this
+/// rebuilds — a garage screen with no car in it was the largest menu gap.
+fn menu_frame(world: &mut World, viewport_px: [f32; 2], geom: &GeomHandle) -> View {
+    let phase = world
+        .get_resource::<Screen>()
+        .map(|screen| screen.0)
+        .unwrap_or(Phase::Garage);
+    if !matches!(phase, Phase::Garage | Phase::MapSelect) {
+        return repose_ui::Spacer();
+    }
+    let (car_index, upgrades) = {
+        let progress = world.get_resource::<crate::sim::meta::Progress>();
+        let index = progress.map(|p| p.selected_car()).unwrap_or(0);
+        let up = progress
+            .map(|p| p.upgrades_for(data::car_at(index as i32).id.as_str()))
+            .unwrap_or_default();
+        (index, up)
+    };
+    let mut groups: Vec<MeshGroup> = Vec::new();
+    world.resource_scope(|_world, mut cache: Mut<SceneCache>| {
+        let SceneCache { props, art, .. } = &mut *cache;
+        for piece in crate::props::garage_pieces() {
+            if let Some(placed) = crate::props::placed_groups(
+                props,
+                &mut art.textures,
+                &piece.file,
+                Vec3::from(piece.position),
+                piece.rotation,
+                piece.scale,
+            ) {
+                groups.extend(placed);
+            }
+        }
+        let sim = CarSim::new(data::car_at(car_index as i32), Vec3::ZERO, 0.0, upgrades);
+        push_car(art, &mut groups, &sim, car_colour(car_index));
+    });
+    let (desc, uploads) = {
+        let mut cache = world.resource_mut::<SceneCache>();
+        cache.art.textures.preload_cars(data::cars());
+        let SceneCache { props, art, .. } = &mut *cache;
+        props.preload(&mut art.textures);
+        let desc = scene_desc(cache.art.textures.layer_count());
+        let uploads = cache.art.textures.uploads();
+        (desc, uploads)
+    };
+    let (mut target, mut yaw, mut dist, mut pitch) = (vec3(0.0, -1.2, 0.0), 0.55, 12.5, 0.22);
+    if let Ok(shape) = std::env::var("DD_DEBUG_CAM") {
+        // Isolation aid, the same one the race path offers.
+        match shape.as_str() {
+            "bird" => {
+                target = vec3(0.0, 0.0, 0.0);
+                yaw = 0.0;
+                dist = 45.0;
+                pitch = 0.9;
+            }
+            "side" => {
+                target = vec3(0.0, 1.0, 0.0);
+                yaw = std::f32::consts::FRAC_PI_2;
+                dist = 25.0;
+                pitch = 0.25;
+            }
+            _ => {}
+        }
+    }
+    let mut frame = Frame3d {
+        background: Some([0.384, 0.705, 1.0, 1.0]),
+        viewport_px,
+        desc,
+        uploads,
+        cam: OrbitCamera {
+            target,
+            yaw,
+            pitch,
+            dist,
+            fov_y_deg: 38.0,
+        },
+        light: scene_light(),
+        ..Default::default()
+    };
+    world.insert_resource(FrameCamera {
+        view_proj: frame
+            .cam
+            .view_proj(viewport_px[0].max(1.0) / viewport_px[1].max(1.0)),
+    });
+    for g in groups {
+        let g = with_normals(g);
+        if !g.is_empty() {
+            frame.push(g);
+        }
+    }
+    Viewport3d(frame, geom.clone(), "deadly-descent", desc, |_ev| {})
+}
+
 pub fn frame_for(
     world: &mut World,
     _ctx: &repose_core::RenderContext,
     viewport_px: [f32; 2],
     geom: &GeomHandle,
 ) -> View {
+    let phase = world
+        .get_resource::<Screen>()
+        .map(|screen| screen.0)
+        .unwrap_or(Phase::Garage);
     let Some(session) = world.get_resource::<Session>() else {
-        return repose_ui::Spacer();
+        return menu_frame(world, viewport_px, geom);
     };
+    // The garage is its own scene in the shipped build, and a finished race
+    // leaves its session behind: without this the menu would show the track.
+    if matches!(phase, Phase::Garage | Phase::MapSelect) {
+        return menu_frame(world, viewport_px, geom);
+    }
     let phase = session.phase;
     let level = session.level();
     let car_index = session.car;
@@ -893,18 +1037,7 @@ pub fn frame_for(
                 65.0
             },
         },
-        light: SceneLight {
-            direction: [-0.45, -0.82, 0.35],
-            color: [1.0, 0.97, 0.9],
-            diffuse: 1.05,
-            ambient: [0.32, 0.34, 0.38],
-            fog: 0.18,
-            fog_color: [0.62, 0.72, 0.86],
-            fog_start: 90.0,
-            fog_end: 340.0,
-            exposure: 1.0,
-            tonemap: TonemapMethod::Reinhard,
-        },
+        light: scene_light(),
         ..Default::default()
     };
     world.insert_resource(FrameCamera {

@@ -491,10 +491,10 @@ fn small_button(
 pub fn compose_root(ui: &SharedUi, sink: Sink) -> View {
     let s = ui.ui_scale();
     let vp = [ui.viewport.x, ui.viewport.y];
-    // Menus sit on the blurred race backdrop; a race shows the 3D scene alone.
-    // (`RaceBackground.png` is a cockpit screenshot, not a web background.)
-    let menu_phase = matches!(ui.phase, Phase::Garage | Phase::MapSelect);
-    let background = if menu_phase {
+    // The garage draws the shipped room and the car in 3D under this layer, so a
+    // backdrop here would cover it; the map screen is UI-only and keeps the
+    // blurred race shot behind its panels.
+    let background = if ui.phase == Phase::MapSelect {
         sprite(ui, "RaceBackgroundBlur", vp[0], vp[1], 1.0, ImageFit::Cover)
     } else {
         Spacer()

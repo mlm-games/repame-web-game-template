@@ -110,6 +110,75 @@ impl PropTable {
     }
 }
 
+/// One piece of the shipped Garage scene, at the transform the scene gives it.
+#[derive(Clone, Debug, Deserialize)]
+pub struct GaragePiece {
+    pub file: String,
+    pub position: [f32; 3],
+    pub rotation: [f32; 4],
+    pub scale: [f32; 3],
+}
+
+const GARAGE_JSON: &str = include_str!("../assets/dd1/garage.json");
+
+/// The room the car is shown in on the garage screen.
+pub fn garage_pieces() -> &'static [GaragePiece] {
+    #[derive(Deserialize)]
+    struct Garage {
+        #[serde(default)]
+        pieces: Vec<GaragePiece>,
+    }
+    static ROOM: std::sync::OnceLock<Vec<GaragePiece>> = std::sync::OnceLock::new();
+    ROOM.get_or_init(|| match serde_json::from_str::<Garage>(GARAGE_JSON) {
+        Ok(room) => room.pieces,
+        Err(error) => {
+            log::warn!("deadly-descent: garage.json failed to parse: {error}");
+            Vec::new()
+        }
+    })
+}
+
+/// Place a prop at an exact transform, as the reference scene has it. Track
+/// props are only lifted onto the ground, but the garage's pieces sit at
+/// authored positions with their own rotations.
+pub fn placed_groups(
+    cache: &mut PropCache,
+    textures: &mut crate::art::Textures,
+    file: &str,
+    at: Vec3,
+    rotation: [f32; 4],
+    scale: [f32; 3],
+) -> Option<Vec<MeshGroup>> {
+    let mesh = cache.get(file, textures)?.clone();
+    let [x, y, z, w] = rotation;
+    let (xx, yy, zz) = (x * x, y * y, z * z);
+    let (xy, xz, yz) = (x * y, x * z, y * z);
+    let (wx, wy, wz) = (w * x, w * y, w * z);
+    let rotate = |v: Vec3| {
+        vec3(
+            (1.0 - 2.0 * (yy + zz)) * v.x + 2.0 * (xy - wz) * v.y + 2.0 * (xz + wy) * v.z,
+            2.0 * (xy + wz) * v.x + (1.0 - 2.0 * (xx + zz)) * v.y + 2.0 * (yz - wx) * v.z,
+            2.0 * (xz - wy) * v.x + 2.0 * (yz + wx) * v.y + (1.0 - 2.0 * (xx + yy)) * v.z,
+        )
+    };
+    Some(
+        mesh.groups
+            .iter()
+            .map(|group| {
+                let mut out = group.clone();
+                for p in out.positions.iter_mut() {
+                    let local = vec3(p[0] * scale[0], p[1] * scale[1], p[2] * scale[2]);
+                    *p = (at + rotate(local)).to_array();
+                }
+                for n in out.normals.iter_mut() {
+                    *n = rotate(Vec3::from(*n)).normalize_or_zero().to_array();
+                }
+                out
+            })
+            .collect(),
+    )
+}
+
 /// A cached prop mesh plus the lift that puts its lowest vertex on the ground
 /// (the exported meshes have arbitrary pivots).
 #[derive(Clone)]
