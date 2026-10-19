@@ -312,7 +312,10 @@ pub fn sync_shared_ui(world: &mut World, ui: &mut SharedUi, ctx: &RenderContext)
         ui.car = session.car;
         ui.time = session.time;
         ui.countdown = session.countdown;
-        ui.speed_kmh = session.player.top_speed.max(session.player.speed() * 3.6);
+        // The readout is the speed the car is doing now: `top_speed` is the
+        // run's best, which only ever climbs and left the dial frozen at the
+        // fastest moment of the race.
+        ui.speed_kmh = session.player.speed() * 3.6;
         ui.damage = session.player.damage;
         ui.max_damage = session.player.max_damage();
         ui.nitro = session.player.nitro;
@@ -660,11 +663,6 @@ fn garage(ui: &SharedUi, s: f32, vp: [f32; 2], sink: &Sink) -> View {
         if !owned {
             card_rows.push(icon_view(ui, "PictoIcon_Lock_2", 18.0, 18.0, s));
         }
-        let frame = if selected {
-            "Car_Button_Selected"
-        } else {
-            "Car_Button_Background"
-        };
         let m = Modifier::new()
             .padding_values(repose_core::PaddingValues {
                 left: Dp(6.0 * s),
@@ -681,29 +679,44 @@ fn garage(ui: &SharedUi, s: f32, vp: [f32; 2], sink: &Sink) -> View {
                 move || sink.lock().unwrap().push(action)
             });
         // Frame sprite behind the card, flat colour when the skin is absent.
-        let frame_view =
-            match ui.images.sprite(frame) {
-                Some(handle) => {
-                    Image(Modifier::new().fill_max_size(), handle).image_fit(ImageFit::FitHeight)
-                }
-                None => RBox(Modifier::new().fill_max_size().background(if selected {
-                    SUN
-                } else {
-                    STEEL
-                }))
-                .child(Spacer()),
-            };
+        // `Car_Button_Selected` is the tick badge, so the selected card keeps the
+        // same backing card and draws the badge over it: using the badge as the
+        // card left the pick with no card at all.
+        let frame_view = match ui.images.sprite("Car_Button_Background") {
+            Some(handle) => {
+                Image(Modifier::new().fill_max_size(), handle).image_fit(ImageFit::FitHeight)
+            }
+            None => RBox(Modifier::new().fill_max_size().background(if selected {
+                SUN
+            } else {
+                STEEL
+            }))
+            .child(Spacer()),
+        };
+        let mut card_layers: Vec<View> = vec![
+            frame_view,
+            Column(
+                Modifier::new()
+                    .gap(Dp(2.0 * s))
+                    .align_items(AlignItems::CENTER),
+            )
+            .child(card_rows),
+        ];
+        if selected {
+            card_layers.push(
+                RBox(
+                    Modifier::new()
+                        .absolute()
+                        .offset_left(Dp(64.0 * s))
+                        .offset_top(Dp(2.0 * s)),
+                )
+                .child(icon_view(ui, "Car_Button_Selected", 24.0, 21.0, s)),
+            );
+        }
         cards.push(
             RBox(m).child(
-                ZStack(Modifier::new().size(Dp(92.0 * s), Dp(58.0 * s))).child((
-                    frame_view,
-                    Column(
-                        Modifier::new()
-                            .gap(Dp(2.0 * s))
-                            .align_items(AlignItems::CENTER),
-                    )
-                    .child(card_rows),
-                )),
+                ZStack(Modifier::new().size(Dp(92.0 * s), Dp(58.0 * s)))
+                    .child(card_layers),
             ),
         );
     }
@@ -1004,8 +1017,11 @@ fn hud(ui: &SharedUi, s: f32, vp: [f32; 2], sink: &Sink) -> View {
         label_plain(Modifier::new(), &format!("{:.1}s", ui.time), 18.0, SUN, s),
     ));
     // top-right: coins, place, pause
-    let top_right = Row(rect(vp, s, [1.0, 0.0, 1.0, 0.0], [-16.0, 12.0, 0.0, 0.0])
+    // A right-anchored row needs the width the content has: anchoring its left
+    // edge 16 dp from the right edge left the coins and pause button off screen.
+    let top_right = Row(rect(vp, s, [0.5, 0.0, 1.0, 0.0], [0.0, 12.0, -16.0, 0.0])
         .gap(Dp(10.0 * s))
+        .justify_content(JustifyContent::END)
         .align_items(AlignItems::CENTER))
     .child((
         coin_row(ui, ui.coins, 26.0, s),
@@ -1184,14 +1200,6 @@ fn results(ui: &SharedUi, s: f32, vp: [f32; 2], sink: &Sink) -> View {
             )),
         );
     } else {
-        rows.push(sprite(
-            ui,
-            "YouLoseBack",
-            520.0,
-            120.0,
-            s,
-            ImageFit::Contain,
-        ));
         rows.push(
             Row(Modifier::new()
                 .gap(Dp(10.0 * s))
@@ -1250,16 +1258,41 @@ fn results(ui: &SharedUi, s: f32, vp: [f32; 2], sink: &Sink) -> View {
                 coin_row(ui, ui.coins, 24.0, s),
             )),
         );
-        rows.push(label_plain(
-            Modifier::new(),
-            &format!(
-                "finish {}   speed {}   time {}   damage {}",
-                r.completion_bonus, r.speed_bonus, r.time_bonus, r.damage_bonus
-            ),
-            15.0,
-            CREAM,
-            s,
-        ));
+        rows.push(
+            Row(Modifier::new()
+                .gap(Dp(14.0 * s))
+                .align_items(AlignItems::CENTER))
+            .child((
+                label_plain(
+                    Modifier::new(),
+                    &format!("FINISH +{}", r.completion_bonus),
+                    15.0,
+                    CREAM,
+                    s,
+                ),
+                label_plain(
+                    Modifier::new(),
+                    &format!("SPEED +{}", r.speed_bonus),
+                    15.0,
+                    CREAM,
+                    s,
+                ),
+                label_plain(
+                    Modifier::new(),
+                    &format!("TIME +{}", r.time_bonus),
+                    15.0,
+                    CREAM,
+                    s,
+                ),
+                label_plain(
+                    Modifier::new(),
+                    &format!("DAMAGE +{}", r.damage_bonus),
+                    15.0,
+                    CREAM,
+                    s,
+                ),
+            )),
+        );
         rows.push(small_button(
             ui,
             "FREE COINS (AD)",
@@ -1285,7 +1318,32 @@ fn results(ui: &SharedUi, s: f32, vp: [f32; 2], sink: &Sink) -> View {
             .align_items(AlignItems::CENTER),
     )
     .child(rows);
-    palette::panel(vp, s, content)
+    if won {
+        return palette::panel(vp, s, content);
+    }
+    // The losing screen's card is the shipped `YouLoseBack` panel, not a banner:
+    // it is 512x321, and stretching it to a row is what squashed it.
+    let width = 700.0;
+    let height = width * 321.0 / 512.0;
+    let backdrop = sprite(ui, "YouLoseBack", width, height, s, ImageFit::FillBounds);
+    let overlay = RBox(
+        Modifier::new()
+            .absolute()
+            .fill_max_size()
+            .justify_content(JustifyContent::CENTER)
+            .align_items(AlignItems::CENTER),
+    )
+    .child(content);
+    RBox(
+        Modifier::new()
+            .fill_max_size()
+            .justify_content(JustifyContent::CENTER)
+            .align_items(AlignItems::CENTER),
+    )
+    .child(
+        ZStack(Modifier::new().width(Dp(width * s)).height(Dp(height * s)))
+            .child((backdrop, overlay)),
+    )
 }
 
 fn pause(ui: &SharedUi, s: f32, vp: [f32; 2], sink: &Sink) -> View {

@@ -1042,7 +1042,7 @@ pub fn missing_wheel_groups(sim: &CarSim, art: &CarArt) -> Vec<MeshGroup> {
         // Tyres are rubber, whatever paint the car wears: tinting these with the
         // livery turned a yellow car's wheels yellow, which is what "partly
         // disassembled" looked like at distance. The rim keeps the car's colour.
-        let mut g = MeshGroup::default();
+        let mut g = crate::scene::mesh();
         push_wheel(
             &mut g,
             centre,

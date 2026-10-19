@@ -227,6 +227,16 @@ fn bind_page(
     group
 }
 
+/// Scene geometry is depth-tested: `MeshGroup::default()` is the editor's
+/// overlay default (always draw, no test), which paints procedural ground over
+/// the imported cars and props submitted before it.
+pub fn mesh() -> MeshGroup {
+    MeshGroup {
+        depth_test: true,
+        ..MeshGroup::default()
+    }
+}
+
 fn build_static(
     track_world: &TrackWorld,
     level: &data::Level,
@@ -236,8 +246,8 @@ fn build_static(
     let road_tone = if racing { ASPHALT } else { DIRT };
     let verge_tone = if racing { GRASS } else { SAND };
     let track = &track_world.track;
-    let mut road = MeshGroup::default();
-    let mut shoulder = MeshGroup::default();
+    let mut road = mesh();
+    let mut shoulder = mesh();
     let steps = 150usize;
     let span = track.length + RUN_OFF * 2.0;
     let step = span / steps as f32;
@@ -284,7 +294,7 @@ fn build_static(
         }
     }
     // grass verges
-    let mut verge = MeshGroup::default();
+    let mut verge = mesh();
     for i in 0..steps {
         let (s0, s1) = (along(i), along(i + 1));
         let (c0, c1) = (point(s0), point(s1));
@@ -312,7 +322,7 @@ fn build_static(
     // The apron carries the ground out to the horizon on both sides. Without it
     // the road reads as a ribbon floating in the sky, because the shoulder skirt
     // only reaches 26 m out.
-    let mut apron = MeshGroup::default();
+    let mut apron = mesh();
     for i in 0..steps {
         let (s0, s1) = (along(i), along(i + 1));
         let (c0, c1) = (point(s0), point(s1));
@@ -455,7 +465,7 @@ fn obstacle_groups_with_props(
 ) -> Vec<MeshGroup> {
     let table = crate::props::prop_table();
     let track = &track_world.track;
-    let mut opaque = MeshGroup::default();
+    let mut opaque = mesh();
     for ob in &track_world.obstacles {
         if let Some((from, to)) = horizon
             && (ob.s < from || ob.s > to)
@@ -502,8 +512,8 @@ fn car_groups(sim: &CarSim, livery: [f32; 3]) -> Vec<MeshGroup> {
     let len = spec.wheelbase() + spec.wheel_radius() * 2.6;
     let width = spec.track_width() + 0.25;
     let wheel_r = spec.wheel_radius();
-    let mut body = MeshGroup::default();
-    let mut glass = MeshGroup::default();
+    let mut body = mesh();
+    let mut glass = mesh();
     let (s, c) = sim.yaw.sin_cos();
     let rot = |v: Vec3| vec3(v.x * c - v.z * s, v.y, v.x * s + v.z * c);
     let base = sim.pos + vec3(0.0, wheel_r + 0.55, 0.0);
@@ -513,7 +523,7 @@ fn car_groups(sim: &CarSim, livery: [f32; 3]) -> Vec<MeshGroup> {
     // body
     let body_half = vec3(width * 0.5, 0.42, len * 0.5);
     let centre = base + rot(tilt(vec3(0.0, 0.15, 0.0)));
-    let mut cube = MeshGroup::default();
+    let mut cube = mesh();
     push_box(&mut cube, Vec3::ZERO, body_half, livery);
     for v in cube.positions.iter_mut() {
         let local = Vec3::from(*v);
@@ -525,7 +535,7 @@ fn car_groups(sim: &CarSim, livery: [f32; 3]) -> Vec<MeshGroup> {
     // cabin
     let cab_half = vec3(width * 0.42, 0.34, len * 0.22);
     let cab_centre = base + rot(tilt(vec3(0.0, 0.72, -len * 0.06)));
-    let mut cube = MeshGroup::default();
+    let mut cube = mesh();
     push_box(&mut cube, Vec3::ZERO, cab_half, GLASS);
     for v in cube.positions.iter_mut() {
         let local = Vec3::from(*v);
@@ -535,7 +545,7 @@ fn car_groups(sim: &CarSim, livery: [f32; 3]) -> Vec<MeshGroup> {
     glass.colors.extend(cube.colors);
     glass.indices.extend(cube.indices);
     // wheels
-    let mut wheels = MeshGroup::default();
+    let mut wheels = mesh();
     for (i, w) in spec.wheels.iter().enumerate().take(4) {
         let steer = if w.side == "front" { sim.yaw } else { 0.0 };
         let local = vec3(w.pos[0], w.pos[1], w.pos[2]);
@@ -767,7 +777,7 @@ fn menu_frame(world: &mut World, viewport_px: [f32; 2], geom: &GeomHandle) -> Vi
         groups.truncate(n);
     }
     if std::env::var("DD_DEBUG_CUBE").is_ok() {
-        let mut m = MeshGroup::default();
+        let mut m = mesh();
         push_box(
             &mut m,
             frame.cam.target,
@@ -915,7 +925,7 @@ pub fn frame_for(
         if std::env::var("DD_DEBUG_CAR_BOX").is_ok() {
             // Isolation aid: a hand-built box where the car is, so an art problem
             // can be told from a position or depth problem.
-            let mut m = MeshGroup::default();
+            let mut m = mesh();
             push_box(
                 &mut m,
                 player.pos + vec3(0.0, 1.0, 0.0),
@@ -960,10 +970,13 @@ pub fn frame_for(
                                     })
                                 },
                             );
+                            let pages: Vec<u32> =
+                                part.groups.iter().map(|g| g.texture_page).collect();
                             eprintln!(
-                                "draw car={} part={} kind={:?} corner={:?} mirror={:?} local_bounds={:?} car_pos=({:.1},{:.1},{:.1}) yaw={:.2}",
+                                "draw car={} part={} pages={pages:?} layers={} kind={:?} corner={:?} mirror={:?} local_bounds={:?} car_pos=({:.1},{:.1},{:.1}) yaw={:.2}",
                                 sim.spec.id,
                                 part.source,
+                                cache.art.textures.layer_count(),
                                 part.kind,
                                 part.corner,
                                 part.mirror,
@@ -1203,9 +1216,12 @@ pub fn frame_for(
         eprintln!("  transparent groups: {transparent:?}");
         for (i, g) in groups.iter().enumerate().take(4) {
             eprintln!(
-                "  group[{i}] bounds={:?} tris={}",
+                "  group[{i}] bounds={:?} tris={} depth_test={} transparent={} page={}",
                 g.bounds(),
-                g.tri_count()
+                g.tri_count(),
+                g.depth_test,
+                g.transparent,
+                g.texture_page
             );
         }
         eprintln!(
@@ -1290,7 +1306,7 @@ pub fn frame_for(
     if std::env::var("DD_DEBUG_CUBE").is_ok() {
         // Isolation aid: one hand-built box at the camera target. If this shows,
         // the pipeline works and the scene art is at fault, and vice versa.
-        let mut m = MeshGroup::default();
+        let mut m = mesh();
         push_box(
             &mut m,
             frame.cam.target,

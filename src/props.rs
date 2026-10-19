@@ -595,7 +595,7 @@ fn load_prop(file: &str, textures: &mut crate::art::Textures) -> Option<PropMesh
     // is handed them separately (the same engine behaviour the car loader merges
     // around); merging is equivalent geometry, so do it here too.
     let groups = if groups.len() > 1 {
-        let mut merged = MeshGroup::default();
+        let mut merged = crate::scene::mesh();
         for g in &groups {
             let base = merged.positions.len() as u32;
             merged.positions.extend_from_slice(&g.positions);
