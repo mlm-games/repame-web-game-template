@@ -210,6 +210,7 @@ pub fn sync_shared_ui(world: &mut World, ui: &mut SharedUi, ctx: &RenderContext)
         .get_resource::<Progress>()
         .unwrap_or(&progress_default);
     ui.coins = progress.coins();
+    ui.login_reward = progress.login_reward_available(today_index());
     ui.muted = progress.data.muted;
     if ui.levels.is_empty() {
         let mut racing_ordinal = 0usize;
@@ -523,12 +524,17 @@ pub fn compose_root(ui: &SharedUi, sink: Sink) -> View {
     } else {
         Spacer()
     };
+    let daily = if ui.phase == Phase::Garage && ui.login_reward.is_some() {
+        daily(ui, s, vp, &sink)
+    } else {
+        Spacer()
+    };
     // The on-screen pad only draws in a race; outside one it is a `Spacer`.
     let pads = touch::compose(ui, s, vp);
     // No opaque sheet and no global scrim here: the 3D viewport is drawn under
     // this layer and has to stay visible. Readability comes from the panels'
     // own translucent backgrounds.
-    ZStack(Modifier::new().fill_max_size()).child((background, base, pads, overlay))
+    ZStack(Modifier::new().fill_max_size()).child((background, base, daily, pads, overlay))
 }
 
 fn garage(ui: &SharedUi, s: f32, vp: [f32; 2], sink: &Sink) -> View {
@@ -1382,6 +1388,24 @@ fn results(ui: &SharedUi, s: f32, vp: [f32; 2], sink: &Sink) -> View {
         ZStack(Modifier::new().width(Dp(width * s)).height(Dp(height * s)))
             .child((backdrop, overlay)),
     )
+}
+
+fn daily(ui: &SharedUi, s: f32, vp: [f32; 2], sink: &Sink) -> View {
+    let Some((day, coins)) = ui.login_reward else {
+        return Spacer();
+    };
+    let content = Column(
+        Modifier::new()
+            .gap(Dp(10.0 * s))
+            .align_items(AlignItems::CENTER),
+    )
+    .child((
+        label(Modifier::new(), "DAILY REWARD", 40.0, SUN, s),
+        label_plain(Modifier::new(), &format!("DAY {day}"), 22.0, CREAM, s),
+        coin_row(ui, coins, 40.0, s),
+        button("CLAIM", SUN, 24.0, s, UiAction::ClaimLogin, sink, false),
+    ));
+    palette::panel(vp, s, content)
 }
 
 fn pause(ui: &SharedUi, s: f32, vp: [f32; 2], sink: &Sink) -> View {
