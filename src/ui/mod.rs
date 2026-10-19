@@ -692,17 +692,18 @@ fn garage(ui: &SharedUi, s: f32, vp: [f32; 2], sink: &Sink) -> View {
         // `Car_Button_Selected` is the tick badge, so the selected card keeps the
         // same backing card and draws the badge over it: using the badge as the
         // card left the pick with no card at all.
-        let frame_view = match ui.images.sprite("Car_Button_Background") {
-            Some(handle) => {
-                Image(Modifier::new().fill_max_size(), handle).image_fit(ImageFit::FitHeight)
-            }
-            None => RBox(Modifier::new().fill_max_size().background(if selected {
-                SUN
-            } else {
-                STEEL
-            }))
-            .child(Spacer()),
-        };
+        let frame_view =
+            match ui.images.sprite("Car_Button_Background") {
+                Some(handle) => {
+                    Image(Modifier::new().fill_max_size(), handle).image_fit(ImageFit::FitHeight)
+                }
+                None => RBox(Modifier::new().fill_max_size().background(if selected {
+                    SUN
+                } else {
+                    STEEL
+                }))
+                .child(Spacer()),
+            };
         let mut card_layers: Vec<View> = vec![
             frame_view,
             Column(
@@ -723,12 +724,10 @@ fn garage(ui: &SharedUi, s: f32, vp: [f32; 2], sink: &Sink) -> View {
                 .child(icon_view(ui, "Car_Button_Selected", 24.0, 21.0, s)),
             );
         }
-        cards.push(
-            RBox(m).child(
-                ZStack(Modifier::new().size(Dp(92.0 * s), Dp(58.0 * s)))
-                    .child(card_layers),
-            ),
-        );
+        cards
+            .push(RBox(m).child(
+                ZStack(Modifier::new().size(Dp(92.0 * s), Dp(58.0 * s))).child(card_layers),
+            ));
     }
     let carousel = Row(Modifier::new()
         .gap(Dp(6.0 * s))
@@ -1011,6 +1010,9 @@ fn map_select(ui: &SharedUi, s: f32, vp: [f32; 2], sink: &Sink) -> View {
 
 fn hud(ui: &SharedUi, s: f32, vp: [f32; 2], sink: &Sink) -> View {
     let damage_frac = (ui.damage / ui.max_damage.max(1.0)).clamp(0.0, 1.0);
+    // The steering wheel and pedals take the bottom corners, where the speed and
+    // nitro readouts sit, so the pad replaces them rather than drawing over them.
+    let pad = ui.touch.borrow().visible;
     let speed_frac = (ui.speed_kmh / 300.0).clamp(0.0, 1.0);
     // top-left: level + checkpoints
     let mut top_left_children: Vec<View> = Vec::new();
@@ -1121,17 +1123,21 @@ fn hud(ui: &SharedUi, s: f32, vp: [f32; 2], sink: &Sink) -> View {
             s,
         )),
     ));
-    let bottom_left = RBox(
-        rect(
-            vp,
-            s,
-            [0.0, 1.0, 0.0, 1.0],
-            [14.0, -14.0 - bar_height, 14.0 + bar_width, -14.0],
+    let bottom_left = if pad {
+        Spacer()
+    } else {
+        RBox(
+            rect(
+                vp,
+                s,
+                [0.0, 1.0, 0.0, 1.0],
+                [14.0, -14.0 - bar_height, 14.0 + bar_width, -14.0],
+            )
+            .align_items(AlignItems::START)
+            .justify_content(JustifyContent::END),
         )
-        .align_items(AlignItems::START)
-        .justify_content(JustifyContent::END),
-    )
-    .child(speed_bar);
+        .child(speed_bar)
+    };
     // bottom-right: nitro dial + damage
     let nitro = ZStack(Modifier::new().size(Dp(140.0 * s), Dp(140.0 * s))).child((
         match ui.images.sprite("nitro-dial") {
@@ -1167,33 +1173,37 @@ fn hud(ui: &SharedUi, s: f32, vp: [f32; 2], sink: &Sink) -> View {
             )),
         ),
     ));
-    let bottom_right = Column(
-        rect(vp, s, [1.0, 1.0, 1.0, 1.0], [-240.0, -184.0, -14.0, -14.0])
-            .gap(Dp(6.0 * s))
-            .align_items(AlignItems::END),
-    )
-    .child((
-        nitro,
-        Row(Modifier::new()
-            .gap(Dp(8.0 * s))
-            .align_items(AlignItems::CENTER))
+    let bottom_right = if pad {
+        Spacer()
+    } else {
+        Column(
+            rect(vp, s, [1.0, 1.0, 1.0, 1.0], [-240.0, -184.0, -14.0, -14.0])
+                .gap(Dp(6.0 * s))
+                .align_items(AlignItems::END),
+        )
         .child((
-            label_plain(
-                Modifier::new(),
-                &format!("{:.0}%", damage_frac * 100.0),
-                16.0,
-                if damage_frac > 0.66 { DANGER } else { CREAM },
-                s,
-            ),
-            bar(
-                damage_frac,
-                if damage_frac > 0.66 { DANGER } else { SUN },
-                s,
-                160.0,
-                12.0,
-            ),
-        )),
-    ));
+            nitro,
+            Row(Modifier::new()
+                .gap(Dp(8.0 * s))
+                .align_items(AlignItems::CENTER))
+            .child((
+                label_plain(
+                    Modifier::new(),
+                    &format!("{:.0}%", damage_frac * 100.0),
+                    16.0,
+                    if damage_frac > 0.66 { DANGER } else { CREAM },
+                    s,
+                ),
+                bar(
+                    damage_frac,
+                    if damage_frac > 0.66 { DANGER } else { SUN },
+                    s,
+                    160.0,
+                    12.0,
+                ),
+            )),
+        ))
+    };
     let centre = if ui.phase == Phase::Countdown {
         let n = ui.countdown.ceil().max(1.0);
         RBox(

@@ -232,6 +232,8 @@ fn the_touch_pad_is_reachable_during_a_race() {
         ui.phase
     );
 
+    // The pad is opt-in on desktop, where the keyboard drives the car.
+    ui.touch.borrow_mut().visible = true;
     let sink: Sink = Arc::new(Mutex::new(Vec::new()));
     let view = app_frame(&mut sim, &ctx, &geom, &ui, sink);
     let (hits, _sems) = layout(&view);

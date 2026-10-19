@@ -104,7 +104,7 @@ impl Default for TouchState {
             brake: 0.0,
             handbrake: false,
             nitro: false,
-            visible: true,
+            visible: false,
             wheel_origin: Vec2::ZERO,
             wheel_owner: None,
             pressed: [None; 4],
@@ -275,7 +275,7 @@ fn wheel_zone(handle: &TouchHandle, ui: &SharedUi, s: f32, vp: [f32; 2], steer: 
             vp,
             s,
             [0.0, 1.0, 0.0, 1.0],
-            [WHEEL_MARGIN, 0.0, 0.0, -WHEEL_MARGIN],
+            [WHEEL_MARGIN, -WHEEL_MARGIN - WHEEL_BOX, 0.0, -WHEEL_MARGIN],
         )
         .size(Dp(WHEEL_BOX * s), Dp(WHEEL_BOX * s))
         .align_items(AlignItems::CENTER)
@@ -318,7 +318,7 @@ fn wheel_zone(handle: &TouchHandle, ui: &SharedUi, s: f32, vp: [f32; 2], steer: 
 fn pedal_row(handle: &TouchHandle, ui: &SharedUi, s: f32, vp: [f32; 2]) -> View {
     let column = |button: TouchButton, x: f32, y: f32| {
         RBox(
-            super::palette::rect(vp, s, [1.0, 1.0, 1.0, 1.0], [x, 0.0, 0.0, -y])
+            super::palette::rect(vp, s, [1.0, 1.0, 1.0, 1.0], [x, -y, 0.0, -y])
                 .size(Dp(BUTTON_BOX * s), Dp(BUTTON_BOX * s))
                 .align_items(AlignItems::CENTER)
                 .justify_content(JustifyContent::CENTER)
