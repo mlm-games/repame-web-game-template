@@ -1,4 +1,7 @@
-use repame_audio::{Audio, AudioChannel, CueDef, Variation, db_to_linear};
+use repame_audio::{
+    AmplitudeEnvelope, Audio, AudioChannel, CueDef, CueSpec, Sweep, Variation, Waveform,
+    db_to_linear,
+};
 
 use crate::sim::state::SfxCue;
 use repame_sim::rng::{Rng as _, SimRng};
@@ -6,6 +9,10 @@ use repame_sim::rng::{Rng as _, SimRng};
 const RATE: u32 = 22050;
 const VARIATIONS: usize = 2;
 const SFX_DB: f32 = -6.0;
+
+/// The tuning table's `decay` is a rate on the cue's own timeline: the envelope
+/// falls to `1/e` after `1 / (DECAY_RATE * decay)` of the cue.
+const DECAY_RATE: f32 = 40.0;
 
 impl SfxCue {
     pub fn name(self) -> &'static str {
@@ -18,6 +25,31 @@ impl SfxCue {
     }
 
     const ALL: [SfxCue; 4] = [SfxCue::Pickup, SfxCue::Ui, SfxCue::Death, SfxCue::Revive];
+
+    fn spec(self, jitter: f32, noise_seed: u64) -> CueSpec {
+        let (frames, from_hz, to_hz, decay, noise) = match self {
+            Self::Pickup => (2200.0, 880.0, 1320.0, 0.16, 0.0),
+            Self::Ui => (1600.0, 440.0, 660.0, 0.10, 0.0),
+            Self::Death => (7000.0, 320.0, 90.0, 0.55, 0.35),
+            Self::Revive => (6000.0, 330.0, 990.0, 0.45, 0.0),
+        };
+        let secs = frames / RATE as f32;
+        // `noise` is the grit-to-tone amplitude ratio at the onset; a blend of
+        // `mix` leaves those amplitudes at `(1 - mix) * gain` and `mix * gain`,
+        // so the ratio is split across the blend and the spec's gain.
+        let level = 1.0 + noise;
+        CueSpec::new(Waveform::Sine, from_hz * jitter, secs)
+            .with_sweep(to_hz * jitter, Sweep::Linear)
+            .with_amplitude(AmplitudeEnvelope::Adsr {
+                attack_s: 0.0,
+                decay_s: secs / (DECAY_RATE * decay),
+                sustain: 0.0,
+                release_s: 0.0,
+            })
+            .with_noise(noise / level, noise_seed)
+            .with_gain(level)
+            .with_sample_rate(RATE)
+    }
 }
 
 pub struct AudioDirector {
@@ -56,60 +88,15 @@ impl AudioDirector {
     }
 }
 
-fn render_blip(cue: SfxCue, rng: &mut SimRng) -> Vec<f32> {
-    let (frames, f0, f1, decay, noise) = match cue {
-        SfxCue::Pickup => (2200, 880.0, 1320.0, 0.16, 0.0),
-        SfxCue::Ui => (1600, 440.0, 660.0, 0.10, 0.0),
-        SfxCue::Death => (7000, 320.0, 90.0, 0.55, 0.35),
-        SfxCue::Revive => (6000, 330.0, 990.0, 0.45, 0.0),
-    };
-    let jitter = 0.98 + 0.04 * rng.unit_f32();
-    let mut out = Vec::with_capacity(frames);
-    let mut phase = 0.0f32;
-    for i in 0..frames {
-        let t = i as f32 / frames as f32;
-        let env = (-decay * 40.0 * t).exp();
-        let freq = (f0 + (f1 - f0) * t) * jitter;
-        phase += std::f32::consts::TAU * freq / RATE as f32;
-        let mut s = phase.sin() * env;
-        if noise > 0.0 {
-            s += (rng.unit_f32() * 2.0 - 1.0) * noise * env * env;
-        }
-        out.push(s.clamp(-1.0, 1.0));
-    }
-    out
-}
-
-fn encode_wav(samples: &[f32], rate: u32) -> Vec<u8> {
-    let data_len = (samples.len() * 2) as u32;
-    let mut out = Vec::with_capacity(44 + samples.len() * 2);
-    out.extend_from_slice(b"RIFF");
-    out.extend_from_slice(&(36 + data_len).to_le_bytes());
-    out.extend_from_slice(b"WAVEfmt ");
-    out.extend_from_slice(&16u32.to_le_bytes());
-    out.extend_from_slice(&1u16.to_le_bytes());
-    out.extend_from_slice(&1u16.to_le_bytes());
-    out.extend_from_slice(&rate.to_le_bytes());
-    out.extend_from_slice(&(rate * 2).to_le_bytes());
-    out.extend_from_slice(&2u16.to_le_bytes());
-    out.extend_from_slice(&16u16.to_le_bytes());
-    out.extend_from_slice(b"data");
-    out.extend_from_slice(&data_len.to_le_bytes());
-    for s in samples {
-        out.extend_from_slice(&((s.clamp(-1.0, 1.0) * i16::MAX as f32) as i16).to_le_bytes());
-    }
-    out
-}
-
 fn install_audio(audio: &mut Audio) {
     for cue in SfxCue::ALL {
-        let files: Vec<Vec<u8>> = (0..VARIATIONS)
+        let specs: Vec<CueSpec> = (0..VARIATIONS)
             .map(|v| {
-                let mut rng = SimRng::seeded(0xB1EE + cue as u64 * 691 + v as u64 * 7919);
-                encode_wav(&render_blip(cue, &mut rng), RATE)
+                let seed = 0xB1EE + cue as u64 * 691 + v as u64 * 7919;
+                let mut rng = SimRng::seeded(seed);
+                cue.spec(0.98 + 0.04 * rng.unit_f32(), seed)
             })
             .collect();
-        let refs: Vec<&[u8]> = files.iter().map(|b| b.as_slice()).collect();
         let def = CueDef {
             bus: AudioChannel::Sfx,
             gain: db_to_linear(SFX_DB),
@@ -118,6 +105,8 @@ fn install_audio(audio: &mut Audio) {
             pitch_wobble: 0.0,
             variation: Variation::RoundRobin,
         };
-        let _ = audio.load_cue(cue.name(), def, &refs);
+        if let Err(error) = audio.load_synth(cue.name(), def, &specs) {
+            log::warn!("web-game: cue {}: {error}", cue.name());
+        }
     }
 }
