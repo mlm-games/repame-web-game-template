@@ -1078,48 +1078,60 @@ fn hud(ui: &SharedUi, s: f32, vp: [f32; 2], sink: &Sink) -> View {
         ),
         small_button(ui, "II", UiAction::TogglePause, sink, s, false),
     ));
-    // bottom-left: speed dial with the shipped arrow
-    let dial = ZStack(Modifier::new().size(Dp(150.0 * s), Dp(150.0 * s))).child((
-        match ui.images.sprite("speed-dial") {
-            Some(handle) => Image(Modifier::new().size(Dp(150.0 * s), Dp(150.0 * s)), handle)
-                .image_fit(ImageFit::Contain),
-            None => RBox(
-                Modifier::new()
-                    .size(Dp(150.0 * s), Dp(150.0 * s))
-                    .background(STEEL),
-            )
-            .child(Spacer()),
-        },
-        match ui.images.sprite("S_TachometerArrow") {
-            Some(handle) => Image(
-                Modifier::new().size(Dp(150.0 * s), Dp(150.0 * s)).rotate(
-                    -std::f32::consts::FRAC_PI_3 + speed_frac * std::f32::consts::TAU * 0.7,
-                ),
-                handle,
-            )
-            .image_fit(ImageFit::Contain),
-            None => Spacer(),
+    // bottom-left: the shipped speed bar. `speed-dial` is a 512x128 trapezoid,
+    // not a round face, so it fills left to right under its own track.
+    let bar_width = 260.0;
+    let bar_height = 42.0;
+    let fill = (bar_width * speed_frac).max(6.0);
+    let speed_sprite = ui.images.sprite("speed-dial");
+    let speed_bar = ZStack(
+        Modifier::new()
+            .width(Dp(bar_width * s))
+            .height(Dp(bar_height * s)),
+    )
+    .child((
+        match speed_sprite {
+            Some(handle) => Image(Modifier::new().fill_max_size(), handle)
+                .image_fit(ImageFit::FillBounds)
+                .image_tint(Color(0x26, 0x26, 0x2C, 0xFF)),
+            None => RBox(Modifier::new().fill_max_size().background(STEEL)),
         },
         RBox(
             Modifier::new()
-                .size(Dp(150.0 * s), Dp(150.0 * s))
+                .absolute()
+                .offset_left(Dp(3.0 * s))
+                .offset_top(Dp(4.0 * s))
+                .width(Dp(fill * s))
+                .height(Dp((bar_height - 8.0) * s))
+                .background(SUN)
+                .clip_rounded(Dp(4.0 * s)),
+        )
+        .child(Spacer()),
+        RBox(
+            Modifier::new()
+                .fill_max_size()
                 .align_items(AlignItems::CENTER)
                 .justify_content(JustifyContent::CENTER),
         )
-        .child(label_plain(
+        .child(label(
             Modifier::new(),
-            &format!("{:.0}", ui.speed_kmh),
-            30.0,
+            &format!("{:.0} km/h", ui.speed_kmh),
+            24.0,
             CREAM,
             s,
         )),
     ));
     let bottom_left = RBox(
-        rect(vp, s, [0.0, 1.0, 0.0, 1.0], [14.0, 0.0, 0.0, -14.0])
-            .align_items(AlignItems::START)
-            .justify_content(JustifyContent::END),
+        rect(
+            vp,
+            s,
+            [0.0, 1.0, 0.0, 1.0],
+            [14.0, -14.0 - bar_height, 14.0 + bar_width, -14.0],
+        )
+        .align_items(AlignItems::START)
+        .justify_content(JustifyContent::END),
     )
-    .child(dial);
+    .child(speed_bar);
     // bottom-right: nitro dial + damage
     let nitro = ZStack(Modifier::new().size(Dp(140.0 * s), Dp(140.0 * s))).child((
         match ui.images.sprite("nitro-dial") {
@@ -1156,7 +1168,7 @@ fn hud(ui: &SharedUi, s: f32, vp: [f32; 2], sink: &Sink) -> View {
         ),
     ));
     let bottom_right = Column(
-        rect(vp, s, [1.0, 1.0, 1.0, 1.0], [-14.0, 0.0, 0.0, -14.0])
+        rect(vp, s, [1.0, 1.0, 1.0, 1.0], [-240.0, -184.0, -14.0, -14.0])
             .gap(Dp(6.0 * s))
             .align_items(AlignItems::END),
     )
