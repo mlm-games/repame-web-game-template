@@ -20,13 +20,13 @@ path = "src/main.rs"
 [dependencies]
 # Engine, from crates.io: the published line is the source of truth, so every
 # renderer-state crate unifies to one copy in one binary.
-repame-sim = "0.3.29"
-repame-shell = "0.3.29"
-repame-audio = { version = "0.3.29", features = ["symphonia-ogg-vorbis"] }
-repame-view2d = "0.3.29"
-repame-view3d = "0.3.29"
+repame-sim = "0.3.34"
+repame-shell = "0.3.34"
+repame-audio = { version = "0.3.34", features = ["symphonia-ogg-vorbis"] }
+repame-view2d = "0.3.34"
+repame-view3d = "0.3.34"
 image = { version = "0.25", default-features = false, features = ["png"] }
-repame-save = "0.3.29"
+repame-save = "0.3.34"
 # Direct dep: bevy derive macros expand to `bevy_ecs::` paths, so every game
 # crate names it explicitly. Must unify with repame-sim's 0.20.
 bevy_ecs = "0.20"

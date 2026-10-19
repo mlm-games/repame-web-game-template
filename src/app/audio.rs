@@ -10,7 +10,10 @@
 use std::collections::HashMap;
 use std::path::PathBuf;
 
-use repame_audio::{Audio, AudioChannel, CueDef, Variation, db_to_linear};
+use repame_audio::{
+    AmplitudeEnvelope, Audio, AudioChannel, CueDef, CueSpec, NoiseShape, Sweep, Variation,
+    Waveform, db_to_linear,
+};
 use repame_sim::rng::{Rng as _, SimRng};
 
 use crate::sim::race::Cue;
@@ -19,6 +22,10 @@ const ENGINE_DB: f32 = -10.0;
 const WIND_DB: f32 = -22.0;
 const SFX_DB: f32 = -7.0;
 const RATE: u32 = 22050;
+
+/// The tuning table's `decay` is a rate on the cue's own timeline: the envelope
+/// falls to `1/e` after `1 / (DECAY_RATE * decay)` of the cue.
+const DECAY_RATE: f32 = 30.0;
 
 /// The eight rpm tiers the reference stacks, in rising order.
 const TIERS: [&str; 8] = [
@@ -230,46 +237,53 @@ impl Cue {
         Cue::Coin,
         Cue::Click,
     ];
-}
 
-fn render_cue(cue: Cue, rng: &mut SimRng) -> Vec<f32> {
-    let (frames, f0, f1, decay, noise) = match cue {
-        Cue::Countdown => (2600, 440.0, 440.0, 0.10, 0.0),
-        Cue::Go => (4200, 880.0, 1320.0, 0.22, 0.0),
-        Cue::Crash => (9000, 220.0, 60.0, 0.75, 0.55),
-        Cue::Break => (5200, 620.0, 180.0, 0.5, 0.3),
-        Cue::Checkpoint => (3000, 660.0, 990.0, 0.2, 0.0),
-        Cue::Finish => (12000, 520.0, 1560.0, 0.75, 0.05),
-        Cue::Fail => (11000, 400.0, 60.0, 0.8, 0.25),
-        Cue::Coin => (2400, 1180.0, 1760.0, 0.18, 0.0),
-        Cue::Click => (1600, 560.0, 620.0, 0.1, 0.0),
-    };
-    let jitter = 0.98 + 0.04 * rng.unit_f32();
-    let mut out = Vec::with_capacity(frames);
-    let mut phase = 0.0f32;
-    for i in 0..frames {
-        let t = i as f32 / frames as f32;
-        let env = (-decay * 30.0 * t).exp();
-        let freq = (f0 + (f1 - f0) * t) * jitter;
-        phase += std::f32::consts::TAU * freq / RATE as f32;
-        let mut s = phase.sin() * env;
+    /// One exponential-decaying sweep with an optional noise layer.
+    fn spec(self, jitter: f32, noise_seed: u64) -> CueSpec {
+        let (frames, from_hz, to_hz, decay, noise) = match self {
+            Self::Countdown => (2600.0, 440.0, 440.0, 0.10, 0.0),
+            Self::Go => (4200.0, 880.0, 1320.0, 0.22, 0.0),
+            Self::Crash => (9000.0, 220.0, 60.0, 0.75, 0.55),
+            Self::Break => (5200.0, 620.0, 180.0, 0.5, 0.3),
+            Self::Checkpoint => (3000.0, 660.0, 990.0, 0.2, 0.0),
+            Self::Finish => (12000.0, 520.0, 1560.0, 0.75, 0.05),
+            Self::Fail => (11000.0, 400.0, 60.0, 0.8, 0.25),
+            Self::Coin => (2400.0, 1180.0, 1760.0, 0.18, 0.0),
+            Self::Click => (1600.0, 560.0, 620.0, 0.1, 0.0),
+        };
+        let secs = frames / RATE as f32;
+        // `noise` is the grit-to-tone amplitude ratio at the onset; a blend of
+        // `mix` leaves those amplitudes at `(1 - mix) * gain` and `mix * gain`,
+        // so the ratio is split across the blend and the spec's gain.
+        let level = 1.0 + noise;
+        let spec = CueSpec::new(Waveform::Sine, from_hz * jitter, secs)
+            .with_sweep(to_hz * jitter, Sweep::Linear)
+            .with_amplitude(AmplitudeEnvelope::Adsr {
+                attack_s: 0.0,
+                decay_s: secs / (DECAY_RATE * decay),
+                sustain: 0.0,
+                release_s: 0.0,
+            })
+            .with_noise(noise / level, noise_seed)
+            .with_gain(level)
+            .with_sample_rate(RATE);
         if noise > 0.0 {
-            s += (rng.unit_f32() * 2.0 - 1.0) * noise * env * env;
+            spec.with_noise_shape(NoiseShape::Squared)
+        } else {
+            spec
         }
-        out.push(s.clamp(-1.0, 1.0));
     }
-    out
 }
 
 fn install_cues(audio: &mut Audio) {
     for cue in Cue::ALL {
-        let files: Vec<Vec<u8>> = (0..2)
+        let specs: Vec<CueSpec> = (0..2)
             .map(|v| {
-                let mut rng = SimRng::seeded(0xD00D + cue as u64 * 977 + v as u64 * 7919);
-                encode_wav(&render_cue(cue, &mut rng), RATE)
+                let seed = 0xD00D + cue as u64 * 977 + v as u64 * 7919;
+                let mut rng = SimRng::seeded(seed);
+                cue.spec(0.98 + 0.04 * rng.unit_f32(), seed)
             })
             .collect();
-        let refs: Vec<&[u8]> = files.iter().map(|b| b.as_slice()).collect();
         let def = CueDef {
             bus: AudioChannel::Sfx,
             gain: db_to_linear(SFX_DB),
@@ -278,27 +292,8 @@ fn install_cues(audio: &mut Audio) {
             pitch_wobble: 0.0,
             variation: Variation::RoundRobin,
         };
-        let _ = audio.load_cue(cue.name(), def, &refs);
+        if let Err(error) = audio.load_synth(cue.name(), def, &specs) {
+            log::warn!("deadly-descent: cue {}: {error}", cue.name());
+        }
     }
-}
-
-fn encode_wav(samples: &[f32], rate: u32) -> Vec<u8> {
-    let data_len = (samples.len() * 2) as u32;
-    let mut out = Vec::with_capacity(44 + samples.len() * 2);
-    out.extend_from_slice(b"RIFF");
-    out.extend_from_slice(&(36 + data_len).to_le_bytes());
-    out.extend_from_slice(b"WAVEfmt ");
-    out.extend_from_slice(&16u32.to_le_bytes());
-    out.extend_from_slice(&1u16.to_le_bytes());
-    out.extend_from_slice(&1u16.to_le_bytes());
-    out.extend_from_slice(&rate.to_le_bytes());
-    out.extend_from_slice(&(rate * 2).to_le_bytes());
-    out.extend_from_slice(&2u16.to_le_bytes());
-    out.extend_from_slice(&16u16.to_le_bytes());
-    out.extend_from_slice(b"data");
-    out.extend_from_slice(&data_len.to_le_bytes());
-    for s in samples {
-        out.extend_from_slice(&((s.clamp(-1.0, 1.0) * i16::MAX as f32) as i16).to_le_bytes());
-    }
-    out
 }
