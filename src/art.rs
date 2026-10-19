@@ -58,6 +58,8 @@ pub struct ArtPart {
     /// Mirror factors applied to local x/z, used when one mesh serves several
     /// corners (the export keeps a shared mesh once).
     pub mirror: (f32, f32),
+    /// Authored transform in the car, when the export's scene has one.
+    pub transform: Option<PartTransform>,
 }
 
 #[derive(Clone, Debug, Default)]
@@ -65,10 +67,66 @@ pub struct CarArt {
     pub parts: Vec<ArtPart>,
 }
 
+/// A part's authored transform in its car, as the shipped Garage scene has it.
+/// Most meshes are authored in car space, but wheels, spoilers and the interior
+/// sit on pivots, and without these they all land on the car's origin.
+#[derive(Clone, Copy, Debug, Default, Deserialize)]
+pub struct PartTransform {
+    pub position: [f32; 3],
+    pub rotation: [f32; 4],
+    pub scale: [f32; 3],
+}
+
+const CAR_PARTS_JSON: &str = include_str!("../assets/dd1/car_parts.json");
+
+fn car_parts() -> &'static HashMap<String, PartTransform> {
+    static TABLE: OnceLock<HashMap<String, PartTransform>> = OnceLock::new();
+    TABLE.get_or_init(|| serde_json::from_str(CAR_PARTS_JSON).unwrap_or_default())
+}
+
+/// Look up a part's transform: owner paths are `Cars/<car>/<path>` or `<car>/<path>`.
+fn part_transform(car_id: &str, go_path: &str) -> Option<PartTransform> {
+    let path = go_path.strip_prefix("Cars/").unwrap_or(go_path);
+    let rest = path.strip_prefix(car_id)?.strip_prefix('/')?;
+    car_parts().get(&format!("{car_id}/{rest}")).copied()
+}
+
 impl CarArt {
     pub fn is_empty(&self) -> bool {
         self.parts.is_empty()
     }
+}
+
+/// Convert an imported mesh to this renderer's conventions.
+///
+/// The export was written for Unity, whose front faces wind the opposite way
+/// from this renderer's, so imported as-is a car body sits entirely back-facing
+/// and back-face culling hides every panel: a car reads as a scattering of
+/// loose parts while the room around it draws. The extraction also carries no
+/// cull information (the .glb files have no materials) and its winding is not
+/// even consistent between mesh families, so each triangle gets a mirrored
+/// twin. The twin owns its vertices, because the scene shader shades with the
+/// vertex normal and never reads `front_facing`: sharing them would light the
+/// copy that faces the camera as if it faced away.
+pub fn double_sided(group: &mut MeshGroup) {
+    let base = group.positions.len() as u32;
+    let positions = group.positions.clone();
+    let colors = group.colors.clone();
+    let uvs = group.uvs.clone();
+    let normals: Vec<[f32; 3]> = group
+        .normals
+        .iter()
+        .map(|n| [-n[0], -n[1], -n[2]])
+        .collect();
+    group.positions.extend_from_slice(&positions);
+    group.colors.extend_from_slice(&colors);
+    group.normals.extend_from_slice(&normals);
+    group.uvs.extend_from_slice(&uvs);
+    let mut mirrored = Vec::with_capacity(group.indices.len());
+    for tri in group.indices.as_chunks::<3>().0 {
+        mirrored.extend_from_slice(&[tri[0] + base, tri[2] + base, tri[1] + base]);
+    }
+    group.indices.extend_from_slice(&mirrored);
 }
 
 /// Directory holding the extracted reference art.
@@ -315,6 +373,53 @@ fn submesh_materials() -> &'static HashMap<String, Vec<String>> {
     TABLE.get_or_init(|| serde_json::from_str(MESH_SUBMATERIALS_JSON).unwrap_or_default())
 }
 
+/// Which of a mesh's submeshes to draw for a part, as a per-submesh keep mask.
+///
+/// The part's own material names the submesh that reads as the part (a body's
+/// paint); when the tables name nothing, the largest submesh is the best guess.
+fn submesh_selection(
+    mesh_id: Option<u64>,
+    entry: Option<&MaterialEntry>,
+    groups: &[MeshGroup],
+) -> Vec<bool> {
+    let empty = vec![false; groups.len()];
+    let dominant = || {
+        let Some(best) = groups
+            .iter()
+            .enumerate()
+            .max_by_key(|(_, g)| g.tri_count())
+            .map(|(i, _)| i)
+        else {
+            return empty.clone();
+        };
+        let mut mask = empty.clone();
+        mask[best] = true;
+        mask
+    };
+    let Some(names) = mesh_id.and_then(|id| submesh_materials().get(&id.to_string())) else {
+        return dominant();
+    };
+    if names.len() != groups.len() {
+        return dominant();
+    }
+    match entry.and_then(|e| e._material.as_deref()) {
+        Some(wanted) => {
+            // Glass rides along with the part's material even though it has a
+            // texture of its own: left out, the cabin is an open hole.
+            let mask: Vec<bool> = names
+                .iter()
+                .map(|name| name == wanted || name.contains("glass") || name.contains("window"))
+                .collect();
+            if mask.iter().any(|k| *k) {
+                mask
+            } else {
+                dominant()
+            }
+        }
+        None => dominant(),
+    }
+}
+
 /// The material of one submesh (they are listed in submesh order).
 pub fn submesh_material(mesh_id: u64, submesh: usize) -> Option<&'static PortMaterial> {
     let names = submesh_materials().get(&mesh_id.to_string())?;
@@ -479,6 +584,31 @@ impl Textures {
         self.page_sized(name, PAGE)
     }
 
+    /// Scale uvs onto a page's texels.
+    ///
+    /// A page is one array layer of `PAGE` texels square while most exported
+    /// textures are smaller and fill only a corner of that layer. The renderer
+    /// samples uvs over the whole layer and never rescales them, so a mesh
+    /// whose uvs run 0..1 would sample mostly the empty part of the layer: its
+    /// panels came out half transparent, which read as a car with pieces
+    /// missing. Scaling by the texture's share keeps every sample on texels.
+    pub fn fit_page(&self, group: &mut MeshGroup) {
+        let Some(texture) = self.pages.get(group.texture_page as usize) else {
+            return;
+        };
+        let (su, sv) = (
+            texture.width as f32 / PAGE as f32,
+            texture.height as f32 / PAGE as f32,
+        );
+        if su == 1.0 && sv == 1.0 {
+            return;
+        }
+        for uv in group.uvs.iter_mut() {
+            uv[0] *= su;
+            uv[1] *= sv;
+        }
+    }
+
     /// Page for an exported texture name, loading and downscaling it on first
     /// use. Names that do not resolve to a file are remembered as failures.
     pub fn page_sized(&mut self, name: &str, max_edge: u32) -> Option<u32> {
@@ -595,14 +725,18 @@ fn wheel_corner(name: &str, wheels: &[crate::sim::data::WheelSpec]) -> Option<us
 }
 
 fn classify(name: &str, wheels: &[crate::sim::data::WheelSpec]) -> (PartKind, Option<usize>) {
-    let lower = name.to_ascii_lowercase();
+    // Names arrive as file stems (`Cars_BMW_M3_steering_wheel`) or object names
+    // (`steering wheel`); matching on one spelling missed the other.
+    let lower = name.to_ascii_lowercase().replace('_', " ");
     let corner = wheel_corner(name, wheels);
     if lower.contains("collider") {
         return (PartKind::Hidden, corner);
     }
+    // `W_FL` is the shipped wheel mesh for cars whose wheels are not separate
+    // Tire/Whl objects: a lone `w` token is a wheel, not a wing.
+    let single_w = tokens(name).first().map(String::as_str) == Some("w");
     let kind = if lower.contains("interior")
-        || lower.contains("steering_wheel")
-        || lower.contains("steer_wheel")
+        || lower.contains("steering")
         || lower.contains("dial")
         || lower.contains("gauge")
         || lower.contains("panel")
@@ -611,7 +745,8 @@ fn classify(name: &str, wheels: &[crate::sim::data::WheelSpec]) -> (PartKind, Op
         || lower.contains("mirror")
     {
         PartKind::Interior
-    } else if lower.contains("wheel") || lower.contains("whl") || lower.contains("tire") {
+    } else if lower.contains("wheel") || lower.contains("whl") || lower.contains("tire") || single_w
+    {
         PartKind::Wheel
     } else if lower.contains("caliper") {
         PartKind::Caliper
@@ -684,6 +819,15 @@ pub fn load_car_art(
                 continue;
             }
         };
+        let meshes: Vec<_> = meshes
+            .into_iter()
+            .map(|mut mesh| {
+                for group in &mut mesh.groups {
+                    double_sided(group);
+                }
+                mesh
+            })
+            .collect();
         let stem = name.trim_end_matches(".glb").to_string();
         // The owner path carries the tokens that name a part ("Wheels/FR/View/
         // Tire FR"), so it classifies better than the file name ever could —
@@ -712,62 +856,46 @@ pub fn load_car_art(
             if mesh.groups.iter().all(|g| g.is_empty()) {
                 continue;
             }
-            // The export knows a mesh's submesh materials (a truck body is paint,
-            // parts, mirror, windows and glass at once) but the batch cannot
-            // take them apart: the submeshes share one vertex buffer, so the
-            // loader merges them and a merged group carries one material. They
-            // are therefore the fallback when no part-level material names the
-            // whole mesh — the dominant submesh is the one that reads as the
-            // part, which is the shell for a body and the frame for a rack.
-            let submesh_fallback = mesh_id.and_then(|id| {
-                let count = submesh_count(id)?;
-                (count > 1 && entry.is_none()).then_some(id)
-            });
-            let (part_page, part_tint, part_cutoff, part_blends) = match submesh_fallback {
-                Some(id) => {
-                    let mut best: Option<(usize, &PortMaterial)> = None;
-                    for index in 0..mesh.groups.len() {
-                        let Some(material) = submesh_material(id, index) else {
-                            continue;
-                        };
-                        let size = mesh.groups[index].tri_count();
-                        if best.map(|b| size > b.0).unwrap_or(true) {
-                            best = Some((size, material));
-                        }
-                    }
-                    match best.map(|b| b.1) {
-                        Some(material) => (
-                            material
-                                .texture
-                                .as_deref()
-                                .and_then(|t| textures.page(t))
-                                .or(page),
-                            material.color.or(tint),
-                            material.cutoff.unwrap_or(cutoff),
-                            material.transparent.unwrap_or(blends),
-                        ),
-                        None => (page, tint, cutoff, blends),
-                    }
-                }
-                None => (page, tint, cutoff, blends),
-            };
+            // A car mesh is split per material (a body is paint, parts, glass
+            // and chrome at once). Each submesh keeps its own material: the
+            // part's entry names the one that reads as the part (a body's
+            // paint) and the glass rides along, because left out the cabin is
+            // an open hole. A submesh whose material has no texture of its own
+            // is meant to be flat — glass is authored as black paint — so it is
+            // drawn with its colour instead of falling back to the part's page.
+            let keep = submesh_selection(mesh_id, entry, &mesh.groups);
             let groups: Vec<MeshGroup> = mesh
                 .groups
                 .into_iter()
-                .map(|mut group| {
+                .enumerate()
+                .filter(|(index, _)| keep.get(*index).copied().unwrap_or(true))
+                .map(|(index, mut group)| {
                     let (bound_page, bound_tint, bound_cutoff, bound_blends) =
-                        (part_page, part_tint, part_cutoff, part_blends);
+                        match mesh_id.and_then(|id| submesh_material(id, index)) {
+                            Some(material) => (
+                                material.texture.as_deref().and_then(|t| textures.page(t)),
+                                material.color.or(tint),
+                                material.cutoff.unwrap_or(cutoff),
+                                material.transparent.unwrap_or(blends),
+                            ),
+                            None => (page, tint, cutoff, blends),
+                        };
+                    // The tint applies either way: an untextured submesh is
+                    // drawn as its colour, which is how glass reads as dark
+                    // glazing rather than as the white vertex colour the GLB
+                    // carries.
+                    if let Some(tint) = bound_tint {
+                        for c in group.colors.iter_mut() {
+                            *c = [c[0] * tint[0], c[1] * tint[1], c[2] * tint[2]];
+                        }
+                    }
                     match bound_page {
                         Some(bound_page) => {
                             // Textured: keep uvs, sample the page.
                             group.texture_page = bound_page;
+                            textures.fit_page(&mut group);
                             group.alpha_cutoff = bound_cutoff;
                             group.transparent |= bound_blends;
-                            if let Some(tint) = bound_tint {
-                                for c in group.colors.iter_mut() {
-                                    *c = [c[0] * tint[0], c[1] * tint[1], c[2] * tint[2]];
-                                }
-                            }
                         }
                         None => {
                             // Untextured: uvs without a page sample empty texels.
@@ -783,6 +911,7 @@ pub fn load_car_art(
                 kind,
                 corner,
                 mirror: (1.0, 1.0),
+                transform: part_transform(car_id, &go_path),
             });
         }
     }
@@ -826,6 +955,17 @@ fn replicate_corners(art: &mut CarArt, wheels: &[crate::sim::data::WheelSpec]) {
 }
 
 /// Transform an art part into world space for a car at its current pose.
+fn rotate_quat([x, y, z, w]: [f32; 4], v: Vec3) -> Vec3 {
+    let (xx, yy, zz) = (x * x, y * y, z * z);
+    let (xy, xz, yz) = (x * y, x * z, y * z);
+    let (wx, wy, wz) = (w * x, w * y, w * z);
+    vec3(
+        (1.0 - 2.0 * (yy + zz)) * v.x + 2.0 * (xy - wz) * v.y + 2.0 * (xz + wy) * v.z,
+        2.0 * (xy + wz) * v.x + (1.0 - 2.0 * (xx + zz)) * v.y + 2.0 * (yz - wx) * v.z,
+        2.0 * (xz - wy) * v.x + 2.0 * (yz + wx) * v.y + (1.0 - 2.0 * (xx + yy)) * v.z,
+    )
+}
+
 pub fn part_groups(art: &ArtPart, sim: &CarSim, colour: [f32; 3]) -> Vec<MeshGroup> {
     let (sy, cy) = sim.yaw.sin_cos();
     let (sp, cp) = sim.pitch.sin_cos();
@@ -836,12 +976,27 @@ pub fn part_groups(art: &ArtPart, sim: &CarSim, colour: [f32; 3]) -> Vec<MeshGro
         }
         _ => Vec3::ZERO,
     };
+    // Wheels sit where the simulation puts them; everything else follows the
+    // transform its object carries in the shipped Garage scene.
+    let authored = match (art.kind, art.corner) {
+        (PartKind::Wheel | PartKind::Caliper, Some(_)) => None,
+        _ => art.transform,
+    };
     let mut out = Vec::with_capacity(art.groups.len());
     for group in &art.groups {
         let mut g = group.clone();
         for p in g.positions.iter_mut() {
             let raw = Vec3::from(*p);
-            let local = vec3(raw.x * art.mirror.0, raw.y, raw.z * art.mirror.1) + offset;
+            let mut local = vec3(raw.x * art.mirror.0, raw.y, raw.z * art.mirror.1);
+            if let Some(transform) = authored {
+                local = vec3(
+                    local.x * transform.scale[0],
+                    local.y * transform.scale[1],
+                    local.z * transform.scale[2],
+                );
+                local = rotate_quat(transform.rotation, local) + Vec3::from(transform.position);
+            }
+            local += offset;
             let pitched = vec3(
                 local.x,
                 local.y * cp - local.z * sp,
@@ -869,33 +1024,11 @@ pub fn part_groups(art: &ArtPart, sim: &CarSim, colour: [f32; 3]) -> Vec<MeshGro
         }
         out.push(g);
     }
-    // The shipped car meshes arrive split per material, each sub-group carrying the
-    // *same* vertex buffer with a different index range (the body is four of
-    // them). Handed to the batch separately, those siblings do not draw at all —
-    // measured as 0 of the body's pixels versus 6575 once merged. Merging them
-    // into one group with the indices rebased is equivalent geometry, so the
-    // loader does it rather than depending on the batch's handling of siblings.
-    if out.len() > 1 {
-        let mut merged = MeshGroup::default();
-        for g in &out {
-            let base = merged.positions.len() as u32;
-            merged.positions.extend_from_slice(&g.positions);
-            merged.colors.extend_from_slice(&g.colors);
-            merged.normals.extend_from_slice(&g.normals);
-            merged.uvs.extend_from_slice(&g.uvs);
-            merged.indices.extend(g.indices.iter().map(|i| i + base));
-            merged.texture_page = g.texture_page;
-            merged.material = g.material;
-            merged.alpha = merged.alpha.min(g.alpha);
-            merged.transparent |= g.transparent;
-        }
-        out = vec![merged];
-    }
     out
 }
 
 /// Stand-in wheels for corners the export has no mesh for.
-pub fn missing_wheel_groups(sim: &CarSim, art: &CarArt, colour: [f32; 3]) -> Vec<MeshGroup> {
+pub fn missing_wheel_groups(sim: &CarSim, art: &CarArt) -> Vec<MeshGroup> {
     let mut out = Vec::new();
     for (i, w) in sim.spec.wheels.iter().enumerate().take(4) {
         let covered = art
@@ -917,16 +1050,14 @@ pub fn missing_wheel_groups(sim: &CarSim, art: &CarArt, colour: [f32; 3]) -> Vec
             w.radius * 0.55,
             [0.06, 0.06, 0.07],
         );
+        // Rims are neutral on the shipped cars; carrying the livery here is what
+        // made a fallback wheel read as a pale disc rather than a wheel.
         push_disc(
             &mut g,
             centre + vec3(0.0, 0.0, 0.0),
             w.radius * 0.55,
             w.radius * 0.56,
-            [
-                0.35 + colour[0] * 0.45,
-                0.35 + colour[1] * 0.45,
-                0.35 + colour[2] * 0.45,
-            ],
+            [0.30, 0.30, 0.32],
         );
         out.push(g);
     }

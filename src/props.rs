@@ -566,9 +566,15 @@ fn load_prop(file: &str, textures: &mut crate::art::Textures) -> Option<PropMesh
             if group.is_empty() {
                 continue;
             }
+            // The giant ground slab is an enclosure the camera stands inside:
+            // its far side would put a ceiling and a floor across the scene.
+            if file != "Cube" {
+                crate::art::double_sided(&mut group);
+            }
             match page {
                 Some(page) => {
                     group.texture_page = page;
+                    textures.fit_page(&mut group);
                     group.alpha_cutoff = cutoff;
                     group.transparent |= blends;
                     if let Some(tint) = tint {

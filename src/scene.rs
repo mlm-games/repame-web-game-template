@@ -212,9 +212,16 @@ fn ground_pages(textures: &mut crate::art::Textures) -> [Option<u32>; 4] {
 }
 
 /// Give a group the page its surface wants, or leave it untextured.
-fn bind_page(mut group: MeshGroup, page: Option<u32>) -> MeshGroup {
+fn bind_page(
+    mut group: MeshGroup,
+    page: Option<u32>,
+    textures: &crate::art::Textures,
+) -> MeshGroup {
     match page {
-        Some(page) => group.texture_page = page,
+        Some(page) => {
+            group.texture_page = page;
+            textures.fit_page(&mut group);
+        }
         None => group.uvs.clear(),
     }
     group
@@ -334,10 +341,10 @@ fn build_static(
         );
     }
     vec![
-        bind_page(road, road_page),
-        bind_page(shoulder, shoulder_page),
-        bind_page(verge, verge_page),
-        bind_page(apron, apron_page),
+        bind_page(road, road_page, textures),
+        bind_page(shoulder, shoulder_page, textures),
+        bind_page(verge, verge_page, textures),
+        bind_page(apron, apron_page, textures),
     ]
 }
 
@@ -581,9 +588,49 @@ fn push_car(
                 if !part.kind.visible_in_chase() || part.kind == crate::art::PartKind::Hidden {
                     continue;
                 }
+                if std::env::var("DD_TRACE_DRAW").is_ok() {
+                    let placed = crate::art::part_groups(part, sim, livery);
+                    let bounds = placed.iter().filter_map(|g| g.bounds()).fold(
+                        None::<([f32; 3], [f32; 3])>,
+                        |acc, (lo, hi)| {
+                            Some(match acc {
+                                None => (lo, hi),
+                                Some((alo, ahi)) => (
+                                    [alo[0].min(lo[0]), alo[1].min(lo[1]), alo[2].min(lo[2])],
+                                    [ahi[0].max(hi[0]), ahi[1].max(hi[1]), ahi[2].max(hi[2])],
+                                ),
+                            })
+                        },
+                    );
+                    let materials: Vec<(usize, usize, usize, usize, usize, u32, usize)> = placed
+                        .iter()
+                        .map(|g| {
+                            (
+                                g.positions.len(),
+                                g.normals.len(),
+                                g.uvs.len(),
+                                g.colors.len(),
+                                g.indices.len(),
+                                g.texture_page,
+                                g.tri_count(),
+                            )
+                        })
+                        .collect();
+                    eprintln!(
+                        "menu car={} part={} kind={:?} corner={:?} groups={} materials={materials:?} bounds={:?}",
+                        sim.spec.id,
+                        part.source,
+                        part.kind,
+                        part.corner,
+                        placed.len(),
+                        bounds
+                    );
+                    groups.extend(placed);
+                    continue;
+                }
                 groups.extend(crate::art::part_groups(part, sim, livery));
             }
-            groups.extend(crate::art::missing_wheel_groups(sim, &art, livery));
+            groups.extend(crate::art::missing_wheel_groups(sim, &art));
         }
         _ => groups.extend(car_groups(sim, livery)),
     }
@@ -625,10 +672,12 @@ fn menu_frame(world: &mut World, viewport_px: [f32; 2], geom: &GeomHandle) -> Vi
             .unwrap_or_default();
         (index, up)
     };
+    let only_car = std::env::var("DD_DEBUG_ONLY_CAR").is_ok();
+    let hide_car = std::env::var("DD_HIDE_CAR_PARTS").is_ok();
     let mut groups: Vec<MeshGroup> = Vec::new();
     world.resource_scope(|_world, mut cache: Mut<SceneCache>| {
         let SceneCache { props, art, .. } = &mut *cache;
-        for piece in crate::props::garage_pieces() {
+        for piece in crate::props::garage_pieces().iter().filter(|_| !only_car) {
             if let Some(placed) = crate::props::placed_groups(
                 props,
                 &mut art.textures,
@@ -640,8 +689,10 @@ fn menu_frame(world: &mut World, viewport_px: [f32; 2], geom: &GeomHandle) -> Vi
                 groups.extend(placed);
             }
         }
-        let sim = CarSim::new(data::car_at(car_index as i32), Vec3::ZERO, 0.0, upgrades);
-        push_car(art, &mut groups, &sim, car_colour(car_index));
+        if !hide_car {
+            let sim = CarSim::new(data::car_at(car_index as i32), Vec3::ZERO, 0.0, upgrades);
+            push_car(art, &mut groups, &sim, car_colour(car_index));
+        }
     });
     let (desc, uploads) = {
         let mut cache = world.resource_mut::<SceneCache>();
@@ -652,7 +703,7 @@ fn menu_frame(world: &mut World, viewport_px: [f32; 2], geom: &GeomHandle) -> Vi
         let uploads = cache.art.textures.uploads();
         (desc, uploads)
     };
-    let (mut target, mut yaw, mut dist, mut pitch) = (vec3(0.0, -1.2, 0.0), 0.55, 12.5, 0.22);
+    let (mut target, mut yaw, mut dist, mut pitch) = (vec3(0.0, 0.85, 0.0), 2.4, 7.0, 0.16);
     if let Ok(shape) = std::env::var("DD_DEBUG_CAM") {
         // Isolation aid, the same one the race path offers.
         match shape.as_str() {
@@ -668,11 +719,23 @@ fn menu_frame(world: &mut World, viewport_px: [f32; 2], geom: &GeomHandle) -> Vi
                 dist = 25.0;
                 pitch = 0.25;
             }
-            _ => {}
+            other => {
+                // A bare angle aims the menu camera there: the garage's props
+                // are fixed, so finding an angle clear of them is a sweep.
+                if let Ok(angle) = other.parse::<f32>() {
+                    yaw = angle;
+                }
+            }
         }
     }
+    // The shipped garage is a dim interior: sky behind its walls read as a
+    // building floating in the air, so the menu clears to the room's own dark
+    // tone and the light keeps the industrial mood.
+    let mut light = scene_light();
+    light.ambient = [0.42, 0.44, 0.50];
+    light.diffuse = 0.95;
     let mut frame = Frame3d {
-        background: Some([0.384, 0.705, 1.0, 1.0]),
+        background: Some([0.16, 0.155, 0.15, 1.0]),
         viewport_px,
         desc,
         uploads,
@@ -683,7 +746,7 @@ fn menu_frame(world: &mut World, viewport_px: [f32; 2], geom: &GeomHandle) -> Vi
             dist,
             fov_y_deg: 38.0,
         },
-        light: scene_light(),
+        light,
         ..Default::default()
     };
     world.insert_resource(FrameCamera {
@@ -691,6 +754,29 @@ fn menu_frame(world: &mut World, viewport_px: [f32; 2], geom: &GeomHandle) -> Vi
             .cam
             .view_proj(viewport_px[0].max(1.0) / viewport_px[1].max(1.0)),
     });
+    if let Ok(keep) = std::env::var("DD_DEBUG_KEEP") {
+        groups.retain(|g| match keep.as_str() {
+            "untextured" => g.uvs.is_empty(),
+            "textured" => !g.uvs.is_empty(),
+            _ => true,
+        });
+    }
+    if let Ok(n) = std::env::var("DD_DEBUG_FIRST")
+        && let Ok(n) = n.parse::<usize>()
+    {
+        groups.truncate(n);
+    }
+    if std::env::var("DD_DEBUG_CUBE").is_ok() {
+        let mut m = MeshGroup::default();
+        push_box(
+            &mut m,
+            frame.cam.target,
+            vec3(0.6, 0.6, 0.6),
+            [0.9, 0.15, 0.15],
+        );
+        groups.clear();
+        groups.push(m);
+    }
     for g in groups {
         let g = with_normals(g);
         if !g.is_empty() {
@@ -979,7 +1065,7 @@ pub fn frame_for(
                         groups.extend(placed);
                         art_used += 1;
                     }
-                    groups.extend(crate::art::missing_wheel_groups(&sim, &art, colour));
+                    groups.extend(crate::art::missing_wheel_groups(&sim, &art));
                 }
                 _ => groups.extend(car_groups(&sim, colour)),
             }

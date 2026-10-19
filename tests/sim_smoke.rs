@@ -613,17 +613,19 @@ fn the_garage_room_stands_on_its_floor() {
         .find(|piece| piece.file == "Plane001")
         .expect("the garage floor is part of the layout");
     let groups = place(&mut cache, &mut textures, floor).expect("the floor art loads");
+    // The room art is drawn from both sides, so both windings are present and
+    // the mean normal cancels out: what has to hold is that the floor has a
+    // skyward face for the car to stand on.
     let (up, count) = groups
         .iter()
         .flat_map(|group| group.normals.iter())
-        .fold((0.0f32, 0usize), |(up, count), normal| {
-            (up + normal[1], count + 1)
+        .fold((0usize, 0usize), |(up, count), normal| {
+            (up + usize::from(normal[1] > 0.5), count + 1)
         });
     assert!(count > 0, "the floor has normals");
-    let mean = up / count as f32;
     assert!(
-        mean > 0.5,
-        "the garage floor faces the sky (mean normal y {mean:.2}): scene quaternions are left-handed"
+        up > 0,
+        "the garage floor faces the sky (no upward normals in {count}): scene quaternions are left-handed"
     );
     let floor_low = groups
         .iter()

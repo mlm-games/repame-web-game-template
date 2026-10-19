@@ -301,6 +301,12 @@ pub fn sync_shared_ui(world: &mut World, ui: &mut SharedUi, ctx: &RenderContext)
         .map(|screen| screen.0)
         .or_else(|| world.get_resource::<Session>().map(|session| session.phase))
         .unwrap_or(Phase::Garage);
+    if world.get_resource::<Session>().is_none() {
+        // Outside a race the player still picks cars, and this panel is the only
+        // place that names the pick: reading the index from a session left it on
+        // the first car while the tiles and the 3D car followed the selection.
+        ui.car = progress.selected_car();
+    }
     if let Some(session) = world.get_resource::<Session>() {
         ui.level = session.level;
         ui.car = session.car;
@@ -527,6 +533,16 @@ fn garage(ui: &SharedUi, s: f32, vp: [f32; 2], sink: &Sink) -> View {
     .child((
         coin_row(ui, ui.coins, 30.0, s),
         label(Modifier::new(), "GARAGE", 30.0, SUN, s),
+        label(
+            Modifier::new(),
+            &ui.cars
+                .get(ui.car)
+                .map(|car| car.display.to_uppercase())
+                .unwrap_or_default(),
+            30.0,
+            CREAM,
+            s,
+        ),
     ));
     // right side buttons
     let right = Row(rect(vp, s, [1.0, 0.0, 1.0, 0.0], [-18.0, 12.0, 0.0, 0.0])
@@ -545,13 +561,6 @@ fn garage(ui: &SharedUi, s: f32, vp: [f32; 2], sink: &Sink) -> View {
     ));
     // car panel
     let mut rows: Vec<View> = Vec::new();
-    rows.push(label(
-        Modifier::new(),
-        &car.display.to_uppercase(),
-        40.0,
-        CREAM,
-        s,
-    ));
     rows.push(stat_row(
         ui,
         "Speed",
@@ -594,18 +603,6 @@ fn garage(ui: &SharedUi, s: f32, vp: [f32; 2], sink: &Sink) -> View {
             sink,
             s,
         ));
-        rows.push(button(
-            "RACE",
-            SUN,
-            26.0,
-            s,
-            UiAction::ToMapSelect,
-            sink,
-            false,
-        ));
-        if ui.tutorial_stage == 0 {
-            rows.push(hint_ring(ui, "TAP RACE TO PICK A MAP", s));
-        }
     } else if car.coin_purchase {
         rows.push(
             Row(Modifier::new()
@@ -643,7 +640,7 @@ fn garage(ui: &SharedUi, s: f32, vp: [f32; 2], sink: &Sink) -> View {
         card_rows.push(match ui.images.car_icon(&c.icon) {
             Some(handle) => {
                 let mut image = Image(
-                    Modifier::new().width(Dp(96.0 * s)).height(Dp(52.0 * s)),
+                    Modifier::new().width(Dp(80.0 * s)).height(Dp(42.0 * s)),
                     handle,
                 )
                 .image_fit(ImageFit::Contain);
@@ -698,7 +695,7 @@ fn garage(ui: &SharedUi, s: f32, vp: [f32; 2], sink: &Sink) -> View {
             };
         cards.push(
             RBox(m).child(
-                ZStack(Modifier::new().size(Dp(112.0 * s), Dp(72.0 * s))).child((
+                ZStack(Modifier::new().size(Dp(92.0 * s), Dp(58.0 * s))).child((
                     frame_view,
                     Column(
                         Modifier::new()
@@ -710,15 +707,13 @@ fn garage(ui: &SharedUi, s: f32, vp: [f32; 2], sink: &Sink) -> View {
             ),
         );
     }
-    rows.push(
-        Row(Modifier::new()
-            .gap(Dp(6.0 * s))
-            .align_items(AlignItems::CENTER))
-        .child(cards),
-    );
+    let carousel = Row(Modifier::new()
+        .gap(Dp(6.0 * s))
+        .align_items(AlignItems::CENTER))
+    .child(cards);
     let panel_content = Column(
         Modifier::new()
-            .gap(Dp(8.0 * s))
+            .gap(Dp(5.0 * s))
             .align_items(AlignItems::CENTER),
     )
     .child(rows);
@@ -729,8 +724,8 @@ fn garage(ui: &SharedUi, s: f32, vp: [f32; 2], sink: &Sink) -> View {
             .padding_values(repose_core::PaddingValues {
                 left: Dp(20.0 * s),
                 right: Dp(20.0 * s),
-                top: Dp(14.0 * s),
-                bottom: Dp(14.0 * s),
+                top: Dp(10.0 * s),
+                bottom: Dp(10.0 * s),
             })
             .max_width(Dp(vp[0] * 0.94)),
     )
@@ -738,13 +733,62 @@ fn garage(ui: &SharedUi, s: f32, vp: [f32; 2], sink: &Sink) -> View {
     let placed = RBox(
         Modifier::new()
             .absolute()
-            .offset_top(Dp(vp[1] * 0.4))
+            .offset_top(Dp(vp[1] * 0.09))
             .fill_max_width()
             .justify_content(JustifyContent::CENTER)
             .align_items(AlignItems::CENTER),
     )
     .child(panel);
-    ZStack(Modifier::new().fill_max_size()).child((top, right, placed))
+    // The shipped garage keeps the rows up top, the car in the middle of the
+    // frame and the start button under it, so the car is never under a panel.
+    let start = RBox(
+        Modifier::new()
+            .absolute()
+            .offset_top(Dp(vp[1] * 0.755))
+            .fill_max_width()
+            .justify_content(JustifyContent::CENTER)
+            .align_items(AlignItems::CENTER),
+    )
+    .child(
+        Column(
+            Modifier::new()
+                .gap(Dp(8.0 * s))
+                .align_items(AlignItems::CENTER),
+        )
+        .child(if car.owned {
+            let mut start_rows: Vec<View> = Vec::new();
+            start_rows.push(button(
+                "RACE",
+                SUN,
+                26.0,
+                s,
+                UiAction::ToMapSelect,
+                sink,
+                false,
+            ));
+            if ui.tutorial_stage == 0 {
+                start_rows.push(hint_ring(ui, "TAP RACE TO PICK A MAP", s));
+            }
+            Column(
+                Modifier::new()
+                    .gap(Dp(6.0 * s))
+                    .align_items(AlignItems::CENTER),
+            )
+            .child(start_rows)
+        } else {
+            Spacer()
+        }),
+    );
+    let shelf = RBox(
+        Modifier::new()
+            .absolute()
+            .offset_top(Dp(vp[1] * (if car.owned { 0.895 } else { 0.80 })))
+            .fill_max_width()
+            .justify_content(JustifyContent::CENTER)
+            .align_items(AlignItems::CENTER),
+    )
+    .child(carousel);
+    ZStack(Modifier::new().fill_max_size()).child((top, right, placed, start, shelf))
 }
 
 fn map_select(ui: &SharedUi, s: f32, vp: [f32; 2], sink: &Sink) -> View {

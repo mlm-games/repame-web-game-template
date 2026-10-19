@@ -82,6 +82,10 @@ impl App {
         for frame in 0..request.frames {
             if flow {
                 let intent = match frame {
+                    // Buy and pick a car through the shop's own intents, so the
+                    // recording covers the panel following the pick.
+                    30 => Some(crate::sim::Intent::BuyCar(2)),
+                    33 => Some(crate::sim::Intent::SelectCar(2)),
                     45 => Some(crate::sim::Intent::ToMapSelect),
                     90 => Some(crate::sim::Intent::StartLevel(request.level.unwrap_or(6))),
                     150 => Some(crate::sim::Intent::ToGarage),

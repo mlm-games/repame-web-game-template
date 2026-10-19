@@ -11,9 +11,10 @@ scene's transform hierarchy and writes the world transforms the port draws with.
 Needs `UnityPy` and the decoded WebGL data bundle (see scripts/extract_notes.md).
 """
 import json
-import math
 import pathlib
 import sys
+
+from scene_xform import decompose, local_matrix, mul
 
 BUNDLE = pathlib.Path(
     sys.argv[1] if len(sys.argv) > 1 else "/tmp/opencode/dd/data/data.unity3d"
@@ -31,77 +32,6 @@ ROOM = {
     "Object057": "Object057",
     "Object063": "Object063",
 }
-
-
-def decompose(m):
-    """Position, quaternion and scale out of a 4x4 row-major matrix."""
-    pos = [m[0][3], m[1][3], m[2][3]]
-    cols = [[m[0][i], m[1][i], m[2][i]] for i in range(3)]
-    scale = [math.sqrt(sum(c * c for c in col)) for col in cols]
-    rot = [[col[i] / (scale[i] or 1.0) for i in range(3)] for col in cols]
-    tr = rot[0][0] + rot[1][1] + rot[2][2]
-    if tr > 0:
-        s = math.sqrt(tr + 1.0) * 2
-        q = [
-            (rot[2][1] - rot[1][2]) / s,
-            (rot[0][2] - rot[2][0]) / s,
-            (rot[1][0] - rot[0][1]) / s,
-            0.25 * s,
-        ]
-    elif rot[0][0] > rot[1][1] and rot[0][0] > rot[2][2]:
-        s = math.sqrt(1.0 + rot[0][0] - rot[1][1] - rot[2][2]) * 2
-        q = [
-            0.25 * s,
-            (rot[0][1] + rot[1][0]) / s,
-            (rot[0][2] + rot[2][0]) / s,
-            (rot[2][1] - rot[1][2]) / s,
-        ]
-    elif rot[1][1] > rot[2][2]:
-        s = math.sqrt(1.0 + rot[1][1] - rot[0][0] - rot[2][2]) * 2
-        q = [
-            (rot[0][1] + rot[1][0]) / s,
-            0.25 * s,
-            (rot[1][2] + rot[2][1]) / s,
-            (rot[0][2] - rot[2][0]) / s,
-        ]
-    else:
-        s = math.sqrt(1.0 + rot[2][2] - rot[0][0] - rot[1][1]) * 2
-        q = [
-            (rot[0][2] + rot[2][0]) / s,
-            (rot[1][2] + rot[2][1]) / s,
-            0.25 * s,
-            (rot[1][0] - rot[0][1]) / s,
-        ]
-    return pos, [round(v, 6) for v in q], [round(v, 6) for v in scale]
-
-
-def mul(a, b):
-    return [
-        [sum(a[r][k] * b[k][c] for k in range(4)) for c in range(4)]
-        for r in range(4)
-    ]
-
-
-def local_matrix(position, rotation, scale):
-    # Unity brains quaternions left-handed: the same numbers rotate the other way
-    # round in the right-handed engine, so every scene quaternion is inverted
-    # here. Without this the garage's floor faces down and its walls hang in the
-    # air over the car.
-    x, y, z, w = (-rotation[0], -rotation[1], -rotation[2], rotation[3])
-    xx, yy, zz = x * x, y * y, z * z
-    xy, xz, yz = x * y, x * z, y * z
-    wx, wy, wz = w * x, w * y, w * z
-    m = [
-        [1 - 2 * (yy + zz), 2 * (xy - wz), 2 * (xz + wy), position[0]],
-        [2 * (xy + wz), 1 - 2 * (xx + zz), 2 * (yz - wx), position[1]],
-        [2 * (xz - wy), 2 * (yz + wx), 1 - 2 * (xx + yy), position[2]],
-        [0.0, 0.0, 0.0, 1.0],
-    ]
-    for row in range(3):
-        m[row][0] *= scale[0]
-        m[row][1] *= scale[1]
-        m[row][2] *= scale[2]
-    return m
 
 
 def main():
