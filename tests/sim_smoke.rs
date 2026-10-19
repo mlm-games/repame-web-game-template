@@ -133,7 +133,14 @@ fn track_geometry_is_consistent() {
             .surface(track.track.centre(50.0).x + 40.0, 50.0)
             .is_none()
     );
-    assert!(!track.obstacles.is_empty(), "racing tracks place obstacles");
+    // The verge is drivable, the road is not: 1 m outside the ribbon the car is
+    // on rough ground, and the run only ends past the shoulder.
+    let edge = track.track.centre(50.0).x + track.track.half_width + 1.0;
+    assert!(track.track.surface(edge, 50.0).is_some());
+    assert!(!track.track.on_road(edge, 50.0));
+    // The shipped `RacingTrack` segment holds only the cars: the racing levels
+    // are run against the bots on a clear track.
+    assert!(track.obstacles.is_empty(), "racing tracks are clear");
 }
 
 #[test]
@@ -298,7 +305,7 @@ fn dressing_covers_the_track() {
     let _ = level.segment();
     let mut textures = deadly_descent::art::Textures::default();
     let mut cache = deadly_descent::props::PropCache::default();
-    let groups = cache.dressing(&world.track, level.segment(), &mut textures);
+    let groups = cache.dressing(&world.track, &mut textures);
     assert!(!groups.is_empty(), "edge barriers and scatter are placed");
     let tris: usize = groups.iter().map(|g| g.tri_count()).sum();
     assert!(

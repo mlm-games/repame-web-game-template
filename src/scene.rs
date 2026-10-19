@@ -276,17 +276,26 @@ fn build_static(
         // asphalt rect only.
         const ROAD_U: [f32; 2] = [0.005, 0.75];
         const ROAD_V: [f32; 2] = [0.005, 0.61];
-        push_quad(
-            &mut road,
-            quad,
-            road_tone,
-            [
-                [ROAD_U[0], ROAD_V[0]],
-                [ROAD_U[1], ROAD_V[0]],
-                [ROAD_U[1], ROAD_V[1]],
-                [ROAD_U[0], ROAD_V[1]],
-            ],
-        );
+        // A hole is a real gap in the road here, so the quads it covers are not
+        // built at all; the dark pit mesh under it reads as the drop.
+        let gap = track_world.track.features.iter().any(|f| {
+            matches!(f.kind, crate::sim::track::SurfaceKind::Hole)
+                && s1 >= f.s - f.half_length
+                && s0 <= f.s + f.half_length
+        });
+        if !gap {
+            push_quad(
+                &mut road,
+                quad,
+                road_tone,
+                [
+                    [ROAD_U[0], ROAD_V[0]],
+                    [ROAD_U[1], ROAD_V[0]],
+                    [ROAD_U[1], ROAD_V[1]],
+                    [ROAD_U[0], ROAD_V[1]],
+                ],
+            );
+        }
         // downhill skirt either side, so the road reads as cut into a slope
         for side in [-1.0f32, 1.0] {
             let a = vec3(c0.x + side * half, c0.y, s0);
@@ -511,7 +520,18 @@ fn obstacle_groups_with_props(
             continue;
         }
         if !wrecked {
-            push_standin(&mut opaque, ob, at);
+            if ob.kind == Kind::Hole {
+                // The gap spans the road, so the pit behind it does too: a
+                // narrower box left pale ground showing at its edges.
+                push_box(
+                    &mut opaque,
+                    at + vec3(0.0, -3.0, 0.0),
+                    Vec3::new(track.half_width, 3.0, ob.kind.half_extents().z),
+                    [0.03, 0.03, 0.04],
+                );
+            } else {
+                push_standin(&mut opaque, ob, at);
+            }
         }
     }
     vec![opaque]
@@ -869,8 +889,7 @@ pub fn frame_for(
                     build_static(&track_world, &level, &mut art.textures)
                 };
                 let SceneCache { props, art, .. } = &mut *cache;
-                let dressing =
-                    props.dressing(&track_world.track, level.segment(), &mut art.textures);
+                let dressing = props.dressing(&track_world.track, &mut art.textures);
                 built.extend(dressing);
                 if level.is_racing_track() && std::env::var("DD_HIDE_DECK").is_err() {
                     // The shipped modular deck marks the start grid and finish.
@@ -1378,8 +1397,18 @@ fn camera_for(
         CameraMode::Cockpit => (0.0, 1.35, 0.6),
     };
     let flat = vec3(car.forward().x, 0.0, car.forward().z).normalize_or_zero();
-    let eye = car.pos + vec3(0.0, up, 0.0) - flat * back;
-    let target = road_ahead + vec3(0.0, aim_height, 0.0);
+    let mut eye = car.pos + vec3(0.0, up, 0.0) - flat * back;
+    let mut target = road_ahead + vec3(0.0, aim_height, 0.0);
+    // A fatal crash can drop the car through the track. The screen that reports
+    // it should still look along the road, not up at its underside.
+    if matches!(phase, Phase::Failed) {
+        let floor = road_ahead.y + 1.2;
+        if eye.y < floor {
+            let lift = floor - eye.y;
+            eye.y += lift;
+            target.y += lift;
+        }
+    }
     // `OrbitCamera` places the eye at `target + dist * (yaw, pitch)`, so both are
     // read straight off the eye-to-target vector.
     let to_eye = eye - target;

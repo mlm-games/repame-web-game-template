@@ -317,10 +317,9 @@ pub fn sync_shared_ui(world: &mut World, ui: &mut SharedUi, ctx: &RenderContext)
         ui.car = session.car;
         ui.time = session.time;
         ui.countdown = session.countdown;
-        // The readout is the speed the car is doing now: `top_speed` is the
-        // run's best, which only ever climbs and left the dial frozen at the
-        // fastest moment of the race.
-        ui.speed_kmh = session.player.speed() * 3.6;
+        // The readout is the speed along the road, not the fall speed: a jump
+        // would otherwise show several hundred km/h on the way down.
+        ui.speed_kmh = session.player.vel.dot(session.player.forward()).max(0.0) * 3.6;
         ui.damage = session.player.damage;
         ui.max_damage = session.player.max_damage();
         ui.nitro = session.player.nitro;
@@ -1298,7 +1297,11 @@ fn results(ui: &SharedUi, s: f32, vp: [f32; 2], sink: &Sink) -> View {
             ),
             label_plain(
                 Modifier::new(),
-                &format!("DAMAGE {:.0}/{:.0}", r.damage, r.max_damage),
+                &format!(
+                    "DAMAGE {:.0}/{:.0}",
+                    r.damage.min(r.max_damage),
+                    r.max_damage
+                ),
                 20.0,
                 DANGER,
                 s,
@@ -1368,15 +1371,42 @@ fn results(ui: &SharedUi, s: f32, vp: [f32; 2], sink: &Sink) -> View {
             ui.reward_pending,
         ));
     }
+    // Losing ends the run: only a win moves on to the next level.
+    let mut nav: Vec<View> = Vec::new();
+    if won {
+        nav.push(button(
+            "CONTINUE",
+            SUN,
+            22.0,
+            s,
+            UiAction::NextLevel,
+            sink,
+            false,
+        ));
+    }
+    nav.push(button(
+        if won { "RESTART" } else { "RETRY" },
+        if won { CYAN } else { SUN },
+        if won { 20.0 } else { 22.0 },
+        s,
+        UiAction::Restart,
+        sink,
+        false,
+    ));
+    nav.push(button(
+        "GARAGE",
+        STEEL,
+        if won { 20.0 } else { 22.0 },
+        s,
+        UiAction::ToGarage,
+        sink,
+        false,
+    ));
     rows.push(
         Row(Modifier::new()
             .gap(Dp(10.0 * s))
             .align_items(AlignItems::CENTER))
-        .child((
-            button("CONTINUE", SUN, 22.0, s, UiAction::NextLevel, sink, false),
-            button("RESTART", CYAN, 20.0, s, UiAction::Restart, sink, false),
-            button("GARAGE", STEEL, 20.0, s, UiAction::ToGarage, sink, false),
-        )),
+        .child(nav),
     );
     let content = Column(
         Modifier::new()

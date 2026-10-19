@@ -46,6 +46,24 @@ pub fn drop_for(level: &Level) -> f32 {
     }
 }
 
+/// Road features that change the drivable surface: a hole drops it away, a ramp
+/// raises it into a lip.
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum SurfaceKind {
+    Hole,
+    Ramp,
+}
+
+#[derive(Clone, Copy, Debug)]
+pub struct SurfaceFeature {
+    pub kind: SurfaceKind,
+    pub s: f32,
+    pub lateral: f32,
+    pub half_width: f32,
+    pub half_length: f32,
+    pub height: f32,
+}
+
 #[derive(Debug)]
 pub struct Track {
     pub length: f32,
@@ -58,6 +76,7 @@ pub struct Track {
     pub checkpoints: Vec<f32>,
     pub finish: f32,
     pub start: Vec3,
+    pub features: Vec<SurfaceFeature>,
 }
 
 impl Track {
@@ -102,6 +121,7 @@ impl Track {
             checkpoints,
             finish: length,
             start,
+            features: Vec::new(),
         }
     }
 
@@ -145,7 +165,12 @@ impl Track {
         Vec3::new(c.x + lateral, c.y, c.z)
     }
 
-    /// Surface height at an arbitrary world point, from the road ribbon.
+    /// Rough ground either side of the ribbon, out to the barrier line.
+    /// Past it the mountain drops away.
+    pub const SHOULDER: f32 = 2.5;
+
+    /// Surface height at an arbitrary world point: the road ribbon, the verge
+    /// beside it and the level's holes and ramps.
     pub fn surface(&self, x: f32, z: f32) -> Option<f32> {
         // The road runs along +x with z as its length axis in sim space.
         let s = z;
@@ -154,13 +179,51 @@ impl Track {
         }
         let c = self.centre(s);
         let lateral = x - c.x;
-        if lateral.abs() > self.half_width {
+        if lateral.abs() > self.half_width + Self::SHOULDER {
             return None;
         }
-        Some(c.y)
+        let mut height = c.y;
+        for f in &self.features {
+            if (s - f.s).abs() > f.half_length || (lateral - f.lateral).abs() > f.half_width {
+                continue;
+            }
+            match f.kind {
+                SurfaceKind::Hole => return None,
+                SurfaceKind::Ramp => {
+                    let u = ((s - (f.s - f.half_length)) / (2.0 * f.half_length.max(0.01)))
+                        .clamp(0.0, 1.0);
+                    height += f.height * u;
+                }
+            }
+        }
+        Some(height)
     }
 
+    /// Upward slope of the surface under a point, used to launch the car off a
+    /// ramp lip instead of letting it slide down the far face.
+    pub fn slope(&self, x: f32, z: f32) -> f32 {
+        let Some(here) = self.surface(x, z) else {
+            return 0.0;
+        };
+        let ahead = self.surface(x, z + 1.0).unwrap_or(here);
+        ahead - here
+    }
+
+    /// Paved ribbon only. Outside it the car is on the verge, which tears the
+    /// car up instead of dropping it off the mountain.
     pub fn on_road(&self, x: f32, z: f32) -> bool {
-        self.surface(x, z).is_some()
+        let s = z;
+        if !(0.0..=self.length).contains(&s) {
+            return false;
+        }
+        let c = self.centre(s);
+        if (x - c.x).abs() > self.half_width {
+            return false;
+        }
+        !self.features.iter().any(|f| {
+            f.kind == SurfaceKind::Hole
+                && (s - f.s).abs() <= f.half_length
+                && (x - c.x - f.lateral).abs() <= f.half_width
+        })
     }
 }

@@ -185,6 +185,9 @@ pub fn placed_groups(
 pub struct PropMesh {
     pub groups: Vec<MeshGroup>,
     pub ground_offset: f32,
+    /// Widest horizontal span, so scene-sized meshes can be placed clear of the
+    /// road instead of swallowing it.
+    pub footprint: f32,
 }
 
 /// Loaded reference meshes, cached by file stem.
@@ -193,9 +196,9 @@ pub struct PropCache {
     meshes: HashMap<String, Option<PropMesh>>,
 }
 
-/// Roadside dressing stays inside this footprint (metres); the scatter puts it
-/// 13 to 47 m from the road, so anything wider ends up with the road inside it.
-const DRESSING_ENVELOPE: f32 = 20.0;
+/// Dressing is shrunk to this footprint (metres) and pushed out by half of it,
+/// so a scene-sized mesh lands beside the road instead of across it.
+const DRESSING_FIT: f32 = 36.0;
 
 fn traced() -> bool {
     std::env::var("DD_TRACE_PROPS").is_ok()
@@ -227,7 +230,6 @@ impl PropCache {
     pub fn dressing(
         &mut self,
         track: &Track,
-        segment: &str,
         textures: &mut crate::art::Textures,
     ) -> Vec<MeshGroup> {
         let table = prop_table();
@@ -276,7 +278,8 @@ impl PropCache {
                     let side = if index.is_multiple_of(2) { 1.0 } else { -1.0 };
                     // Whole-scene chunks: far enough out that they never meet the
                     // road, which runs its own profile in this port.
-                    let distance = 170.0 + unit(seed, index as u32 + 40) * 90.0;
+                    let distance =
+                        170.0 + mesh.footprint * 0.55 + unit(seed, index as u32 + 40) * 90.0;
                     let pos = track.road_pos(s.min(track.length) - 12.0, side * distance)
                         + Vec3::Y * lift;
                     let yaw = tangent_yaw(track, s.min(track.length));
@@ -285,73 +288,6 @@ impl PropCache {
                     }
                 }
                 s += 150.0;
-            }
-        }
-        // the level's own props, taken from the shipped segment scene
-        for file in level_palette(segment) {
-            let Some(mesh) = self.get(file, textures).cloned() else {
-                continue;
-            };
-            let groups = mesh.groups;
-            // The shipped scenes mix units: terrain chunks and arches are in
-            // centimetres, hedge pieces in metres, hole craters in decimetres.
-            // Placed at 1:1 a crater lands 58 m tall around a 9 m road and the
-            // camera ends up inside it. Normalise the unit, then hold the
-            // footprint inside the dressing envelope the scatter uses.
-            let (lo, hi) = groups
-                .iter()
-                .filter_map(|g| g.bounds())
-                .fold(None::<([f32; 3], [f32; 3])>, |acc, (lo, hi)| {
-                    Some(match acc {
-                        None => (lo, hi),
-                        Some((alo, ahi)) => (
-                            [alo[0].min(lo[0]), alo[1].min(lo[1]), alo[2].min(lo[2])],
-                            [ahi[0].max(hi[0]), ahi[1].max(hi[1]), ahi[2].max(hi[2])],
-                        ),
-                    })
-                })
-                .unwrap_or(([0.0; 3], [1.0; 3]));
-            let size = [hi[0] - lo[0], hi[1] - lo[1], hi[2] - lo[2]];
-            let mut scale = 1.0f32;
-            if size.iter().fold(0.0f32, |m, v| m.max(*v)) > 200.0 {
-                scale *= 0.01;
-            }
-            let footprint = size[0].max(size[2]) * scale;
-            if footprint > DRESSING_ENVELOPE {
-                scale *= DRESSING_ENVELOPE / footprint;
-            }
-            if std::env::var("DD_TRACE_PROPS").is_ok() {
-                eprintln!(
-                    "palette {file}: size ({:.1},{:.1},{:.1}) m -> scale {:.3}",
-                    size[0], size[1], size[2], scale
-                );
-            }
-            let mut s = 40.0;
-            let mut salt = 31u32;
-            while s < track.length - 20.0 {
-                salt = salt.wrapping_add(1);
-                if unit(seed, salt) > 0.45 {
-                    s += 16.0;
-                    continue;
-                }
-                let side = if unit(seed, salt ^ 0x77) < 0.5 {
-                    -1.0
-                } else {
-                    1.0
-                };
-                let distance = 13.0 + unit(seed, salt ^ 0x99) * 34.0;
-                let pos = track.road_pos(s, side * distance);
-                let yaw = tangent_yaw(track, s) + (unit(seed, salt ^ 0xAB) - 0.5) * 1.2;
-                for g in &groups {
-                    out.push(place(
-                        g,
-                        pos + Vec3::Y * (mesh.ground_offset * scale),
-                        yaw,
-                        [scale, scale, scale],
-                    ));
-                }
-
-                s += 22.0;
             }
         }
         // roadside scatter
@@ -373,19 +309,25 @@ impl PropCache {
                 } else {
                     1.0
                 };
+                let fit = if mesh.footprint > DRESSING_FIT {
+                    DRESSING_FIT / mesh.footprint
+                } else {
+                    1.0
+                };
                 let lateral = if def.spans {
                     0.0
                 } else {
-                    side * (def.min + unit(seed, salt ^ 0x1234) * (def.max - def.min).max(0.0))
+                    let run = def.min + unit(seed, salt ^ 0x1234) * (def.max - def.min).max(0.0);
+                    side * (run + mesh.footprint * fit * 0.5)
                 };
                 let pos = track.road_pos(s, lateral);
                 let yaw = tangent_yaw(track, s);
                 for g in &groups {
                     out.push(place(
                         g,
-                        pos + Vec3::Y * mesh.ground_offset,
+                        pos + Vec3::Y * mesh.ground_offset * fit,
                         yaw,
-                        [1.0, 1.0, 1.0],
+                        [fit, fit, fit],
                     ));
                 }
             }
@@ -634,23 +576,17 @@ fn load_prop(file: &str, textures: &mut crate::art::Textures) -> Option<PropMesh
         .filter_map(|g| g.bounds().map(|(min, _)| min[1]))
         .fold(f32::MAX, f32::min);
     let ground_offset = if lowest.is_finite() { -lowest } else { 0.0 };
+    let footprint = groups
+        .iter()
+        .filter_map(|g| g.bounds())
+        .fold(0.0f32, |acc, (lo, hi)| {
+            acc.max(hi[0] - lo[0]).max(hi[2] - lo[2])
+        });
     Some(PropMesh {
         groups,
         ground_offset,
+        footprint,
     })
-}
-
-/// Per-level prop palettes: the meshes each shipped segment scene actually
-/// contains (recorded in `assets/dd1/level_props.json`). They dress that level
-/// with its own art instead of the generic roadside set.
-const LEVEL_PROPS_JSON: &str = include_str!("../assets/dd1/level_props.json");
-
-fn level_palette(segment: &str) -> &'static [String] {
-    static TABLE: std::sync::OnceLock<HashMap<String, Vec<String>>> = std::sync::OnceLock::new();
-    let table = TABLE.get_or_init(|| {
-        serde_json::from_str::<HashMap<String, Vec<String>>>(LEVEL_PROPS_JSON).unwrap_or_default()
-    });
-    table.get(segment).map(|v| v.as_slice()).unwrap_or(&[])
 }
 
 /// Every mesh file the prop table references.

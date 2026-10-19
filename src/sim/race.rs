@@ -65,8 +65,32 @@ pub struct TrackWorld {
 
 impl TrackWorld {
     pub fn load(level: &Level) -> Self {
-        let track = Track::build(level);
+        let mut track = Track::build(level);
         let placed = obstacles::place(level, track.length, track.half_width, |s| track.centre(s).x);
+        // Holes and ramps are surface, not contact: the wheels have to find the
+        // gap or the lip, otherwise the car is stopped by the art of a jump.
+        for ob in &placed {
+            let half = ob.kind.half_extents();
+            match ob.kind {
+                obstacles::Kind::Hole => track.features.push(crate::sim::track::SurfaceFeature {
+                    kind: crate::sim::track::SurfaceKind::Hole,
+                    s: ob.s,
+                    lateral: 0.0,
+                    half_width: track.half_width,
+                    half_length: half.z,
+                    height: 0.0,
+                }),
+                obstacles::Kind::Ramp => track.features.push(crate::sim::track::SurfaceFeature {
+                    kind: crate::sim::track::SurfaceKind::Ramp,
+                    s: ob.s,
+                    lateral: ob.lateral,
+                    half_width: half.x,
+                    half_length: half.z,
+                    height: half.y * 2.0,
+                }),
+                _ => {}
+            }
+        }
         Self {
             track,
             obstacles: placed,
@@ -201,6 +225,7 @@ pub fn step_world(world: &mut World) {
         &mut session.player,
         &mut track_world.obstacles,
         &track_world.track,
+        session.time,
         &mut cues,
     );
     // AI
@@ -212,6 +237,7 @@ pub fn step_world(world: &mut World) {
             &mut ai.sim,
             &mut track_world.obstacles,
             &track_world.track,
+            session.time,
             &mut cues,
         );
     }
@@ -350,6 +376,7 @@ pub fn resolve_collisions(
     car: &mut CarSim,
     obstacles: &mut [Obstacle],
     track: &Track,
+    now: f32,
     cues: &mut CueQueue,
 ) {
     if car.destroyed {
@@ -362,6 +389,9 @@ pub fn resolve_collisions(
         if ob.broken {
             continue;
         }
+        if matches!(ob.kind, obstacles::Kind::Hole | obstacles::Kind::Ramp) {
+            continue;
+        }
         let centre = track.centre(ob.s) + ob.offset;
         let cx = centre.x + ob.lateral;
         let half = ob.kind.half_extents();
@@ -369,25 +399,37 @@ pub fn resolve_collisions(
         let dz = (car.pos.z - ob.s).abs();
         let dy = (car.pos.y + 0.5 - centre.y).abs();
         if dx < half.x + half_w && dz < half.z + 2.2 && dy < half.y + 1.2 {
+            if now - ob.hit < obstacles::HIT_COOLDOWN {
+                continue;
+            }
+            ob.hit = now;
             let speed = car.speed();
             let mass = car.spec.mass;
+            // Damage is the collision magnitude the shipped controller reads,
+            // clamped to its ceiling: a full-speed hit costs about a twentieth
+            // of the car.
+            let magnitude = speed.min(obstacles::MAX_COLLISION_MAGNITUDE);
             if ob.kind.is_breakable() {
                 if obstacles::should_break(ob, mass, speed) {
                     ob.broken = true;
-                    car.damage += obstacles::break_impulse(mass, speed) * 2.0;
+                    car.damage += magnitude * 0.25;
                     car.vel *= 0.94;
                     cues.0 = Some(Cue::Break);
                 } else {
-                    car.damage += obstacles::break_impulse(mass, speed) * 6.0;
+                    car.damage += magnitude * 0.6;
                     car.vel *= 0.45;
                     cues.0 = Some(Cue::Crash);
                 }
             } else if ob.kind.kills_on_impact() {
-                car.damage += if speed > 6.0 { car.max_damage() } else { 40.0 };
+                car.damage += if speed > 6.0 {
+                    car.max_damage()
+                } else {
+                    magnitude * 0.5
+                };
                 car.vel *= 0.35;
                 cues.0 = Some(Cue::Crash);
             } else {
-                car.damage += speed * 2.0;
+                car.damage += magnitude * 0.5;
                 car.vel *= 0.6;
                 cues.0 = Some(Cue::Crash);
             }

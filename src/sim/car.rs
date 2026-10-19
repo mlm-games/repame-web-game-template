@@ -187,6 +187,18 @@ impl CarSim {
                     let rest = w.suspension_distance;
                     let target = w.target_position.clamp(0.0, 1.0);
                     let centre_y = self.pos.y + w.pos[1];
+                    // The ray hits the road even when the car is metres above it,
+                    // which used to count as a contact and switch gravity off: at
+                    // speed on the descent the car then hung in the air above the
+                    // road for the rest of the run. A wheel only carries the car
+                    // when the surface is inside its suspension travel.
+                    let gap = centre_y - spec.wheel_radius() - h;
+                    if gap > rest * 1.2 + 0.3 {
+                        self.wheels[i].contact = false;
+                        self.wheels[i].compression *= 0.9;
+                        self.wheels[i].load = 0.0;
+                        continue;
+                    }
                     let compression =
                         (h + (1.0 - target) * rest - (centre_y - rest)).clamp(0.0, rest * 1.4);
                     let prev = self.wheels[i].compression;
@@ -358,7 +370,13 @@ impl CarSim {
         let fwd = self.forward();
         let right = vec3(fwd.z, 0.0, -fwd.x);
         let lateral_drift = -slide.min(120.0) * 0.0025;
+        let fall = self.vel.y;
         self.vel = fwd * new_forward + right * lateral_drift;
+        // The vertical component integrates across steps. Rebuilding the
+        // velocity from the driving axes wiped it every tick, so a car in the
+        // air sank at a constant few cm/s instead of falling, and every jump
+        // turned into a long float above the road.
+        self.vel.y = fall;
         if grounded == 0 {
             self.vel.y += GRAVITY * dt;
         } else {
@@ -378,7 +396,21 @@ impl CarSim {
             && self.pos.y - h <= GROUND_STICK
         {
             self.pos.y = h;
-            self.vel.y = 0.0;
+            // A ramp lip keeps the climb rate, so the car is thrown off it
+            // instead of being pressed back onto the road past the gap.
+            // Capped: the raw climb rate at 250 km/h throws the car tens of
+            // metres up, and the camera goes with it.
+            let climb = track.slope(self.pos.x, self.pos.z);
+            self.vel.y = if climb > 0.0 {
+                (climb * new_forward.max(0.0)).min(5.0)
+            } else {
+                0.0
+            };
+        }
+        // Falling into a hole or off the mountain ends the run; the surface is
+        // gone under the car, so there is nothing left to land on.
+        if self.pos.y < track.height(self.pos.z) - 6.0 {
+            self.destroyed = true;
         }
         self.distance = self.pos.z.max(self.distance);
 
@@ -398,7 +430,7 @@ impl CarSim {
 
         // ---- off-road: the mountain side tears the car up rather than
         // ---- destroying it outright, so a near miss stays survivable.
-        if track.surface(self.pos.x, self.pos.z).is_none() && !self.destroyed {
+        if !track.on_road(self.pos.x, self.pos.z) && !self.destroyed {
             self.off_road += dt;
             self.damage += OFF_ROAD_DAMAGE_PER_SEC * dt * speed.max(6.0) / 30.0;
             if self.damage >= self.max_damage() {

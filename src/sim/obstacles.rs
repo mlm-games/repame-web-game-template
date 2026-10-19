@@ -18,6 +18,15 @@ pub const BREAK_IMPULSE_LATE: f32 = 12.0;
 pub const BREAK_MULTIPLIER: f32 = 1.2;
 pub const BREAK_RADIUS: f32 = 5.0;
 
+/// `PG.VehicleDamageController` clamps a collision's magnitude to this and turns
+/// it into damage at `DamageFactor` 1.0, so one hit costs at most a twentieth of
+/// the 2000 the car has.
+pub const MAX_COLLISION_MAGNITUDE: f32 = 100.0;
+
+/// A car resting against a hazard is in contact every tick; damage is charged
+/// once per touch instead, so a scrape does not end the run.
+pub const HIT_COOLDOWN: f32 = 0.7;
+
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum Kind {
     /// Breakable shipping container wall.
@@ -88,6 +97,8 @@ pub struct Obstacle {
     /// Cycle phase for moving hazards.
     pub phase: f32,
     pub broken: bool,
+    /// Race time of the last damage event, so a contact is charged once.
+    pub hit: f32,
     /// Current animated offset, updated per tick by [`update`].
     pub offset: Vec3,
 }
@@ -124,12 +135,10 @@ pub fn mix_for(segment: &str) -> Vec<(Kind, f32)> {
             (Kind::Gate, 4.0),
             (Kind::Spikes, 4.0),
         ],
-        "RacingTrack" => vec![
-            (Kind::Container, 10.0),
-            (Kind::Wall, 8.0),
-            (Kind::Ramp, 4.0),
-            (Kind::Spikes, 4.0),
-        ],
+        // The shipped `RacingTrack` segment holds nothing but the ten cars: the
+        // racing levels are run against the bots on a clear track, with no
+        // hazards to hit.
+        "RacingTrack" => vec![],
         _ => vec![(Kind::Crate, 6.0), (Kind::Container, 4.0)],
     }
 }
@@ -189,16 +198,30 @@ where
             _ => -half_width * 0.72 + lane * half_width * 1.44,
         };
         let _ = centre;
+        if kind == Kind::Hole && s > from + 20.0 {
+            // The gap spans the road, so each one gets a launch ramp ahead of it;
+            // without one the hole is an unavoidable end to the run.
+            out.push(Obstacle {
+                kind: Kind::Ramp,
+                s: s - 22.0,
+                lateral: 0.0,
+                phase: 0.0,
+                broken: false,
+                hit: -10.0,
+                offset: Vec3::ZERO,
+            });
+        }
         out.push(Obstacle {
             kind,
             s,
             lateral,
             phase: unit(seed, salt.wrapping_add(99)) * std::f32::consts::TAU,
             broken: false,
+            hit: -10.0,
             offset: Vec3::ZERO,
         });
         let gap = match kind {
-            Kind::Hole => 22.0,
+            Kind::Hole => 40.0,
             Kind::Train => 46.0,
             Kind::Press => 26.0,
             Kind::Ramp => 30.0,
@@ -209,6 +232,7 @@ where
         s += gap * (0.75 + unit(seed, salt) * 0.5);
         salt = salt.wrapping_add(1);
     }
+    out.sort_by(|a, b| a.s.total_cmp(&b.s));
     out
 }
 
